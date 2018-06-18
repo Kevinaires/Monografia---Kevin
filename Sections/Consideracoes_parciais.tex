@@ -1,1 +1,13 @@
 \label{chapter:consideracoes}
+O trabalho aborda o desenvolvimento de um método para análise de circuitos lógicos descrito em VHDL através da aplicação de técnica de transformação de código e a técnica \textit{Bounded Model Cheking}. Este método tem como objetivo de explorar os estados alcanç alcançáveis no circuito, e dessa forma identificar erros que possam resutar em mal funcionamento do sistema.
+
+
+\par
+Entre as dificuldade encontradas, a principal esta ligada a etapa de tradução de código. Devido a ferramenta utilizada inicialmente conter diversas limitações, a mesma diminui a eficácia da ferramenta, pois a quantidade de estruturas que podem ser utilizadas é limitada e com isso limitando também o processo de criação de protótipos.
+
+\par
+Os trabalhos futuros é necessário buscar uma nova ferramenta ou método de tradução que tenha uma gama maior de tradução, seja em estruturas ou palavras reservadas,deste forma o método desenvlvido torna-se mais eficiente e gerando uma menor intervenção do usuário no código VHDL. A melhoria na tradução de código também beneficia ageração das assertivas automáticamente, pois com uma gama maior de estruturas suportadas, mais assertivas podem ser geradas.
+
+\par
+Além disso a geração automática das assertivas é Outro ponto abordado, já sitado anteriormente, é a geração automática das assertivas, visto que na estapa atual ainda nõ foi implementado. Este recuros visa da liberdade ao desenvolvedor promovendo de maneira automática os teste sobre o código, não necessitando que uma intervenção, tornando a inserção manual apenas em casos especificos de testes.
+ 
