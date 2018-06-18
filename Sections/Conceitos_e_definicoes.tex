@@ -6,7 +6,7 @@ Este capítulo tem como objetivo apresentar os principais conceitos e definiçõ
 %============================
 \section{Linguagens de descrição de hardware}
 
-As linguagens de descrição de hardware(HDL) foram desenvolvidas com o intuito de auxiliar a criação de circuitos lógicos com grande número de elementos e com uma gama de abstrações lógicas e eletrônicas \cite{thomas2008verilog}. \textcolor{red}{Entre os exemplos, podemos citar: \textit{VDHL}, \textit{Verilog} e \textit{SystemC}.}
+As linguagens de descrição de hardware(HDL) foram desenvolvidas com o intuito de auxiliar a criação de circuitos lógicos com grande número de elementos e com uma gama de abstrações lógicas e eletrônicas \cite{thomas2008verilog}. Entre os exemplos, podemos citar: \textit{VDHL}, \textit{Verilog} e \textit{SystemC}.
 
 \par
 Segundo \cite{christen1999vhdl}, linguagens de descrição de hardware são linguagens de programação utilizadas com o intuito de descrever o comportamento de um determinado circuito e processos, técnica conhecida como modelagem. Os modelos descritos em HDL são utilizados como entrada para um simulador, onde o mesmo pode ter seu comportamento analisado.
@@ -23,13 +23,13 @@ Segundo \cite{christen1999vhdl}, linguagens de descrição de hardware são ling
 As HDL's trazem consigo diversas vantagens, entre elas códigos independentes de tecnologia e fabricante, podendo ser portatéis e reutilizáveis\cite{cappelattipraticando}. As lingugens mais modernas, tais como VHDL e \textit{Verilog}, possuem suporte tanto a descrição do circuito propriamente dito quanto ao comportamento que o mesmo deve exercer\cite{christen1999vhdl}.
 
 \par
-\textcolor{red}{O \textit{Verilog}, como já citado, é uma linguagem de descrição de \textit{hardware} que fornece diversos níveis de abstração para desenvolvimento de sistemas digitais\cite{thomas2008verilog}. A linguagem foi desenvolvida para ser simples e efetiva nos diversos níveis de abstração incluindo o suporte ao desenvolvimento, verificação, síntese e testes de \textit{software}.\cite{IEEEVerilogLanguage}.}
+O \textit{Verilog}, como já citado, é uma linguagem de descrição de \textit{hardware} que fornece diversos níveis de abstração para desenvolvimento de sistemas digitais\cite{thomas2008verilog}. A linguagem foi desenvolvida para ser simples e efetiva nos diversos níveis de abstração incluindo o suporte ao desenvolvimento, verificação, síntese e testes de \textit{software}.\cite{IEEEVerilogLanguage}.
 
 \par
-\textcolor{red}{O VHDL é uma linguagem de descrição de hardware amplamente utilizada concebida na década de 80, visto uma necessidade do Departamento de defesa dos Estados Unidos da América\cite{cappelattipraticando}. Assim como o Verilog, suporta desenvolvimento, verificação, síntese, e testes de \textit{hardware}\cite{IEEEVHDLLanguage}.}
+O VHDL é uma linguagem de descrição de hardware amplamente utilizada concebida na década de 80, visto uma necessidade do Departamento de defesa dos Estados Unidos da América\cite{cappelattipraticando}. Assim como o Verilog, suporta desenvolvimento, verificação, síntese, e testes de \textit{hardware}\cite{IEEEVHDLLanguage}.
 
 \par
-\textcolor{red}{Ambas as linguagens apesentam similaridades, sendo a linguagem VHDL escolhida para este projeto devido a linguagem apresentar maior gama de recursos tanto para o desenvolvimento quanto para oa auxilio nos testes.}\todo{O motivos da escolha ainda esta fraco, devido a familiaridades entre ambas as linguagens, ainda não sobre como colocar o motivo da escolha.}
+Ambas as linguagens apesentam similaridades, sendo a linguagem VHDL escolhida para este projeto devido a linguagem apresentar maior gama de recursos tanto para o desenvolvimento quanto para oa auxilio nos testes.
 
 %============================
 %VHDL
@@ -39,10 +39,10 @@ As HDL's trazem consigo diversas vantagens, entre elas códigos independentes de
 VHDL é uma linguagem de descrição de hardware destina a ser utilizada em todas as etapas da criação de sistemas eletrônicos, sendo, desenvolvimento, verificação, síntese e teste de circuitos\cite{IEEEVHDLLanguage}.
 
 \par
-\textcolor{red}{Segundo \cite{cappelattipraticando}, o VHDL apresenta três principais pilares: Abstração, que consiste na descrição com diferentes níveis de detalhes; modularidade, que permite a divisão do projeto em vários blocos ou módulos para posterior interconexão; e hierarquia, permitindo que módulos ser compostos por submódulos e estes ter níveis de abstração diferentes, dependendo da necessidade do projeto. Devido a esta versatilidade que a linguagem VHDL foi selecionada para o projeto.}
+Segundo \cite{cappelattipraticando}, o VHDL apresenta três principais pilares: Abstração, que consiste na descrição com diferentes níveis de detalhes; modularidade, que permite a divisão do projeto em vários blocos ou módulos para posterior interconexão; e hierarquia, permitindo que módulos ser compostos por submódulos e estes ter níveis de abstração diferentes, dependendo da necessidade do projeto. Devido a esta versatilidade que a linguagem VHDL foi selecionada para o projeto.
 
 \par
-\textcolor{red}{Segundo \cite{IEEEVHDLLanguage}, é necessário um padrão para formatação da descrição em VHDL: \textit{Entity} (Pinos de entada/saída) e \textit{Architecture} (Arquitetura). A \textit{Entity} ou entidade representa o bloco onde são declaradas as entradas e as saídas do circuito utilizadas em todo o sistema, conforme apresentado na \autoref{fig:biblioteca_entidade}. A \textit{Architecture} ou arquitetura, apresentado na \autoref{fig:arquitetura}, define a relação entre entrada e saídas declaradas na entidade, podendo tais especificações serem completas ou parciais. Assim como em outras linguagens bibliotecas podem ser adicionadas, para que novos tipo possam ser utilizados no projeto.} 
+Segundo \cite{IEEEVHDLLanguage}, é necessário um padrão para formatação da descrição em VHDL: \textit{Entity} (Pinos de entada/saída) e \textit{Architecture} (Arquitetura). A \textit{Entity} ou entidade representa o bloco onde são declaradas as entradas e as saídas do circuito utilizadas em todo o sistema, conforme apresentado na \autoref{fig:biblioteca_entidade}. A \textit{Architecture} ou arquitetura, apresentado na \autoref{fig:arquitetura}, define a relação entre entrada e saídas declaradas na entidade, podendo tais especificações serem completas ou parciais. Assim como em outras linguagens bibliotecas podem ser adicionadas, para que novos tipo possam ser utilizados no projeto.
 
 \begin{figure}[thp]
 \caption{\label{fig:biblioteca_entidade} Exemplo de declaração de bibliotecas e entidade.}
@@ -80,7 +80,7 @@ END behavioral;
 \end{figure}
 
 \par
-\textcolor{red}{Segundo \cite{cappelattipraticando},} uma descrição em VHDL pode conter diferentes níveis de abstração:
+Segundo \cite{cappelattipraticando}, uma descrição em VHDL pode conter diferentes níveis de abstração:
 \begin{itemize}
   \item \textbf{Comportamental:} Permite descrever o circuito através de laços e processos. O circuito é definido em forma de um algoritmo, utilizando construção similares as utilizadas em linguagem de programação.
   
@@ -88,8 +88,6 @@ END behavioral;
   
   \item \textbf{Estrutural:} O circuito é descrito mais próximo da implementação real, podendo ser definidas portas lógicas com atrasos unitarios ou com atrasos detalhados.
 \end{itemize}
-
-\todo[inline]{Tabala de caracteristicas do vhdl}
 
 %============================
 %PORTAS LÓGICAS
@@ -109,7 +107,7 @@ Segundo \citeauthor{idoeta1982elementos} conceito de portas lógicas é baseado 
 \par
 Ainda segundo \citeauthor{tocci2003sistemas}, devido a esta característica, a álgebra booleana possui três operações básicas, \texttt{OR} (ou), \texttt{AND} (e) e \texttt{NOT} (não). Tal conjunto de operações também é denominado de operações booleanas e via utilização de tabela-verdade é possível descrever as saídas baseando-se nas entradas e na operação aplicada. Cada operação booleana possui sua tabela verdade(\autoref{fig:exemplo_diagrama}), mas também sua representação em forma de diagrama.
 
-\begin{figure}[htb]
+\begin{figure}[H]
 	\begin{center}
     \caption{\label{fig:exemplo_diagrama}Simbolo e tabela verdade para uma porta OR de três entradas.}
 	\includegraphics[scale=0.60]{Figuras/exemplo_diagrama.png}
@@ -117,7 +115,7 @@ Ainda segundo \citeauthor{tocci2003sistemas}, devido a esta característica, a �
     \legend{Fonte: \cite{tocci2003sistemas}}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[H]
 	\begin{center}
     \caption{\label{fig:exemplo_circuito} Representação de circuito lógico, utilizando portas lógicas.}
 	\includegraphics[scale=0.60]{Figuras/exemplo_circuito.png}
@@ -131,13 +129,13 @@ A \autoref{fig:exemplo_circuito} apresenta um circuito lógico formado pelas por
 %VERIFICAÇÃO DE SISTEMAS
 %============================
 \section{Verificação de sistemas}
-\textcolor{red}{ contexto inicial da verificação de sistemas, faz-se necessário o entendimento e a diferenciação entre verificação e validação. Verificação e validação possuem o intuíto de mostrar que determinado \textit{software} funcione conforme o especificado, além de satisfazer as especificações do cliente\cite{sommerville2011engenharia}.} 
+ O contexto inicial da verificação de sistemas, faz-se necessário o entendimento e a diferenciação entre verificação e validação. Verificação e validação possuem o intuíto de mostrar que determinado \textit{software} funcione conforme o especificado, além de satisfazer as especificações do cliente\cite{sommerville2011engenharia}. 
 
 \par
 Segundo \cite{sargent2005verification}, Verificação é o processo de determinar se um modelo computacional obtido por discretização de um modelo matemático de um evento físico e o código que implementa o modelo computacional pode ser usado para representar o modelo matemático do evento com precisão suficiente e validação é o processo de determinar se um modelo matemático de um evento físico representa o evento físico real com precisão suficiente.
 
 \par
-\textcolor{red}{A verificação consite identificação de erros e provavéis problemas que um componente pronto possa apresentar, enquanto a validação busca analisar se tal componete esta seguindo os requisitos pré-definidos para sua construção\cite{koscianski2007qualidade}. O teste de programa, na qual o software  é executado com dados de teste é a principal forma de validação, porém, tecnicas de verificação, tais como, inspeção e revisões também podem integrar a etapa de validação\cite{sommerville2011engenharia}.}
+A verificação consite identificação de erros e provavéis problemas que um componente pronto possa apresentar, enquanto a validação busca analisar se tal componete esta seguindo os requisitos pré-definidos para sua construção\cite{koscianski2007qualidade}. O teste de programa, na qual o software  é executado com dados de teste é a principal forma de validação, porém, tecnicas de verificação, tais como, inspeção e revisões também podem integrar a etapa de validação\cite{sommerville2011engenharia}.
 
 \subsection{Diagrama de decisão binária}
 Diagrama de decisão binária é um grafo aciclico para representação de funcões boolenas. Existe uma ordem total rigorosa na ocorrência de variáveis à medida que uma atravessa o grafo da raiz para a folha. Dado o exemplo,\autoref{fig:bdd_fig}, \textit{f=(a$\lor$b)$\land$(c$\lor$d)} e utilizando a ordenação de variavél a < b < c < d. Dada a atribuição de valores booleanos as variaveis a, b, c e d, pode-se decidir se a atribuição torna a fórmula verdadeira atravessando o início do gráfico na raiz e ramificação em cada nó. Definindo a,c e d = 1 e c = 0 leva a folha de rótulo 1, portanto, a fórmula é verdadeira para essa tarefa\cite{clarke1994model}.
@@ -175,7 +173,7 @@ Segundo o site da ferramenta, a ferramenta permite ao usuário indicar proprieda
 Redes de petri são ferramentas de modelagem gráfica/matemática. Como ferramenta gráfica são utilizadas como comunicação visual, como fluxogramas, por exemplo e como ferramenta matemática podem configurar modelos matemáticos que regem o comportamento dos sistemas. A grade premissa desta ferramenta é descrever sistemas de processamento de informações caracterizados como concorrentes, assíncronos, distribuídos, paralelos, não deterministas e/ou estocásticos\cite{murata1989petri}.
 
 \par
-\textcolor{red}{ As redes de petri são compostas, conforme apresentado na \autoref{fig:rede_petri}, grafos direcionais compostos por nós e arcos. Os nós representam as transições e eventos e os arcos representam os pesos. Dentro desta representação, os arcos e eventos são componentes passivos enquanto as transições são ativos. A principal vantagem da utilização das redes de petri esta relacionado ao chamado "\textit{Token game}" que consiste no comportamento da rede de petri, em outras palavras, representa o funcionamento do sistema representado pela rede\cite{halder2006}.}
+As redes de petri são compostas, conforme apresentado na \autoref{fig:rede_petri}, grafos direcionais compostos por nós e arcos. Os nós representam as transições e eventos e os arcos representam os pesos. Dentro desta representação, os arcos e eventos são componentes passivos enquanto as transições são ativos. A principal vantagem da utilização das redes de petri esta relacionado ao chamado "\textit{Token game}" que consiste no comportamento da rede de petri, em outras palavras, representa o funcionamento do sistema representado pela rede\cite{halder2006}.
 
 \begin{figure}[htb]
 	\begin{center}
@@ -192,10 +190,10 @@ Redes de petri são ferramentas de modelagem gráfica/matemática. Como ferramen
 A verificação de hardware, por meio da simulação, via assegurar que uma implemetação, descrição do hardware em qualquer qualquer nível de abstração da hierarquia de hardware, atinja suas especificações, propriedades que devem ser respeitadas para que a corretude do mesmo seja comprovada \cite{gupta1992formal}. A Verificação formal de hardware consiste na utilização dos conceitos de verificação formal, mas também técnicas para corretude de circuitos lógicos, ou seja, consiste na utilização de modelos matemáticos para descrição de propriedade e/ou de comportamento de um dado sistema.\cite{kropf2013introduction}.
 
 \par
-\textcolor{red}{Entre as abordagens utilizadas verificação formal de hardware consiste em tanto a implementação quanto a especificação estarem descritas em lógica formal, neste caso a corretude será obtida através da comprovada relação entre a implementação e a especificação\cite{seger1992introduction}. A especificação formal consiste na descrição do comportamento, bem como, das propriedades do sistema em linguagem matemática, tornando-se crucial para o processo de verificação. Na implementação formal, o nível de abstração, tais como, \textit{Gate level} e RTL são importantes informações para o desenvolvimento do formalismo, bem como as classes, por exemplo se o circuito é sequencial ou combinacional, se utiliza pipeline, etc.\cite{kropf2013introduction}.}
+Entre as abordagens utilizadas verificação formal de hardware consiste em tanto a implementação quanto a especificação estarem descritas em lógica formal, neste caso a corretude será obtida através da comprovada relação entre a implementação e a especificação\cite{seger1992introduction}. A especificação formal consiste na descrição do comportamento, bem como, das propriedades do sistema em linguagem matemática, tornando-se crucial para o processo de verificação. Na implementação formal, o nível de abstração, tais como, \textit{Gate level} e RTL são importantes informações para o desenvolvimento do formalismo, bem como as classes, por exemplo se o circuito é sequencial ou combinacional, se utiliza pipeline, etc.\cite{kropf2013introduction}.
 
 \par
-\textcolor{red}{A utilização de \textit{Model Checking} também se faz presente nos modelos formais de verificação de hardware, onde apenas é utilizado o comportamento dos circuitos na verificação, de modo a verificar a se as propriedades  presentes são satisfeitas. Para isso, são utilizados os conceitos da lógica proposicional, que por meio da utilização de fórmulas que representem as propriedades dos estados, é possível realizar as verificações necessárias\cite{seger1992introduction}.}
+A utilização de \textit{Model Checking} também se faz presente nos modelos formais de verificação de hardware, onde apenas é utilizado o comportamento dos circuitos na verificação, de modo a verificar a se as propriedades  presentes são satisfeitas. Para isso, são utilizados os conceitos da lógica proposicional, que por meio da utilização de fórmulas que representem as propriedades dos estados, é possível realizar as verificações necessárias\cite{seger1992introduction}.
  
 %============================
 %VERIFICAÇÃO DE SOFTWARE
@@ -204,14 +202,12 @@ A verificação de hardware, por meio da simulação, via assegurar que uma impl
 
 Segundo \citeauthor{rocha2015verificaccao}, o uso de software tem sido feito em muitas áreas, tais como, infraestruturas industriais de missão critica e de segurança.  Logo, existe a necessidade de garantir a corretude destes sistemas. Devido a isso, a verificação formal tem sido utilizada em três principais abordagens, sendo elas~\cite{cousot2010gentle,d2008survey}:
 \begin{itemize}
- \item \textcolor{red}{\textbf{Métodos dedutivos:} Produzem provas matemáticas formais de corretude usando provadores de teoremas ou assistentes de prova para execução da prova e necessitam da interação humana para prover os argumentos\cite{cousot2010gentle};}
+ \item \textbf{Métodos dedutivos:} Produzem provas matemáticas formais de corretude usando provadores de teoremas ou assistentes de prova para execução da prova e necessitam da interação humana para prover os argumentos\cite{cousot2010gentle};
   \item \textbf{Verificação de modelos:} Exploram exaustivamente modelos de execuções de programa, que podem ser sujeitos a explosão combinatória, necessário a intervenção humana para geração dos modelos.\cite{rocha2015verificaccao};
-  \item \textcolor{red}{\textbf{Analise estática:} Engloba diversas técnicas para calcular automaticamente informações sobre o comportamento de um programa sem executá-lo, sendo utilizado em otimização de código e verificação em compiladres\cite{d2008survey}.}
+  \item \textbf{Analise estática:} Engloba diversas técnicas para calcular automaticamente informações sobre o comportamento de um programa sem executá-lo, sendo utilizado em otimização de código e verificação em compiladres\cite{d2008survey}.
 \end{itemize}
 
 Ainda segundo \citeauthor{rocha2015verificaccao}, na verificação formal apresentam-se dificuldades, tais como: quais as propriedades são de interesse na verificação no tempo de execução; e impossibilidade matemática de provar a corretude de propriedades não triviais no comportamento de programas, devido ao computador ser um dispositivo finito\cite{cousot2010gentle}. 
-
-\todo[inline]{Sugiro adicionar um exemplo de verificacao de SW.}
 
 %============================
 %LÓGICA PROPOSICIONAL
@@ -342,10 +338,10 @@ Diversas técnicas podem ser utilizadas nas diversas etapas, até que o código 
 %============================
 \subsection{Transformações de código}
 \par
-\textcolor{red}{Transformações de código correspondem a uma complexa função que envolve analise de fluxo de dados e modificação completa do programa e são parte integral da alta performance e sistemas computacionais. Podem ser classificados em transformações escalares que reduzem o número de instruções a serem executadas no programa ou transformações paralelas que maximizam o paralelismo.\cite{srikant2002compiler}}
+Transformações de código correspondem a uma complexa função que envolve analise de fluxo de dados e modificação completa do programa e são parte integral da alta performance e sistemas computacionais. Podem ser classificados em transformações escalares que reduzem o número de instruções a serem executadas no programa ou transformações paralelas que maximizam o paralelismo.\cite{srikant2002compiler}
 
 \par
-\textcolor{red}{A \autoref{fig:cod_vhdl} representa o trecho de código apresentado na \autoref{fig:assertiva}. O trecho representa o comportamento das entradas, neste caso de um código da porta AND. E a figura \autoref{fig:cod_c} representa a tradução deste trecho em código na linguagem C. Esta tradução foi realizada pela ferramenta V2C, utilizada neste projeto.}
+A \autoref{fig:cod_vhdl} representa o trecho de código apresentado na \autoref{fig:assertiva}. O trecho representa o comportamento das entradas, neste caso de um código da porta AND. E a figura \autoref{fig:cod_c} representa a tradução deste trecho em código na linguagem C. Esta tradução foi realizada pela ferramenta V2C, utilizada neste projeto.
 
 \begin{figure}[thp]
 \caption{\label{fig:cod_vhdl} Trecho de código em VHDL representando porta AND.}
@@ -393,22 +389,22 @@ Diversas técnicas podem ser utilizadas nas diversas etapas, até que o código 
 %============================
 \subsection{Otimização de código}
 \par
-A otimização de código \textcolor{red}{consiste na melhoria do código intermediário gerado pelos algoritmos de compilação com o objetivo de rodar mais rapidamente, porém outros fatores podem ser introduzidos, como algoritmos menores.} Este fato não implica em afirmar que o melhor código é gerado, visto que dada a complexidade, raramente pode ser obtido que o código gerado pode ser o melhor possível\cite{aho2007compilers}.
+A otimização de código consiste na melhoria do código intermediário gerado pelos algoritmos de compilação com o objetivo de rodar mais rapidamente, porém outros fatores podem ser introduzidos, como algoritmos menores. Este fato não implica em afirmar que o melhor código é gerado, visto que dada a complexidade, raramente pode ser obtido que o código gerado pode ser o melhor possível\cite{aho2007compilers}.
 
 \par
-\textcolor{red}{Segundo \cite{aho2007compilers}, otimização local de código consiste na otimização de um bloco básico de código, ou seja, a otimização ocorre em um trecho especifico de código. Os blocos básicos são trecho onde não ocorrem saltos ou \textit{loops}, para nenhuma outra parte do código. A otimização global de código é baseado na analise do fluxo de dados, de modo que ocorra as elminação de instruções não necessárias ou substituição mais facil. A otimização global consite na analise completa do código.}
+Segundo \cite{aho2007compilers}, otimização local de código consiste na otimização de um bloco básico de código, ou seja, a otimização ocorre em um trecho especifico de código. Os blocos básicos são trecho onde não ocorrem saltos ou \textit{loops}, para nenhuma outra parte do código. A otimização global de código é baseado na analise do fluxo de dados, de modo que ocorra as elminação de instruções não necessárias ou substituição mais facil. A otimização global consite na analise completa do código.
 
 %============================
 %Grafo Acliclico Direcional - GAD ok
 %============================
 \subsubsection{Grafo Acliclico Direcional - GAD}
 \par
-\textcolor{red}{Grafo Aciclico Direcional é utilizado para diversos fins dentro da estrutura de compiladores, principalmente para geração da parse tree otimização de código. Pode ser usado na representação de instruções unicas blocos básicos de código\cite{aho2007compilers}. O uso de GAD permite a melhoria de de código, tais como:
+Grafo Aciclico Direcional é utilizado para diversos fins dentro da estrutura de compiladores, principalmente para geração da parse tree otimização de código. Pode ser usado na representação de instruções unicas blocos básicos de código\cite{aho2007compilers}. O uso de GAD permite a melhoria de de código, tais como:
 \begin{itemize}
 \item Elminação de subexpressões locais comuns, ou seja, expressões que o valor já foi computado anteriomente;
 \item Eliminação de código morto;
 \item  Reordernamento de declarações buscando reduzir o tempo que o valor temporário necessita ser preservado em um registro;
-\end{itemize}}
+\end{itemize}
 
 \par
 \begin{figure}[thp]
@@ -434,14 +430,14 @@ A otimização de código \textcolor{red}{consiste na melhoria do código interm
     \legend{Fonte: \cite{aho2007compilers}}
 \end{figure}
 
-\textcolor{red}{Na \autoref{fig:basic_block} apresenta um bloco básico com algumas instruções, no caso aresentando 4 operações entre somas e multiplicação e a partir deste bloco a \autoref{fig:gda} apresenta o GDA deste trecho de código. Nele aprsenta cada nó como uma operação especifica e os terminais como as parcelas das operações.}
+Na \autoref{fig:basic_block} apresenta um bloco básico com algumas instruções, no caso aresentando 4 operações entre somas e multiplicação e a partir deste bloco a \autoref{fig:gda} apresenta o GDA deste trecho de código. Nele aprsenta cada nó como uma operação especifica e os terminais como as parcelas das operações.
 
 %============================
 %Grafo de Fluxo de Controle - GFC 
 %============================
 \subsubsection{Grafo de Fluxo de Controle - GFC}
 \par
-\textcolor{red}{Grafo de fluxo de controle corresponde a um grafo direcionado, no qual cada nó representa blocos básicos e cada aresta representa os caminhos de fluxo entre os blocos basicos.\cite{allen1970control}. É importante ressaltar que saltos determinam o final de um determinado bloco básico, ou seja, saltos indicam um caminho para uma nova região de código básico.\cite{aho2007compilers}.}
+Grafo de fluxo de controle corresponde a um grafo direcionado, no qual cada nó representa blocos básicos e cada aresta representa os caminhos de fluxo entre os blocos basicos.\cite{allen1970control}. É importante ressaltar que saltos determinam o final de um determinado bloco básico, ou seja, saltos indicam um caminho para uma nova região de código básico.\cite{aho2007compilers}.
 
 
 %============================
@@ -449,10 +445,10 @@ A otimização de código \textcolor{red}{consiste na melhoria do código interm
 %============================
 \subsubsection{Eliminção de código morto}
 \par
-\textcolor{red}{Elimincação de código morto é uma técnica busca a eficiência de um programa evitando a execução de instruções não necessária no tempo de execução.\cite{knoop1994partial}. Código morto consiste em instruções que não serão alcançáveis durante o fluxo do programa, sendo esta técnica basicamente a a retirada de qualquer variável que não será utilizada em qualquer outro nó do grafo\cite{aho2007compilers}.}
+Elimincação de código morto é uma técnica busca a eficiência de um programa evitando a execução de instruções não necessária no tempo de execução.\cite{knoop1994partial}. Código morto consiste em instruções que não serão alcançáveis durante o fluxo do programa, sendo esta técnica basicamente a a retirada de qualquer variável que não será utilizada em qualquer outro nó do grafo\cite{aho2007compilers}.
 
 \par
-\textcolor{red}{A utilização de GAD corresponde na eliminação de qualquer nó raiz, ou seja, nó sem ancestrais, as quais não esteja ativa anexada a mesma. A execução repetida desta operação removerá todos os nós correspondentes a código morto\cite{aho2007compilers}.}
+A utilização de GAD corresponde na eliminação de qualquer nó raiz, ou seja, nó sem ancestrais, as quais não esteja ativa anexada a mesma. A execução repetida desta operação removerá todos os nós correspondentes a código morto\cite{aho2007compilers}.
 
 \begin{figure}[htb]
 	\begin{center}
@@ -462,13 +458,13 @@ A otimização de código \textcolor{red}{consiste na melhoria do código interm
     \legend{Fonte: \cite{aho2007compilers}}
 \end{figure}
 
-\textcolor{red}{Na \autoref{fig:elimicacao_codigo}, supondo que os nós a,b e c estejam ativa, porém o nó é não esteja, o ultimo pode ser eliminado imediatamente. Os nós restantes continuam no GDA, a menos que não tenho variáveis ativas atreladas aos nós\cite{aho2007compilers}.}
+Na \autoref{fig:elimicacao_codigo}, supondo que os nós a,b e c estejam ativa, porém o nó é não esteja, o ultimo pode ser eliminado imediatamente. Os nós restantes continuam no GDA, a menos que não tenho variáveis ativas atreladas aos nós\cite{aho2007compilers}.
 %============================
 %Analise do fluxo de dados ok
 %============================
 \subsubsection{Analise do fluxo de dados}
 \par
-\textcolor{red}{Analise de fluxo de dados refere-se ao conjunto de tecnicas que derivam informaçoes sobre o fluxo de dados ao longo dos caminhos de execução do programa. Para analise do programa, é necessário considerar todas as posiveis execuções através do grafo de fluxo.\cite{aho2007compilers}.}
+Analise de fluxo de dados refere-se ao conjunto de tecnicas que derivam informaçoes sobre o fluxo de dados ao longo dos caminhos de execução do programa. Para analise do programa, é necessário considerar todas as posiveis execuções através do grafo de fluxo.\cite{aho2007compilers}.
 
 %============================
 %Gerador de código ok
@@ -478,4 +474,4 @@ A otimização de código \textcolor{red}{consiste na melhoria do código interm
 O gerador de código é responsavél pela tradução final do programa-fonte para o programa-alvo, o mesmo recebe como entrada um código intermediário juntamente com a tabela de símbolos.Faz-se necessário que o programa-fonte tenha sido analisado sintatica e lexicamente, assim evitando que erros possam ser passados para o programa-alvo, por outro lado a existencia de uma nível de otimização, faz-se opicional neste caso\cite{aho2007compilers}.
 
 \par
-\textcolor{red}{O gerador de código possui três tarefs primarias, sendo as mesmas seleção de instrução, alocação de registros e atribuições. A seleção de instruções envolve a escolha das instruções apropriadas da máquina-alvo para implementar as declarações do código intermediario. A atribuição e atribuição de registros envolve a decisão sobre os valores a serem registrados nos registros\cite{aho2007compilers}.}
+O gerador de código possui três tarefs primarias, sendo as mesmas seleção de instrução, alocação de registros e atribuições. A seleção de instruções envolve a escolha das instruções apropriadas da máquina-alvo para implementar as declarações do código intermediario. A atribuição e atribuição de registros envolve a decisão sobre os valores a serem registrados nos registros\cite{aho2007compilers}.

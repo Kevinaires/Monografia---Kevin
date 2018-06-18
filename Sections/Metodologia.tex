@@ -139,7 +139,6 @@ A assertivas automáticas são geradas baseados nas entradas do código VHDL. Se
 
 \par
 A \autoref{fig:code_exemplo_assertiva} apresenta o código juntamente com as assertivas conforme o padrão salientado na \autoref{sec:assertiva_descricao}. Neste exemplo foi implementado utilizado a inserção manual das assertivas e também da função \_\_ESBMC\_assume(), entretanto o objetivo é automátizar estas funções durante a execução da ferramenta.
-\todo[inline]{Verificar o código junto com o professor!!}
 \begin{figure}[h]
 \caption{\label{fig:code_exemplo_assertiva} Código da \autoref{fig:code_exemplo} com a assertiva da \autoref{fig:assertiva}.}
 	\begin{center}
@@ -196,7 +195,6 @@ A etapa seguinte é a tradução deste código para linguagem C, conforme aprese
 
 \par
 Devido ser uma ferramenta antiga, a ferramenta V2C apresenta certas limitação na tradução do código VHDL, em outras palavras, a mesma não reconhece algumas estruturas especificas do VHDL. A ferramenta aceita apenas entradas e saídas do tipo: bit, std\_ulogic, qsim\_state, std\_ulogic\_vector e interger. Na parte de arquitetura, a ferramenta aceita uma gama maior de estruturas, trabalhando com expressoões do tipo: signal, variable, integers, strings e caracteres. Em expreções condicionais os operandos são AND, OR, NOT <=, =>,=,<,> e <>. Aceita também a estrutura de process, além da estutura block. A estrutura \textit{process} é limitada apenas a: if-else, case e  loops.
-\todo[inline]{Referenciar a imagem ao contexto.}
 \begin{figure}[h]
 \caption{\label{fig:code_traduzido} Código da \autoref{fig:code_exemplo} traduzido pela ferramenta V2C.}
 	\begin{center}
@@ -389,7 +387,7 @@ Com a função \textit{\_\_ESBMC\_assume()} ocorre processo semelhante ao das as
 
 \par
 Durante a instrumentação de código também é realizado a entrada de sisnais não deterministicos, utilizando a função \_\_VERIFIER\_nondet\_int(). Esta função é utilizada em todas as variaveis de entrada e também nos sinais criados ao longo da arquitetura. Desta forma, todas as variavéis necessárias são inicializadas para verificação.
-\begin{figure}[H]
+\begin{figure}[htp]
 \caption{\label{fig:assert_c} Código com assertivas traduzida para linguagem C}
 	\begin{center}
     \begin{minipage}{0.99\textwidth}
