@@ -1,15 +1,17 @@
 \label{chapter:conceitos}
-Este capítulo tem como objetivo apresentar os principais conceitos e definições abordados neste trabalho, tais como: Linguagens de descrição de hardware, Verificação de sistemas e Técnicas de Compiladores.
+Este capítulo tem apresenta os principais conceitos e definições abordados neste trabalho, tais como: Linguagens de descrição de hardware, Verificação de sistemas e Técnicas de Compiladores.
 
 %============================
 %Linguagens de descrição de hardware
 %============================
 \section{Linguagens de descrição de hardware}
 
-As linguagens de descrição de hardware(HDL) foram desenvolvidas com o intuito de auxiliar a criação de circuitos lógicos com grande número de elementos e com uma gama de abstrações lógicas e eletrônicas \cite{thomas2008verilog}. Entre os exemplos, podemos citar: \textit{VDHL}, \textit{Verilog} e \textit{SystemC}.
+As linguagens de descrição de hardware (HDL) foram desenvolvidas com o intuito de auxiliar a criação de circuitos lógicos com grande número de elementos e com uma gama de abstrações lógicas e eletrônicas \cite{thomas2008verilog}. Entre os exemplos, podemos citar: \textit{VDHL}, \textit{Verilog} e \textit{SystemC}\todo{adicionar referência a cada linguagem}.
 
 \par
 Segundo \cite{christen1999vhdl}, linguagens de descrição de hardware são linguagens de programação utilizadas com o intuito de descrever o comportamento de um determinado circuito e processos, técnica conhecida como modelagem. Os modelos descritos em HDL são utilizados como entrada para um simulador, onde o mesmo pode ter seu comportamento analisado.
+
+\todo[inline]{TODA Figura apresentada deve ser apresentada e descrita/explicada no texto.}
 
 \begin{figure}[htb]
 	\begin{center}
@@ -20,31 +22,32 @@ Segundo \cite{christen1999vhdl}, linguagens de descrição de hardware são ling
 \end{figure}
 
 \par
-As HDL's trazem consigo diversas vantagens, entre elas códigos independentes de tecnologia e fabricante, podendo ser portatéis e reutilizáveis\cite{cappelattipraticando}. As lingugens mais modernas, tais como VHDL e \textit{Verilog}, possuem suporte tanto a descrição do circuito propriamente dito quanto ao comportamento que o mesmo deve exercer\cite{christen1999vhdl}.
+As HDL's trazem consigo diversas vantagens, entre elas códigos independentes de tecnologia e fabricante, podendo ser portatéis e reutilizáveis \cite{cappelattipraticando}. As lingugens mais modernas, tais como VHDL e \textit{Verilog}, possuem suporte tanto a descrição do circuito propriamente dito quanto ao comportamento que o mesmo deve exercer \cite{christen1999vhdl}.
 
 \par
-O \textit{Verilog}, como já citado, é uma linguagem de descrição de \textit{hardware} que fornece diversos níveis de abstração para desenvolvimento de sistemas digitais\cite{thomas2008verilog}. A linguagem foi desenvolvida para ser simples e efetiva nos diversos níveis de abstração incluindo o suporte ao desenvolvimento, verificação, síntese e testes de \textit{software}.\cite{IEEEVerilogLanguage}.
+O \textit{Verilog}, como já citado, é uma linguagem de descrição de \textit{hardware} que fornece diversos níveis de abstração para desenvolvimento de sistemas digitais\cite{thomas2008verilog}. A linguagem foi desenvolvida para ser simples e efetiva nos diversos níveis de abstração incluindo o suporte ao desenvolvimento, verificação, síntese e testes de \textit{software}~\cite{IEEEVerilogLanguage}.
+
+\todo[inline]{Apresentar um exemplo de código Verilog}
 
 \par
-O VHDL é uma linguagem de descrição de hardware amplamente utilizada concebida na década de 80, visto uma necessidade do Departamento de defesa dos Estados Unidos da América\cite{cappelattipraticando}. Assim como o Verilog, suporta desenvolvimento, verificação, síntese, e testes de \textit{hardware}\cite{IEEEVHDLLanguage}.
+O VHDL é uma linguagem de descrição de hardware amplamente utilizada concebida na década de 80, visto uma necessidade do Departamento de defesa dos Estados Unidos da América~\cite{cappelattipraticando}. Assim como o Verilog, suporta desenvolvimento, verificação, síntese, e testes de \textit{hardware}~\cite{IEEEVHDLLanguage}.
 
 \par
-Ambas as linguagens apesentam similaridades, sendo a linguagem VHDL escolhida para este projeto devido a linguagem apresentar maior gama de recursos tanto para o desenvolvimento quanto para oa auxilio nos testes.
+Ambas as linguagens apesentam similaridades, sendo a linguagem VHDL escolhida para este trabalho devido a linguagem apresentar maior gama de recursos tanto para o desenvolvimento quanto para oa auxilio nos testes\todo{Apresentar um exemplo com referência}.
 
 %============================
 %VHDL
 %============================
 \subsection{VHSIC Hardware Description Language - VHDL}\todo{Revisar textos e verificar a necessidade de mais exemplo}
 
-VHDL é uma linguagem de descrição de hardware destina a ser utilizada em todas as etapas da criação de sistemas eletrônicos, sendo, desenvolvimento, verificação, síntese e teste de circuitos\cite{IEEEVHDLLanguage}.
+VHDL é uma linguagem de descrição de hardware destina a ser utilizada em todas as etapas da criação de sistemas eletrônicos, sendo, desenvolvimento, verificação, síntese e teste de circuitos~\cite{IEEEVHDLLanguage}.
+% 
+Segundo \cite{cappelattipraticando}, o VHDL apresenta três principais pilares: \textbf{abstração}, que consiste na descrição com diferentes níveis de detalhes; \textbf{modularidade}, que permite a divisão do projeto em vários blocos ou módulos para posterior interconexão; e \textbf{hierarquia}, permitindo que módulos ser compostos por submódulos e estes ter níveis de abstração diferentes, dependendo da necessidade do projeto. Devido a esta versatilidade que a linguagem VHDL foi selecionada para o trabalho proposto.
 
 \par
-Segundo \cite{cappelattipraticando}, o VHDL apresenta três principais pilares: Abstração, que consiste na descrição com diferentes níveis de detalhes; modularidade, que permite a divisão do projeto em vários blocos ou módulos para posterior interconexão; e hierarquia, permitindo que módulos ser compostos por submódulos e estes ter níveis de abstração diferentes, dependendo da necessidade do projeto. Devido a esta versatilidade que a linguagem VHDL foi selecionada para o projeto.
+Segundo \cite{IEEEVHDLLanguage} é necessário um padrão para formatação da descrição em VHDL: \textit{Entity} (Pinos de entada/saída) e \textit{Architecture} (Arquitetura). A \textit{Entity} ou entidade representa o bloco onde são declaradas as entradas e as saídas do circuito utilizadas em todo o sistema, conforme apresentado na \autoref{fig:biblioteca_entidade}. A \textit{Architecture} ou arquitetura, apresentado na \autoref{fig:arquitetura}, define a relação entre entrada e saídas declaradas na entidade, podendo tais especificações serem completas ou parciais. Assim como em outras linguagens bibliotecas podem ser adicionadas, para que novas funções e atributos possam ser utilizados no projeto.
 
-\par
-Segundo \cite{IEEEVHDLLanguage}, é necessário um padrão para formatação da descrição em VHDL: \textit{Entity} (Pinos de entada/saída) e \textit{Architecture} (Arquitetura). A \textit{Entity} ou entidade representa o bloco onde são declaradas as entradas e as saídas do circuito utilizadas em todo o sistema, conforme apresentado na \autoref{fig:biblioteca_entidade}. A \textit{Architecture} ou arquitetura, apresentado na \autoref{fig:arquitetura}, define a relação entre entrada e saídas declaradas na entidade, podendo tais especificações serem completas ou parciais. Assim como em outras linguagens bibliotecas podem ser adicionadas, para que novos tipo possam ser utilizados no projeto.
-
-\begin{figure}[thp]
+\begin{figure}[!htp]
 \caption{\label{fig:biblioteca_entidade} Exemplo de declaração de bibliotecas e entidade.}
 	\begin{center}
     \begin{minipage}{0.6\textwidth}
@@ -62,7 +65,7 @@ END full_adder;
     \legend{Fonte: Própria.}
 \end{figure}
 
-\begin{figure}[thp]
+\begin{figure}[!htp]
 \caption{\label{fig:arquitetura} Exemplo de declaração da arquitetura no VHDL.}
 	\begin{center}
     \begin{minipage}{0.6\textwidth}
@@ -84,7 +87,7 @@ Segundo \cite{cappelattipraticando}, uma descrição em VHDL pode conter diferen
 \begin{itemize}
   \item \textbf{Comportamental:} Permite descrever o circuito através de laços e processos. O circuito é definido em forma de um algoritmo, utilizando construção similares as utilizadas em linguagem de programação.
   
-  \item \textbf{Transferencia de registradores:} Englobando a representação do dispositivo em nível de trasnferencia entre registradores, que consiste a utilização de funções lógicas combinacionais e registradores.
+  \item \textbf{Transferência de registradores:} Englobando a representação do dispositivo em nível de trasnferencia entre registradores, que consiste a utilização de funções lógicas combinacionais e registradores.
   
   \item \textbf{Estrutural:} O circuito é descrito mais próximo da implementação real, podendo ser definidas portas lógicas com atrasos unitarios ou com atrasos detalhados.
 \end{itemize}
