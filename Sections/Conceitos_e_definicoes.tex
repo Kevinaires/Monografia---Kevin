@@ -82,7 +82,8 @@ END behavioral;
     \legend{Fonte: Própria.}
 \end{figure}
 
-\par
+
+
 Segundo \cite{cappelattipraticando}, uma descrição em VHDL pode conter diferentes níveis de abstração:
 \begin{itemize}
   \item \textbf{Comportamental:} Permite descrever o circuito através de laços e processos. O circuito é definido em forma de um algoritmo, utilizando construção similares as utilizadas em linguagem de programação.
@@ -97,9 +98,9 @@ Segundo \cite{cappelattipraticando}, uma descrição em VHDL pode conter diferen
 %============================
 \subsection{Portas lógicas}
 
-Segundo \citeauthor{idoeta1982elementos} conceito de portas lógicas é baseado na conhecida álgebra de Boole ou álgebra booleana, desenvolvida pelo matemático inglês George Boole em 1854. A álgebra booleana é representada por apenas dois valores, sendo eles o $0$ e $1$ e através disso expressar a relação entre entrada e saída dentro de um circuito. As portas lógicas podem ser construídas a partir de diodos, transmissões e resistores interconectados de modo que a saída seja o resultante de uma operação lógica básica realizada sobre as entradas \cite{tocci2003sistemas}. A figura \autoref{fig:algebra_booleana} apresenta um exemplo de álgebra booleana sem a utilização de diagramas.
+Segundo \citeauthor{idoeta1982elementos}\todo{Citação incorreta} conceito de portas lógicas é baseado na conhecida álgebra de Boole ou álgebra booleana, desenvolvida pelo matemático inglês George Boole em 1854. A álgebra booleana é representada por apenas dois valores, sendo eles o $0$ e $1$, e através disso expressar a relação entre entrada e saída dentro de um circuito. As portas lógicas podem ser construídas a partir de diodos, transmissões e resistores interconectados de modo que a saída seja o resultante de uma operação lógica básica realizada sobre as entradas \cite{tocci2003sistemas}. A \autoref{fig:algebra_booleana} apresenta um exemplo de álgebra booleana sem a utilização de diagramas.
 
-\begin{figure}[htb]
+\begin{figure}[!htbp]
 	\begin{center}
     \caption{\label{fig:algebra_booleana}Exemplo de algebra booleana, onde A=0, B=1, C=1 e D=1.}
 	\includegraphics[scale=0.70]{Figuras/algebra_booleana.png}
@@ -108,7 +109,7 @@ Segundo \citeauthor{idoeta1982elementos} conceito de portas lógicas é baseado 
 \end{figure}
 
 \par
-Ainda segundo \citeauthor{tocci2003sistemas}, devido a esta característica, a álgebra booleana possui três operações básicas, \texttt{OR} (ou), \texttt{AND} (e) e \texttt{NOT} (não). Tal conjunto de operações também é denominado de operações booleanas e via utilização de tabela-verdade é possível descrever as saídas baseando-se nas entradas e na operação aplicada. Cada operação booleana possui sua tabela verdade(\autoref{fig:exemplo_diagrama}), mas também sua representação em forma de diagrama.
+Ainda segundo \citeauthor{tocci2003sistemas}, devido a esta característica, a álgebra booleana possui três operações básicas, \texttt{OR} (ou), \texttt{AND} (e) e \texttt{NOT} (não). Tal conjunto de operações também é denominado de operações booleanas e via utilização de tabela-verdade é possível descrever as saídas baseando-se nas entradas e na operação aplicada. Cada operação booleana possui sua tabela verdade (~\autoref{fig:exemplo_diagrama}), mas também sua representação em forma de diagrama.
 
 \begin{figure}[H]
 	\begin{center}
@@ -127,6 +128,10 @@ Ainda segundo \citeauthor{tocci2003sistemas}, devido a esta característica, a �
 \end{figure}
 
 A \autoref{fig:exemplo_circuito} apresenta um circuito lógico formado pelas portas básicas da álgebra booleana. O circuito apresenta 3 entradas representadas pelas letras A, B e C, mas também formada por duas portas \textit{AND}, uma porta \textit{NOT} e uma porta \textit{OR}. Cada uma destas portas representando operações a serem realizadas, podendo receber como entrada um valor inicial ou resultante de outra porta, como no exemplo ocorre com a última porta \textit{AND}.
+
+\todo[inline]{Adicionar um exemplo para apresentar a dificuldade de explorar todas as possibilidades de um circuito}
+
+\todo[inline]{Falar sobre o problema da satisfabilidade NPC}
 
 %============================
 %VERIFICAÇÃO DE SISTEMAS
