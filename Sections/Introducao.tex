@@ -1,24 +1,24 @@
 %===========================================================
 %INTRODUÇÃO
 %===========================================================
-A complexidade de sistemas computacionais cresce exponencialmente. Muitas companhias e organizações estão rotineiramente lidando com software que contém milhares de linhas de código, escritos por diferentes pessoas, que usam linguagens distintas, ferramentas, estilos e hardware projetados de diversas formas e combinações \cite{hoder2011case}. 
+A complexidade de sistemas computacionais cresce exponencialmente\todo{Exemplificar este crescimento.}. Muitas companhias e organizações estão rotineiramente lidando com software que contém milhares de linhas de código, escritos por diferentes pessoas, que usam linguagens distintas, ferramentas, estilos e hardware projetados de diversas formas e combinações \cite{hoder2011case}. 
 
 \par
-No contexto de sistemas compostos de hardware e software, tem-se os sistemas embarcados(SE) que são dispositivos semicondutores com software integrados, os quais se conectam à outros dispositivos. Usualmente, o principal propósito dos SE é o controle e provimento de informações para uma função específica \cite{ramesh2012energy}. 
+No contexto de sistemas compostos de hardware e software, tem-se os sistemas embarcados (SE) que são dispositivos semicondutores com software integrados, os quais se conectam à outros dispositivos. Usualmente, o principal propósito dos SE é o controle e provimento de informações para uma função específica \cite{ramesh2012energy}. 
 
 \par
 Os SE são extremamente interativos com seu ambiente, operam geralmente em tempo real e estão disponíveis continuamente. No entanto, estes sistemas, por possuírem um curto espaço de tempo para a liberação do produto ao mercado, precisam ser desenvolvidos rapidamente e atingir um alto nível de qualidade, mas, devido a esta necessidade, os programadores podem cometer enganos durante a fase de desenvolvimento destes sistemas.
 
 \par
-Os dispositivos semicondutores têm se proliferado em partes consideráveis das atividades do nosso cotidiano, com a característica de possuir grande quantidade de complexidade e diversidade. Devido a esta complexidade, erros podem passar despercebidos, causando não apenas penalidades econômicas e/ou fracassos do produto no mercado, mas principalmente o risco de perda de vidas humanas \cite{cabodi2016hardware}. Como, por exemplo, o acidente noticiado no \cite{g1Acidente}, no qual, de acordo com o secretário de transportes, uma falha na placa do circuito eletrônico responsável pelo controle de velocidade dos trens ocasionou a colisão entre duas composições na estação de metrô de São Paulo.
+Os SE têm se proliferado em partes consideráveis das atividades do nosso cotidiano, com a característica de possuir grande quantidade de complexidade e diversidade. Devido a esta complexidade, erros podem passar despercebidos, causando não apenas penalidades econômicas e/ou fracassos do produto no mercado, mas principalmente o risco de perda de vidas humanas \cite{cabodi2016hardware}. Como, por exemplo, o acidente noticiado no \cite{g1Acidente}, no qual, de acordo com o secretário de transportes, uma falha na placa do circuito eletrônico responsável pelo controle de velocidade dos trens ocasionou a colisão entre duas composições na estação de metrô de São Paulo.
 
 \par
 Segundo \cite{rocha2015verificaccao}, para se obter um alto nível de qualidade no desenvolvimento dos sistemas de hardware e software, a execução desses sistemas deve ser controlada e da mesma forma deve-se buscar meios de garantir que as propriedades definidas sejam atingidas. Por exemplo, a partir do conhecimento prévio do modo de implementação de determinado hardware, é possível utilizá-lo de forma mais eficiente. Neste sentido, diversas estratégias de verificação e de teste estão sendo pesquisadas e aplicadas para garantir a qualidade do software e hardware \cite{hoder2010interpolation,rocha2010exploiting,brayton2010abc,cordeiro2012smt,cabodi2016hardware}.
 
 \par
 Por este motivo, com o intuito de analisar e otimizar a descrição dos circuitos digitais, tem-se utilizado as linguagens de descrição de hardware (HDL). Estas se diferem das linguagens de programação por conseguirem gerar execuções não apenas sequenciais, como também concorrentes ou paralelas \cite{chu2006rtl}.
-
-\par
+% 
+% \par
 Neste contexto, a \textit{VHSIC Hardware Description Language} (VHDL) é uma das linguagens de descrição de hardware mais utilizadas atualmente. A descrição em VHDL pode ser em vários níveis de abstração, sendo o mais alto o nível comportamental que permite a descrição do circuito através de \textit{loops} e processos, definido-o na forma de algoritmo. Como características das linguagens de descrição, o VHDL permite declarações sequenciais ou concorrentes onde as declarações continuam ativas e sua ordem torna-se irrelevante \cite{cappelattipraticando}.
 
 \par
@@ -28,26 +28,26 @@ Aliada à linguagem de descrição de hardware, a  verificação formal de siste
 Visando contribuir com a verificação de sistemas embarcados no âmbito de sistemas computacionais, o contexto deste trabalho está situado no uso de metodologias e técnicas de verificação formal para programas escritos em VHDL \cite{biere2016aiger}, focando principalmente no \textit{Bounded Model Checking} \cite{cordeiro2012smt,rocha2015model}. Este trabalho está interessado especificamente na parte de: verificação de modelos de hardware descritos em níveis de circuitos de bits na linguagem VHDL, via transformações de código para gerar modelos (com assertivas) já suportados por \textit{model checkers}, como o ESBMC \cite{cordeiro2012smt}. 
 
 \par
-Dessa forma, o trabalho almeja analisar as propriedades de alcançabilidade para a identificação de localizações de erro, bem como, assertivas contendo propriedades de segurança. A propriedade de alcançabilidade ou propriedade do estado de erro é satisfatória (SAT), se um estado de erro é alcançável. Caso contrário, a propriedade é considerada insatisfatória (UNSAT). No caso SAT, o \textit{model checking} também gera um rastreio da validação da propriedade, ou seja, uma sequência de estados que mostra como chegar ao erro a partir de um ponto inicial.
+Dessa forma, o trabalho almeja analisar as propriedades de alcançabilidade para a identificação de localizações de erro, bem como, assertivas contendo propriedades de segurança. A propriedade de alcançabilidade ou propriedade do estado de erro é satisfatória (SAT), se um estado de erro é alcançável. Caso contrário, a propriedade é considerada insatisfatória (UNSAT). No caso SAT, o \textit{model checking} também gera um rastreio da validação da propriedade (contra-exemplo), ou seja, uma sequência de estados que mostra como chegar ao erro a partir de um ponto inicial.
 
 %===========================================================
 %DEFINIÇÃO DO PROBLEMA
 %===========================================================
 \section{Definição do problema}
 
-O avanço da tecnologia, principalmente nas áreas de design e fabricação, aumentou a importância do hardware nos dias atuais. Cada vez com mais funcionalidades integradas, aliada a velocidade e circuitos menores, faz com que a complexidade dos sistemas de hardware aumente. Entretanto, devido à complexidade cada vez maior, detecção tardia de erros no sistema pode resultar em perda de produção, mas também custos associados ao desenvolvimento do sistema\cite{gupta1992formal}. Devido a isso, a verificação de hardware visa assegurar que o circuito atinja as especificações para o qual foi projetado, através de técnicas formais ou dinâmicas \cite{boule2007efficient}.
+O avanço da tecnologia, principalmente nas áreas de design e fabricação de eletrônicos, aumentou a importância do hardware nos dias atuais. Cada vez com mais funcionalidades integradas, aliada a velocidade e circuitos menores, faz com que a complexidade dos sistemas de hardware aumente. Entretanto, devido à complexidade cada vez maior, detecção tardia de erros no sistema pode resultar em perda de produção, mas também custos associados ao desenvolvimento do sistema\cite{gupta1992formal}. Devido a isso, a verificação de hardware visa assegurar que o circuito atinja as especificações para o qual foi projetado, através de técnicas formais ou dinâmicas \cite{boule2007efficient}.
 
 %Os erros durante o desenvolvimento de sistemas computacionais %tornaram-se mais comuns, em parte devido ao curto espaço de tempo de %sua liberação. Logo, é necessário que as aplicações sejam projetadas %considerando os requisitos de previsibilidade e confiabilidade, %principalmente em aplicações de sistemas embarcados críticos, onde %diversas restrições (por exemplo, tempo de resposta e precisão dos %dados) devem ser atendidas e mensuradas de acordo com os requisitos %do usuário, caso contrário uma falha pode conduzir a situações %catastróficas. 
 
 Por esta razão, a utilização de métodos formais tornou-se uma abordagem atraente para superar as limitações inerentes à validação baseada em simulação. Portanto, a maioria das empresas de semicondutores tem investigado a sua aplicabilidade. Escolhas individuais de métodos, ferramentas e áreas de aplicação das empresas têm variado, assim como o seu nível de sucesso~\cite{cabodi2016hardware}. Com os recentes avanços na escalabilidade de automação dos \textit{model checkers} e nas equivalências sequenciais de verificação, a maioria das empresas têm crescido ao contar com essas técnicas\cite{clarke2008birth}.
 
-O problema considerado neste trabalho é expresso na seguinte questão: \textbf{Como complementar e aprimorar a verificação de propriedades de segurança em circuitos lógicos, de tal forma que uma propriedade possa ser mapeada em um problema de alcançabilidade simbólica, por exemplo, se é possível alcançar um estado específico (para uma dada propriedade) a partir do estado inicial?}
+O problema considerado neste trabalho é expresso na seguinte questão: \textbf{Como complementar e aprimorar a verificação de propriedades de segurança em circuitos lógicos, de tal forma que uma propriedade possa ser mapeada em um problema de alcançabilidade simbólica, ou seja, se é possível alcançar um estado específico (para uma dada propriedade) a partir do estado inicial?}
 
 %===========================================================
 %OBJETIVOS GERAIS E ESPECIFICOS
 %===========================================================
 \section{Objetivos}
-O objetivo principal deste trabalho é projetar e analisar um método para efetuar verificação de circuitos, de forma automática, descritos em VHDL com portas lógicas em nível de bit pela utilização de técnicas de transformação de códigos combinado com a técnica \textit{Bounded Model Checking} para exploração de estados alcançáveis no circuito, visando identificar erros ou comportamentos indevidos ou inesperados que podem resultar no funcionamento incorreto de um dado sistema.
+O objetivo principal deste trabalho é projetar e avaliar um método para efetuar verificação de circuitos, de forma automática, descritos em VHDL com portas lógicas em nível de bit pela utilização de técnicas de transformação de códigos combinado com a técnica \textit{Bounded Model Checking} para exploração de estados alcançáveis no circuito, visando identificar erros ou comportamentos indevidos ou inesperados que podem resultar no funcionamento incorreto de um dado sistema.
 
 Os objetivos específicos são:
 \begin{enumerate}
@@ -61,47 +61,47 @@ Os objetivos específicos são:
 %===========================================================
 %METODOLOGIA PROPOSTA
 %===========================================================
-\section{Metodologia proposta}
-
-Esta seção descreve as principais etapas que foram identificadas para alcançar os objetivos deste trabalho. Estas etapas fornecem os passos necessários e direções para desenvolver a metodologia proposta e podem ser descrita em três diferentes fases como segue: análise do domínio, metodologia proposta e validação da metodologia.
-
-Na etapa de análise de domínio, toda a teoria necessária para entender os métodos, técnicas e ferramentas aplicadas à metodologia de desenvolvimento/validação de circuitos lógicos utilizando a linguagem de descrição de hardware VHDL serão analisadas e avaliadas. Na fase da metodologia proposta, uma versão inicial da metodologia para verificação de circuitos lógicos, tem como foco uma ou mais restrições, e seu escopo serão precisamente definidos e propostos. Depois disso, esta metodologia é mais adiante refinada na fase de validação aplicando-a na verificação dos estudos de caso.
-
-Com o intuito de realizar as atividades deste trabalho, uma abordagem iterativa e incremental será usada com o propósito de reduzir riscos e incertezas. Sendo assim, para cada incremento da solução proposta, as três etapas nomeadas nesta proposta como análise do domínio, metodologia proposta e validação da metodologia podem ser tratadas com diferentes ênfases em cada fase do trabalho.
-
-Por exemplo, no início deste trabalho, a análise de domínio provavelmente terá maior ênfase do que as outras fases metodologia proposta e validação da metodologia. Na metade do projeto, a fase de metodologia proposta provavelmente terá mais ênfase do que as outras duas fases. Finalmente, a fase de validação da metodologia provavelmente terá mais ênfase no fim do desenvolvimento deste TCC. A principal razão para adotar uma abordagem iterativa e incremental é desenvolver o TCC incrementalmente, permitindo assim tirar vantagem do que foi aprendido durante cada incremento do projeto.
-
-% Para cada incremento do TCC, relatórios técnicos devem ser escritos com o propósito de descrever os principais feitos alcançados em uma dada iteração. Além disso, se os resultados significantes têm sido alcançados, então artigos científicos podem ser escritos para reportá-los à comunidade acadêmica através das publicações em workshops e conferências nacionais/internacionais. Potencialmente, os artigos científicos podem ser produzidos em cada incremento do projeto com o intuito de fornecer claramente o progresso deste projeto de pesquisa.
+% \section{Metodologia proposta}
+% 
+% Esta seção descreve as principais etapas que foram identificadas para alcançar os objetivos deste trabalho. Estas etapas fornecem os passos necessários e direções para desenvolver a metodologia proposta e podem ser descrita em três diferentes fases como segue: análise do domínio, metodologia proposta e validação da metodologia.
+% 
+% Na etapa de análise de domínio, toda a teoria necessária para entender os métodos, técnicas e ferramentas aplicadas à metodologia de desenvolvimento/validação de circuitos lógicos utilizando a linguagem de descrição de hardware VHDL serão analisadas e avaliadas. Na fase da metodologia proposta, uma versão inicial da metodologia para verificação de circuitos lógicos, tem como foco uma ou mais restrições, e seu escopo serão precisamente definidos e propostos. Depois disso, esta metodologia é mais adiante refinada na fase de validação aplicando-a na verificação dos estudos de caso.
+% 
+% Com o intuito de realizar as atividades deste trabalho, uma abordagem iterativa e incremental será usada com o propósito de reduzir riscos e incertezas. Sendo assim, para cada incremento da solução proposta, as três etapas nomeadas nesta proposta como análise do domínio, metodologia proposta e validação da metodologia podem ser tratadas com diferentes ênfases em cada fase do trabalho.
+% 
+% Por exemplo, no início deste trabalho, a análise de domínio provavelmente terá maior ênfase do que as outras fases metodologia proposta e validação da metodologia. Na metade do projeto, a fase de metodologia proposta provavelmente terá mais ênfase do que as outras duas fases. Finalmente, a fase de validação da metodologia provavelmente terá mais ênfase no fim do desenvolvimento deste TCC. A principal razão para adotar uma abordagem iterativa e incremental é desenvolver o TCC incrementalmente, permitindo assim tirar vantagem do que foi aprendido durante cada incremento do projeto.
+% 
+% % Para cada incremento do TCC, relatórios técnicos devem ser escritos com o propósito de descrever os principais feitos alcançados em uma dada iteração. Além disso, se os resultados significantes têm sido alcançados, então artigos científicos podem ser escritos para reportá-los à comunidade acadêmica através das publicações em workshops e conferências nacionais/internacionais. Potencialmente, os artigos científicos podem ser produzidos em cada incremento do projeto com o intuito de fornecer claramente o progresso deste projeto de pesquisa.
 
 %===========================================================
 %CONTRIBUIÇÕES PROPOSTAS
 %===========================================================
-\section{Contribuições propostas}
-
-As contribuições propostas para este trabalho são:
-\begin{itemize}
-  \item O desenvolvimeno de um método para verificação de hardware com o intuito de facilitar os passos da verificação e ao mesmo tempo reduzir substancialmente o tempo de verificação de projetos de hardware descritos em VHDL;
-  \item Este trabalho apresenta para o método proposto, o desenvolvimento e implementação de uma ferramenta de verificação de circuitos lógicos em VHDL com a integração da ferramenta ESBMC (\textit{Efficient SMT-Based Context-Bounded Model Checker})\cite{cordeiro2012smt} na análise.
-\end{itemize}
+% \section{Contribuições propostas}
+% 
+% As contribuições propostas para este trabalho são:
+% \begin{itemize}
+%   \item O desenvolvimeno de um método para verificação de hardware com o intuito de facilitar os passos da verificação e ao mesmo tempo reduzir substancialmente o tempo de verificação de projetos de hardware descritos em VHDL;
+%   \item Este trabalho apresenta para o método proposto, o desenvolvimento e implementação de uma ferramenta de verificação de circuitos lógicos em VHDL com a integração da ferramenta ESBMC (\textit{Efficient SMT-Based Context-Bounded Model Checker})\cite{cordeiro2012smt} na análise.
+% \end{itemize}
 
 
 %===========================================================
 %ORGANIZAÇÃO DO TRABALHO
 %===========================================================
 \section{Organização do trabalho}
-A introdução deste trabalho apresentou: o contexto, definição do problema, objetivos, metodologia e contribuições dessa pesquisa. Os capítulos restantes são organizados da seguinte forma:
+A introdução deste trabalho apresentou: o contexto, definição do problema, e objetivos deste trabalho. Os próximos capítulos estão organizados da seguinte forma:
 
 \par
-No \autoref{chapter:conceitos} \textbf{Conceitos e Definições}, são apresentados os conceitos abordados neste trabalho, especificamente: Linguagens de descrição de hardware, Verificação e Validação de Sistemas e Técnicas de Compiladores.
+No \autoref{chapter:conceitos} \textbf{Conceitos e Definições}, são apresentados os conceitos abordados neste trabalho, especificamente: Linguagens de descrição de hardware; Verificação e validação de sistemas; e Técnicas de compiladores.
 
 \par
-No \autoref{chapter:correlatos} \textbf{Trabalhos Correlatos}, será apresentado o método de pesquisa utilizado, mas também, os resultados alcançados com a pesquisa, análise dos artigos e a contribuição dos mesmos para o desenvolvimento do método apresentado neste trabalho.
+No \autoref{chapter:correlatos} \textbf{Trabalhos Correlatos}, será apresentado o método de pesquisa utilizado, mas também, os resultados alcançados com a pesquisa, análise dos artigos e a contribuição dos mesmos para o desenvolvimento do método apresentado neste trabalho\todo{Sugiro reescrever este texto}.
 
 \par
-No \autoref{chapter:metodo} \textbf{Método Proposto}, é descrito as etapas de execução do novo método proposto. Em especial, são descritos o método de transformação do código, a utilização das assertivas e a integração da ferramenta ESBMC no contexto do método.
+No \autoref{chapter:metodo} \textbf{Método Proposto} é descrito as etapas de execução do novo método proposto que consiste na transformação do código, instrumentação de assertivas e verificação de código utilizando um \textit{model checker}.
 
 \par
-No \autoref{chapter:resultados} \textbf{Resultados Experimentais}, descreve-se a execução de uma avaliação experimental sobre o método proposto, bem como, 
-\textit{benchmarks} utilizados para testes da ferramenta e os resultados obtidos através destes testes.
+No \autoref{chapter:resultados} \textbf{Resultados Preliminares}, descreve-se a execução de uma avaliação experimental sobre os resultados obtidos no desenvolvimento do método proposto, por meio da utilização de \textit{benchmarks} públicos de códigos para testes.
+
 \par
 E por fim no \autoref{chapter:consideracoes} \textbf{Considerações parciais e trabalhos futuros}, apresenta-se as considerações parciais e os trabalhos futuros a serem desenvolvidos. 

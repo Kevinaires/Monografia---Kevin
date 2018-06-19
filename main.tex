@@ -176,8 +176,8 @@
 %-- Informações de dado para a FOLHA DE APROVAÇÃO
 \renewcommand{\dataDefesa}{01 de Fevereiro de 2018}
 \renewcommand{\orientadorBanca}{Prof. Dr. Herbert Oliveira Rocha}
-\renewcommand{\primeiroMembroBanca}{Prof. MSc. Felipe Leite Lobo}
-\renewcommand{\segundoMembroBanca}{Prof. MSc. Miguel Raymundo Flores Santibañez}
+\renewcommand{\primeiroMembroBanca}{Prof. XXXX}
+\renewcommand{\segundoMembroBanca}{Prof. XXXX}
 
 % ---
 % Configurações de aparência do PDF final
@@ -310,6 +310,7 @@ Fazer resumo!!
 % inserir lista de ilustrações
 % ---
 \pdfbookmark[0]{\listfigurename}{lof}
+\renewcommand{\listfigurename}{Lista de Figuras}
 \listoffigures*
 \cleardoublepage
 % ---
@@ -318,6 +319,7 @@ Fazer resumo!!
 % inserir lista de tabelas
 % ---
 \pdfbookmark[0]{\listtablename}{lot}
+\renewcommand{\listtablename}{Lista de Tabelas}
 \listoftables*
 \cleardoublepage
 % ---
@@ -325,14 +327,14 @@ Fazer resumo!!
 % ---
 % inserir lista de abreviaturas e siglas
 % ---
-\begin{siglas}
-  \item[BMC] Bounded Model Checking
-  \item[ESBMC] Efficient SMT-Based Context-Bounded Model Checker
-  \item[HDL] Hardware Description Language
-  \item[PSL] Property Specification Language
-  \item[SE] Sistemas Embarcados
-  \item[VHDL] VHISIC Hardware Description Language
-\end{siglas}
+% \begin{siglas}
+%   \item[BMC] Bounded Model Checking
+%   \item[ESBMC] Efficient SMT-Based Context-Bounded Model Checker
+%   \item[HDL] Hardware Description Language
+%   \item[PSL] Property Specification Language
+%   \item[SE] Sistemas Embarcados
+%   \item[VHDL] VHISIC Hardware Description Language
+% \end{siglas}
 % ---
 
 % ---
@@ -350,6 +352,7 @@ Fazer resumo!!
 % inserir o sumario
 % ---
 \pdfbookmark[0]{\contentsname}{toc}
+\renewcommand{\contentsname}{Sumário}
 \tableofcontents*
 \cleardoublepage
 % ---
@@ -408,6 +411,7 @@ Fazer resumo!!
 % Referências bibliográficas
 % ----------------------------------------------------------
 \bibliography{main}
+% \bibliographystyle{plainnat}
 
 %---------------------------------------------------------------------
 % INDICE REMISSIVO
