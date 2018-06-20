@@ -405,14 +405,22 @@ end behav1;
 	\end{center}
     \legend{Fonte: Própria.}
 \end{figure}
+
+
+
 %============================
 %PROPRIEDADES DE SEGURANÇA
 %============================
 \subsection{Propriedades de segurança}
-Propriedades de segurança é um meio de validação do comportamento de um determinado sistema, de modo que ser uma propriedade de segurança for violada, então através de uma execução finita, é possível verificar tal erro. Algumas propriedades de segurança, no entanto, podem impor requisitos em fragmentos de caminho finito e não podem ser verificadas considerando apenas os estados alcançáveis. \cite{baier2008principles}.
+
+Propriedades de segurança é um meio de validação do comportamento de um determinado sistema, de modo que se uma dada propriedade de segurança for violada, então através de uma execução finita, é possível verificar tal erro. Algumas propriedades de segurança, no entanto, podem impor requisitos em fragmentos de caminho finito e não podem ser verificadas considerando apenas os estados alcançáveis. \cite{baier2008principles}.
 
 \par
 Segundo \cite{clarke2003verification}, podemos definir uma propriedade de segurança como: \textit{dado um sistema de transições $ST = (S, S_0, E)$, seja um conjunto $B \subset S$ que especifica um conjunto de maus estados tais que $S_0 \cap B = \emptyset$, pode-se dizer que $ST$ é seguro com relação a $B$, denotado por $ST \models AG\neg B$ se não existe um caminho no sistema de transição do estado inicial $S_0$ até o estado $B$, de outro modo é dito que $ST$ não é seguro}.
+
+\todo[inline]{Adicionar exemplos de propriedades de segurança em hardware}
+
+
 %============================
 %TECNICAS DE COMPILADORES
 %============================
