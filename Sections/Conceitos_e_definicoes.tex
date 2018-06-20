@@ -330,18 +330,23 @@ Ainda segundo \citeauthor{souza2017logica}, existem as fórmulas que são consti
 %Property Specification Language - PSL
 %============================
 \subsection{Linguagem de especificação de propriedades}
-Linguagem de especificação de propriedades, do inglês \textit{Property Specification Language} - PSL, é uma notação formal para especificação de comportamento em sistemas eletrônicos, compatível com as linguagens VHDL, Verilog, SystemC e SystemVerilog. Destina-se a utilização para a especificação funcional, mas também para entrada de ferramentas de verificação. A especificação do PSL é a utilização de assertivas sobre propriedades de um sistema, sendo estas propriedades constituídas de três elementos: expressões boolenas, expressões sequenciais e operadores temporais\cite{IEEEPSL}.
+Linguagem de especificação de propriedades, do inglês \textit{Property Specification Language} - PSL, é uma notação formal para especificação de comportamento em sistemas eletrônicos, compatível com as linguagens VHDL, Verilog, SystemC e SystemVerilog\todo{Adicionar referência a cada Ling citada}. Destina-se a utilização para a especificação funcional, mas também para entrada de ferramentas de verificação. A especificação do PSL é a utilização de assertivas sobre propriedades de um sistema, sendo estas propriedades constituídas de três elementos: expressões boolenas, expressões sequenciais e operadores temporais~\cite{IEEEPSL}.
 
 \par
-Segundo \cite{IEEEPSL}, o PSL foi totalmente desenvolvida com o intuito fornecer leitura e escrita de fácil entendimento, sintase concisa, semântica formal e rigorosamente bem definida e ser matematicamente precisa, visto a utilização da mesma em processo de verificação. Entre os pontos principais do PSL encontram-se:
-\begin{itemize}
-\item Sintaxe concisa,
-\item Semântica formal rigorosamente definida,
-\item Permite a especificação de propriedades reais,
-\end{itemize}
+Segundo \cite{IEEEPSL}, o PSL foi totalmente desenvolvida com o intuito fornecer leitura e escrita de fácil entendimento, sintaxe concisa, semântica formal e rigorosamente bem definida e ser matematicamente precisa, visto a utilização da mesma em processo de verificação. 
+% Entre os pontos principais do PSL encontram-se:
+% \begin{itemize}
+% \item Sintaxe concisa,
+% \item Semântica formal rigorosamente definida,
+% \item Permite a especificação de propriedades reais,
+% \end{itemize}
+% 
+O PSL pode ser utilizado para capturar requisitos relativos ao comportamento total do projeto, bem como, sobre o modo que o mesmo deverá operar no ambiente, ms também para capturar requisitos comportamentais e os pressupostos que surgem durante o processo de design. Ambas podem ser utilizadas para verificação de sistemas. 
 
-\par
-O PSL pode ser utilizado para capturar requisitos relativos ao comportamento total do projeto, bem como, sobre o modo que o mesmo deverá operar no ambiente, ms também para capturar requisitos comportamentais e os pressupostos que surgem durante o processo de design. Ambas podem ser utilizadas para verificação de sistemas \cite{IEEEPSL}.
+% \cite{IEEEPSL}.
+
+\todo[inline]{Apresentar exemplos de uso da PSL}
+
 %============================
 %Assertion-based verification - ABV
 %============================
