@@ -137,24 +137,26 @@ A \autoref{fig:exemplo_circuito} apresenta um circuito lógico formado pelas por
 %VERIFICAÇÃO DE SISTEMAS
 %============================
 \section{Verificação de sistemas}
- O contexto inicial da verificação de sistemas, faz-se necessário o entendimento e a diferenciação entre verificação e validação. Verificação e validação possuem o intuíto de mostrar que determinado \textit{software} funcione conforme o especificado, além de satisfazer as especificações do cliente\cite{sommerville2011engenharia}. 
+ No contexto de verificação de sistemas, faz-se necessário a diferenciação entre verificação e validação. Verificação e validação possuem o intuíto de mostrar que determinado sistema funcione conforme o especificado, além de satisfazer as especificações do cliente~\cite{sommerville2011engenharia}. 
 
 \par
-Segundo \cite{sargent2005verification}, Verificação é o processo de determinar se um modelo computacional obtido por discretização de um modelo matemático de um evento físico e o código que implementa o modelo computacional pode ser usado para representar o modelo matemático do evento com precisão suficiente e validação é o processo de determinar se um modelo matemático de um evento físico representa o evento físico real com precisão suficiente.
+Segundo~\cite{sargent2005verification}, verificação é o processo de determinar se um modelo computacional obtido por discretização de um modelo matemático de um evento físico e o código que implementa o modelo computacional pode ser usado para representar o modelo matemático do evento com precisão suficiente e validação é o processo de determinar se um modelo matemático de um evento físico representa o evento físico real com precisão suficiente.
 
 \par
-A verificação consite identificação de erros e provavéis problemas que um componente pronto possa apresentar, enquanto a validação busca analisar se tal componete esta seguindo os requisitos pré-definidos para sua construção\cite{koscianski2007qualidade}. O teste de programa, na qual o software  é executado com dados de teste é a principal forma de validação, porém, tecnicas de verificação, tais como, inspeção e revisões também podem integrar a etapa de validação\cite{sommerville2011engenharia}.
+A verificação consite identificação de erros e provavéis problemas que um componente pronto possa apresentar, enquanto a validação busca analisar se tal componete esta seguindo os requisitos pré-definidos para sua construção~\cite{koscianski2007qualidade}. O teste de programa, na qual o software  é executado com dados de teste é a principal forma de validação, porém, tecnicas de verificação, tais como, inspeção e revisões também podem integrar a etapa de validação~\cite{sommerville2011engenharia}.
 
 \subsection{Diagrama de decisão binária}
-Diagrama de decisão binária é um grafo aciclico para representação de funcões boolenas. Existe uma ordem total rigorosa na ocorrência de variáveis à medida que uma atravessa o grafo da raiz para a folha. Dado o exemplo,\autoref{fig:bdd_fig}, \textit{f=(a$\lor$b)$\land$(c$\lor$d)} e utilizando a ordenação de variavél a < b < c < d. Dada a atribuição de valores booleanos as variaveis a, b, c e d, pode-se decidir se a atribuição torna a fórmula verdadeira atravessando o início do gráfico na raiz e ramificação em cada nó. Definindo a,c e d = 1 e c = 0 leva a folha de rótulo 1, portanto, a fórmula é verdadeira para essa tarefa\cite{clarke1994model}.
+Um diagrama de decisão binária pode ser definido como um grafo aciclico para representação de funcões boolenas. Existe uma ordem rigorosa na ocorrência de variáveis à medida que se percorre o grafo da raiz para a folha. Dado como exemplo a formula \textit{f=(a$\lor$b)$\land$(c$\lor$d)} e utilizando a ordenação de variavél $a < b < c < d$, na \autoref{fig:bdd_fig}. Dada a atribuição de valores booleanos as variaveis $a, b, c$ e $d$, pode-se decidir se a atribuição torna a fórmula verdadeira atravessando o início do gráfico na raiz e ramificação em cada nó. Definindo $a,c$ e $d = 1$ e $c = 0$ leva a folha de rótulo 1, portanto, a fórmula é verdadeira para essa tarefa~\cite{clarke1994model}.
 
 \begin{figure}[htb]
 	\begin{center}
     \caption{\label{fig:bdd_fig}Arvore de decisão binária}
-	\includegraphics[scale=0.20]{Figuras/Arvore_BDD.png}
+	\includegraphics[scale=0.30]{Figuras/Arvore_BDD.png}
 	\end{center}
     \legend{Fonte: \cite{clarke1994model}}
 \end{figure}
+
+\todo[inline]{Adicionar mais detalhes e descrever onde DDB é utilizado.}
 
 %============================
 %BOUNDED MODEL CHECKING
