@@ -230,14 +230,20 @@ A utilização de \textit{Model Checking} também se faz presente nos modelos fo
 %============================
 \subsection{Verificação formal de software}
 
-Segundo \citeauthor{rocha2015verificaccao}, o uso de software tem sido feito em muitas áreas, tais como, infraestruturas industriais de missão critica e de segurança.  Logo, existe a necessidade de garantir a corretude destes sistemas. Devido a isso, a verificação formal tem sido utilizada em três principais abordagens, sendo elas~\cite{cousot2010gentle,d2008survey}:
+% Segundo \citeauthor{rocha2015verificaccao}, o
+Observa-se que o uso de verificacão de software tem sido feito aplicado em muitas áreas, tais como, infraestruturas industriais de missão critica e de segurança.  Logo, existe a necessidade de garantir a corretude destes sistemas. Devido a isso, a verificação formal tem sido utilizada em três principais abordagens, sendo elas~\cite{cousot2010gentle,d2008survey}:
+
+\todo[inline]{Apresentar exemplos para os métodos apresentados abaixo}
+
 \begin{itemize}
- \item \textbf{Métodos dedutivos:} Produzem provas matemáticas formais de corretude usando provadores de teoremas ou assistentes de prova para execução da prova e necessitam da interação humana para prover os argumentos\cite{cousot2010gentle};
-  \item \textbf{Verificação de modelos:} Exploram exaustivamente modelos de execuções de programa, que podem ser sujeitos a explosão combinatória, necessário a intervenção humana para geração dos modelos.\cite{rocha2015verificaccao};
-  \item \textbf{Analise estática:} Engloba diversas técnicas para calcular automaticamente informações sobre o comportamento de um programa sem executá-lo, sendo utilizado em otimização de código e verificação em compiladres\cite{d2008survey}.
+ \item \textbf{Métodos dedutivos:} Produzem provas matemáticas formais de corretude usando provadores de teoremas ou assistentes de prova para execução da prova e necessitam da interação humana para prover os argumentos~\cite{cousot2010gentle};
+  \item \textbf{Verificação de modelos:} Exploram exaustivamente modelos de execuções de programa, que podem ser sujeitos a explosão combinatória, necessário a intervenção humana para geração dos modelos~\cite{rocha2015verificaccao};
+  \item \textbf{Analise estática:} Engloba diversas técnicas para calcular automaticamente informações sobre o comportamento de um programa sem executá-lo, sendo utilizado em otimização de código e verificação em compiladres~\cite{d2008survey}.
 \end{itemize}
 
-Ainda segundo \citeauthor{rocha2015verificaccao}, na verificação formal apresentam-se dificuldades, tais como: quais as propriedades são de interesse na verificação no tempo de execução; e impossibilidade matemática de provar a corretude de propriedades não triviais no comportamento de programas, devido ao computador ser um dispositivo finito\cite{cousot2010gentle}. 
+Segundo \citeauthor{rocha2015verificaccao}, na verificação formal de software apresentam-se dificuldades, tais como: quais as propriedades são de interesse na verificação em tempo de execução; e impossibilidade matemática de provar a corretude de propriedades não triviais no comportamento de programas 
+% , devido ao computador ser um dispositivo finito
+~\cite{cousot2010gentle}. 
 
 %============================
 %LÓGICA PROPOSICIONAL
