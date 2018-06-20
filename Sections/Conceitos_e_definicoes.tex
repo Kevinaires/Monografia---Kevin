@@ -158,23 +158,27 @@ Um diagrama de decisão binária pode ser definido como um grafo aciclico para r
 
 \todo[inline]{Adicionar mais detalhes e descrever onde DDB é utilizado.}
 
+\todo[inline]{Adicionar uma seção para definir model checking.}
+
 %============================
 %BOUNDED MODEL CHECKING
 %============================
 \subsection{\label{cap:bounded}\textit{Bounded Model Checking}}
-Segundo, \citeauthor{rocha2015verificaccao}, \textit{Bounded Model Checking} (BMC) é um tipo especial de \textit{Model Checking} que geralmente utiliza o método de satisfabilidade booleana, o qual tem sido introduzido como uma técnica complementar para diagrama de decisão binaria para aliviar o problema da explosão de estados, visto que a técnica de \textit{Model Checking} busca todos os estados possíveis para verificação.
+Segundo \citeauthor{rocha2015verificaccao}, \textit{Bounded Model Checking} (BMC) é um tipo especial de \textit{Model Checking} que usualmente adota o método de satisfabilidade booleana, o qual tem sido introduzido como uma técnica complementar para diagrama de decisão binaria para aliviar o problema da explosão de estados, visto que a técnica de \textit{Model Checking} busca todos os estados possíveis para verificação.
 
 \par
-Segundo \cite{rocha2015verificaccao} o \textit{Bounded Model Checking} é a verificação de uma propriedade especifica em uma determinada profundidade: dado um sistema de transições M, uma propriedade $\phi$, e um limite (\textit{bound}) $k$, o BMC desenrola o sistema $k$ vezes e traduz o sistema em uma condição de verificação(CV) $\psi$ tal que $\psi$ é satisfeito se e somente se $\phi$ tem um contra-exemplo de profundidade menor ou igual a $k$.
+\textit{Bounded Model Checking} é uma técnica para a verificação de uma dada propriedade em uma determinada profundidade do sistema analisado. Logo, dado um sistema de transições M, uma propriedade $\phi$, e um limite (\textit{bound}) $k$, o BMC desenrola o sistema $k$ vezes e traduz o sistema em uma condição de verificação(CV) $\psi$ tal que $\psi$ é satisfeito se e somente se $\phi$ tem um contra-exemplo de profundidade menor ou igual a $k$ \cite{rocha2015verificaccao}.
 
 \par
-O \textit{Extended SMT-Based Bounded Model Checker} (ESBMC) é um \textit{Bounded Model Checking} baseado em satisfabilidade booleana (SAT) que permite verificação aritmética de overflow e undeflow, segurança de ponteiros, limite de array, de gerar propriedades de segurança em programas em C/C$++$. ESBMC utiliza uma versão modificada do CBMC no \textit{front-end} para analisar o código ANSI-C e para gerar as condições de verificação através de execução simbólica \cite{cordeiro2012smt,rocha2015verificaccao}.
+O \textit{Extended SMT-Based Bounded Model Checker} (ESBMC) é um \textit{Bounded Model Checking} baseado em satisfabilidade booleana (SAT\todo{Já tem suporte a SMT adicionar ao texto}) que permite verificação aritmética de overflow e undeflow, segurança de ponteiros, limite de array, de gerar propriedades de segurança em programas em C/C$++$. ESBMC utiliza uma versão modificada do CBMC no \textit{front-end} para analisar o código ANSI-C e para gerar as condições de verificação através de execução simbólica \cite{cordeiro2012smt,rocha2015verificaccao}.
 
 \par
-No ESBMC, o programa analisado é modelado em um sistema de transição de estados, conforme a trupla: M=(S,R,$S_{0}$), o qual é gerado um grafo de controle de fluxo(GFC), onde S representa o conjunto de estados, R $\subseteq$ SxS representa as transições e S $\subseteq$ S representa o conjuto de estados iniciais. Um estado s $\in$ S consiste no valor do contador de programa(PC) e os valores de todas as variáveis dos programas. O estado inicial $S_{0}$ atribui o inicio do programa GFC ao PC, desta forma o ESBMC identifica as transições, conforme a formula lógica, $\gamma$=($S_{i}$,$S_{i+1}$) que captura as retrições sobre os valores correspondntes do PC e das variáveis do programa\cite{cordeiro2012smt}.
+No ESBMC, o programa analisado é modelado em um sistema de transição de estados, conforme a trupla: $M=(S,R,S_{0})$, o qual é gerado um grafo de controle de fluxo (GFC), onde $S$ representa o conjunto de estados, $R$ $\subseteq$ $SxS$ representa as transições e $S \subseteq S$ representa o conjuto de estados iniciais. Um estado $s \in S$ consiste no valor do contador de programa (PC) e os valores de todas as variáveis dos programas. O estado inicial $S_{0}$ atribui o inicio do programa GFC ao PC, desta forma o ESBMC identifica as transições, conforme a formula lógica, $\gamma$=($S_{i}$,$S_{i+1}$) que captura as retrições sobre os valores correspondntes do PC e das variáveis do programa~\cite{cordeiro2012smt}.
 
 \par
-Segundo o site da ferramenta, a ferramenta permite ao usuário indicar propriedades adicionais usando assertivas que também são verificadas. O ESBMC converte as condições usando diferentes técnicas de background para posteriormente passar para verificador SMT. Outra vantagem é a ferramenta permitir verificação de software single-thread e multi-thread.
+Segundo o site da ferramenta\todo{Qual site?}, a ferramenta permite ao usuário indicar propriedades adicionais\todo{Descrever quais propriedades o esbmc suporta} usando assertivas que também são verificadas. O ESBMC converte as condições usando diferentes técnicas de background\todo{apresentar exemplo} para posteriormente passar para verificador SMT. Outra vantagem é a ferramenta permitir verificação de software single-thread e multi-thread.
+
+\todo[inline]{Descrever qual a razão da escolha para o trabalho, apresentar resultados do SV-COMP dos últimos 3 anos}
 
 %============================
 %REDES DE PETRI
