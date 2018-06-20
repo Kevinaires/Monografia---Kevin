@@ -209,15 +209,21 @@ As redes de petri são representados como grafos direcionais compostos por nós 
 %============================
 %VERIFICAÇÃO DE HARDWARE
 %============================
-\subsection{Verificação formal de hardware}
+\subsection{Verificação de hardware}
 
-A verificação de hardware, por meio da simulação, via assegurar que uma implemetação, descrição do hardware em qualquer qualquer nível de abstração da hierarquia de hardware, atinja suas especificações, propriedades que devem ser respeitadas para que a corretude do mesmo seja comprovada \cite{gupta1992formal}. A Verificação formal de hardware consiste na utilização dos conceitos de verificação formal, mas também técnicas para corretude de circuitos lógicos, ou seja, consiste na utilização de modelos matemáticos para descrição de propriedade e/ou de comportamento de um dado sistema.\cite{kropf2013introduction}.
+Para a verificação de hardware diversas técnicas têm sido propostas (\todo{Apresentar exemplos com referências}). Por meio da simulação, visa assegurar que uma implemetação, descrição do hardware em qualquer qualquer nível de abstração da hierarquia de hardware, atinja suas especificações, propriedades que devem ser respeitadas para que a corretude do mesmo seja comprovada~\cite{gupta1992formal}. A Verificação formal de hardware consiste na utilização 
+% dos conceitos de verificação formal, mas também 
+de técnicas para corretude de circuitos lógicos, ou seja, consiste na utilização de modelos matemáticos para descrição de propriedade e/ou de comportamento de um dado sistema~\cite{kropf2013introduction}.
 
 \par
-Entre as abordagens utilizadas verificação formal de hardware consiste em tanto a implementação quanto a especificação estarem descritas em lógica formal, neste caso a corretude será obtida através da comprovada relação entre a implementação e a especificação\cite{seger1992introduction}. A especificação formal consiste na descrição do comportamento, bem como, das propriedades do sistema em linguagem matemática, tornando-se crucial para o processo de verificação. Na implementação formal, o nível de abstração, tais como, \textit{Gate level} e RTL são importantes informações para o desenvolvimento do formalismo, bem como as classes, por exemplo se o circuito é sequencial ou combinacional, se utiliza pipeline, etc.\cite{kropf2013introduction}.
+Entre as abordagens utilizadas na verificação formal de hardware consiste tanto na implementação quanto a especificação estarem descritas em lógica formal, neste caso a corretude será obtida através da comprovada relação entre a implementação e a especificação~\cite{seger1992introduction}. A especificação formal consiste na descrição do comportamento, bem como, das propriedades do sistema em linguagem matemática, tornando-se crucial para o processo de verificação. Na implementação formal, o nível de abstração, tais como, \textit{Gate level} e RTL são importantes informações para o desenvolvimento do formalismo, bem como as classes, por exemplo se o circuito é sequencial ou combinacional, se utiliza pipeline, etc~\cite{kropf2013introduction}.
+
+\todo[inline]{Apresentar um exemplo de RTL}
 
 \par
-A utilização de \textit{Model Checking} também se faz presente nos modelos formais de verificação de hardware, onde apenas é utilizado o comportamento dos circuitos na verificação, de modo a verificar a se as propriedades  presentes são satisfeitas. Para isso, são utilizados os conceitos da lógica proposicional, que por meio da utilização de fórmulas que representem as propriedades dos estados, é possível realizar as verificações necessárias\cite{seger1992introduction}.
+A utilização de \textit{Model Checking} também se faz presente nos modelos formais de verificação de hardware, onde apenas é utilizado o comportamento dos circuitos na verificação, de modo a verificar a se as propriedades  presentes são satisfeitas. Para isso, são utilizados os conceitos da lógica proposicional, que por meio da utilização de fórmulas que representem as propriedades dos estados, é possível realizar as verificações necessárias~\cite{seger1992introduction}.
+
+\todo[inline]{Apresentar um exemplo com um circuito e como este pode ser verificando com model checking}
  
 %============================
 %VERIFICAÇÃO DE SOFTWARE
