@@ -332,6 +332,8 @@ Ainda segundo \citeauthor{souza2017logica}, existem as fórmulas que são consti
 \subsection{Linguagem de especificação de propriedades}
 Linguagem de especificação de propriedades, do inglês \textit{Property Specification Language} - PSL, é uma notação formal para especificação de comportamento em sistemas eletrônicos, compatível com as linguagens VHDL, Verilog, SystemC e SystemVerilog\todo{Adicionar referência a cada Ling citada}. Destina-se a utilização para a especificação funcional, mas também para entrada de ferramentas de verificação. A especificação do PSL é a utilização de assertivas sobre propriedades de um sistema, sendo estas propriedades constituídas de três elementos: expressões boolenas, expressões sequenciais e operadores temporais~\cite{IEEEPSL}.
 
+\todo[inline]{Corrigir a apresentação da citação IEEE... estranho}
+
 \par
 Segundo \cite{IEEEPSL}, o PSL foi totalmente desenvolvida com o intuito fornecer leitura e escrita de fácil entendimento, sintaxe concisa, semântica formal e rigorosamente bem definida e ser matematicamente precisa, visto a utilização da mesma em processo de verificação. 
 % Entre os pontos principais do PSL encontram-se:
@@ -347,19 +349,24 @@ O PSL pode ser utilizado para capturar requisitos relativos ao comportamento tot
 
 \todo[inline]{Apresentar exemplos de uso da PSL}
 
+
 %============================
 %Assertion-based verification - ABV
 %============================
+
 \subsection{Verificação baseada em assertivas}
-Verificação baseada em assertivas, do inglês\textit{Assertion-based verification} - ABV, é um paradigma de verificação igualente adequado para verificação formal e abordagens baseadas em simulação\cite{boule2005incorporating} e em conjunto com a tecnica de PSL tem ganhado aceitação como um método essencial para verificação funcional do hardware\cite{DahanCombining}.
+
+Verificação baseada em assertivas, do inglês \textit{Assertion-Based Verification} - ABV, é um paradigma de verificação igualente adequado para verificação formal e abordagens baseadas em simulação~\cite{boule2005incorporating} e em conjunto com a tecnica de PSL tem ganhado aceitação como um método essencial para verificação funcional do hardware~\cite{DahanCombining}.
 
 \par
-A técnica utiliza assertivas, que são declaração adicionadas ao projeto com o intuito de especificar o comportamento do projeto, podendo escritos em PSL ou em SVA(\textit{System Verilog Assertions.}\cite{boule2005incorporating}. No caso deste projeto será utilizado a PSL, devido a mesma ser utilizada juntamente com a linguagem VHDL.
+Na ABV as assertivas são declaração adicionadas ao projeto com o intuito de especificar o comportamento do projeto~\cite{boule2005incorporating}, podendo escritos em PSL ou em SVA (\textit{System Verilog Assertions}). No caso deste projeto será utilizado a PSL, devido a mesma ser utilizada juntamente com a linguagem VHDL.
 
 \par
-Com o ABV e as assertivas, circuito pode ser verificado usando técnicas de simulação e/ou verificação, por exemplo, \textit{Model Checking}, para garantir que o mesmo esteja de acordo com o pretendido co projeto\cite{DahanCombining}. 
+Com a utilização de ABV o circuito pode ser verificado usando técnicas de simulação e/ou verificação, por exemplo, \textit{model checking}, para garantir que o mesmo esteja de acordo com o pretendido projeto~\cite{DahanCombining}. 
+% 
+Na \autoref{fig:assertiva} apresenta o modelo de assertiva utilizada no projeto, utilizando de um modelo próprio para assertivas, unindo as funcionalidades já existentes nas assertivas do VHDL, mas também novas (serão apresentadas nas próximas seções), fornecendo assim mais propriedades a serem analisadas.
 
-Na \autoref{fig:assertiva} apresenta o modelo de assertiva utilizada no projeto, utilizando de um modelo próprio para assertivas, unindo as funcionalidades já existentes nas assertivas do VHDL, mas também novas, fornecendo assim mais propriedades a serem analisadas.
+\todo[inline]{Descrever qual o objetivo da assert apresentado}
 
 \begin{figure}[thp]
 \caption{\label{fig:assertiva} Exemplo de declaração de assertiva no VHDL.}
