@@ -1,10 +1,7 @@
-%===========================================================
-%INTRODUÇÃO
-%===========================================================
-A complexidade de sistemas computacionais cresce exponencialmente\todo{Exemplificar este crescimento.}. Muitas companhias e organizações estão rotineiramente lidando com software que contém milhares de linhas de código, escritos por diferentes pessoas, que usam linguagens distintas, ferramentas, estilos e hardware projetados de diversas formas e combinações \cite{hoder2011case}. 
+\textcolor{red}{A complexidade de sistemas computacionais cresce exponencialmente.} \todo{Exemplificar este crescimento.} Muitas companhias e organizações estão rotineiramente lidando com software que contém milhares de linhas de código, escritos por diferentes pessoas, que usam linguagens distintas, ferramentas, estilos e hardware projetados de diversas formas e combinações \cite{hoder2011case}. 
 
 \par
-No contexto de sistemas compostos de hardware e software, tem-se os sistemas embarcados (SE) que são dispositivos semicondutores com software integrados, os quais se conectam à outros dispositivos. Usualmente, o principal propósito dos SE é o controle e provimento de informações para uma função específica \cite{ramesh2012energy}. 
+No contexto de sistemas compostos de hardware e software, tem-se os sistemas embarcados (SE) que são dispositivos semicondutores com software integrados, os quais se conectam a outros dispositivos. Usualmente, o principal propósito dos SE é o controle e provimento de informações para uma função específica \cite{ramesh2012energy}. 
 
 \par
 Os SE são extremamente interativos com seu ambiente, operam geralmente em tempo real e estão disponíveis continuamente. No entanto, estes sistemas, por possuírem um curto espaço de tempo para a liberação do produto ao mercado, precisam ser desenvolvidos rapidamente e atingir um alto nível de qualidade, mas, devido a esta necessidade, os programadores podem cometer enganos durante a fase de desenvolvimento destes sistemas.
@@ -13,7 +10,7 @@ Os SE são extremamente interativos com seu ambiente, operam geralmente em tempo
 Os SE têm se proliferado em partes consideráveis das atividades do nosso cotidiano, com a característica de possuir grande quantidade de complexidade e diversidade. Devido a esta complexidade, erros podem passar despercebidos, causando não apenas penalidades econômicas e/ou fracassos do produto no mercado, mas principalmente o risco de perda de vidas humanas \cite{cabodi2016hardware}. Como, por exemplo, o acidente noticiado no \cite{g1Acidente}, no qual, de acordo com o secretário de transportes, uma falha na placa do circuito eletrônico responsável pelo controle de velocidade dos trens ocasionou a colisão entre duas composições na estação de metrô de São Paulo.
 
 \par
-Segundo \cite{rocha2015verificaccao}, para se obter um alto nível de qualidade no desenvolvimento dos sistemas de hardware e software, a execução desses sistemas deve ser controlada e da mesma forma deve-se buscar meios de garantir que as propriedades definidas sejam atingidas. Por exemplo, a partir do conhecimento prévio do modo de implementação de determinado hardware, é possível utilizá-lo de forma mais eficiente. Neste sentido, diversas estratégias de verificação e de teste estão sendo pesquisadas e aplicadas para garantir a qualidade do software e hardware \cite{hoder2010interpolation,rocha2010exploiting,brayton2010abc,cordeiro2012smt,cabodi2016hardware}.
+Segundo \citeauthor{rocha2015verificaccao}\citeyear{rocha2015verificaccao}, para se obter um alto nível de qualidade no desenvolvimento dos sistemas de hardware e software, a execução desses sistemas deve ser controlada e da mesma forma deve-se buscar meios de garantir que as propriedades definidas sejam atingidas. Por exemplo, a partir do conhecimento prévio do modo de implementação de determinado hardware, é possível utilizá-lo de forma mais eficiente. Neste sentido, diversas estratégias de verificação e de teste estão sendo pesquisadas e aplicadas para garantir a qualidade do software e hardware \cite{hoder2010interpolation,rocha2010exploiting,brayton2010abc,cordeiro2012smt,cabodi2016hardware}.
 
 \par
 Por este motivo, com o intuito de analisar e otimizar a descrição dos circuitos digitais, tem-se utilizado as linguagens de descrição de hardware (HDL). Estas se diferem das linguagens de programação por conseguirem gerar execuções não apenas sequenciais, como também concorrentes ou paralelas \cite{chu2006rtl}.
@@ -22,7 +19,7 @@ Por este motivo, com o intuito de analisar e otimizar a descrição dos circuito
 Neste contexto, a \textit{VHSIC Hardware Description Language} (VHDL) é uma das linguagens de descrição de hardware mais utilizadas atualmente. A descrição em VHDL pode ser em vários níveis de abstração, sendo o mais alto o nível comportamental que permite a descrição do circuito através de \textit{loops} e processos, definido-o na forma de algoritmo. Como características das linguagens de descrição, o VHDL permite declarações sequenciais ou concorrentes onde as declarações continuam ativas e sua ordem torna-se irrelevante \cite{cappelattipraticando}.
 
 \par
-Aliada à linguagem de descrição de hardware, a  verificação formal de sistemas computacionais tem desempenhado um papel importante para assegurar a previsibilidade e a confiabilidade na concepção de aplicações críticas. E, para isso, tem-se utilizado a técnica denominada \textit{model checking}, que é baseada em formalismos matemáticos para provar propriedades de programas reativos \cite{bensalem1999automatic}. Esta técnica gera uma busca exaustiva no espaço de estados do modelo para determinar se uma dada propriedade é válida ou não\cite{baier2008principles}, tendo como principal razão para o seu sucesso o funcionamento completamente automático, ou seja, sem qualquer intervenção do usuário.
+Aliada à linguagem de descrição de hardware, a  verificação formal de sistemas computacionais tem desempenhado um papel importante para assegurar a previsibilidade e a confiabilidade na concepção de aplicações críticas. E, para isso, tem-se utilizado a técnica denominada \textit{model checking}, que é baseada em formalismos matemáticos para provar propriedades de programas reativos \cite{bensalem1999automatic}. Esta técnica gera uma busca exaustiva no espaço de estados do modelo para determinar se uma dada propriedade é válida ou não \cite{baier2008principles}, tendo como principal razão para o seu sucesso o funcionamento completamente automático, ou seja, sem qualquer intervenção do usuário.
 
 \par
 Visando contribuir com a verificação de sistemas embarcados no âmbito de sistemas computacionais, o contexto deste trabalho está situado no uso de metodologias e técnicas de verificação formal para programas escritos em VHDL \cite{biere2016aiger}, focando principalmente no \textit{Bounded Model Checking} \cite{cordeiro2012smt,rocha2015model}. Este trabalho está interessado especificamente na parte de: verificação de modelos de hardware descritos em níveis de circuitos de bits na linguagem VHDL, via transformações de código para gerar modelos (com assertivas) já suportados por \textit{model checkers}, como o ESBMC \cite{cordeiro2012smt}. 
@@ -35,11 +32,11 @@ Dessa forma, o trabalho almeja analisar as propriedades de alcançabilidade para
 %===========================================================
 \section{Definição do problema}
 
-O avanço da tecnologia, principalmente nas áreas de design e fabricação de eletrônicos, aumentou a importância do hardware nos dias atuais. Cada vez com mais funcionalidades integradas, aliada a velocidade e circuitos menores, faz com que a complexidade dos sistemas de hardware aumente. Entretanto, devido à complexidade cada vez maior, detecção tardia de erros no sistema pode resultar em perda de produção, mas também custos associados ao desenvolvimento do sistema\cite{gupta1992formal}. Devido a isso, a verificação de hardware visa assegurar que o circuito atinja as especificações para o qual foi projetado, através de técnicas formais ou dinâmicas \cite{boule2007efficient}.
+O avanço da tecnologia, principalmente nas áreas de design e fabricação de eletrônicos, aumentou a importância do hardware nos dias atuais. Cada vez com mais funcionalidades integradas, aliada a velocidade e circuitos menores, faz com que a complexidade dos sistemas de hardware aumente. Entretanto, devido à complexidade cada vez maior, a detecção tardia de erros no sistema pode resultar em perda de produção, mas também custos associados ao desenvolvimento do sistema\cite{gupta1992formal}. Devido a isso, a verificação de hardware visa assegurar que o circuito atinja as especificações para o qual foi projetado, através de técnicas formais ou dinâmicas \cite{boule2007efficient}.
 
 %Os erros durante o desenvolvimento de sistemas computacionais %tornaram-se mais comuns, em parte devido ao curto espaço de tempo de %sua liberação. Logo, é necessário que as aplicações sejam projetadas %considerando os requisitos de previsibilidade e confiabilidade, %principalmente em aplicações de sistemas embarcados críticos, onde %diversas restrições (por exemplo, tempo de resposta e precisão dos %dados) devem ser atendidas e mensuradas de acordo com os requisitos %do usuário, caso contrário uma falha pode conduzir a situações %catastróficas. 
 
-Por esta razão, a utilização de métodos formais tornou-se uma abordagem atraente para superar as limitações inerentes à validação baseada em simulação. Portanto, a maioria das empresas de semicondutores tem investigado a sua aplicabilidade. Escolhas individuais de métodos, ferramentas e áreas de aplicação das empresas têm variado, assim como o seu nível de sucesso~\cite{cabodi2016hardware}. Com os recentes avanços na escalabilidade de automação dos \textit{model checkers} e nas equivalências sequenciais de verificação, a maioria das empresas têm crescido ao contar com essas técnicas\cite{clarke2008birth}.
+Por esta razão, a utilização de métodos formais tornou-se uma abordagem atraente para superar as limitações inerentes à validação baseada em simulação. Portanto, a maioria das empresas de semicondutores têm investigado a sua aplicabilidade. Escolhas individuais de métodos, ferramentas e áreas de aplicação das empresas têm variado, assim como o seu nível de sucesso~\cite{cabodi2016hardware}. Com os recentes avanços na escalabilidade de automação dos \textit{model checkers} e nas equivalências sequenciais de verificação, a maioria das empresas têm crescido ao contar com essas técnicas\cite{clarke2008birth}.
 
 O problema considerado neste trabalho é expresso na seguinte questão: \textbf{Como complementar e aprimorar a verificação de propriedades de segurança em circuitos lógicos, de tal forma que uma propriedade possa ser mapeada em um problema de alcançabilidade simbólica, ou seja, se é possível alcançar um estado específico (para uma dada propriedade) a partir do estado inicial?}
 
@@ -52,7 +49,7 @@ O objetivo principal deste trabalho é projetar e avaliar um método para efetua
 Os objetivos específicos são:
 \begin{enumerate}
   \item Propor um método para especificar pré e pós-condições de circuitos digitais em nível de portas lógicas descritos em VHDL;
-  \item Analisar ferramentas de verificação de modelos que utilização a técnica \textit{Bounded Model Checking};
+  \item Analisar ferramentas de verificação de modelos que utilizam a técnica \textit{Bounded Model Checking};
   \item Especificar uma técnica de conversão de circuitos em linguagem de descrição de hardware VHDL para um modelo a ser verificado usando a técnica \textit{Bounded Model Checking};
    \item Desenvolver um método para identificação de estados de erros ou ocorrências indevidas, de um dado circuito analisado, em modelos de hardware descritos em nível de bit na linguagem de descrição VHDL.
   \item Validar a aplicação do método proposto sobre \textit{benchmarks} públicos de programas em VHDL, a fim de examinar a sua eficácia e aplicabilidade.
@@ -80,7 +77,7 @@ Os objetivos específicos são:
 % 
 % As contribuições propostas para este trabalho são:
 % \begin{itemize}
-%   \item O desenvolvimeno de um método para verificação de hardware com o intuito de facilitar os passos da verificação e ao mesmo tempo reduzir substancialmente o tempo de verificação de projetos de hardware descritos em VHDL;
+%   \item O desenvolvimento de um método para verificação de hardware com o intuito de facilitar os passos da verificação e ao mesmo tempo reduzir substancialmente o tempo de verificação de projetos de hardware descritos em VHDL;
 %   \item Este trabalho apresenta para o método proposto, o desenvolvimento e implementação de uma ferramenta de verificação de circuitos lógicos em VHDL com a integração da ferramenta ESBMC (\textit{Efficient SMT-Based Context-Bounded Model Checker})\cite{cordeiro2012smt} na análise.
 % \end{itemize}
 
@@ -95,13 +92,17 @@ A introdução deste trabalho apresentou: o contexto, definição do problema, e
 No \autoref{chapter:conceitos} \textbf{Conceitos e Definições}, são apresentados os conceitos abordados neste trabalho, especificamente: Linguagens de descrição de hardware; Verificação e validação de sistemas; e Técnicas de compiladores.
 
 \par
-No \autoref{chapter:correlatos} \textbf{Trabalhos Correlatos}, será apresentado o método de pesquisa utilizado, mas também, os resultados alcançados com a pesquisa, análise dos artigos e a contribuição dos mesmos para o desenvolvimento do método apresentado neste trabalho\todo{Sugiro reescrever este texto}.
+No \autoref{chapter:correlatos} \textbf{Trabalhos Correlatos}, \textcolor{red}{serão apresentados o método de pesquisa bibliográfica utilizado, sendo ele a revisão sistemática, seguido do resultado encontrado com esta pesquisa e, por fim, a contribuição dos artigos utilizados no desenvolvimento do projeto.} 
+%o método de pesquisa utilizado, mas também, os resultados alcançados com a pesquisa, análise dos artigos e a contribuição dos mesmos para o desenvolvimento do método apresentado neste trabalho\todo{Sugiro reescrever este texto}.
 
 \par
-No \autoref{chapter:metodo} \textbf{Método Proposto} é descrito as etapas de execução do novo método proposto que consiste na transformação do código, instrumentação de assertivas e verificação de código utilizando um \textit{model checker}.
+No \autoref{chapter:metodo} \textbf{Método Proposto}, \textcolor{red}{são descritas} as etapas de execução do novo método proposto que consiste na transformação do código, instrumentação de assertivas e verificação de código utilizando um \textit{model checker}.
 
 \par
-No \autoref{chapter:resultados} \textbf{Resultados Preliminares}, descreve-se a execução de uma avaliação experimental sobre os resultados obtidos no desenvolvimento do método proposto, por meio da utilização de \textit{benchmarks} públicos de códigos para testes.
+\textcolor{red}{No \autoref{chapter:cronograma}, será apresentado o cronograma de atividades a ser realizado na elaboração do método durante o desenvolvimento do projeto.}
 
 \par
-E por fim no \autoref{chapter:consideracoes} \textbf{Considerações parciais e trabalhos futuros}, apresenta-se as considerações parciais e os trabalhos futuros a serem desenvolvidos. 
+%No \autoref{chapter:resultados} \textbf{Resultados Preliminares}, descreve-se a execução de uma avaliação experimental sobre os resultados obtidos no desenvolvimento do método proposto, por meio da utilização de \textit{benchmarks} públicos de códigos para testes.
+
+\par
+E, por fim, no \autoref{chapter:consideracoes} \textbf{Considerações parciais e trabalhos futuros}, \textcolor{red}{serão apresentas as considerações parciais e as sugestões de trabalhos futuros que podem ser desenvolvidos.} 

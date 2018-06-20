@@ -6,46 +6,83 @@ Este capítulo tem apresenta os principais conceitos e definições abordados ne
 %============================
 \section{Linguagens de descrição de hardware}
 
-As linguagens de descrição de hardware (HDL) foram desenvolvidas com o intuito de auxiliar a criação de circuitos lógicos com grande número de elementos e com uma gama de abstrações lógicas e eletrônicas \cite{thomas2008verilog}. Entre os exemplos, podemos citar: \textit{VDHL}, \textit{Verilog} e \textit{SystemC}\todo{adicionar referência a cada linguagem}.
+As linguagens de descrição de hardware (HDL) foram desenvolvidas com o intuito de auxiliar a criação de circuitos lógicos com grande número de elementos e com uma gama de abstrações lógicas e eletrônicas~\cite{thomas2008verilog}. \textcolor{red}{Entre os exemplos, podemos citar: \textit{VDHL}~\cite{IEEEVHDLLanguage}, \textit{Verilog}~\cite{IEEEVerilogLanguage} e \textit{SystemC}~\cite{IEEESystemCLanguage}.}
 
 \par
-Segundo \cite{christen1999vhdl}, linguagens de descrição de hardware são linguagens de programação utilizadas com o intuito de descrever o comportamento de um determinado circuito e processos, técnica conhecida como modelagem. Os modelos descritos em HDL são utilizados como entrada para um simulador, onde o mesmo pode ter seu comportamento analisado.
+Segundo~\cite{christen1999vhdl}, linguagens de descrição de hardware são linguagens de programação utilizadas com o intuito de descrever o comportamento de um determinado circuito, técnica conhecida como modelagem. Os modelos descritos em HDL são utilizados como entrada para um simulador, onde o mesmo pode ter seu comportamento analisado.
 
-\todo[inline]{TODA Figura apresentada deve ser apresentada e descrita/explicada no texto.}
+\par
+As HDL's trazem consigo diversas vantagens, entre elas códigos independentes de tecnologia e fabricante, podendo ser portáteis e reutilizáveis \cite{cappelattipraticando}. As linguagens mais modernas, tais como VHDL e \textit{Verilog}, possuem suporte tanto a descrição do circuito propriamente dito, quanto ao comportamento que o mesmo deve exercer \cite{christen1999vhdl}.
 
-\begin{figure}[htb]
+\par
+A \textit{Verilog}, como já citado, é uma linguagem de descrição de \textit{hardware} que fornece diversos níveis de abstração para desenvolvimento de sistemas digitais\cite{thomas2008verilog}. A linguagem foi desenvolvida para ser simples e efetiva nos diversos níveis de abstração incluindo o suporte ao desenvolvimento, verificação, síntese e testes de \textit{software}~\cite{IEEEVerilogLanguage}.
+
+\begin{figure}[H]
+\caption{\label{fig:mux_verilog} Exemplo de multiplexador descrito em Verilog.}
 	\begin{center}
-    \caption{\label{fig:waveform_fig}Waveform de multiplexador de duas entradas}
-	\includegraphics[scale=0.55]{Figuras/Waveform_multiplex.png}
+    \begin{minipage}{0.7\textwidth}
+    \begin{lstlisting}       
+primitive multiplexer (mux, control, dataA, dataB);
+output mux;
+input control, dataA, dataB;
+endprimitive
+\end{lstlisting}
+    \end{minipage}
 	\end{center}
-    \legend{Fonte: Própria}
+    \legend{Fonte: Adaptado de~\cite{IEEEVerilogLanguage}.}
 \end{figure}
 
 \par
-As HDL's trazem consigo diversas vantagens, entre elas códigos independentes de tecnologia e fabricante, podendo ser portatéis e reutilizáveis \cite{cappelattipraticando}. As lingugens mais modernas, tais como VHDL e \textit{Verilog}, possuem suporte tanto a descrição do circuito propriamente dito quanto ao comportamento que o mesmo deve exercer \cite{christen1999vhdl}.
+\textcolor{red}{Na \autoref{fig:mux_verilog} apresenta um exemplo de multiplexador descrito em \textit{Verilog} utilizando a estrutura de modelagem, chamada \textit{UDP} que permite a criação de novos primitivas para serem utilizada. Apresenta uma saída apenas(mux) e três entradas sendo uma de controle(control) e duas de dados(dataA e dataB).}
 
 \par
-O \textit{Verilog}, como já citado, é uma linguagem de descrição de \textit{hardware} que fornece diversos níveis de abstração para desenvolvimento de sistemas digitais\cite{thomas2008verilog}. A linguagem foi desenvolvida para ser simples e efetiva nos diversos níveis de abstração incluindo o suporte ao desenvolvimento, verificação, síntese e testes de \textit{software}~\cite{IEEEVerilogLanguage}.
+A VHDL é uma linguagem de descrição de hardware amplamente utilizada, concebida na década de 80, devido uma necessidade do Departamento de Defesa dos Estados Unidos da América~\cite{cappelattipraticando}. Assim como a Verilog, esta linguagem também suporta o desenvolvimento, a verificação, a síntese, e os testes de \textit{hardware}~\cite{IEEEVHDLLanguage}.
 
-\todo[inline]{Apresentar um exemplo de código Verilog}
+\begin{figure}[H]
+\caption{\label{fig:mux_vhdl} Exemplo de multiplexador descrito em VHDL.}
+	\begin{center}
+    \begin{minipage}{0.6\textwidth}
+    \begin{lstlisting}       
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.std_logic_unsigned.all;
+entity mux2x1 is
+port (sel: in STD_LOGIC;
+      a,b: in STD_LOGIC;
+      y: out STD_LOGIC);
+end mux2x1;
+
+architecture dataflow of mux2x1 is begin
+y <= (a AND NOT sel) OR (b AND sel);
+end dataflow.
+\end{lstlisting}
+    \end{minipage}
+	\end{center}
+    \legend{Fonte: \cite{cappelattipraticando}.}
+\end{figure}
 
 \par
-O VHDL é uma linguagem de descrição de hardware amplamente utilizada concebida na década de 80, visto uma necessidade do Departamento de defesa dos Estados Unidos da América~\cite{cappelattipraticando}. Assim como o Verilog, suporta desenvolvimento, verificação, síntese, e testes de \textit{hardware}~\cite{IEEEVHDLLanguage}.
+\textcolor{red}{Na \autoref{fig:mux_vhdl} está descrito um multiplexador de duas entradas descrito em VHDL, apresentando na parte inicial as bibliotecas e na entidade(entity) a declaração das variáveis utilizadas. Na arquitetura(architecture) apresenta o funcionamento do multiplexador, relacionando entradas e saídas conforme tenham sido declarados. Este conceitos serão melhor apresentados na \autoref{sec:vhdl_seção}.}
 
 \par
-Ambas as linguagens apesentam similaridades, sendo a linguagem VHDL escolhida para este trabalho devido a linguagem apresentar maior gama de recursos tanto para o desenvolvimento quanto para oa auxilio nos testes\todo{Apresentar um exemplo com referência}.
+\textcolor{red}{Conforme apresentado nas \autoref{fig:mux_verilog} e \autoref{fig:mux_vhdl}, ambas as linguagens apresentam diferenças no modelos de declaração e utilização para descrição de hardware. Para este trabalho foi escolhido a VHDL devido a linguagem apresentar um melhor escopo para análise, facilitando o trabalho de análise proposto para este projeto.}
+
+
+%Ambas as linguagens apresentam similaridades, sendo a linguagem VHDL escolhida para este trabalho devido a linguagem apresentar maior gama de recursos tanto para o desenvolvimento quanto para o auxílio nos testes\todo{Apresentar um exemplo com referência}.
+
 
 %============================
 %VHDL
 %============================
-\subsection{VHSIC Hardware Description Language - VHDL}\todo{Revisar textos e verificar a necessidade de mais exemplo}
+\subsection{\label{sec:vhdl_seção}VHSIC Hardware Description Language - VHDL}
+\todo[inline]{Revisar textos e verificar a necessidade de mais exemplo}
 
-VHDL é uma linguagem de descrição de hardware destina a ser utilizada em todas as etapas da criação de sistemas eletrônicos, sendo, desenvolvimento, verificação, síntese e teste de circuitos~\cite{IEEEVHDLLanguage}.
+VHDL é uma linguagem de descrição de hardware destinada a ser utilizada em todas as etapas da criação de sistemas eletrônicos, sendo elas: desenvolvimento; verificação; síntese; e, teste de circuitos~\cite{IEEEVHDLLanguage}.
 % 
-Segundo \cite{cappelattipraticando}, o VHDL apresenta três principais pilares: \textbf{abstração}, que consiste na descrição com diferentes níveis de detalhes; \textbf{modularidade}, que permite a divisão do projeto em vários blocos ou módulos para posterior interconexão; e \textbf{hierarquia}, permitindo que módulos ser compostos por submódulos e estes ter níveis de abstração diferentes, dependendo da necessidade do projeto. Devido a esta versatilidade que a linguagem VHDL foi selecionada para o trabalho proposto.
+Segundo \cite{cappelattipraticando}, a VHDL apresenta três principais pilares: \textbf{abstração}, que consiste na descrição com diferentes níveis de detalhes; \textbf{modularidade}, que permite a divisão do projeto em vários blocos ou módulos para posterior interconexão; e \textbf{hierarquia}, \textcolor{red}{permite que módulos possam ser compostos por submódulos e, os mesmos tenham níveis de abstração diferentes, dependendo da necessidade do projeto.} Devido a esta versatilidade que a linguagem VHDL foi selecionada para o trabalho proposto.
 
 \par
-Segundo \cite{IEEEVHDLLanguage} é necessário um padrão para formatação da descrição em VHDL: \textit{Entity} (Pinos de entada/saída) e \textit{Architecture} (Arquitetura). A \textit{Entity} ou entidade representa o bloco onde são declaradas as entradas e as saídas do circuito utilizadas em todo o sistema, conforme apresentado na \autoref{fig:biblioteca_entidade}. A \textit{Architecture} ou arquitetura, apresentado na \autoref{fig:arquitetura}, define a relação entre entrada e saídas declaradas na entidade, podendo tais especificações serem completas ou parciais. Assim como em outras linguagens bibliotecas podem ser adicionadas, para que novas funções e atributos possam ser utilizados no projeto.
+Segundo \cite{IEEEVHDLLanguage} é necessário um padrão para formatação da descrição em VHDL: \textit{Entity} (Pinos de entrada/saída) e \textit{Architecture} (Arquitetura). A \textit{Entity} ou entidade representa o bloco onde são declaradas as entradas e as saídas do circuito utilizadas em todo o sistema, conforme apresentado na \autoref{fig:biblioteca_entidade}. A \textit{Architecture} ou arquitetura, apresentado na \autoref{fig:arquitetura}, define a relação entre entradas e saídas declaradas na entidade, podendo tais especificações serem completas ou parciais. Assim como em outras linguagens, bibliotecas podem ser adicionadas, para que novas funções e atributos possam ser utilizados no projeto.
 
 \begin{figure}[!htp]
 \caption{\label{fig:biblioteca_entidade} Exemplo de declaração de bibliotecas e entidade.}
@@ -88,17 +125,18 @@ Segundo \cite{cappelattipraticando}, uma descrição em VHDL pode conter diferen
 \begin{itemize}
   \item \textbf{Comportamental:} Permite descrever o circuito através de laços e processos. O circuito é definido em forma de um algoritmo, utilizando construção similares as utilizadas em linguagem de programação.
   
-  \item \textbf{Transferência de registradores:} Englobando a representação do dispositivo em nível de trasnferencia entre registradores, que consiste a utilização de funções lógicas combinacionais e registradores.
+  \item \textbf{Transferência de registradores:} Englobando a representação do dispositivo em nível de transferência entre registradores, que consiste na utilização de funções lógicas combinacionais e de registradores.
   
-  \item \textbf{Estrutural:} O circuito é descrito mais próximo da implementação real, podendo ser definidas portas lógicas com atrasos unitarios ou com atrasos detalhados.
+  \item \textbf{Estrutural:} O circuito é descrito mais próximo da implementação real, podendo ser definidas portas lógicas com atrasos unitários ou com atrasos detalhados.
 \end{itemize}
+
 
 %============================
 %PORTAS LÓGICAS
 %============================
 \subsection{Portas lógicas}
 
-Segundo \citeauthor{idoeta1982elementos}\todo{Citação incorreta} conceito de portas lógicas é baseado na conhecida álgebra de Boole ou álgebra booleana, desenvolvida pelo matemático inglês George Boole em 1854. A álgebra booleana é representada por apenas dois valores, sendo eles o $0$ e $1$, e através disso expressar a relação entre entrada e saída dentro de um circuito. As portas lógicas podem ser construídas a partir de diodos, transmissões e resistores interconectados de modo que a saída seja o resultante de uma operação lógica básica realizada sobre as entradas \cite{tocci2003sistemas}. A \autoref{fig:algebra_booleana} apresenta um exemplo de álgebra booleana sem a utilização de diagramas.
+Segundo \citeauthor{idoeta1982elementos}\todo{Citação incorreta} o conceito de portas lógicas é baseado na conhecida álgebra de Boole ou álgebra booleana, desenvolvida pelo matemático inglês George Boole em 1854. A álgebra booleana é representada por apenas dois valores, sendo eles o $0$ e $1$ e, através disso, expressa a relação entre entrada e saída dentro de um circuito. As portas lógicas podem ser construídas a partir de diodos, \textcolor{red}{transistores} e resistores interconectados de modo que a saída seja o resultante de uma operação lógica básica realizada sobre as entradas \cite{tocci2003sistemas}. A \autoref{fig:algebra_booleana} apresenta um exemplo de álgebra booleana sem a utilização de diagramas.
 
 \begin{figure}[!htbp]
 	\begin{center}
@@ -109,11 +147,11 @@ Segundo \citeauthor{idoeta1982elementos}\todo{Citação incorreta} conceito de p
 \end{figure}
 
 \par
-Ainda segundo \citeauthor{tocci2003sistemas}, devido a esta característica, a álgebra booleana possui três operações básicas, \texttt{OR} (ou), \texttt{AND} (e) e \texttt{NOT} (não). Tal conjunto de operações também é denominado de operações booleanas e via utilização de tabela-verdade é possível descrever as saídas baseando-se nas entradas e na operação aplicada. Cada operação booleana possui sua tabela verdade (~\autoref{fig:exemplo_diagrama}), mas também sua representação em forma de diagrama.
+Ainda segundo \citeauthor{tocci2003sistemas}, devido a esta característica, a álgebra booleana possui três operações básicas, \textit{OR} (ou), \textit{AND} (e) e \textit{NOT} (não). Tal conjunto de operações também é denominado de operações booleanas e, por meio da utilização de tabelas verdade é possível descrever as saídas baseando-se nas entradas e na operação aplicada. Cada operação booleana possui sua tabela verdade (~\autoref{fig:exemplo_diagrama}), bem como sua representação em forma de diagrama.
 
 \begin{figure}[H]
 	\begin{center}
-    \caption{\label{fig:exemplo_diagrama}Simbolo e tabela verdade para uma porta OR de três entradas.}
+    \caption{\label{fig:exemplo_diagrama}Símbolo e tabela verdade para uma porta OR de três entradas.}
 	\includegraphics[scale=0.60]{Figuras/exemplo_diagrama.png}
 	\end{center}
     \legend{Fonte: \cite{tocci2003sistemas}}
@@ -127,7 +165,7 @@ Ainda segundo \citeauthor{tocci2003sistemas}, devido a esta característica, a �
     \legend{Fonte: \cite{tocci2003sistemas}}
 \end{figure}
 
-A \autoref{fig:exemplo_circuito} apresenta um circuito lógico formado pelas portas básicas da álgebra booleana. O circuito apresenta 3 entradas representadas pelas letras A, B e C, mas também formada por duas portas \textit{AND}, uma porta \textit{NOT} e uma porta \textit{OR}. Cada uma destas portas representando operações a serem realizadas, podendo receber como entrada um valor inicial ou resultante de outra porta, como no exemplo ocorre com a última porta \textit{AND}.
+A \autoref{fig:exemplo_circuito} apresenta um circuito lógico formado pelas portas básicas da álgebra booleana. O circuito apresenta três entradas representadas pelas letras A, B e C, mas também formada por duas portas \textit{AND}, uma porta \textit{NOT} e uma porta \textit{OR}. Cada uma destas portas representando operações a serem realizadas, podendo receber como entrada um valor inicial ou resultante de outra porta, como no exemplo ocorre com a última porta \textit{AND}.
 
 \todo[inline]{Adicionar um exemplo para apresentar a dificuldade de explorar todas as possibilidades de um circuito}
 
