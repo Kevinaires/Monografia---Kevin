@@ -187,7 +187,7 @@ Segundo~\cite{sargent2005verification}, verificação é o processo de determina
 A verificação consite identificação de erros e provavéis problemas que um componente pronto possa apresentar, enquanto a validação busca analisar se tal componete esta seguindo os requisitos pré-definidos para sua construção~\cite{koscianski2007qualidade}. O teste de programa, na qual o software  é executado com dados de teste é a principal forma de validação, porém, tecnicas de verificação, tais como, inspeção e revisões também podem integrar a etapa de validação~\cite{sommerville2011engenharia}.
 
 \subsection{Diagrama de decisão binária}
-Um diagrama de decisão binária pode ser definido como um grafo aciclico para representação de funcões boolenas. Existe uma ordem rigorosa na ocorrência de variáveis à medida que se percorre o grafo da raiz para a folha. Dado como exemplo a formula \textit{f=(a$\lor$b)$\land$(c$\lor$d)} e utilizando a ordenação de variavél $a < b < c < d$, na \autoref{fig:bdd_fig}. Dada a atribuição de valores booleanos as variaveis $a, b, c$ e $d$, pode-se decidir se a atribuição torna a fórmula verdadeira atravessando o início do gráfico na raiz e ramificação em cada nó. Definindo $a,c$ e $d = 1$ e $c = 0$ leva a folha de rótulo 1, portanto, a fórmula é verdadeira para essa tarefa~\cite{clarke1994model}.
+Um diagrama de decisão binária(DDB) pode ser definido como um grafo aciclico para representação de funcões boolenas. Existe uma ordem rigorosa na ocorrência de variáveis à medida que se percorre o grafo da raiz para a folha. Dado como exemplo a formula \textit{f=(a$\lor$b)$\land$(c$\lor$d)} e utilizando a ordenação de variavél $a < b < c < d$, na \autoref{fig:bdd_fig}. Dada a atribuição de valores booleanos as variaveis $a, b, c$ e $d$, pode-se decidir se a atribuição torna a fórmula verdadeira atravessando o início do gráfico na raiz e ramificação em cada nó. Definindo $a,c$ e $d = 1$ e $c = 0$ leva a folha de rótulo 1, portanto, a fórmula é verdadeira para essa tarefa~\cite{clarke1994model}.
 
 \begin{figure}[htb]
 	\begin{center}
@@ -198,9 +198,15 @@ Um diagrama de decisão binária pode ser definido como um grafo aciclico para r
 \end{figure}
 
 \todo[inline]{Adicionar mais detalhes e descrever onde DDB é utilizado.}
+\par
+\textcolor{red}{O DDB permite o teste eficiente de satisfabilidade, validade e eficiência \cite{kropf2013introduction} e busca aliviar o problema de explosão de dados existente no método de satisfabilidade booleana utilizado nos \textit{model checking}~\cite{baier2008principles}.}
 
-\todo[inline]{Adicionar uma seção para definir model checking.}
-
+%============================
+%MODEL CHECKING
+%============================
+\subsection{Model Checking}
+\par
+\textcolor{red}{.}
 %============================
 %BOUNDED MODEL CHECKING
 %============================
