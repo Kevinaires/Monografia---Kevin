@@ -1,23 +1,30 @@
 \label{chapter:metodo}
-Este Capítulo descreve o método proposto neste trabalho, baseado em VHDL para analise de circuitos utilizando transformações de código e a ferramenta ESBMC.
+
+Este Capítulo descreve o método proposto neste trabalho, baseado transformações de código para análise de circuitos lógicos descritos em VHDL utilizando 
+\textit{Bounded Model Checking}, neste caso o \textit{model checker} ESBMC.
 
 %======================
 %Visão geral do método
 %======================
 \section{Visão geral do método}
-O método consiste na análise de código VHDL de um circuito lógico através de transformação de código e da ferramenta ESBMC. O método consiste inicialmente em um circuito lógico descrito em VHDL, onde assertiva serão inseridas de modo automatizado ou pelo próprio usuário. Este código posteriomente é traduzido para linguagem C e recebe uma instrumentação de código para a posterior analise do mesmo. O Código em C, já instrumentado, será processado e analisado de acordo com as assertivas inseridas e ao final apresenta o resultado positivo ou negativo, caso alguma das assertivas seja violada. Todo o método é apresentado na \autoref{fig:Fluxo_ferramenta} e nas sessões a seguir serão apresentados cada etapa do método proposto neste trabalho
+
+O método proposto 
+% consiste na análise de código VHDL de um circuito lógico através de transformação de código e da ferramenta ESBMC. O método 
+consiste inicialmente em receber como entrada um circuito lógico descrito em VHDL, onde uma dada propriedade representada em uma assertiva será analisada, as assertivas serão inseridas de automaticamente pelo método ou pelo próprio usuário do método. O código VHDL analisado posteriomente é traduzido para linguagem C e recebe uma instrumentação de código (com funções especificas suportadas pelo método) para a posterior validação do mesmo. O Código em C automaticamente gerado, já instrumentado, será processado e analisado pelo ESBMC de acordo com as assertivas inseridas e ao final é apresentado o resultado. Caso alguma das assertivas seja violada, um contra-exemplo é apresentado ao usuário. Uma visão geral do método proposto é apresentado na \autoref{fig:Fluxo_ferramenta} e nas sessões a seguir serão apresentados cada etapa do método proposto neste trabalho.
 
 \begin{figure}[H]
 	\begin{center}
     \caption{\label{fig:Fluxo_ferramenta}Ciclo da ferramenta}
-	\includegraphics[scale=0.5]{Figuras/Fluxo_ferramenta.png}
+	\includegraphics[scale=0.55]{Figuras/Fluxo_ferramenta.png}
 	\end{center}
     \legend{Fonte: Própria}
 \end{figure}
 
+
 Com o intuito de auxiliar nas explicações apresentadas nas próximas sessões, o código na \autoref{fig:code_exemplo} será utilizado nas explanações, bem como será apresentado todas as alterações do mesmo, conforme cada etapa do método.
+
 \begin{figure}[H]
-\caption{\label{fig:code_exemplo} Exemplo de código VHDL de ULA com portas AND,OR e XOR.}
+\caption{\label{fig:code_exemplo} Exemplo de código VHDL de ULA com portas \texttt{AND}, \texttt{OR} e \texttt{XOR}.}
 	\begin{center}
     \begin{minipage}{0.6\textwidth}
     \begin{lstlisting}       
@@ -83,15 +90,18 @@ END Ula_tcc_behavl;
 %Código VHDL e assertivas
 %========================
 \pagebreak
-\section{\label{cap:vhdl_assertivas}Código VHDL e assertivas}
+\section{Preprocessamento do VHDL e inserção de assertivas}
+\label{cap:vhdl_assertivas}
 
 \par
-A fase inicial do método consiste na adequação do método e inserção das assertivas, conforme a \autoref{fig:Fluxo_ferramenta}, na \textbf{etapa A}. A ferramenta não realiza qualquer tipo de verificação sobre o código VHDL, apenas utiliza o mesmo como entrada juntamente com as assertivas inseridas. Toda verificação é realizada sobre o código em linguagem C, traduzido do código VHDL de entrada.
-\par
-A adição das assertivas pode ser realizada de maneira automatizada ou manual inserida pelo desenvolvedor de hardware, caso necessite realizar uma verificação mais especifica sobre o código. Mesmo a linguagem VHDL tendo modelo de assertivas padrão, para o método tornou-se necessário a criação de um modelo para que as funções do analisador fossem suportadas.
+A fase inicial do método consiste no preprocessamento do código VHDL com as anotações de código pelo usuário ou pelo método proposto de forma automática, incluindo as assertivas, conforme a \autoref{fig:Fluxo_ferramenta}, na \textbf{etapa A}. O método não realiza qualquer tipo de verificação sobre o código VHDL, apenas utiliza o mesmo como entrada juntamente com as assertivas inseridas. Toda verificação é realizada sobre o código em linguagem C, que será traduzido a partir do código VHDL analisado, nas próximas etapas do método proposto.
+% \par
+% A adição das assertivas pode ser realizada de maneira automatizada ou manual inserida pelo desenvolvedor de hardware, caso necessite realizar uma verificação mais especifica sobre o código. 
+Vale ressaltar que mesmo a linguagem VHDL tendo um modelo de assertivas padrão, para o método tornou-se necessário a criação de um modelo (baseado em comentários) para que as funções do model checker adotado fossem suportadas, como a geração de valores não deterministicos.
+
 
 \par
-\label{sec:assertiva_descricao} As assertivas manuais são adicionadas entre as tags \textbf{@c2vhdl:ASSERT} e \textbf{@c2vhdl:END} e todo trecho de código entre estas tags deve estar comentado, desta forma não apresentará erro na tradução do código em linguagem C. As assertivas apresentam as funções necessárias para a análise utilizando a ferramenta ESBMC. A assertiva apresenta três informações principais, sendo elas: condição, mensagem e gravidade.
+\label{sec:assertiva_descricao} As assertivas manuais são adicionadas entre as tags \texttt{@c2vhdl:ASSERT} e \texttt{@c2vhdl:END} e todo trecho de código entre estas tags deve estar comentado, desta forma não apresentará erro na tradução do código em linguagem C, bem como na sintetização do código VHDL. Nas assertivas são incluidas as funções necessárias para a análise utilizando a ferramenta ESBMC. A assertiva apresenta três informações principais, sendo elas: condição, mensagem e gravidade.
 
 \begin{figure}[H]
 \caption{\label{fig:assertiva} Exemplo de assertiva para verificação de porta XOR.}
@@ -108,6 +118,8 @@ A adição das assertivas pode ser realizada de maneira automatizada ou manual i
 	\end{center}
     \legend{Fonte: Própria.}
 \end{figure}
+
+% % % STOP my review HB
 
 \par
 A condição representa a assertiva propriamente dita e que será analisado pela aplicação. A condição será precedida de \textbf{--assert} e seguido ou não da palavra \textbf{not}, com isso a assertiva pode assumir valor negativo, conforme necessidade do usuário. Na \autoref{fig:assertiva} a assertiva busca verificar se a variavél Resultado terá igual a 1. 

@@ -31,6 +31,7 @@
 \usepackage{todonotes}
 \usepackage{tabularx}
 
+
 \definecolor{algColor}{RGB}{255,206,206} % rgb(255, 206, 206)
 
 % Pacotes para algoritmos/pseudo-código
@@ -83,18 +84,26 @@
 % ---
 \usepackage{lipsum}				% para geração de dummy text
 % ---
+
+
 % ---
 % Pacotes de citações
 % ---
 %\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
 \usepackage[alf, abnt-etal-cite=2]{abntex2cite}	% Citações padrão ABNT
+
 % --- 
 % CONFIGURAÇÕES DE PACOTES
 % --- 
+
 \usepackage{abntex_ufrr_dcc}
+
+
 % PACOTES DE ALGORITMO
+
 \usepackage{algpseudocode,algorithm}
 % Declaracoes em Português
+
 \algrenewcommand\algorithmicend{\textbf{FIM}}
 \algrenewcommand\algorithmicdo{\textbf{FAÇA}}
 \algrenewcommand\algorithmicwhile{\textbf{ENQUANTO}}
@@ -115,15 +124,20 @@
 \algdef{SE}[CASE]{Case}{EndCase}[1]{\algorithmiccase\ #1}{\algorithmicend\ \algorithmiccase}%
 \algtext*{EndSwitch}%
 \algtext*{EndCase}%
+
+
 % Rearranja os finais de cada estrutura
 \algrenewtext{EndWhile}{\algorithmicend\ \algorithmicwhile}
 \algrenewtext{EndFor}{\algorithmicend\ \algorithmicfor}
 \algrenewtext{EndIf}{\algorithmicend\ \algorithmicif}
 \algrenewtext{EndFunction}{\algorithmicend\ \algorithmicfunction}
+
 % O comando For, a seguir, retorna 'para #1 -- #2 até #3 faça'
 \algnewcommand\algorithmicto{\textbf{até}}
 \algrenewtext{For}[3]%
 {\algorithmicfor\ #1 $\gets$ #2 \algorithmicto\ #3 \algorithmicdo}
+
+
 % ---
 % Configurações do pacote backref
 % Usado sem a opção hyperpageref de backref
@@ -397,7 +411,7 @@ Fazer resumo!!
 % Referências bibliográficas
 % ----------------------------------------------------------
 \bibliography{main}
-%\bibliographystyle{plainnat}
+% \bibliographystyle{plainnat}
 
 %---------------------------------------------------------------------
 % INDICE REMISSIVO
