@@ -9,7 +9,7 @@ Este capítulo tem apresenta os principais conceitos e definições abordados ne
 As linguagens de descrição de hardware (HDL) foram desenvolvidas com o intuito de auxiliar a criação de circuitos lógicos com grande número de elementos e com uma gama de abstrações lógicas e eletrônicas~\cite{thomas2008verilog}. \textcolor{red}{Entre os exemplos, podemos citar: \textit{VDHL}~\cite{IEEEVHDLLanguage}, \textit{Verilog}~\cite{IEEEVerilogLanguage} e \textit{SystemC}~\cite{IEEESystemCLanguage}.}
 
 \par
-Segundo~\cite{christen1999vhdl}, linguagens de descrição de hardware são linguagens de programação utilizadas com o intuito de descrever o comportamento de um determinado circuito, técnica conhecida como modelagem. Os modelos descritos em HDL são utilizados como entrada para um simulador, onde o mesmo pode ter seu comportamento analisado.
+Segundo~\citeauthor{christen1999vhdl},\citeyear{christen1999vhdl}, linguagens de descrição de hardware são linguagens de programação utilizadas com o intuito de descrever o comportamento de um determinado circuito, técnica conhecida como modelagem. Os modelos descritos em HDL são utilizados como entrada para um simulador, onde o mesmo pode ter seu comportamento analisado.
 
 \par
 As HDL's trazem consigo diversas vantagens, entre elas códigos independentes de tecnologia e fabricante, podendo ser portáteis e reutilizáveis \cite{cappelattipraticando}. As linguagens mais modernas, tais como VHDL e \textit{Verilog}, possuem suporte tanto a descrição do circuito propriamente dito, quanto ao comportamento que o mesmo deve exercer \cite{christen1999vhdl}.
@@ -82,7 +82,7 @@ VHDL é uma linguagem de descrição de hardware destinada a ser utilizada em to
 Segundo \cite{cappelattipraticando}, a VHDL apresenta três principais pilares: \textbf{abstração}, que consiste na descrição com diferentes níveis de detalhes; \textbf{modularidade}, que permite a divisão do projeto em vários blocos ou módulos para posterior interconexão; e \textbf{hierarquia}, \textcolor{red}{permite que módulos possam ser compostos por submódulos e, os mesmos tenham níveis de abstração diferentes, dependendo da necessidade do projeto.} Devido a esta versatilidade que a linguagem VHDL foi selecionada para o trabalho proposto.
 
 \par
-Segundo \cite{IEEEVHDLLanguage} é necessário um padrão para formatação da descrição em VHDL: \textit{Entity} (Pinos de entrada/saída) e \textit{Architecture} (Arquitetura). A \textit{Entity} ou entidade representa o bloco onde são declaradas as entradas e as saídas do circuito utilizadas em todo o sistema, conforme apresentado na \autoref{fig:biblioteca_entidade}. A \textit{Architecture} ou arquitetura, apresentado na \autoref{fig:arquitetura}, define a relação entre entradas e saídas declaradas na entidade, podendo tais especificações serem completas ou parciais. Assim como em outras linguagens, bibliotecas podem ser adicionadas, para que novas funções e atributos possam ser utilizados no projeto.
+Segundo \citeauthor{IEEEVHDLLanguage},\citeyear{IEEEVHDLLanguage}, é necessário um padrão para formatação da descrição em VHDL: \textit{Entity} (Pinos de entrada/saída) e \textit{Architecture} (Arquitetura). A \textit{Entity} ou entidade representa o bloco onde são declaradas as entradas e as saídas do circuito utilizadas em todo o sistema, conforme apresentado na \autoref{fig:biblioteca_entidade}. A \textit{Architecture} ou arquitetura, apresentado na \autoref{fig:arquitetura}, define a relação entre entradas e saídas declaradas na entidade, podendo tais especificações serem completas ou parciais. Assim como em outras linguagens, bibliotecas podem ser adicionadas, para que novas funções e atributos possam ser utilizados no projeto.
 
 \begin{figure}[!htp]
 \caption{\label{fig:biblioteca_entidade} Exemplo de declaração de bibliotecas e entidade.}
@@ -121,7 +121,7 @@ END behavioral;
 
 
 
-Segundo \cite{cappelattipraticando}, uma descrição em VHDL pode conter diferentes níveis de abstração:
+Segundo \citeauthor{cappelattipraticando},\citeyear{cappelattipraticando} uma descrição em VHDL pode conter diferentes níveis de abstração:
 \begin{itemize}
   \item \textbf{Comportamental:} Permite descrever o circuito através de laços e processos. O circuito é definido em forma de um algoritmo, utilizando construção similares as utilizadas em linguagem de programação.
   
@@ -147,7 +147,7 @@ Segundo \cite{cappelattipraticando}, uma descrição em VHDL pode conter diferen
 \end{figure}
 
 \par
-Ainda segundo \citeauthor{tocci2003sistemas}, devido a esta característica, a álgebra booleana possui três operações básicas, \textit{OR} (ou), \textit{AND} (e) e \textit{NOT} (não). Tal conjunto de operações também é denominado de operações booleanas e, por meio da utilização de tabelas verdade é possível descrever as saídas baseando-se nas entradas e na operação aplicada. Cada operação booleana possui sua tabela verdade (~\autoref{fig:exemplo_diagrama}), bem como sua representação em forma de diagrama.
+Ainda segundo \citeauthor{tocci2003sistemas},\citeyear{tocci2003sistemas}, devido a esta característica, a álgebra booleana possui três operações básicas, \textit{OR} (ou), \textit{AND} (e) e \textit{NOT} (não). Tal conjunto de operações também é denominado de operações booleanas e, por meio da utilização de tabelas verdade é possível descrever as saídas baseando-se nas entradas e na operação aplicada. Cada operação booleana possui sua tabela verdade (~\autoref{fig:exemplo_diagrama}), bem como sua representação em forma de diagrama.
 
 \begin{figure}[H]
 	\begin{center}
@@ -199,14 +199,34 @@ Um diagrama de decisão binária(DDB) pode ser definido como um grafo aciclico p
 
 \todo[inline]{Adicionar mais detalhes e descrever onde DDB é utilizado.}
 \par
-\textcolor{red}{O DDB permite o teste eficiente de satisfabilidade, validade e eficiência \cite{kropf2013introduction} e busca aliviar o problema de explosão de dados existente no método de satisfabilidade booleana utilizado nos \textit{model checking}~\cite{baier2008principles}.}
+\textcolor{red}{O DDB permite o teste eficiente de satisfabilidade, validade e eficiência \cite{kropf2013introduction}. O uso e DDB em conjunto com \textit{Model Checking} e técnicas de abstração permitiu o aumento na capacidade de verificação, de modo que sistemas mais realistas podessem ser verificados\cite{biere2003bounded}}
 
 %============================
 %MODEL CHECKING
 %============================
 \subsection{Model Checking}
 \par
-\textcolor{red}{.}
+\textcolor{red}{\textit{Model checking} é uma técnica de verificação formal que explora todos os possíveis estados do sistema, de modo a provar se um modelo satisfaz determinada propriedade. Pode ser aplicada em uma ampla gama de aplicações, tais como sistema embarcados, design de hardware e engenharia de software~\cite{baier2008principles}.}
+
+\par
+\textcolor{red}{Entre as vantagens da utilização de \textit{Model Checking} estão:
+\begin{itemize}
+    \item Possuem suporte a verificação parcial, em outras palavras, a verificação individual de propriedades, permitido foco primeiro as propriedades essenciais\cite{baier2008principles}.
+    \item Não requer qualquer interação do usuário, nem um alto grau de especialização para o uso de \textit{model checking}\cite{baier2008principles}.
+    \item Possui como base a teoria de grafos, estruturas de dados e lógica no desenvolvimento da solução\cite{baier2008principles}.
+    \item Útil para fins de depuração, pois formece informações em caso de uma propriedade seja invalidada\cite{baier2008principles}.
+\end{itemize}}
+
+\par
+\textcolor{red}{Por outro lado, apresenta também algumas desvantagens:
+\begin{itemize}
+    \item Sofre do problema de explosão de espaço de estados, ou seja, a quantidade de estados necessários pode ser maior que a memória disponivel pelo sistema\cite{baier2008principles}.
+    \item Faz a verificação apenas dos requisios declarados, logo, não a garantia de integridade. Baseado nisso, a validade de propriedades não verificadas não pode ser julgada\cite{baier2008principles}.
+    \item A verificação de modelos geralmente não é computável,  isso deve-se a questões de decidibilidade utilizada \cite{baier2008principles}.
+\end{itemize}}
+
+\par
+\textcolor{red}{Outras técnicas foram implementadas em conjuntos com \textit{Model checkings} com o intuito de aumentas a capacidade de verificação, como a técnica SAT na qual não sofre do problema de explosão de estados existente usando DDB. A técnica SAT em conjuto com \textit{Model Checking} é conhecida como \textit{Bounded Model Checking} \cite{biere2003bounded}.}
 %============================
 %BOUNDED MODEL CHECKING
 %============================
@@ -223,7 +243,7 @@ O \textit{Extended SMT-Based Bounded Model Checker} (ESBMC) é um \textit{Bounde
 No ESBMC, o programa analisado é modelado em um sistema de transição de estados, conforme a trupla: $M=(S,R,S_{0})$, o qual é gerado um grafo de controle de fluxo (GFC), onde $S$ representa o conjunto de estados, $R$ $\subseteq$ $SxS$ representa as transições e $S \subseteq S$ representa o conjuto de estados iniciais. Um estado $s \in S$ consiste no valor do contador de programa (PC) e os valores de todas as variáveis dos programas. O estado inicial $S_{0}$ atribui o inicio do programa GFC ao PC, desta forma o ESBMC identifica as transições, conforme a formula lógica, $\gamma$=($S_{i}$,$S_{i+1}$) que captura as retrições sobre os valores correspondntes do PC e das variáveis do programa~\cite{cordeiro2012smt}.
 
 \par
-Segundo o site da ferramenta\todo{Qual site?}, a ferramenta permite ao usuário indicar propriedades adicionais\todo{Descrever quais propriedades o esbmc suporta} usando assertivas que também são verificadas. O ESBMC converte as condições usando diferentes técnicas de background\todo{apresentar exemplo} para posteriormente passar para verificador SMT. Outra vantagem é a ferramenta permitir verificação de software single-thread e multi-thread.
+Segundo o site do ESBMC\cite{esbmc}, a ferramenta permite ao usuário indicar propriedades adicionais\todo{Descrever quais propriedades o esbmc suporta} usando assertivas que também são verificadas. O ESBMC converte as condições usando diferentes técnicas de background\todo{apresentar exemplo} para posteriormente passar para verificador SMT. Outra vantagem é a ferramenta permitir verificação de software single-thread e multi-thread.
 
 \todo[inline]{Descrever qual a razão da escolha para o trabalho, apresentar resultados do SV-COMP dos últimos 3 anos}
 
