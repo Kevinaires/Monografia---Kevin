@@ -103,8 +103,11 @@ Vale ressaltar que mesmo a linguagem VHDL tendo um modelo de assertivas padrão,
 \par
 \label{sec:assertiva_descricao} As assertivas manuais são adicionadas entre as tags \texttt{@c2vhdl:ASSERT} e \texttt{@c2vhdl:END} e todo trecho de código entre estas tags deve estar comentado, desta forma não apresentará erro na tradução do código em linguagem C, bem como na sintetização do código VHDL. Nas assertivas são incluidas as funções necessárias para a análise utilizando a ferramenta ESBMC. A assertiva apresenta três informações principais, sendo elas: condição, mensagem e gravidade.
 
+
+\todo[inline]{Ajustar está assertiva. Para quem não vê o código todo, ela não faz sentido}
+
 \begin{figure}[H]
-\caption{\label{fig:assertiva} Exemplo de assertiva para verificação de porta XOR.}
+\caption{\label{fig:assertiva} Exemplo de assertiva para verificação de porta \texttt{XOR}.}
 	\begin{center}
     \begin{minipage}{0.99\textwidth}
     \begin{lstlisting}       
@@ -119,22 +122,25 @@ Vale ressaltar que mesmo a linguagem VHDL tendo um modelo de assertivas padrão,
     \legend{Fonte: Própria.}
 \end{figure}
 
-% % % STOP my review HB
 
 \par
-A condição representa a assertiva propriamente dita e que será analisado pela aplicação. A condição será precedida de \textbf{--assert} e seguido ou não da palavra \textbf{not}, com isso a assertiva pode assumir valor negativo, conforme necessidade do usuário. Na \autoref{fig:assertiva} a assertiva busca verificar se a variavél Resultado terá igual a 1. 
+A condição (na linha $2$ da \autoref{fig:assertiva}) representa a assertiva propriamente dita e que será analisado pela aplicação. A condição será precedida de \texttt{$--$assert} e seguido ou não da palavra \texttt{not}, com isso a assertiva pode assumir valor negativo, conforme necessidade do usuário. Na \autoref{fig:assertiva} a assertiva busca verificar se a variavél \texttt{Resultado} terá valor igual a $1$\todo{Qual a razão para isso, explique!}. 
 
 \par
-A mensagem é definida pelo usuário e será apresentado caso a assertiva apresente falha. E precedida pela palavra \textbf{--report}. A severidade pode ser definida como \textit{error}, que representa um erro fatal e parada da verificação e \textit{warning} que representa um erro não fatal, onde é comtabilizado o erro, porém não causa a parada da verificação. É precedido pela palavra \textbf{severity}.
+A mensagem (\texttt{$--$report} na linha $3$ da \autoref{fig:assertiva}) é definida pelo usuário e será apresentado caso a assertiva apresente falha, assim a mensagem pode ser utilizada como um meio de depuração das propriedades validadas. A severidade (\texttt{severity} na linha $4$ da \autoref{fig:assertiva}) pode ser definida como \texttt{error}, que representa um erro fatal e parada da verificação. A severidade do tipo \texttt{warning} que representa um erro não fatal, contabiliza as falhas das assertivas, porém não causa a parada da verificação.
+% 
+As mensagens futuramente pode ser integradas um framework para teste de unidade, contudo está é uma etapa ainda em planejamento neste trabalho.
 
 \par
-Na \autoref{fig:assertiva} a mensagem a ser exibida em caso de erro é "O resultado foi diferente de 0" e a severidade definida como \textit{error} indicando que é uma assertiva fatal. Na atual implementação da ferramenta não foram utilizadas, sendo a próxima etapa do processo, onde será utilizado um framework para teste de unidade.
+% Na \autoref{fig:assertiva} a mensagem a ser exibida em caso de erro é "O resultado foi diferente de 0" e a severidade definida como \textit{error} indicando que é uma assertiva fatal. 
+% Na atual implementação da ferramenta não foram utilizadas, sendo a próxima etapa do processo, onde será utilizado um framework para teste de unidade.
 
 \par
-Outra propriedade utilizada juntamente com as assertivas é a função \textit{\_\_ESBMC\_assume()}. Esta função utilizada em conjuto com a ferramenta ESBMC permite que durante a verificação uma variavél possa ter uma valor setado durante o tempo de execução da verificação. A importância desta função é fazer verificações onde se conhece os valores de entrada juntamente com o valor resultante, por exemplo, na verificação de portas lógicas.
+% Outra propriedade utilizada 
+Juntamente com as assertivas outra função que pode ser utilizada é a função \texttt{\_\_ESBMC\allowbreak{}\_assume()} suportada pelo model checker ESBMC. Esta função utilizada em conjuto com a ferramenta ESBMC permite que durante a verificação uma variavél possa ter uma valor setado durante o tempo de execução da verificação. A importância desta função é fazer verificações onde se conhece os valores de entrada juntamente com o valor resultante, por exemplo, na verificação de portas lógicas.
 
 \begin{figure}[H]
-\caption{\label{fig:assertiva} Exemplo de utilização da função \_\_ESBMC\_assume().}
+\caption{\label{fig:assertiva} Exemplo de utilização da função \texttt{\_\_ESBMC\_assume()}.}
 	\begin{center}
     \begin{minipage}{0.99\textwidth}
     \begin{lstlisting}       
@@ -147,10 +153,11 @@ Outra propriedade utilizada juntamente com as assertivas é a função \textit{\
 \end{figure}
 
 \par
-A assertivas automáticas são geradas baseados nas entradas do código VHDL. Seja no modelo manual ou automático, as entradas são mapeadas para serem utilizados na etapa de instrumentação. Desta forma, tais entradas podem ser utilizadas para gerar essas assertivas e então serem adicionadas diretamente ao código em linguagem C durante a fase de instrumentação. 
+A assertivas que serão verificadas são automáticas traduzidas a partir das entradas do código VHDL. Seja no modelo manual (assertivas escritas pelo usuário) ou automático (inferidas pelo método proposto por meio de análise estática), as entradas são mapeadas para serem utilizados na etapa de instrumentação. Desta forma, tais entradas podem ser utilizadas para gerar essas assertivas e então serem adicionadas diretamente ao código em linguagem C durante a fase de instrumentação. 
 
 \par
-A \autoref{fig:code_exemplo_assertiva} apresenta o código juntamente com as assertivas conforme o padrão salientado na \autoref{sec:assertiva_descricao}. Neste exemplo foi implementado utilizado a inserção manual das assertivas e também da função \_\_ESBMC\_assume(), entretanto o objetivo é automátizar estas funções durante a execução da ferramenta.
+A \autoref{fig:code_exemplo_assertiva} apresenta o código juntamente com as assertivas conforme o padrão salientado na \autoref{sec:assertiva_descricao}. Neste exemplo foi implementado utilizado a inserção manual das assertivas e também da função \texttt{\_\_ESBMC\_assume()}, entretanto o objetivo é automatizar estas funções durante a execução da ferramenta.
+
 \begin{figure}[h]
 \caption{\label{fig:code_exemplo_assertiva} Código da \autoref{fig:code_exemplo} com a assertiva da \autoref{fig:assertiva}.}
 	\begin{center}
@@ -197,16 +204,21 @@ END Ula_tcc_behavl;
     \legend{Fonte: Própria.}
 \end{figure}
 
+
 %===================================
 %Tradução para código em linguagem C
 %===================================
-\section{\label{cap:traducao}Tradução para código em linguagem C}
-\todo[inline]{Procurar bibtex do do artigo da ferramenta e adicionar ao texto as referencias.}
-\par
-A etapa seguinte é a tradução deste código para linguagem C, conforme apresentado na \autoref{fig:Fluxo_ferramenta}, \textbf{etapa B}. A partir deste ponto, a ferramenta é executada de maneira propriamente dita, tendo todo o processo automátizado até a apresentação do resultado. Para este método foi selecionado a ferramenta V2C que realiza a tradução de VHDL para Linguagem C.
+\section{\label{cap:traducao}Tradução de código VHDL para a linguagem C}
+
+% \todo[inline]{Procurar bibtex do do artigo da ferramenta e adicionar ao texto as referencias.}
 
 \par
-Devido ser uma ferramenta antiga, a ferramenta V2C apresenta certas limitação na tradução do código VHDL, em outras palavras, a mesma não reconhece algumas estruturas especificas do VHDL. A ferramenta aceita apenas entradas e saídas do tipo: bit, std\_ulogic, qsim\_state, std\_ulogic\_vector e interger. Na parte de arquitetura, a ferramenta aceita uma gama maior de estruturas, trabalhando com expressoões do tipo: signal, variable, integers, strings e caracteres. Em expreções condicionais os operandos são AND, OR, NOT <=, =>,=,<,> e <>. Aceita também a estrutura de process, além da estutura block. A estrutura \textit{process} é limitada apenas a: if-else, case e  loops.
+Nesta etapa a tradução do código VHDL para linguagem C é executada, conforme apresentado na \autoref{fig:Fluxo_ferramenta}, \textbf{etapa B}. A partir deste ponto, a ferramenta é executada de maneira propriamente dita, tendo todo o processo automatizado até a apresentação do resultado. Para esta etapa do método foi selecionado a ferramenta V2C\todo{Adicionar referência} que realiza a tradução de VHDL para Linguagem C.
+
+\par
+% Devido ser uma ferramenta antiga, 
+A ferramenta V2C apresenta diversas vantagens em relação a equivalência de tradução de linguagens, contudo V2C apresenta certas limitação na tradução do código VHDL, em outras palavras, a mesma não reconhece algumas estruturas especificas do VHDL. A ferramenta aceita apenas entradas e saídas do tipo: \texttt{bit}, \texttt{std\_ulogic}, \texttt{qsim\_state}, \texttt{std\_ulogic\_vector} e \texttt{interger}. Na parte de arquitetura, a ferramenta aceita uma gama maior de estruturas, trabalhando com expressoões do tipo: \texttt{signal}, \texttt{variable}, \texttt{integers}, \texttt{strings} e caracteres. Em expreções condicionais os operandos são \texttt{AND}, \texttt{OR}, \texttt{NOT} $<=$, $=>$,$=$,$<$,$>$ e $<>$. Aceita também a estrutura de \texttt{process}, além da estutura \texttt{block}. A estrutura \texttt{process} é limitada apenas a: \texttt{if-else}, \texttt{case} e \texttt{loops}. Como trabalho futuro, neste trabalho tem-se buscado novas abordagens para ampliar o suporte a estruturas não suportadas pelo V2C.
+
 \begin{figure}[h]
 \caption{\label{fig:code_traduzido} Código da \autoref{fig:code_exemplo} traduzido pela ferramenta V2C.}
 	\begin{center}
@@ -355,14 +367,18 @@ out_data[1] = new[Resultado];
 \end{figure}
 
 \par
-Na tradução é necessário substituir os operadores originais por seus equivalentes em linguagem C. A excessão são os operadore específicos que geranciam os valores de bit, tai como concatenação ou manipulação de partes verotiais, para os quais são necessários construir procedimentos especificos em C.
+Na tradução é necessário substituir os operadores originais por seus equivalentes em linguagem C. A excessão são os operadore específicos que gerenciam os valores de \texttt{bit}, tais como concatenação ou manipulação de partes vertoriais, para os quais são necessários construir procedimentos especificos em C.
 
-Conforme mostrado na \autoref{fig:code_traduzido}, na tradução é verificado a existencia de vários vetores, sendo eles \textbf{chg[]}, \textbf{old[]} e \textbf{new[]}. O vetor \textbf{old[]} contém o valor do sinais do passo anterior e a partir deste vetor o valor a ser usado nos cálculo é obtido. O vetor \textbf{new[]} representa os novos valores a serem calculados pelos antigos e o vetor \textbf{chg[]} contém um or exclusivo entre o valor novo e antigo e em caso de alteração entre os valores é copiado o valor de \textbf{new[]} para \textbf{old[]}.
+Conforme mostrado na \autoref{fig:code_traduzido}, na tradução são gerados vários vetores para suporte a tradução dos sinais representados no VHDL, sendo eles \texttt{chg[]}, \texttt{old[]} e \texttt{new[]}. O vetor \texttt{old[]} contém o valor do sinais do passo anterior\todo{Confuso isso} e a partir deste vetor o valor a ser usado nos cálculo é obtido. O vetor \texttt{new[]} representa os novos valores a serem calculados pelos antigos\todo{Qual?} e o vetor \texttt{chg[]} contém um or exclusivo entre o valor novo e antigo e em caso de alteração entre os valores é copiado o valor de \texttt{new[]} para \texttt{old[]}.
+
+\todo[inline]{O texto acima está muito confuso, corrigi rapidamente}
 
 \par
-Os vetores in\_data [] e out\_data [] contêm os sinais de entrada e saída, respectivamente. No caso de circuitos seqüenciais, o valor do status é inserido primeiro (índice 0). a função então lerá os valores in\_data [] e escreverá os resultados do processamento em out\_data []. Ao final da operações os valores de estado são passado para out\_data[].
+No código C gerado, os vetores \texttt{in\_data[]} e \texttt{out\_data[]} contêm os sinais de entrada e saída, respectivamente. No caso de circuitos sequênciais, o valor do status é inserido no primeiro (índice 0). A função\todo{qual?} então lerá os valores \texttt{in\_data[]} e escreverá os resultados do processamento em \texttt{out\_data[]}. Ao final da operações os valores de estado são passado para \texttt{out\_data[]}.
+
+
 \par
-Conforme especificado e seguindo os parametros da ferramenta, a mesma realiza a tradução, mantendo inalterado qualquer fragmento de código que esteja comentado, neste caso, as assertivas presentes no código VHDL permanecem inalteradas, sendo utilizadas na próxima etapa do processo.
+Conforme especificado e seguindo os parametros da ferramenta, a mesma realiza a tradução, mantendo inalterado qualquer fragmento de código que esteja comentado, neste caso, as assertivas presentes no código VHDL permanecem inalteradas, sendo utilizadas na próxima etapa do método proposto.
 
 %========================
 %Instrumentação de código
@@ -370,10 +386,10 @@ Conforme especificado e seguindo os parametros da ferramenta, a mesma realiza a 
 \section{Instrumentação de código}
 
 \par
-As assertivas após a tradução permanecem em comentadas, sendo necessário prepara-lás para verificação posterior do código. Com isso é necessário uma instrumentação do código para que o mesmo esteja pronto para análise, conforme apresentado na \autoref{fig:Fluxo_ferramenta}, \textbf{etapa C}.
+As assertivas após a tradução permanecem comentadas, sendo necessário prepara-lás, ou seja traduzi-las, para verificação posterior do código na linguagem em C. Com isso é necessário uma instrumentação do código para prover suporte as assertivas traduzidas para análise, conforme apresentado na \autoref{fig:Fluxo_ferramenta}, \textbf{etapa C}.
 
 \par
-Todas as etapas da instrumentação são realizados sobre o código já traduzido. O passo inicial da instrumentação é a adição da macros no inicio do código C com as definição das assertivas a serem utilizadas. Na \autoref{fig:macro} apresenta as macros utilizadas no código. A linha 1 corresponde a mensagem de erro a ser apresentada e a linha 2 corresponde ao modelo da assertiva e a chamanda da macro definida na linha 1 em caso de falha. 
+Todas as etapas da instrumentação são realizados sobre o código C já traduzido. O passo inicial da instrumentação é a adição da macros no inicio do código C com as definição das assertivas a serem utilizadas. Na \autoref{fig:macro} são apresentados os macros utilizadas no código C. A Linha $1$ da figura corresponde a mensagem de erro a ser apresentada e a Linha $2$ corresponde ao modelo da assertiva e a chamanda da macro definida na Linha $1$ em caso de falha. Estas definições para as assertivas também podem ser utilizadas no código C traduzidos sem o uso do ESBMC.
 
 \begin{figure}[H]
 \caption{\label{fig:macro} Macros das assertivas implementadas em linguagem C}
@@ -389,16 +405,20 @@ Todas as etapas da instrumentação são realizados sobre o código já traduzid
 \end{figure}
 
 \par
-O passo seguinte é a identificação das assertivas comentadas ao longo do corpo do texto, utilizando o exemplo da \autoref{fig:assert_c}. As assertivas são identificadas através das tags \textbf{@c2vhdl:ASSERT} e \textbf{@c2vhdl:END} e a busca é realizado através destas tags. Ao ser encontrado a tag \textbf{@c2vhdl:ASSERT}, é realizado um loop até que seja encontrada a tag \textbf{@c2vhdl:END} e com isso toda a assertiva inserida possa ser passada a função de busca das informações da assertiva.
+O passo seguinte é a identificação das assertivas comentadas ao longo do corpo do código traduzido, utilizando o exemplo da \autoref{fig:assert_c}. As assertivas são identificadas através das tags \texttt{@c2vhdl:ASSERT} e \texttt{@c2vhdl:END} e a busca é realizado através destas tags. Ao ser encontrado a tag \texttt{@c2vhdl:ASSERT}, é realizado um \textit{loop} até que seja encontrada a tag \textbf{@c2vhdl:END} e com isso toda a assertiva inserida possa ser passada a função de busca das informações da assertiva contidas entre as tags apresentadas.
 
 \par
-Com a assertiva passada para a função de busca, é realizado a busca da condição, mensagem e severidade através das tags \textbf{--assert}, \textbf{--report} e \textbf{--severity} respectivamente. Esta informações são encontradas através do uso e uma Regex no código e que são adicionadas ao código C seguindo o modelo definido na macro. Este processo é repetido até outra assertiva ser encontrada ou caso chegue ao fina do código C.
+% Com a assertiva passada para a função de busca, 
+Com os dados das assertivas obtidos é realizado a busca da condição, mensagem e severidade através dos comandos \texttt{$--$assert}, \texttt{$--$report} e \texttt{$--$severity} respectivamente. Estas informações são encontradas através do uso e uma Regex no código e que são adicionadas ao código C seguindo o modelo definido na macro. Este processo é repetido até outra assertiva ser encontrada ou caso chegue ao fina do código C.
 
 \par
-Com a função \textit{\_\_ESBMC\_assume()} ocorre processo semelhante ao das assertivas. Utilizando novaente uma regex é realizado a busca por esta função no código e é retirado o comentário da mesma, desta forma a mesma passa a esta acessivél para o ESBMC, visto que a declaração da mesma já segue o modelo padrão a ser utilizado pelo ESBMC.
+Com a função \texttt{\_\_ESBMC\_assume()} ocorre processo semelhante ao das assertivas. Utilizando novamente uma regex que realiza a busca por esta função no código e é retirado o comentário da mesma, desta forma a mesma passa a esta acessivél para o ESBMC, visto que a declaração da mesma já segue o modelo padrão a ser utilizado pelo ESBMC.
 
 \par
-Durante a instrumentação de código também é realizado a entrada de sisnais não deterministicos, utilizando a função \_\_VERIFIER\_nondet\_int(). Esta função é utilizada em todas as variaveis de entrada e também nos sinais criados ao longo da arquitetura. Desta forma, todas as variavéis necessárias são inicializadas para verificação.
+Durante a instrumentação de código também é realizado a entrada de sinais não deterministicos para variaveis não inicializadas ou argumentos de funções do código C gerado da tradução, utilizando a função \texttt{\_\_VERIFIER\_nondet\_int()}. Esta função é utilizada em todas as variaveis de entrada e também nos sinais criados ao longo da arquitetura. Desta forma, todas as variavéis necessárias são inicializadas para verificação.
+
+\todo[inline]{Explicar o funcionamento do nondet com o ESBMC}
+
 \begin{figure}[htp]
 \caption{\label{fig:assert_c} Código com assertivas traduzida para linguagem C}
 	\begin{center}
@@ -463,17 +483,20 @@ do {
 \end{figure}
 
 \par
-Em outras palavras, na instrumentação de código é realizado a traduçao das assertivas do modelo utilizado no código VHDL para para o modelo utilizado em linguagem C, além como de outras funções que possam ser utilizados pelo VHDL. Ao final da instrumentação fica disponivél o código C para que possa ser entrada para outras ferramentas e não apenas o ESBMC.
+Em outras palavras, na instrumentação de código é realizado a traduçao das assertivas do modelo utilizado no código VHDL para para o modelo utilizado em linguagem C, além como de outras funções que possam ser utilizados pelo VHDL. Ao final da instrumentação o código C fica disponivel para que possa ser dado como entrada para outras ferramentas de verificação de código e não apenas o ESBMC.
 
 %=============================================
 %Verificação de assertvas usando model checker
 %=============================================
 \section{Verificação de assertivas usando \textit{Model Checker}}
-\par
-O \textit{Model checking} adotado no desenvolvimento de método é o ESBMC na versão 3.0.0 e conforme explicado na \autoref{cap:bounded}, esta ferramenta possui como entrada um código C ou C++ e devido a isso foi escolhida neste projeto. Nesta sessão será apresentado a etapa D da \autoref{fig:Fluxo_ferramenta}.
 
 \par
-Para a verificação, a primeira etapa é a busca das assertivas pela ferramenta, para isso é utilizado uma função e através desta a busca das claims, mais especificamente as claims que possuem assertivas, cada claim é identificada através de uma numeração de acordo com a ordem de busca do código analisado. Cada claim com assertivas encontrada é adicionada a uma lista para que seja realizada uma análise individual de cada claim como assertiva.
+O \textit{model checker} adotado no desenvolvimento de método é o ESBMC\todo{referência} na versão $3.0.0$ e conforme explicado na \autoref{cap:bounded}, esta ferramenta recebe como entrada um código C ou C$++$ e devido a isso foi escolhida neste projeto\todo{apresentar outras vantagens}. Nesta seção será apresentado a \textbf{etapa D} do métod proposto na \autoref{fig:Fluxo_ferramenta}.
+
+\par
+Para a verificação, a primeira etapa é a identificação das assertivas no código C analisado, para isso é utilizado uma opção do ESBMC (\texttt{$--$show-claims}), 
+% e através desta a busca das claims, 
+mais especificamente as assertivas instrumentadas no código C analisado. Cada assertiva é identificada através de uma numeração de acordo com a ordem de busca do código analisado. Cada assertiva encontrada é armazenada para que seja realizada uma análise individual de cada \textit{claim}, ou seja,  assertiva.
 
 \begin{figure}[H]
 \caption{\label{fig:codigo_claims} Código apresentando a função de busca das clains com assertivas.}
@@ -481,8 +504,8 @@ Para a verificação, a primeira etapa é a busca das assertivas pela ferramenta
     \begin{minipage}{0.99\textwidth}
     \begin{lstlisting}       
 VAR
-  contador: inteiro
-  claim: lista
+  contador: 	inteiro
+  claim: 	lista
   claim_string: string 
 
 FUNCAO call_esbmc: arquivo
@@ -494,9 +517,9 @@ FUNCAO call_esbmc: arquivo
     regex para procurar claim e numeracao da claim
     SE encontrar claim ENTAO
       regex para procurar a palavra "assertion"
-      SE encontrar a palavra "assention" ENTAO
+      SE encontrar a palavra "assertion" ENTAO
         contador+=1
-	      Adiciona a numeracao da claim na lista
+	Adiciona a numeracao da claim na lista
       FIM-SE
     FIM-SE
   FIM-ENQUANTO
@@ -508,13 +531,15 @@ FIM-FUNCAO
 \end{figure}
 
 \par
-A função apresenta a chamada da ferramenta ESBMC que ocorre na linha 9 da \autoref{fig:codigo_claims} e através da opção \textit{--show-claims} lista todas as claims presentes no texto, como apresentado na \autoref{fig:claims_assertivas}. Juntamente com a opção \textit{--show-claims} é utilizado as opções:
+Na Linha $9$ da \autoref{fig:codigo_claims} é apresentado a chamada da ferramenta ESBMC que ocorre e através da opção \texttt{$--$show-claims} lista todas as claims presentes no texto, como apresentado na \autoref{fig:claims_assertivas}. Como o ESBMC infere de forma automatica assertivas a serem verificadas no código. Visando isolar somente as assertivas instrumentadas pelo método proposto, juntamente com a opção \textit{--show-claims} é utilizado as opções:
 \begin{itemize}
-    \item \textbf{--no-pointer-check:} Onde não realiza a checagem de ponteiros no código;
-    \item \textbf{--no-div-by-zero-check:} Onde não realiza a checagem de divisões por zero no código.
-    \item \textbf{--no-bounds-check:} Onde não realiza a checagem de array bounds no código.
+    \item \texttt{$--$no-pointer-check:} para não realizar a checagem de ponteiros no código;
+    \item \texttt{$--$no-div-by-zero-check:} para não realizar a checagem de divisões por zero no código; e
+    \item \texttt{$--$no-bounds-check:} para não realizar a checagem de array bounds no código.
 \end{itemize}
-Com estas opções o número de claims geradas é reduzida e desta forma gerando um benificio ao programa, que realiza uma quantidade menor de checagem das claims. Com resultado gerado pelo ESBMC é realizado um busca pelas claims com assertivas e gerado uma lista com apenas com estas claims, para posterior análise individual delas.
+
+% Com estas opções o número de claims geradas é reduzida e desta forma gerando um benificio ao programa, que realiza uma quantidade menor de checagem das claims. 
+% Com resultado gerado pelo ESBMC é realizado um busca pelas claims com assertivas e gerado uma lista com apenas com estas claims, para posterior análise individual delas.
 \begin{figure}[H]
 	\begin{center}
     \caption{\label{fig:claims_assertivas}Imagem de claims contendo assertivas.}
@@ -522,14 +547,15 @@ Com estas opções o número de claims geradas é reduzida e desta forma gerando
 	\end{center}
     \legend{Fonte:Própria}
 \end{figure}
-\par
-Após a lista das claims com assetivas ser gerada, outra função, indicada na \autoref{fig:analise_claims}, é chamada para verificação de cada claim individualmente. Para cada claim, ocorre a chamada do ESBMC, utilizando as opções \textit{--no-pointer-check}, \textit{--no-div-by-zero-check} e \textit{--no-bounds-check}, juntamente com a opção \textit{--unwind} em que realiza o número de desdobramentos indicado nesta flag. 
 
 \par
-Contudo, dependendo da complexidade da assertiva, faz-se necessário aumentar o número de desdobramentos que, por padrão, serão dez. A função é chamada na linha 11 da \autoref{fig:analise_claims} e após a analise da claim é realizado a busca do resultado e exibição caso seja uma propriedade violada.
+Após a listagem das claims com assertivas ser gerada, outra função, indicada na \autoref{fig:analise_claims}, é chamada para verificação de cada claim individualmente. Para cada claim, ocorre a chamada do ESBMC, utilizando as opções \texttt{$--$no-pointer-check}, \texttt{$--$no-div-by-zero-check} e \texttt{$--$no-bounds-check}, juntamente com a opção \texttt{$--$unwind} em que realiza o número de desdobramentos dos laços no código analisado. 
 
 \par
-Desta forma o ESBMC realiza apenas a checagem necessária dentro da assertiva, evitando que outros parametros sejam verificados, sem a devida necessidade do mesmo. Ao final de todos os desdobramentos é apresentado o resultado,apresentado na \autoref{fig:resultado}, sendo positiva ou negativa, dependendo da assertiva e do código analisado. Este processo se repete até a lista de claims contendo assertiva ser finalizada.
+Contudo, dependendo da complexidade da assertiva, faz-se necessário aumentar o número de desdobramentos que, por padrão são dez, conforme análise experimentais. A função é chamada na Linha $11$ da \autoref{fig:analise_claims} e após a analise da claim é realizado a busca do resultado e exibição caso seja uma propriedade violada.
+
+\par
+Desta forma o ESBMC realiza apenas a checagem necessária dentro da assertiva, evitando que outros parâmetros sejam verificados, sem a devida necessidade do mesmo. Ao final de todos os desdobramentos é apresentado o resultado, apresentado na \autoref{fig:resultado}, sendo positiva (sem erros) ou negativa (com violação de propriedades), dependendo da assertiva e do código analisado. Este processo se repete até a lista de assertivas ser finalizada.
 \begin{figure}[H]
 \caption{\label{fig:analise_claims}Pseudocódigo da função de análise das claims.}
 	\begin{center}
@@ -568,3 +594,6 @@ FIM-FUNCAO
 	\end{center}
     \legend{Fonte:Própria}
 \end{figure}
+
+
+\todo[inline]{Ajustar os códigos, alguns estao muito grandes e com trechos desnecessário, não foi citado o link do repo da ferramenta}
