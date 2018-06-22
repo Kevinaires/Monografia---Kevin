@@ -237,15 +237,18 @@ Segundo \citeauthor{rocha2015verificaccao}, \textit{Bounded Model Checking} (BMC
 \textit{Bounded Model Checking} é uma técnica para a verificação de uma dada propriedade em uma determinada profundidade do sistema analisado. Logo, dado um sistema de transições M, uma propriedade $\phi$, e um limite (\textit{bound}) $k$, o BMC desenrola o sistema $k$ vezes e traduz o sistema em uma condição de verificação(CV) $\psi$ tal que $\psi$ é satisfeito se e somente se $\phi$ tem um contra-exemplo de profundidade menor ou igual a $k$ \cite{rocha2015verificaccao}.
 
 \par
-O \textit{Extended SMT-Based Bounded Model Checker} (ESBMC) é um \textit{Bounded Model Checking} baseado em satisfabilidade booleana (SAT\todo{Já tem suporte a SMT adicionar ao texto}) que permite verificação aritmética de overflow e undeflow, segurança de ponteiros, limite de array, de gerar propriedades de segurança em programas em C/C$++$. ESBMC utiliza uma versão modificada do CBMC no \textit{front-end} para analisar o código ANSI-C e para gerar as condições de verificação através de execução simbólica \cite{cordeiro2012smt,rocha2015verificaccao}.
+\textcolor{red}{O \textit{Extended SMT-Based Bounded Model Checker} (ESBMC) é um ferramenta que utiliza técnicas de \textit{Bounded Model Checking} e solucionadores SMT(\textit{Satisfiability Modulo Theories}) para verificação de programas em C/C$++$~\cite{rocha2015model}, permitindo a verificação aritmética de overflow e undeflow, segurança de ponteiros, limite de array e de gerar propriedades de segurança.\cite{cordeiro2012smt,rocha2015verificaccao}.} 
+%ESBMC utiliza uma versão modificada do CBMC no \textit{front-end} para analisar o código ANSI-C e para gerar as condições de verificação através de execução simbólica 
 
 \par
 No ESBMC, o programa analisado é modelado em um sistema de transição de estados, conforme a trupla: $M=(S,R,S_{0})$, o qual é gerado um grafo de controle de fluxo (GFC), onde $S$ representa o conjunto de estados, $R$ $\subseteq$ $SxS$ representa as transições e $S \subseteq S$ representa o conjuto de estados iniciais. Um estado $s \in S$ consiste no valor do contador de programa (PC) e os valores de todas as variáveis dos programas. O estado inicial $S_{0}$ atribui o inicio do programa GFC ao PC, desta forma o ESBMC identifica as transições, conforme a formula lógica, $\gamma$=($S_{i}$,$S_{i+1}$) que captura as retrições sobre os valores correspondntes do PC e das variáveis do programa~\cite{cordeiro2012smt}.
 
 \par
-Segundo o site do ESBMC\cite{esbmc}, a ferramenta permite ao usuário indicar propriedades adicionais\todo{Descrever quais propriedades o esbmc suporta} usando assertivas que também são verificadas. O ESBMC converte as condições usando diferentes técnicas de background\todo{apresentar exemplo} para posteriormente passar para verificador SMT. Outra vantagem é a ferramenta permitir verificação de software single-thread e multi-thread.
+\textcolor{red}{Segundo o site do ESBMC\cite{esbmc},} a ferramenta permite ao usuário indicar propriedades adicionais\todo{Descrever quais propriedades o esbmc suporta} usando assertivas que também são verificadas. O ESBMC converte as condições usando diferentes técnicas de background\todo{apresentar exemplo} para posteriormente passar para verificador SMT. Outra vantagem é a ferramenta permitir verificação de software single-thread e multi-thread.
 
-\todo[inline]{Descrever qual a razão da escolha para o trabalho, apresentar resultados do SV-COMP dos últimos 3 anos}
+
+\par
+\textcolor{red}{O motivo da escolha desta ferramenta, deve-se a mesma ter as funções necessárias para o desenvolvimento do método, como solucionadores SMT, além de premiação em competições, como o SV-COMP, sendo premiado com 2 medalhas de ouro e duas de bronze em 2015 e uma medalha de ouro e uma de prata em 2016~\cite{esbmc}.}
 
 %============================
 %REDES DE PETRI
@@ -253,10 +256,16 @@ Segundo o site do ESBMC\cite{esbmc}, a ferramenta permite ao usuário indicar pr
 \subsection{Redes de petri}
 
 \todo[inline]{Apresentar definição formal para RP}
+\par
 
 \todo[inline]{corrigir o texto abaixo RP não é uma ferramenta e sim um método de modelagem}
+%Em dois artigos apresenta "modelling tool"
 
-Redes de petri são utilizadas como ferramentas de modelagem gráfica com propriedades matemática. Como ferramenta gráfica são utilizadas como comunicação visual, como fluxogramas, por exemplo, e como ferramenta matemática podem configurar modelos matemáticos que regem o comportamento dos sistemas. A grade premissa desta ferramenta é descrever sistemas de processamento de informações caracterizados como concorrentes, assíncronos, distribuídos, paralelos, não deterministas e/ou estocásticos~\cite{murata1989petri}.
+%Redes de petri são utilizadas como ferramentas de modelagem gráfica com propriedades matemática. 
+\textcolor{red}{Redes de petri são redes baseadas em abstração que pode ser usado como método de modelagem, seja gráfica ou matemática\cite{halder2006}.}Como ferramenta gráfica são utilizadas como comunicação visual, como fluxogramas, por exemplo, e como ferramenta matemática podem configurar modelos matemáticos que regem o comportamento dos sistemas\cite{murata1989petri}. 
+
+\par
+A grade premissa desta  é descrever sistemas de processamento de informações caracterizados como concorrentes, assíncronos, distribuídos, paralelos, não deterministas e/ou estocásticos~\cite{murata1989petri}.
 
 \par
 As redes de petri são representados como grafos direcionais compostos por nós e arcos, conforme apresentado na \autoref{fig:rede_petri}. Os nós representam as transições e eventos e os arcos representam os pesos. Dentro desta representação, os arcos e eventos são componentes passivos enquanto as transições são ativos. A principal vantagem da utilização das redes de petri esta relacionado ao chamado "\textit{Token game}" que consiste no comportamento da rede de petri, em outras palavras, representa o funcionamento do sistema representado pela rede\cite{halder2006}.

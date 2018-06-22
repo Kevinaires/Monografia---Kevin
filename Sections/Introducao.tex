@@ -1,7 +1,7 @@
-\textcolor{red}{A complexidade de sistemas computacionais cresce exponencialmente.} \todo{Exemplificar este crescimento.} Muitas companhias e organizações estão rotineiramente lidando com software que contém milhares de linhas de código, escritos por diferentes pessoas, que usam linguagens distintas, ferramentas, estilos e hardware projetados de diversas formas e combinações \cite{hoder2011case}. 
+\textcolor{red}{A complexidade de sistemas computacionais cresce exponencialmente.} \todo{Exemplificar este crescimento.Pesquisar sobre o facebook} Muitas companhias e organizações estão rotineiramente lidando com software que contém milhares de linhas de código, escritos por diferentes pessoas, que usam linguagens distintas, ferramentas, estilos e hardware projetados de diversas formas e combinações \cite{hoder2011case}. 
 
 \par
-No contexto de sistemas compostos de hardware e software, tem-se os sistemas embarcados (SE) que são dispositivos semicondutores com software integrados, os quais se conectam a outros dispositivos. Usualmente, o principal propósito dos SE é o controle e provimento de informações para uma função específica \cite{ramesh2012energy}. 
+No contexto de sistemas compostos de hardware e software, tem-se os sistemas embarcados (SE) que são dispositivos semicondutores com software integrados, os quais se conectam a outros dispositivos. Usualmente, o principal propósito de um SE é o controle e provimento de informações para uma função específica \cite{ramesh2012energy}. 
 
 \par
 Os SE são extremamente interativos com seu ambiente, operam geralmente em tempo real e estão disponíveis continuamente. No entanto, estes sistemas, por possuírem um curto espaço de tempo para a liberação do produto ao mercado, precisam ser desenvolvidos rapidamente e atingir um alto nível de qualidade, mas, devido a esta necessidade, os programadores podem cometer enganos durante a fase de desenvolvimento destes sistemas.
@@ -22,7 +22,7 @@ Neste contexto, a \textit{VHSIC Hardware Description Language} (VHDL) é uma das
 Aliada à linguagem de descrição de hardware, a  verificação formal de sistemas computacionais tem desempenhado um papel importante para assegurar a previsibilidade e a confiabilidade na concepção de aplicações críticas. E, para isso, tem-se utilizado a técnica denominada \textit{model checking}, que é baseada em formalismos matemáticos para provar propriedades de programas reativos \cite{bensalem1999automatic}. Esta técnica gera uma busca exaustiva no espaço de estados do modelo para determinar se uma dada propriedade é válida ou não \cite{baier2008principles}, tendo como principal razão para o seu sucesso o funcionamento completamente automático, ou seja, sem qualquer intervenção do usuário.
 
 \par
-Visando contribuir com a verificação de sistemas embarcados no âmbito de sistemas computacionais, o contexto deste trabalho está situado no uso de metodologias e técnicas de verificação formal para programas escritos em VHDL \cite{biere2016aiger}, focando principalmente no \textit{Bounded Model Checking} \cite{cordeiro2012smt,rocha2015model}. Este trabalho está interessado especificamente na parte de: verificação de modelos de hardware descritos em níveis de circuitos de bits na linguagem VHDL, via transformações de código para gerar modelos (com assertivas) já suportados por \textit{model checkers}, como o ESBMC \cite{cordeiro2012smt}. 
+Visando contribuir com a verificação de sistemas embarcados no âmbito de sistemas computacionais, o contexto deste trabalho está situado no uso de metodologias e técnicas de verificação formal para programas escritos em VHDL \cite{biere2016aiger}, focando principalmente no \textit{Bounded Model Checking} \cite{cordeiro2012smt,rocha2015model}. Este trabalho está interessado especificamente na parte de verificação de modelos de hardware descritos em níveis de circuitos de bits na linguagem VHDL, via transformações de código para gerar modelos, com assertivas, já suportados por \textit{model checkers}, como o ESBMC \cite{cordeiro2012smt}. 
 
 \par
 Dessa forma, o trabalho almeja analisar as propriedades de alcançabilidade para a identificação de localizações de erro, bem como, assertivas contendo propriedades de segurança. A propriedade de alcançabilidade ou propriedade do estado de erro é satisfatória (SAT), se um estado de erro é alcançável. Caso contrário, a propriedade é considerada insatisfatória (UNSAT). No caso SAT, o \textit{model checking} também gera um rastreio da validação da propriedade (contra-exemplo), ou seja, uma sequência de estados que mostra como chegar ao erro a partir de um ponto inicial.
@@ -32,19 +32,28 @@ Dessa forma, o trabalho almeja analisar as propriedades de alcançabilidade para
 %===========================================================
 \section{Definição do problema}
 
-O avanço da tecnologia, principalmente nas áreas de design e fabricação de eletrônicos, aumentou a importância do hardware nos dias atuais. Cada vez com mais funcionalidades integradas, aliada a velocidade e circuitos menores, faz com que a complexidade dos sistemas de hardware aumente. Entretanto, devido à complexidade cada vez maior, a detecção tardia de erros no sistema pode resultar em perda de produção, mas também custos associados ao desenvolvimento do sistema\cite{gupta1992formal}. Devido a isso, a verificação de hardware visa assegurar que o circuito atinja as especificações para o qual foi projetado, através de técnicas formais ou dinâmicas \cite{boule2007efficient}.
+O avanço da tecnologia, principalmente nas áreas de design e fabricação de eletrônicos, aumentou a importância do hardware nos dias atuais. Cada vez com mais funcionalidades integradas, aliada a velocidade e circuitos menores, faz com que a complexidade dos sistemas de hardware aumente. Entretanto, %devido à complexidade cada vez maior
+por este motivo, a detecção tardia de erros no sistema pode resultar em perda de produção, mas também custos associados ao desenvolvimento do sistema \cite{gupta1992formal}. Sendo assim, a verificação de hardware visa assegurar que o circuito atinja as especificações para o qual foi projetado, através de técnicas formais ou dinâmicas \cite{boule2007efficient}.
 
 %Os erros durante o desenvolvimento de sistemas computacionais %tornaram-se mais comuns, em parte devido ao curto espaço de tempo de %sua liberação. Logo, é necessário que as aplicações sejam projetadas %considerando os requisitos de previsibilidade e confiabilidade, %principalmente em aplicações de sistemas embarcados críticos, onde %diversas restrições (por exemplo, tempo de resposta e precisão dos %dados) devem ser atendidas e mensuradas de acordo com os requisitos %do usuário, caso contrário uma falha pode conduzir a situações %catastróficas. 
 
 Por esta razão, a utilização de métodos formais tornou-se uma abordagem atraente para superar as limitações inerentes à validação baseada em simulação. Portanto, a maioria das empresas de semicondutores têm investigado a sua aplicabilidade. Escolhas individuais de métodos, ferramentas e áreas de aplicação das empresas têm variado, assim como o seu nível de sucesso~\cite{cabodi2016hardware}. Com os recentes avanços na escalabilidade de automação dos \textit{model checkers} e nas equivalências sequenciais de verificação, a maioria das empresas têm crescido ao contar com essas técnicas\cite{clarke2008birth}.
 
-O problema considerado neste trabalho é expresso na seguinte questão: \textbf{Como complementar e aprimorar a verificação de propriedades de segurança em circuitos lógicos, de tal forma que uma propriedade possa ser mapeada em um problema de alcançabilidade simbólica, ou seja, se é possível alcançar um estado específico (para uma dada propriedade) a partir do estado inicial?}
+O problema considerado neste trabalho é expresso na seguinte questão: \textbf{Como complementar e aprimorar a verificação de propriedades de segurança em circuitos lógicos, de tal forma que uma propriedade possa ser mapeada em um problema de alcançabilidade simbólica, ou seja, é possível alcançar um estado específico (para uma dada propriedade) a partir do estado inicial?}
+
+\todo[inline]{se somente a parte final fica em negrito}
 
 %===========================================================
 %OBJETIVOS GERAIS E ESPECIFICOS
 %===========================================================
+
 \section{Objetivos}
-O objetivo principal deste trabalho é projetar e avaliar um método para efetuar verificação de circuitos, de forma automática, descritos em VHDL com portas lógicas em nível de bit pela utilização de técnicas de transformação de códigos combinado com a técnica \textit{Bounded Model Checking} para exploração de estados alcançáveis no circuito, visando identificar erros ou comportamentos indevidos ou inesperados que podem resultar no funcionamento incorreto de um dado sistema.
+
+\todo[inline]{De forma automática}
+
+O objetivo principal deste trabalho é projetar e avaliar um método para efetuar a verificação de circuitos
+%, de forma automática,
+descritos em VHDL com portas lógicas em nível de bit pela utilização de técnicas de transformação de códigos combinado com a técnica \textit{Bounded Model Checking} para exploração de estados alcançáveis no circuito, visando identificar erros ou comportamentos indevidos ou inesperados que podem resultar no funcionamento incorreto de um dado sistema.
 
 Os objetivos específicos são:
 \begin{enumerate}
