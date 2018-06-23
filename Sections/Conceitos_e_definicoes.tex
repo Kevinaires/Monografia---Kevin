@@ -75,8 +75,6 @@ end dataflow.
 %VHDL
 %============================
 \subsection{\label{sec:vhdl_seção}VHSIC Hardware Description Language - VHDL}
-\todo[inline]{Revisar textos e verificar a necessidade de mais exemplo}
-
 VHDL é uma linguagem de descrição de hardware destinada a ser utilizada em todas as etapas da criação de sistemas eletrônicos, sendo elas: desenvolvimento; verificação; síntese; e, teste de circuitos~\cite{IEEEVHDLLanguage}.
 % 
 Segundo \cite{cappelattipraticando}, a VHDL apresenta três principais pilares: \textbf{abstração}, que consiste na descrição com diferentes níveis de detalhes; \textbf{modularidade}, que permite a divisão do projeto em vários blocos ou módulos para posterior interconexão; e \textbf{hierarquia}, \textcolor{red}{permite que módulos possam ser compostos por submódulos e, os mesmos tenham níveis de abstração diferentes, dependendo da necessidade do projeto.} Devido a esta versatilidade que a linguagem VHDL foi selecionada para o trabalho proposto.
@@ -197,7 +195,6 @@ Um diagrama de decisão binária(DDB) pode ser definido como um grafo aciclico p
     \legend{Fonte: \cite{clarke1994model}}
 \end{figure}
 
-\todo[inline]{Adicionar mais detalhes e descrever onde DDB é utilizado.}
 \par
 \textcolor{red}{O DDB permite o teste eficiente de satisfabilidade, validade e eficiência \cite{kropf2013introduction}. O uso e DDB em conjunto com \textit{Model Checking} e técnicas de abstração permitiu o aumento na capacidade de verificação, de modo que sistemas mais realistas podessem ser verificados\cite{biere2003bounded}}
 
@@ -254,22 +251,13 @@ No ESBMC, o programa analisado é modelado em um sistema de transição de estad
 %REDES DE PETRI
 %============================
 \subsection{Redes de petri}
-
-\todo[inline]{Apresentar definição formal para RP}
 \par
+\textcolor{red}{Um rede de petri, $N$ é um multigrafo direcionado, ponderado e bipartido, representado pela tupla $N=(P,T,I,O)$, onde $P$ representa um conjunto finito de estados; $T$ representa um conjunto finito de transições.; $I$ representa a função de entrada; e $O$ representa função de saída. Estas funções de entrada e saída determimam o fluxo dos token dentro da rede, sendo dos estados para as transições e das transisções para os estados~\cite{halder2006}.}
 
-\todo[inline]{corrigir o texto abaixo RP não é uma ferramenta e sim um método de modelagem}
-%Em dois artigos apresenta "modelling tool"
+%Em dois artigos apresenta "modelling tool" / método de modelagem
+\textcolor{red}{Redes de petri são redes baseadas em abstração que pode ser usado como método de modelagem, seja gráfica ou matemática~\cite{halder2006}.}Como ferramenta gráfica são utilizadas como comunicação visual, como fluxogramas, por exemplo, e como ferramenta matemática podem configurar modelos matemáticos que regem o comportamento dos sistemas\cite{murata1989petri}. 
 
-%Redes de petri são utilizadas como ferramentas de modelagem gráfica com propriedades matemática. 
-\textcolor{red}{Redes de petri são redes baseadas em abstração que pode ser usado como método de modelagem, seja gráfica ou matemática\cite{halder2006}.}Como ferramenta gráfica são utilizadas como comunicação visual, como fluxogramas, por exemplo, e como ferramenta matemática podem configurar modelos matemáticos que regem o comportamento dos sistemas\cite{murata1989petri}. 
-
-\par
-A grade premissa desta  é descrever sistemas de processamento de informações caracterizados como concorrentes, assíncronos, distribuídos, paralelos, não deterministas e/ou estocásticos~\cite{murata1989petri}.
-
-\par
-As redes de petri são representados como grafos direcionais compostos por nós e arcos, conforme apresentado na \autoref{fig:rede_petri}. Os nós representam as transições e eventos e os arcos representam os pesos. Dentro desta representação, os arcos e eventos são componentes passivos enquanto as transições são ativos. A principal vantagem da utilização das redes de petri esta relacionado ao chamado "\textit{Token game}" que consiste no comportamento da rede de petri, em outras palavras, representa o funcionamento do sistema representado pela rede\cite{halder2006}.
-
+\todo[inline]{Trocar imagem, murata agua}
 \begin{figure}[htb]
 	\begin{center}
     \caption{\label{fig:rede_petri}Rede de petri}
@@ -278,7 +266,14 @@ As redes de petri são representados como grafos direcionais compostos por nós 
     \legend{Fonte: \cite{halder2006}}
 \end{figure}
 
-\todo[inline]{Descrever o funcionamento da RP apresentado na IMG}
+\par
+A \autoref{fig:rede_petri} ilustra a reação quimica: $2H_20 + 0_2 \rightarrow 2H_2O$, onde existe dois token em cada estado inicial, representando que existem duas particulas de $H_2$ e $O_2$ em cada estado. O arco que liga o estado com $H_2$  transição $t$ tem peso 2, isso indica que é necessário dois token deste estado para transição, ocorrendo o mesmo da transição $t$ para o estado $H_2O$, e o estado com $0_2$ é necessário apena um tokem para transição.\cite{murata1989petri}.
+
+\par
+Na \autoref{fig:rede_petri}(a) apresenta os tokens todos no estado inicial e a operação pode ser realizada, pois os requisitos para a mesma estão disponivéis, desse caso dois token de $H_2$ e um token de $O_2$. Na \autoref{fig:rede_petri}(b), os tokens são passados a transição $t$ e formando $2H_2O$, seguindo o apresentado na formula. O peso da aresta de saída da transição para o estado seguinte tem peso 2, o que também pode ser realizado e passando dois tokens da transição para o estado $H_2O$\cite{murata1989petri}. 
+
+\par
+Após isso, nenhuma operação mais pode ser realizada, devido não conter tokens necessários para a realização da operação representada\cite{murata1989petri}. Esta operação realizada com os tokens é chamado de "\textit{Token game}" que consiste no comportamento da rede de petri, em outras palavras, representa o funcionamento do sistema representado pela rede\cite{halder2006}.
 
 \todo[inline]{Descrever quais propriedades podem ser verificadas com RP e onde será utilizado no seu trabalho.}
 
@@ -332,11 +327,7 @@ A lógica proposicional é uma linguagem formal onde é definida um alfabeto e c
 \item Alguém é bondoso.
 \end{enumerate}
 
-Na lógica preposicional, não poderiam ser analisadas, pois não teria como decompor ambas em sentença e assim não teria como analisar as diferenças entre ambas\cite{abe2002introducao}. Contudo, no exemplo:
-% 
-Existem cavalos com patas verdes. 
-% 
-A relação criada pela frase poderia a ser analisada pela lógica proposicional\cite{abe2002introducao}\todo{Descrever como seria está analise}.
+Na lógica preposicional, não poderiam ser analisadas, pois não teria como decompor ambas em sentença e assim não teria como analisar as diferenças entre ambas. Contudo, no exemplo: "Existem cavalos com patas verdes.", sentença determina que existem cavalos com a caracteristica ou proriedade de terem as patas verde. A relação criada pela frase poderia a ser analisada pela lógica proposicional\cite{abe2002introducao}.
 
 
 Segundo \citeauthor{souza2017logica}, alfabeto da lógica proposicional é formado por símbolo de pontuação, símbolos proposicionais e conectivos proposicionais, onde cada um apresenta uma função em específico, sendo:
@@ -368,9 +359,7 @@ Ainda segundo \citeauthor{souza2017logica}, existem as fórmulas que são consti
 %Property Specification Language - PSL
 %============================
 \subsection{Linguagem de especificação de propriedades}
-Linguagem de especificação de propriedades, do inglês \textit{Property Specification Language} - PSL, é uma notação formal para especificação de comportamento em sistemas eletrônicos, compatível com as linguagens VHDL, Verilog, SystemC e SystemVerilog\todo{Adicionar referência a cada Ling citada}. Destina-se a utilização para a especificação funcional, mas também para entrada de ferramentas de verificação. A especificação do PSL é a utilização de assertivas sobre propriedades de um sistema, sendo estas propriedades constituídas de três elementos: expressões boolenas, expressões sequenciais e operadores temporais~\cite{IEEEPSL}.
-
-\todo[inline]{Corrigir a apresentação da citação IEEE... estranho}
+Linguagem de especificação de propriedades, do inglês \textit{Property Specification Language} - PSL, é uma notação formal para especificação de comportamento em sistemas eletrônicos, compatível com as linguagens VHDL\cite{IEEEVHDLLanguage}, Verilog\cite{IEEEVerilogLanguage} e SystemC\cite{IEEESystemCLanguage}. Destina-se a utilização para a especificação funcional, mas também para entrada de ferramentas de verificação. A especificação do PSL é a utilização de assertivas sobre propriedades de um sistema, sendo estas propriedades constituídas de três elementos: expressões boolenas, expressões sequenciais e operadores temporais~\cite{IEEEPSL}.
 
 \par
 Segundo \cite{IEEEPSL}, o PSL foi totalmente desenvolvida com o intuito fornecer leitura e escrita de fácil entendimento, sintaxe concisa, semântica formal e rigorosamente bem definida e ser matematicamente precisa, visto a utilização da mesma em processo de verificação. 
@@ -601,7 +590,7 @@ A utilização de GAD corresponde na eliminação de qualquer nó raiz, ou seja,
     \legend{Fonte: \cite{aho2007compilers}}
 \end{figure}
 
-Na \autoref{fig:elimicacao_codigo}, supondo que os nós $a,b$ e $c$ estejam ativa, porém o nó é\todo{Corrigir nó é?} não esteja, o último pode ser eliminado imediatamente. Os nós restantes continuam no GDA, a menos que não tenho variáveis ativas atreladas aos nós~\cite{aho2007compilers}.
+Na \autoref{fig:elimicacao_codigo}, supondo que os nós $a,b$ e $c$ estejam ativa, porém o nó é não esteja, o último pode ser eliminado imediatamente. Os nós restantes continuam no GDA, a menos que não tenho variáveis ativas atreladas aos nós~\cite{aho2007compilers}.
 
 
 %============================
