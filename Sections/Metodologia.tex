@@ -1,5 +1,4 @@
 \label{chapter:metodo}
-
 Este Capítulo descreve o método proposto neste trabalho, baseado transformações de código para análise de circuitos lógicos descritos em VHDL utilizando 
 \textit{Bounded Model Checking}, neste caso o \textit{model checker} ESBMC.
 
@@ -21,12 +20,12 @@ consiste inicialmente em receber como entrada um circuito lógico descrito em VH
 \end{figure}
 
 
-Com o intuito de auxiliar nas explicações apresentadas nas próximas sessões, o código na \autoref{fig:code_exemplo} será utilizado nas explanações, bem como será apresentado todas as alterações do mesmo, conforme cada etapa do método.
+Com o intuito de auxiliar nas explicações apresentadas nas próximas sessões, o código na \autoref{fig:code_exemplo} será utilizado nas explanações, bem como será apresentado todas as alterações do mesmo, conforme cada etapa do método.  
 
 \begin{figure}[H]
 \caption{\label{fig:code_exemplo} Exemplo de código VHDL de ULA com portas \texttt{AND}, \texttt{OR} e \texttt{XOR}.}
 	\begin{center}
-    \begin{minipage}{0.6\textwidth}
+    \begin{minipage}{0.5\textwidth}
     \begin{lstlisting}       
 library ieee;
 use ieee.std_logic_1164.all;
@@ -86,10 +85,10 @@ END Ula_tcc_behavl;
     \legend{Fonte: Própria.}
 \end{figure}
 
+\textcolor{red}{O código apresenta um erro na \textbf{linha 18} e este é o ponto principal para análise do código e estudo do método. Na tabela verdade da porta AND, para que o valor resultado seja 1 é necessário que ambas as entradas seja 1, no código é apresentado entradas 1 e 0 para o resultado 1, assim tendo um erro de código.}
 %========================
-%Código VHDL e assertivas
+%Preprocessamento do VHDL e inserção de assertivas
 %========================
-\pagebreak
 \section{Preprocessamento do VHDL e inserção de assertivas}
 \label{cap:vhdl_assertivas}
 
@@ -102,9 +101,6 @@ Vale ressaltar que mesmo a linguagem VHDL tendo um modelo de assertivas padrão,
 
 \par
 \label{sec:assertiva_descricao} As assertivas manuais são adicionadas entre as tags \texttt{@c2vhdl:ASSERT} e \texttt{@c2vhdl:END} e todo trecho de código entre estas tags deve estar comentado, desta forma não apresentará erro na tradução do código em linguagem C, bem como na sintetização do código VHDL. Nas assertivas são incluidas as funções necessárias para a análise utilizando a ferramenta ESBMC. A assertiva apresenta três informações principais, sendo elas: condição, mensagem e gravidade.
-
-
-\todo[inline]{Ajustar está assertiva. Para quem não vê o código todo, ela não faz sentido}
 
 \begin{figure}[H]
 \caption{\label{fig:assertiva} Exemplo de assertiva para verificação de porta \texttt{XOR}.}
@@ -124,10 +120,10 @@ Vale ressaltar que mesmo a linguagem VHDL tendo um modelo de assertivas padrão,
 
 
 \par
-A condição (na linha $2$ da \autoref{fig:assertiva}) representa a assertiva propriamente dita e que será analisado pela aplicação. A condição será precedida de \texttt{$--$assert} e seguido ou não da palavra \texttt{not}, com isso a assertiva pode assumir valor negativo, conforme necessidade do usuário. Na \autoref{fig:assertiva} a assertiva busca verificar se a variavél \texttt{Resultado} terá valor igual a $1$\todo{Qual a razão para isso, explique!}. 
+A condição\textcolor{red}{, \textbf{linha $2$} da \autoref{fig:assertiva},} representa a assertiva propriamente dita e que será analisado pela aplicação. A condição será precedida de \texttt{$--$assert} e seguido ou não da palavra \texttt{not}, com isso a assertiva pode assumir valor negativo, conforme necessidade do usuário. Na \autoref{fig:assertiva} a assertiva busca verificar se a variavél \texttt{Resultado} terá valor igual a $1$, com isso ao caomparar o valor buscado pela assertiva e o gerado não final do código, ambos serão iguais, gerando a falha na verificação.
 
 \par
-A mensagem (\texttt{$--$report} na linha $3$ da \autoref{fig:assertiva}) é definida pelo usuário e será apresentado caso a assertiva apresente falha, assim a mensagem pode ser utilizada como um meio de depuração das propriedades validadas. A severidade (\texttt{severity} na linha $4$ da \autoref{fig:assertiva}) pode ser definida como \texttt{error}, que representa um erro fatal e parada da verificação. A severidade do tipo \texttt{warning} que representa um erro não fatal, contabiliza as falhas das assertivas, porém não causa a parada da verificação.
+A mensagem\textcolor{red}{, \textbf{linha $3$} da \autoref{fig:assertiva},} é definida pelo usuário e será apresentado caso a assertiva apresente falha, assim a mensagem pode ser utilizada como um meio de depuração das propriedades validadas. A severidade\textcolor{red}{, \textbf{linha $2$} da \autoref{fig:assertiva},} pode ser definida como \texttt{error}, que representa um erro fatal e parada da verificação. A severidade do tipo \texttt{warning} que representa um erro não fatal, contabiliza as falhas das assertivas, porém não causa a parada da verificação.
 % 
 As mensagens futuramente pode ser integradas um framework para teste de unidade, contudo está é uma etapa ainda em planejamento neste trabalho.
 
@@ -140,7 +136,7 @@ As mensagens futuramente pode ser integradas um framework para teste de unidade,
 Juntamente com as assertivas outra função que pode ser utilizada é a função \texttt{\_\_ESBMC\allowbreak{}\_assume()} suportada pelo model checker ESBMC. Esta função utilizada em conjuto com a ferramenta ESBMC permite que durante a verificação uma variavél possa ter uma valor setado durante o tempo de execução da verificação. A importância desta função é fazer verificações onde se conhece os valores de entrada juntamente com o valor resultante, por exemplo, na verificação de portas lógicas.
 
 \begin{figure}[H]
-\caption{\label{fig:assertiva} Exemplo de utilização da função \texttt{\_\_ESBMC\_assume()}.}
+\caption{\label{fig:assertiva_assume} Exemplo de utilização da função \texttt{\_\_ESBMC\_assume()}.}
 	\begin{center}
     \begin{minipage}{0.99\textwidth}
     \begin{lstlisting}       
@@ -417,7 +413,8 @@ Com a função \texttt{\_\_ESBMC\_assume()} ocorre processo semelhante ao das as
 \par
 Durante a instrumentação de código também é realizado a entrada de sinais não deterministicos para variaveis não inicializadas ou argumentos de funções do código C gerado da tradução, utilizando a função \texttt{\_\_VERIFIER\_nondet\_int()}. Esta função é utilizada em todas as variaveis de entrada e também nos sinais criados ao longo da arquitetura. Desta forma, todas as variavéis necessárias são inicializadas para verificação.
 
-\todo[inline]{Explicar o funcionamento do nondet com o ESBMC}
+\par
+Segundo, \citeonline{rocha2015verificaccao}, a função \texttt{\_\_VERIFIER\_nondet\_int()} tem a função de modelar valores inteiros não deterministicos e é importante no desenvolvimento do método, pois evita erros, onde dado estado do código não pode ser alcançado, devido a variável não inicializada.
 
 \begin{figure}[htp]
 \caption{\label{fig:assert_c} Código com assertivas traduzida para linguagem C}

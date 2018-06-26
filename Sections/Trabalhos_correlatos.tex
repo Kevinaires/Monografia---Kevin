@@ -1,14 +1,15 @@
 \label{chapter:correlatos}
+\textcolor{red}{O capítulo a seguir apresenta o método de pesquisa utilizado para o levantamento bibliográfico, os resultados e os artigos e suas contribuições para o desenvolvimento do projeto descrito no método proposto.}
 
 %==========================================================
 % REVISÃO SISTEMÁTICA
 %==========================================================
 \section{Revisão sistemática}
 \par
-A revisão sistemática consiste em um método de identificação, análise e interpretação de pesquisas relevantes em determinada área ou questão de pesquisa\cite{kitchenham2004procedures}. Aaplicação da revisão sistemática requer que seja seguido um conjunto bem definido e sequencial de passos e por conta disso é necessário um esforço considerável, se comparado a uma revisão informal a literatura\cite{MafraTravassos}.
+A revisão sistemática consiste em um método de identificação, análise e interpretação de pesquisas relevantes em determinada área ou questão de pesquisa\cite{kitchenham2004procedures}. A aplicação da revisão sistemática requer que seja seguido um conjunto bem definido e sequencial de passos e, por conta disso, é necessário um esforço considerável, se comparado a uma revisão informal a literatura\cite{MafraTravassos}.
 
 \par
-Vale ser observado que o objetivo do trabalho é realizar um estudo exploratório de caracterizaçõ de área, podendo asssim dizer que esta revisão sistemática se caracteriza como uma quasi-sistemática\cite{travassos2008environment}. Baseado nisso, as seguintes questões foram formuladas:
+Vale ser observado que o objetivo do trabalho é realizar um estudo exploratório de caracterização de área, podendo assim dizer que esta revisão sistemática se caracteriza como uma quasi-sistemática\cite{travassos2008environment}. Baseado nisso, as seguintes questões foram formuladas:
 \begin{itemize}
 \item \textbf{Q1:} Quais são os métodos para verificação de circuitos lógicos descritos na linguagem de programação VHDL?
 	\begin{itemize}
@@ -17,59 +18,55 @@ Vale ser observado que o objetivo do trabalho é realizar um estudo exploratóri
 	\item \textbf{Q1.3:} O método proposto é baseado em técnicas de verificação de software?
 	\item \textbf{Q1.4:} Como o método proposto valida pré e pós condições no programa?
 	\item \textbf{Q1.3:} Foi utilizado algum \textit{benchmark} de programas em VHDL para experimentação e o mesmo encontra-se disponível?
-	\item \textbf{Q1.4:} Quais as perspectivas futuras para melhorar da aplicação do método proposto?
+	\item \textbf{Q1.4:} Quais as perspectivas futuras para melhorar a aplicação do método proposto?
 	\end{itemize}
 \end{itemize}
 
 \par
-A biblioteca digital utilizada para pesquisa foi a Scopus, acessível em http://www.scopus.com, com uma base de mais de 22.800 títulos, abrangendo as áreas de trcnologia, medicina, ciências sociais e com atualizações diárias.
+A biblioteca digital utilizada para pesquisa foi a Scopus, acessível em http://www.scopus.com, que possui uma base de dados com mais de 22.800 títulos, abrangendo as áreas de tecnologia, medicina, ciências sociais, bem como, atualizações diárias em seus arquivos.
 
 \par
-Devido ao tempo necessário para realização completa de todas as etapas, apenas o primeiro filtro da revisão sistemática foi realizado. Em contrapartida, 5 artigos foram selecionados e serviram como ferramentas para estudo para o desenvolvimento deste projeto. Mais informações sobre como foi executado a revisão sistemática se encontra na \autoref{sec:ApendiceA}.
-%====================================
-%REVISÃO DA LITERATURA
-%====================================
-\section{Revisão da literatura}
-Nesta sessão serão apresentados trabalho relevantes para o desenvolvimento do método proposto que foram identificados utlizando a revisão sistemática mencionado anteriormente. Os artigos apresentam técnicas de transformações de código, utilização de \textit{Assertion-Based Verification} e PSL para verificação de hardware.
+Devido ao tempo necessário para realização completa de todas as etapas, apenas o primeiro filtro da revisão sistemática foi realizado. Em contrapartida, cinco artigos foram selecionados e servirão como ferramentas de estudo para o desenvolvimento deste projeto. Mais informações sobre como foi executada a revisão sistemática se encontra na \autoref{sec:ApendiceA}. Os cinco artigos selecionados serão apresentados nas seções a seguir. Estes trabalhos são relevantes para o desenvolvimento do método proposto. 
 
 %===============================
 %V2C - A verilog to C translator
 %===============================
-\subsection{V2c-A verilog to C translator}
+\section{V2c-A verilog to C translator}
 
-O artigo de \citeauthor{mukherjee2016v2c} apresenta uma ferramenta implementada em C++ chamada \texttt{v2c} para transformação de código da linguagem de descrição Verilog para linguagem de programação C. A ferramenta é executada a nível de palavra, visto que esta abordagem garante uma aumento na escalabilidade, mas também proporionando que técnicas, como interpolação\todo{adicionar referência} e aceleração de loop\todo{adicionar referência} possam ser utilizadas para verificação, algo inviavél, caso a tradução fosse executada a nível de bit. O sistema recebe como entrada um código em Verilg, onde são aplicadas regras semânticas e mapeando os bit de operação, chamado software \textit{netlist}. Após isso, o código intermediário é convertido para C.
+O artigo de \citeauthor{mukherjee2016v2c} apresenta uma ferramenta implementada em C++ chamada \texttt{v2c}, utilizada na transformação de código da linguagem de descrição Verilog para a linguagem de programação C. A ferramenta é executada a nível de palavra, visto que, esta abordagem garante uma aumento na escalabilidade, mas também proporcionando que técnicas, como a interpolação\cite{beyer2011cpachecker}, possam ser utilizadas para verificação, algo inviável, caso a tradução fosse executada a nível de bit. \textcolor{red}{O sistema recebe como entrada um código em Verilog, onde são aplicadas regras semânticas e mapeados os bit de operação, é gerado um código em linguagem C a nível de palavra chamado software \textit{netlist}.} 
 
 \par
-A contribuição deste trabalho\todo{Qual trabalho?} consiste na utilização de transformações de código como base principal e partindo deste pressuposto torna-se vantajoso devido a utilização de outras ferramentas que não apresente suporte a certas linguagens, tais com a ferramenta ESBMC, utilizada neste trabalho, não apresenta suporte a VHDL, porém apresenta suporte as linguagens C/C++. Em outras palavras, a contribuição deste trabalho\todo{Qual trabalho?} foi a utilização de traduções de códigos e utilizado este conceito como modelo de entrada para analise de circuitos.
+A contribuição do trabalho de \cite{mukherjee2016v2c} consiste na utilização de transformações de código como base principal e, partindo deste pressuposto, torna-se vantajoso devido a utilização de outras ferramentas que não apresente suporte a certas linguagens. Tais como a ferramenta ESBMC, utilizada neste trabalho, que não apresenta suporte a VHDL, porém apresenta suporte as linguagens C/C++, em outras palavras, \textcolor{red}{a principal contribuição de tal artigo foi a utilização de traduções de códigos e utilização deste conceito como ponto de partida para a análise de circuitos desenvolvidos no método.}
 
 % ====================================================
 %Unbounded safety verification for hardware using software analyzers
 % ====================================================
-\subsection{Unbounded safety verification for hardware using software analyzers}
-No artigo de \citeauthor{mukherjee2016unbounded} foi apresentado uma metodologia que aborda a utilização de técnicas e analisadores de software, com o objetivo de 
-% utiliação analises de hardware e software para
-de abordar a análise de circuitos e com isso trançar um paralelo entre as abordagens. Para testes foram utilizadas três metodologias de análise, usando interpolação\todo{adicionar referência}, \textit{k-induction}\todo{adicionar referência} e tecnologias hibrídas. Como resultante dos testes, foi observado as principais causas de erros, por exemplo, bits não preciso e no caso das operações a \textit{bit-level} ocorria perda de informações. Também foi obeservado que apesar de não serem otimizadas para análises de hardware, alguns analisadores de softaware podem, dependendo da técnica utilizada no analisador, ser utilizada para analise de hardware\todo{Descrever qual o motivo.}.
+\section{Unbounded safety verification for hardware using software analyzers}
+No artigo de \citeauthor{mukherjee2016unbounded} foi apresentado uma metodologia que aborda a utilização de técnicas e analisadores de software, com o objetivo de abordar a análise de circuitos e, com isso, traçar um paralelo entre as abordagens. Para testes, foram utilizadas três metodologias de análise usando interpolação:\cite{beyer2011cpachecker} interpolação abstrata\cite{blanchet2003static}, \textit{k-induction}\cite{donaldson2011software} e tecnologias híbridas. 
 
 \par
-A utilização de técnicas de análise de software para o desenvolvimento de análise de \textit{hardware} é o foco a ser abordado neste neste trabalho de maneira prática, utilizando os princípio analisados por \cite{mukherjee2016unbounded}. Neste contexto, o objetivo deste trabalho é a utilização de técnicas de software para análise de circuitos, diferente do artigo apresentado acima que busca utilização uma abordagem mais complexa provando a possibilidade da utilização de técnicas de analise de software no contexto da verificação de hardware.
+\textcolor{red}{Como resultado dos testes, foram observadas as principais causas de erros, como por exemplo, bits não precisos e, no caso das operações a \textit{bit-level}, ocorria a perda de informações.Também foi observado que apesar de não serem otimizados para análises de hardware, alguns analisadores de software podem, dependendo da técnica utilizada no analisador, serem utilizados para análise de hardware\cite{mukherjee2016unbounded}.}
 
-\todo[inline]{A última frase está confusa, no meu entedimento é o mesmo sentido.}
+\par
+\textcolor{red}{O fato de analisadores de software possuírem a capacidade de utilizar hardware, deve-se ao uso de técnicas de análise a nível de bit. Contudo, estas análises são menos precisas e menos testadas em software, além de usarem abstrações numéricas, o que gera perda de informações e, por isso, a grande quantidade de resultados errados gerados.\cite{mukherjee2016unbounded}.}
+
+\par
+A utilização de técnicas de análise de software para o desenvolvimento de análise de \textit{hardware} é o foco a ser abordado neste trabalho de maneira prática, utilizando os princípios analisados por \cite{mukherjee2016unbounded}. Neste contexto, utilizando um \textit{Bounded model checking}, como o ESBMC, é possível utilizar técnicas como \textit{k-induction} para a análise conforme apresentado no artigo.
 
 % ====================================================
 %Formal verification of timed VHDL programs
 % ====================================================
-\subsection{Formal verification of timed VHDL programs}
-No trabalho apresentado por \citeauthor{bara2010formal} é proposto uma abordagem para a análise de tempo relacionado a cada porta lógica dentro de um dado circuito analisado. A abordagem apresenta a tradução de um circuito lógico codificado em VHDL para um formalismo baseado em automato de tempo\todo{referência}. Tal formalismo é representado por uma automato de estados finitos com relogios simbólicos que evoluem em taxa uniforme. A tradução é executada de modo automatico, baseado na emulação da propagação de cada transação ao longo de cada sinal, o seja, são automatos programados e cronometrados do circuito. Após a tradução para automato, a analise é feita pela ferramenta UPPAL\todo{referência} que é um \textit{model checking} de verificação de propriedades de tempo. Seguindo esta metodologia a análise pode ser extraida de modo independente de cada bloco, desta forma a análise é feita de forma mais precisa, podendo ser analisado inumeros fatores, tais como limites de intervalo e sinal de correlação.
+\section{Formal verification of timed VHDL programs}
+No trabalho apresentado por \citeonline{bara2010formal} é proposta uma abordagem para a análise de tempo, relacionada a cada porta lógica dentro de um dado circuito analisado. A abordagem apresenta a tradução de um circuito lógico codificado em VHDL, para um formalismo baseado em autômato de tempo\cite{alur1994theory}. Tal formalismo é representado por um autômato de estados finitos, com relógios simbólicos que evoluem em taxa uniforme. A tradução é executada de modo automático, baseada na emulação da propagação de cada transação ao longo de cada sinal, ou seja, são autômatos programados e cronometrados do circuito. Após a tradução para autômato, a análise é feita pela ferramenta UPPAL\cite{larsen1997uppaal} que é um \textit{model checking} de verificação de propriedades de tempo. Seguindo esta metodologia, a análise pode ser extraída de modo independente de cada bloco, desta forma, a análise é feita de modo mais preciso, podendo ser analisados inúmeros fatores, tais como limites de intervalo e sinal de correlação.
 
 \par
-O artigo apresenta uma abordagem de tempo, que torna-se interessante adição ao método. Porém até o momento a função não foi implementada ficando a trabalho futuros.
-\todo[inline]{Expandir o texto acima, exemplo, descrever como o método poderia ser incluindo no seu TCC.}
+O artigo de \citeonline{bara2010formal} apresenta uma abordagem interessante que pode ser adicionado ao método, pois além da utilização da linguagem VHDL, também apresenta um novo modelo de análise, baseado na utilização de autômato de tempo para verificação de circuitos e, desta forma, identificar a estabilidade dos sinais de entrada e saída baseados nos \textit{delays} das portas do circuito.
 
 % ====================================================
 %On the use of assertions for embedded-software dynamic verification
 % ====================================================
-\subsection{On the use of assertions for embedded-software dynamic verification}
-Em \citeauthor{di2012use} é apresentado uma metodologia para a integração dinamica de \textit{Assertion-Based Verification} para várias fases da análise da verificação de fluxo em sistemas embarcados, por exemplo, emulação, diagnosticos e \textit{Debug}, mas também um ferramenta chamada \textit{RadCheck}. O metodo de aplicação, chamado \textit{V-model} é dividido em fases de verificação em paralelo com as fases de \textit{design} do circuito. Com base no \textit{V-model}, o método é aplicado, iniciando com o nível de sistema e as especificação do sistema, neste caso especificado usando PSL. Neste nível é especificado todas as funcionalidades gerais da aplicação. No nível de integração visa investigar problemas de interação que possam ocorrer, definindo propriedades que cobrem incrementalmente as unidades estruturais interativas de aplicação. No nível de unidade descrevem comportamentos internos e são definidas através de parâmetros de entrada/saída das unidade e estruturas de dados internas.
+\section{On the use of assertions for embedded-software dynamic verification}
+Em \citeauthor{di2012use} é apresentado uma metodologia para a integração dinâmica de \textit{Assertion-Based Verification} para várias fases da análise da verificação de fluxo em sistemas embarcados, por exemplo, emulação, diagnósticos e \textit{Debug}, mas também um ferramenta chamada \textit{RadCheck}. O método de aplicação, chamado \textit{V-model} é dividido em fases de verificação em paralelo com as fases de \textit{design} do circuito. Com base no \textit{V-model}, o método é aplicado, iniciando com o nível de sistema e as especificação do sistema, neste caso especificado usando PSL. Neste nível é especificado todas as funcionalidades gerais da aplicação. No nível de integração visa investigar problemas de interação que possam ocorrer, definindo propriedades que cobrem incrementalmente as unidades estruturais interativas de aplicação. No nível de unidade descrevem comportamentos internos e são definidas através de parâmetros de entrada/saída das unidades e estruturas de dados internas.
 
 \par
 A contribuição deste projeto está relacionado a utilização de assertivas no contexto da verificação de software. As assertivas são o principal meio de análise proposto neste projeto, visto que estas mesma assertivas serão analisadas pelo ESBMC. Aliado a isso em \citeauthor{di2012use} é apresentado modelos de utilização de assertivas no processo de verificação de hardware, e tais assertivas foram adaptadas para um modelo proposto neste trabalho.
@@ -77,11 +74,9 @@ A contribuição deste projeto está relacionado a utilização de assertivas no
 % ====================================================
 %Incorporating efficient assertion checkers into hardware emulation
 % ====================================================
-\subsection{Incorporating efficient assertion checkers into hardware emulation}
+\section{Incorporating efficient assertion checkers into hardware emulation}
 \par
-No trabalho de \citeauthor{boule2005incorporating} é apresentado uma ferramenta de geração de assertivas no contexto da emulação de circuitos, de modo que estas assertivas descrita em PSL possam transformadas para o modelo de linguagem de descrição de hardware. Inicialmente é realizada toda análise de cada assertiva e a mesma é traduzida em partes, levando em consideração os operadores e cada estrutura, por exemplo \texttt{if-else}, utilizado na declaração da assertiva.
-
-\todo[inline]{Apresentar um exemplo para explicar o texto acima}
+No trabalho de \citeauthor{boule2005incorporating} é apresentado uma ferramenta de geração de assertivas no contexto da emulação de circuitos, de modo que estas assertivas descrita em PSL possam transformadas para o modelo de linguagem de descrição de hardware. \textcolor{red}{As instruções são transformadas percorrendo a \textit{parse tree} na qual estão armazenadas. Cada sub-expressão é conectada recursivamente pelo uso de pré-condição e resultado, desta forma se determinado nó na \textit{parse tree} aceita um sinal de pré-condição de seu pai, se transforma recursivamente no circuito adequado e, em seguida, retorna o sinal de resultado para o pai.}\todo{Não sei se o texto melhorou, mas no artigo não é apresentado nenhum exemplo que de para utilizar, apenas a tabela final com os resultados. Este artigo na minha opinião é o menos relevante entre os apresentados, pelo menos no momento.}
 
 \par
-trabalho de \citeauthor{boule2005incorporating} consolida e apresenta aspectos importantes, tais como a utilização de uma ferramenta para geração de assertivas, o que torna-se no contexto deste projeto, extremamente importante, visto que o modelo adotado atualmente consiste tanto na geração automática das assertivas, bem como a inserção manual por parte do usuário.
+O trabalho de \citeauthor{boule2005incorporating} consolida e apresenta aspectos importantes, tais como a utilização de uma ferramenta para geração de assertivas, o que torna-se no contexto deste projeto, extremamente importante, visto que o modelo adotado atualmente consiste tanto na geração automática das assertivas, bem como a inserção manual por parte do usuário.

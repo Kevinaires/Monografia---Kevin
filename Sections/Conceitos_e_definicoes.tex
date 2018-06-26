@@ -9,7 +9,7 @@ Este capítulo tem apresenta os principais conceitos e definições abordados ne
 As linguagens de descrição de hardware (HDL) foram desenvolvidas com o intuito de auxiliar a criação de circuitos lógicos com grande número de elementos e com uma gama de abstrações lógicas e eletrônicas~\cite{thomas2008verilog}. \textcolor{red}{Entre os exemplos, podemos citar: \textit{VDHL}~\cite{IEEEVHDLLanguage}, \textit{Verilog}~\cite{IEEEVerilogLanguage} e \textit{SystemC}~\cite{IEEESystemCLanguage}.}
 
 \par
-Segundo~\citeauthor{christen1999vhdl},\citeyear{christen1999vhdl}, linguagens de descrição de hardware são linguagens de programação utilizadas com o intuito de descrever o comportamento de um determinado circuito, técnica conhecida como modelagem. Os modelos descritos em HDL são utilizados como entrada para um simulador, onde o mesmo pode ter seu comportamento analisado.
+Segundo~\citeonline{christen1999vhdl}, linguagens de descrição de hardware são linguagens de programação utilizadas com o intuito de descrever o comportamento de um determinado circuito, técnica conhecida como modelagem. Os modelos descritos em HDL são utilizados como entrada para um simulador, onde o mesmo pode ter seu comportamento analisado.
 
 \par
 As HDL's trazem consigo diversas vantagens, entre elas códigos independentes de tecnologia e fabricante, podendo ser portáteis e reutilizáveis \cite{cappelattipraticando}. As linguagens mais modernas, tais como VHDL e \textit{Verilog}, possuem suporte tanto a descrição do circuito propriamente dito, quanto ao comportamento que o mesmo deve exercer \cite{christen1999vhdl}.
@@ -77,12 +77,12 @@ end dataflow.
 \subsection{\label{sec:vhdl_seção}VHSIC Hardware Description Language - VHDL}
 VHDL é uma linguagem de descrição de hardware destinada a ser utilizada em todas as etapas da criação de sistemas eletrônicos, sendo elas: desenvolvimento; verificação; síntese; e, teste de circuitos~\cite{IEEEVHDLLanguage}.
 % 
-Segundo \cite{cappelattipraticando}, a VHDL apresenta três principais pilares: \textbf{abstração}, que consiste na descrição com diferentes níveis de detalhes; \textbf{modularidade}, que permite a divisão do projeto em vários blocos ou módulos para posterior interconexão; e \textbf{hierarquia}, \textcolor{red}{permite que módulos possam ser compostos por submódulos e, os mesmos tenham níveis de abstração diferentes, dependendo da necessidade do projeto.} Devido a esta versatilidade que a linguagem VHDL foi selecionada para o trabalho proposto.
+Segundo~\citeonline{cappelattipraticando}, a VHDL apresenta três principais pilares: \textbf{abstração}, que consiste na descrição com diferentes níveis de detalhes; \textbf{modularidade}, que permite a divisão do projeto em vários blocos ou módulos para posterior interconexão; e \textbf{hierarquia}, \textcolor{red}{permite que módulos possam ser compostos por submódulos e, os mesmos tenham níveis de abstração diferentes, dependendo da necessidade do projeto.} Devido a esta versatilidade que a linguagem VHDL foi selecionada para o trabalho proposto.
 
 \par
-Segundo \citeauthor{IEEEVHDLLanguage},\citeyear{IEEEVHDLLanguage}, é necessário um padrão para formatação da descrição em VHDL: \textit{Entity} (Pinos de entrada/saída) e \textit{Architecture} (Arquitetura). A \textit{Entity} ou entidade representa o bloco onde são declaradas as entradas e as saídas do circuito utilizadas em todo o sistema, conforme apresentado na \autoref{fig:biblioteca_entidade}. A \textit{Architecture} ou arquitetura, apresentado na \autoref{fig:arquitetura}, define a relação entre entradas e saídas declaradas na entidade, podendo tais especificações serem completas ou parciais. Assim como em outras linguagens, bibliotecas podem ser adicionadas, para que novas funções e atributos possam ser utilizados no projeto.
+Segundo \citeonline{IEEEVHDLLanguage}, é necessário um padrão para formatação da descrição em VHDL: \textit{Entity} (Pinos de entrada/saída) e \textit{Architecture} (Arquitetura). A \textit{Entity} ou entidade representa o bloco onde são declaradas as entradas e as saídas do circuito utilizadas em todo o sistema, conforme apresentado na \autoref{fig:biblioteca_entidade}. A \textit{Architecture} ou arquitetura, apresentado na \autoref{fig:arquitetura}, define a relação entre entradas e saídas declaradas na entidade, podendo tais especificações serem completas ou parciais. Assim como em outras linguagens, bibliotecas podem ser adicionadas, para que novas funções e atributos possam ser utilizados no projeto.
 
-\begin{figure}[!htp]
+\begin{figure}[H]
 \caption{\label{fig:biblioteca_entidade} Exemplo de declaração de bibliotecas e entidade.}
 	\begin{center}
     \begin{minipage}{0.6\textwidth}
@@ -119,24 +119,23 @@ END behavioral;
 
 
 
-Segundo \citeauthor{cappelattipraticando},\citeyear{cappelattipraticando} uma descrição em VHDL pode conter diferentes níveis de abstração:
+Segundo \citeonline{cappelattipraticando}, uma descrição em VHDL pode conter diferentes níveis de abstração:
 \begin{itemize}
-  \item \textbf{Comportamental:} Permite descrever o circuito através de laços e processos. O circuito é definido em forma de um algoritmo, utilizando construção similares as utilizadas em linguagem de programação.
+  \item \textbf{Comportamental:} Permite descrever o circuito através de laços e processos. O circuito é definido em forma de um algoritmo, utilizando construção similares às utilizadas em linguagem de programação.
   
   \item \textbf{Transferência de registradores:} Englobando a representação do dispositivo em nível de transferência entre registradores, que consiste na utilização de funções lógicas combinacionais e de registradores.
   
   \item \textbf{Estrutural:} O circuito é descrito mais próximo da implementação real, podendo ser definidas portas lógicas com atrasos unitários ou com atrasos detalhados.
 \end{itemize}
 
-
 %============================
 %PORTAS LÓGICAS
 %============================
 \subsection{Portas lógicas}
 
-\textcolor{red}{Segundo \cite{idoeta1982elementos},} o conceito de portas lógicas é baseado na conhecida álgebra de Boole ou álgebra booleana, desenvolvida pelo matemático inglês George Boole em 1854. A álgebra booleana é representada por apenas dois valores, sendo eles o $0$ e $1$ e, através disso, expressa a relação entre entrada e saída dentro de um circuito. As portas lógicas podem ser construídas a partir de diodos, \textcolor{red}{transistores} e resistores interconectados de modo que a saída seja o resultante de uma operação lógica básica realizada sobre as entradas \cite{tocci2003sistemas}. A \autoref{fig:algebra_booleana} apresenta um exemplo de álgebra booleana sem a utilização de diagramas.
+\textcolor{red}{Segundo \citeonline{idoeta1982elementos},} o conceito de portas lógicas é baseado na conhecida álgebra de Boole ou álgebra booleana, desenvolvida pelo matemático inglês George Boole em 1854. A álgebra booleana é representada por apenas dois valores, sendo eles o $0$ e $1$ e, através disso, expressa a relação entre entrada e saída dentro de um circuito. As portas lógicas podem ser construídas a partir de diodos, \textcolor{red}{transistores} e resistores interconectados de modo que a saída seja o resultante de uma operação lógica básica realizada sobre as entradas \cite{tocci2003sistemas}. A \autoref{fig:algebra_booleana} apresenta um exemplo de álgebra booleana sem a utilização de diagramas.
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
 	\begin{center}
     \caption{\label{fig:algebra_booleana}Exemplo de algebra booleana, onde A=0, B=1, C=1 e D=1.}
 	\includegraphics[scale=0.70]{Figuras/algebra_booleana.png}
@@ -145,7 +144,7 @@ Segundo \citeauthor{cappelattipraticando},\citeyear{cappelattipraticando} uma de
 \end{figure}
 
 \par
-Ainda segundo \citeauthor{tocci2003sistemas},\citeyear{tocci2003sistemas}, devido a esta característica, a álgebra booleana possui três operações básicas, \textit{OR} (ou), \textit{AND} (e) e \textit{NOT} (não). Tal conjunto de operações também é denominado de operações booleanas e, por meio da utilização de tabelas verdade é possível descrever as saídas baseando-se nas entradas e na operação aplicada. Cada operação booleana possui sua tabela verdade (~\autoref{fig:exemplo_diagrama}), bem como sua representação em forma de diagrama.
+Ainda segundo \citeonline{tocci2003sistemas}, devido a esta característica, a álgebra booleana possui três operações básicas, \textit{OR} (ou), \textit{AND} (e) e \textit{NOT} (não). Tal conjunto de operações também é denominado de operações booleanas e, por meio da utilização de tabelas verdade é possível descrever as saídas baseando-se nas entradas e na operação aplicada. Cada operação booleana possui sua tabela verdade (~\autoref{fig:exemplo_diagrama}), bem como sua representação em forma de diagrama.
 
 \begin{figure}[H]
 	\begin{center}
@@ -166,28 +165,28 @@ Ainda segundo \citeauthor{tocci2003sistemas},\citeyear{tocci2003sistemas}, devid
 A \autoref{fig:exemplo_circuito} apresenta um circuito lógico formado pelas portas básicas da álgebra booleana. O circuito apresenta três entradas representadas pelas letras A, B e C, mas também formada por duas portas \textit{AND}, uma porta \textit{NOT} e uma porta \textit{OR}. Cada uma destas portas representando operações a serem realizadas, podendo receber como entrada um valor inicial ou resultante de outra porta, como no exemplo ocorre com a última porta \textit{AND}.
 
 \par
-\textcolor{red}{Entetanto, segundo \cite{kropf2013introduction}, a análise de circuitos é extremamente complexa, resultando em um problema \textbf{NP-Completo}, algoritmos possuem tempo de execução exponencial. Contudo, este tempo de execução exponencial é uma complexidade exponencial para o pior caso, resultando crescimento exponencial da execução a medida que o tamanho do problema aumenta.}
+\textcolor{red}{Entretanto, segundo \citeonline{kropf2013introduction}, a análise de circuitos é extremamente complexa, resultando em um problema \textbf{NP-Completo}, algoritmos possuem tempo de execução exponencial. Contudo, este tempo de execução exponencial é uma complexidade exponencial para o pior caso, resultando crescimento exponencial da execução a medida que o tamanho do problema aumenta.}
 
 \par
-\textcolor{red}{Ainda, segundo \cite{kropf2013introduction} a avaliação das funções booleanas podem ser verdadeiras(True) ou falso(False), com isso, para um função com \textit{n} variáveis, apresenta $2^{n}$ possibilidades de avaliação. Utilizando o exemplo da \autoref{fig:exemplo_circuito} que apresenta 3 entradas, logo apresenta 8 possibilidade de avaliação ao final e este número aumenta à medida que o número de variáveis tambeḿ aumenta}
- 
+\textcolor{red}{Ainda, segundo \citeonline{kropf2013introduction} a avaliação das funções booleanas podem ser verdadeiras(True) ou falso(False), com isso, para um função com \textit{n} variáveis, apresenta $2^{n}$ possibilidades de avaliação. Utilizando o exemplo da \autoref{fig:exemplo_circuito} que apresenta 3 entradas, logo apresenta 8 possibilidade de avaliação ao final e este número aumenta à medida que o número de variáveis tambeḿ aumenta}
 
 %============================
 %VERIFICAÇÃO DE SISTEMAS
 %============================
 \section{Verificação de sistemas}
- No contexto de verificação de sistemas, faz-se necessário a diferenciação entre verificação e validação. Verificação e validação possuem o intuíto de mostrar que determinado sistema funcione conforme o especificado, além de satisfazer as especificações do cliente~\cite{sommerville2011engenharia}. 
+ No contexto de verificação de sistemas, faz-se necessário a diferenciação entre verificação e validação. Verificação e validação possuem o intuito de mostrar que determinado sistema funcione conforme o especificado, além de satisfazer as especificações do cliente~\cite{sommerville2011engenharia}. 
 
 \par
-Segundo~\cite{sargent2005verification}, verificação é o processo de determinar se um modelo computacional obtido por discretização de um modelo matemático de um evento físico e o código que implementa o modelo computacional pode ser usado para representar o modelo matemático do evento com precisão suficiente e validação é o processo de determinar se um modelo matemático de um evento físico representa o evento físico real com precisão suficiente.
+Segundo~\citeonline{sargent2005verification}, verificação é o processo de determinar se um modelo computacional obtido por discretização de um modelo matemático de um evento físico e o código que implementa o modelo computacional pode ser usado para representar o modelo matemático do evento com precisão suficiente e validação é o processo de determinar se um modelo matemático de um evento físico representa o evento físico real com precisão suficiente.
 
 \par
-A verificação consite identificação de erros e provavéis problemas que um componente pronto possa apresentar, enquanto a validação busca analisar se tal componete esta seguindo os requisitos pré-definidos para sua construção~\cite{koscianski2007qualidade}. O teste de programa, na qual o software  é executado com dados de teste é a principal forma de validação, porém, tecnicas de verificação, tais como, inspeção e revisões também podem integrar a etapa de validação~\cite{sommerville2011engenharia}.
+A verificação consiste identificação de erros e prováveis problemas que um componente pronto possa apresentar, enquanto a validação busca analisar se tal componente está seguindo os requisitos pré-definidos para sua construção~\cite{koscianski2007qualidade}. O teste de programa, na qual o software  é executado com dados de teste é a principal forma de validação, porém, técnicas de verificação, tais como, inspeção e revisões também podem integrar a etapa de validação~\cite{sommerville2011engenharia}.
 
 \subsection{Diagrama de decisão binária}
-Um diagrama de decisão binária(DDB) pode ser definido como um grafo aciclico para representação de funcões boolenas. Existe uma ordem rigorosa na ocorrência de variáveis à medida que se percorre o grafo da raiz para a folha. Dado como exemplo a formula \textit{f=(a$\lor$b)$\land$(c$\lor$d)} e utilizando a ordenação de variavél $a < b < c < d$, na \autoref{fig:bdd_fig}. Dada a atribuição de valores booleanos as variaveis $a, b, c$ e $d$, pode-se decidir se a atribuição torna a fórmula verdadeira atravessando o início do gráfico na raiz e ramificação em cada nó. Definindo $a,c$ e $d = 1$ e $c = 0$ leva a folha de rótulo 1, portanto, a fórmula é verdadeira para essa tarefa~\cite{clarke1994model}.
+Um diagrama de decisão binária(DDB) pode ser definido como um grafo acíclico para representação de funções booleanas. Existe uma ordem rigorosa na ocorrência de variáveis à medida que se percorre o grafo da raiz para a folha. Dado como exemplo a fórmula \textit{f=(a$\lor$b)$\land$(c$\lor$d)} e utilizando a ordenação de variavél $a < b < c < d$, na \autoref{fig:bdd_fig}. Dada a atribuição de valores booleanos as variáveis $a, b, c$ e $d$, pode-se decidir se a atribuição torna a fórmula verdadeira atravessando o início do gráfico na raiz e ramificação em cada nó. Definindo $a,c$ e $d = 1$ e $c = 0$ leva a folha de rótulo 1, portanto, a fórmula é verdadeira para essa tarefa~\cite{clarke1994model}.
 
-\begin{figure}[htb]
+
+\begin{figure}[H]
 	\begin{center}
     \caption{\label{fig:bdd_fig}Arvore de decisão binária}
 	\includegraphics[scale=0.30]{Figuras/Arvore_BDD.png}
@@ -196,7 +195,7 @@ Um diagrama de decisão binária(DDB) pode ser definido como um grafo aciclico p
 \end{figure}
 
 \par
-\textcolor{red}{O DDB permite o teste eficiente de satisfabilidade, validade e eficiência \cite{kropf2013introduction}. O uso e DDB em conjunto com \textit{Model Checking} e técnicas de abstração permitiu o aumento na capacidade de verificação, de modo que sistemas mais realistas podessem ser verificados\cite{biere2003bounded}}
+\textcolor{red}{O DDB permite o teste eficiente de satisfabilidade, validade e eficiência \cite{kropf2013introduction}. O uso e DDB em conjunto com \textit{Model Checking} e técnicas de abstração permitiu o aumento na capacidade de verificação, de modo que sistemas mais realistas pudessem ser verificados\cite{biere2003bounded}}
 
 %============================
 %MODEL CHECKING
@@ -211,24 +210,25 @@ Um diagrama de decisão binária(DDB) pode ser definido como um grafo aciclico p
     \item Possuem suporte a verificação parcial, em outras palavras, a verificação individual de propriedades, permitido foco primeiro as propriedades essenciais\cite{baier2008principles}.
     \item Não requer qualquer interação do usuário, nem um alto grau de especialização para o uso de \textit{model checking}\cite{baier2008principles}.
     \item Possui como base a teoria de grafos, estruturas de dados e lógica no desenvolvimento da solução\cite{baier2008principles}.
-    \item Útil para fins de depuração, pois formece informações em caso de uma propriedade seja invalidada\cite{baier2008principles}.
+    \item Útil para fins de depuração, pois fornece informações em caso de uma propriedade seja invalidada\cite{baier2008principles}.
 \end{itemize}}
 
 \par
 \textcolor{red}{Por outro lado, apresenta também algumas desvantagens:
 \begin{itemize}
-    \item Sofre do problema de explosão de espaço de estados, ou seja, a quantidade de estados necessários pode ser maior que a memória disponivel pelo sistema\cite{baier2008principles}.
-    \item Faz a verificação apenas dos requisios declarados, logo, não a garantia de integridade. Baseado nisso, a validade de propriedades não verificadas não pode ser julgada\cite{baier2008principles}.
+    \item Sofre do problema de explosão de espaço de estados, ou seja, a quantidade de estados necessários pode ser maior que a memória disponível pelo sistema\cite{baier2008principles}.
+    \item Faz a verificação apenas dos requisitos declarados, logo, não a garantia de integridade. Baseado nisso, a validade de propriedades não verificadas não pode ser julgada\cite{baier2008principles}.
     \item A verificação de modelos geralmente não é computável,  isso deve-se a questões de decidibilidade utilizada \cite{baier2008principles}.
 \end{itemize}}
 
 \par
-\textcolor{red}{Outras técnicas foram implementadas em conjuntos com \textit{Model checkings} com o intuito de aumentas a capacidade de verificação, como a técnica SAT na qual não sofre do problema de explosão de estados existente usando DDB. A técnica SAT em conjuto com \textit{Model Checking} é conhecida como \textit{Bounded Model Checking} \cite{biere2003bounded}.}
+\textcolor{red}{Outras técnicas foram implementadas em conjuntos com \textit{Model checkings} com o intuito de aumentar a capacidade de verificação, como a técnica SAT na qual não sofre do problema de explosão de estados existente usando DDB. A técnica SAT em conjunto com \textit{Model Checking} é conhecida como \textit{Bounded Model Checking} \cite{biere2003bounded}.}
+
 %============================
 %BOUNDED MODEL CHECKING
 %============================
 \subsection{\label{cap:bounded}\textit{Bounded Model Checking}}
-Segundo \citeauthor{rocha2015verificaccao}, \textit{Bounded Model Checking} (BMC) é um tipo especial de \textit{Model Checking} que usualmente adota o método de satisfabilidade booleana, o qual tem sido introduzido como uma técnica complementar para diagrama de decisão binaria para aliviar o problema da explosão de estados, visto que a técnica de \textit{Model Checking} busca todos os estados possíveis para verificação.
+Segundo \citeonline{rocha2015verificaccao}, \textit{Bounded Model Checking} (BMC) é um tipo especial de \textit{Model Checking} que usualmente adota o método de satisfabilidade booleana, o qual tem sido introduzido como uma técnica complementar para diagrama de decisão binaria para aliviar o problema da explosão de estados, visto que a técnica de \textit{Model Checking} busca todos os estados possíveis para verificação.
 
 \par
 \textit{Bounded Model Checking} é uma técnica para a verificação de uma dada propriedade em uma determinada profundidade do sistema analisado. Logo, dado um sistema de transições M, uma propriedade $\phi$, e um limite (\textit{bound}) $k$, o BMC desenrola o sistema $k$ vezes e traduz o sistema em uma condição de verificação(CV) $\psi$ tal que $\psi$ é satisfeito se e somente se $\phi$ tem um contra-exemplo de profundidade menor ou igual a $k$ \cite{rocha2015verificaccao}.
@@ -254,14 +254,13 @@ No ESBMC, o programa analisado é modelado em um sistema de transição de estad
 \par
 \textcolor{red}{Um rede de petri, $N$ é um multigrafo direcionado, ponderado e bipartido, representado pela tupla $N=(P,T,I,O)$, onde $P$ representa um conjunto finito de estados; $T$ representa um conjunto finito de transições.; $I$ representa a função de entrada; e $O$ representa função de saída. Estas funções de entrada e saída determimam o fluxo dos token dentro da rede, sendo dos estados para as transições e das transisções para os estados~\cite{halder2006}.}
 
-%Em dois artigos apresenta "modelling tool" / método de modelagem
+
 \textcolor{red}{Redes de petri são redes baseadas em abstração que pode ser usado como método de modelagem, seja gráfica ou matemática~\cite{halder2006}.}Como ferramenta gráfica são utilizadas como comunicação visual, como fluxogramas, por exemplo, e como ferramenta matemática podem configurar modelos matemáticos que regem o comportamento dos sistemas\cite{murata1989petri}. 
 
-\todo[inline]{Trocar imagem, murata agua}
 \begin{figure}[htb]
 	\begin{center}
     \caption{\label{fig:rede_petri}Rede de petri}
-	\includegraphics[scale=0.40]{Figuras/rede_petri.png}
+	\includegraphics[scale=0.60]{Figuras/rede_petri.png}
 	\end{center}
     \legend{Fonte: \cite{halder2006}}
 \end{figure}
@@ -277,12 +276,14 @@ Após isso, nenhuma operação mais pode ser realizada, devido não conter token
 
 \todo[inline]{Descrever quais propriedades podem ser verificadas com RP e onde será utilizado no seu trabalho.}
 
+\par
+
 %============================
 %VERIFICAÇÃO DE HARDWARE
 %============================
 \subsection{Verificação de hardware}
 
-Para a verificação de hardware diversas técnicas têm sido propostas (\todo{Apresentar exemplos com referências}). Por meio da simulação, visa assegurar que uma implemetação, descrição do hardware em qualquer qualquer nível de abstração da hierarquia de hardware, atinja suas especificações, propriedades que devem ser respeitadas para que a corretude do mesmo seja comprovada~\cite{gupta1992formal}. A Verificação formal de hardware consiste na utilização 
+A verificação de hardware, por meio da simulação, visa assegurar que uma implemetação, descrição do hardware em qualquer qualquer nível de abstração da hierarquia de hardware, atinja suas especificações, propriedades que devem ser respeitadas para que a corretude do mesmo seja comprovada~\cite{gupta1992formal}. A Verificação formal de hardware consiste na utilização 
 % dos conceitos de verificação formal, mas também 
 de técnicas para corretude de circuitos lógicos, ou seja, consiste na utilização de modelos matemáticos para descrição de propriedade e/ou de comportamento de um dado sistema~\cite{kropf2013introduction}.
 
@@ -327,7 +328,7 @@ A lógica proposicional é uma linguagem formal onde é definida um alfabeto e c
 \item Alguém é bondoso.
 \end{enumerate}
 
-Na lógica preposicional, não poderiam ser analisadas, pois não teria como decompor ambas em sentença e assim não teria como analisar as diferenças entre ambas. Contudo, no exemplo: "Existem cavalos com patas verdes.", sentença determina que existem cavalos com a caracteristica ou proriedade de terem as patas verde. A relação criada pela frase poderia a ser analisada pela lógica proposicional\cite{abe2002introducao}.
+\textcolor{red}{Na lógica preposicional, não poderiam ser analisadas, pois não teria como decompor ambas em sentença e assim não teria como analisar as diferenças entre ambas. Contudo, no exemplo: "Existem cavalos com patas verdes.", sentença determina que existem cavalos com a caracteristica ou proriedade de terem as patas verde. A relação criada pela frase poderia a ser analisada pela lógica proposicional\cite{abe2002introducao}.}
 
 
 Segundo \citeauthor{souza2017logica}, alfabeto da lógica proposicional é formado por símbolo de pontuação, símbolos proposicionais e conectivos proposicionais, onde cada um apresenta uma função em específico, sendo:
@@ -383,26 +384,21 @@ O PSL pode ser utilizado para capturar requisitos relativos ao comportamento tot
 
 \subsection{Verificação baseada em assertivas}
 
-Verificação baseada em assertivas, do inglês \textit{Assertion-Based Verification} - ABV, é um paradigma de verificação igualente adequado para verificação formal e abordagens baseadas em simulação~\cite{boule2005incorporating} e em conjunto com a tecnica de PSL tem ganhado aceitação como um método essencial para verificação funcional do hardware~\cite{DahanCombining}.
+Verificação baseada em assertivas, do inglês \textit{Assertion-Based Verification} - ABV, é um paradigma de verificação igualmente adequado para verificação formal e abordagens baseadas em simulação~\cite{boule2005incorporating} e em conjunto com a tecnica de PSL tem ganhado aceitação como um método essencial para verificação funcional do hardware~\cite{DahanCombining}.
 
 \par
-Na ABV as assertivas são declaração adicionadas ao projeto com o intuito de especificar o comportamento do projeto~\cite{boule2005incorporating}, podendo escritos em PSL ou em SVA (\textit{System Verilog Assertions}). No caso deste projeto será utilizado a PSL, devido a mesma ser utilizada juntamente com a linguagem VHDL.
+\textcolor{red}{Na ABV as assertivas são declaração adicionadas ao projeto com o intuito de especificar o comportamento do projeto~\cite{boule2005incorporating}, podendo escritos em PSL ou em SVA (\textit{System Verilog Assertions}). No caso deste projeto será utilizado a PSL, devido a mesma ser utilizada juntamente com a linguagem VHDL. Com a utilização de ABV o circuito pode ser verificado usando técnicas de simulação e/ou verificação, por exemplo, \textit{model checking}, para garantir que o mesmo esteja de acordo com o pretendido projeto~\cite{DahanCombining}.}
 
 \par
-Com a utilização de ABV o circuito pode ser verificado usando técnicas de simulação e/ou verificação, por exemplo, \textit{model checking}, para garantir que o mesmo esteja de acordo com o pretendido projeto~\cite{DahanCombining}. 
-% 
-Na \autoref{fig:assertiva} apresenta o modelo de assertiva utilizada no projeto, utilizando de um modelo próprio para assertivas, unindo as funcionalidades já existentes nas assertivas do VHDL, mas também novas (serão apresentadas nas próximas seções), fornecendo assim mais propriedades a serem analisadas.
+\textcolor{red}{Na \autoref{fig:assertiva} apresenta o modelo de assertiva utilizada no projeto, utilizando de um modelo próprio para assertivas, unindo as funcionalidades já existentes nas assertivas do VHDL, mas também novas (serão apresentadas nas próximas seções), fornecendo assim mais propriedades a serem analisadas. A assertiva apresentada na \textbf{linha 13} da \autoref{fig:assertiva_abv} faz a verificação se a porta AND, ao ter entradas de dois valores 1, a saída também será 1, caso não seja será relatado erro de verificação.}
 
-\todo[inline]{Descrever qual o objetivo da assert apresentado}
-
-\begin{figure}[thp]
-\caption{\label{fig:assertiva} Exemplo de declaração de assertiva no VHDL.}
+\begin{figure}[H]
+\caption{\label{fig:assertiva_abv} Exemplo de declaração de assertiva no VHDL.}
 	\begin{center}
     \begin{minipage}{0.9\textwidth}
     \begin{lstlisting}       
 library ieee;
 use ieee.std_logic_1164.all;
-
 entity AND_ent is
 port(   x,y: in bit;
         F: out bit
@@ -412,11 +408,10 @@ end AND_ent;
 architecture behav1 of AND_ent is
 begin
 	--@c2vhdl:ASSERT
-    --assert not (x='0' and y='1')
-    --report "Both values of signals x and y are equal to 1"
+    --assert (F='0')
+    --report "O valor de F é diferente de 1"
     --severity ERROR;
     --@c2vhdl:END
-
 	process(x, y)
     	begin
         	if ((x='1') and (y='1')) then
@@ -424,7 +419,7 @@ begin
         	else
             	F <= '0';
         	end if;
-    	end process;4
+    	end process;
 end behav1;
 
 \end{lstlisting}
@@ -432,8 +427,6 @@ end behav1;
 	\end{center}
     \legend{Fonte: Própria.}
 \end{figure}
-
-
 
 %============================
 %PROPRIEDADES DE SEGURANÇA
