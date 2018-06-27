@@ -100,10 +100,10 @@ END full_adder;
     \legend{Fonte: Própria.}
 \end{figure}
 
-\begin{figure}[!htp]
+\begin{figure}[H]
 \caption{\label{fig:arquitetura} Exemplo de declaração da arquitetura no VHDL.}
 	\begin{center}
-    \begin{minipage}{0.6\textwidth}
+    \begin{minipage}{0.7\textwidth}
     \begin{lstlisting}       
 ARCHITECTURE behavioral OF full_adder IS
 BEGIN
@@ -117,8 +117,7 @@ END behavioral;
     \legend{Fonte: Própria.}
 \end{figure}
 
-
-
+\par
 Segundo \citeonline{cappelattipraticando}, uma descrição em VHDL pode conter diferentes níveis de abstração:
 \begin{itemize}
   \item \textbf{Comportamental:} Permite descrever o circuito através de laços e processos. O circuito é definido em forma de um algoritmo, utilizando construção similares às utilizadas em linguagem de programação.
@@ -274,8 +273,7 @@ Na \autoref{fig:rede_petri}(a) apresenta os tokens todos no estado inicial e a o
 \par
 Após isso, nenhuma operação mais pode ser realizada, devido não conter tokens necessários para a realização da operação representada\cite{murata1989petri}. Esta operação realizada com os tokens é chamado de "\textit{Token game}" que consiste no comportamento da rede de petri, em outras palavras, representa o funcionamento do sistema representado pela rede\cite{halder2006}.
 
-\todo[inline]{Descrever quais propriedades podem ser verificadas com RP e onde será utilizado no seu trabalho.}
-
+\todo[inline]{\textcolor{blue}{Descrever quais propriedades podem ser verificadas com RP e onde será utilizado no seu trabalho.}}
 \par
 
 %============================
@@ -288,10 +286,37 @@ A verificação de hardware, por meio da simulação, visa assegurar que uma imp
 de técnicas para corretude de circuitos lógicos, ou seja, consiste na utilização de modelos matemáticos para descrição de propriedade e/ou de comportamento de um dado sistema~\cite{kropf2013introduction}.
 
 \par
-Entre as abordagens utilizadas na verificação formal de hardware consiste tanto na implementação quanto a especificação estarem descritas em lógica formal, neste caso a corretude será obtida através da comprovada relação entre a implementação e a especificação~\cite{seger1992introduction}. A especificação formal consiste na descrição do comportamento, bem como, das propriedades do sistema em linguagem matemática, tornando-se crucial para o processo de verificação. Na implementação formal, o nível de abstração, tais como, \textit{Gate level} e RTL são importantes informações para o desenvolvimento do formalismo, bem como as classes, por exemplo se o circuito é sequencial ou combinacional, se utiliza pipeline, etc~\cite{kropf2013introduction}.
+Entre as abordagens utilizadas na verificação formal de hardware consiste tanto na implementação quanto a especificação estarem descritas em lógica formal, neste caso a corretude será obtida através da comprovada relação entre a implementação e a especificação~\cite{seger1992introduction}. A especificação formal consiste na descrição do comportamento, bem como, das propriedades do sistema em linguagem matemática, tornando-se crucial para o processo de verificação. Na implementação formal, o nível de abstração, tais como, \textit{Gate level} e RTL(\autoref{fig:exemplo_RTL}) são importantes informações para o desenvolvimento do formalismo, bem como as classes, por exemplo se o circuito é sequencial ou combinacional, se utiliza pipeline, etc~\cite{kropf2013introduction}.
 
-\todo[inline]{Apresentar um exemplo de RTL}
+\begin{figure}[!htp]
+\caption{\label{fig:exemplo_RTL} Exemplo de multiplexador de duas entradas utilizando RTL em VHDL.}
+	\begin{center}
+    \begin{minipage}{0.7\textwidth}
+    \begin{lstlisting}       
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
 
+ENTITY mux2 is
+  PORT (opt, a, b: in STD_LOGIC;
+  f : out STD_LOGIC);
+END mux2;
+
+ARCHITECTURE behaviour OF mux2 IS
+BEGIN
+  PROCESS(opt, a, b)
+    BEGIN
+        IF opt = '1' THEN
+            f <= a;
+        ELSE
+            f <= b;
+        END IF;
+    END PROCESS
+END behaviour ; 
+\end{lstlisting}
+    \end{minipage}
+	\end{center}
+    \legend{Fonte: Própria.}
+\end{figure}
 \par
 A utilização de \textit{Model Checking} também se faz presente nos modelos formais de verificação de hardware, onde apenas é utilizado o comportamento dos circuitos na verificação, de modo a verificar a se as propriedades  presentes são satisfeitas. Para isso, são utilizados os conceitos da lógica proposicional, que por meio da utilização de fórmulas que representem as propriedades dos estados, é possível realizar as verificações necessárias~\cite{seger1992introduction}.
 
@@ -364,19 +389,56 @@ Linguagem de especificação de propriedades, do inglês \textit{Property Specif
 
 \par
 Segundo \cite{IEEEPSL}, o PSL foi totalmente desenvolvida com o intuito fornecer leitura e escrita de fácil entendimento, sintaxe concisa, semântica formal e rigorosamente bem definida e ser matematicamente precisa, visto a utilização da mesma em processo de verificação. 
-% Entre os pontos principais do PSL encontram-se:
-% \begin{itemize}
-% \item Sintaxe concisa,
-% \item Semântica formal rigorosamente definida,
-% \item Permite a especificação de propriedades reais,
-% \end{itemize}
-% 
+
 O PSL pode ser utilizado para capturar requisitos relativos ao comportamento total do projeto, bem como, sobre o modo que o mesmo deverá operar no ambiente, ms também para capturar requisitos comportamentais e os pressupostos que surgem durante o processo de design. Ambas podem ser utilizadas para verificação de sistemas. 
 
-% \cite{IEEEPSL}.
+\textcolor{red}{O PSL possui 4 camadas, sendo:
+\begin{itemize}
+    \item \textbf{Camada booleana:} É utilizada para criar as expressões que são usadas pelas outras camadas. As expressões de camada booleana são avaliadas em um único ciclo de avaliação e obedecem as caracteristicas da linguagem na qual foi escrita. Na \autoref{fig:psl_example1} apresenta um expressão \textit{if} usando PSL nas linguagens VHDL e Verilog\cite{IEEEPSL}.
+    \item \textbf{Camada temporal:} É usado para descrever as propriedades do circuito. Pode descrever propriedades envolvendo relações temporais e são avaliadas em uma serie de ciclos de avaliação. Na \autoref{fig:psl_example2} apresenta a estrutura \texttt{@clk}, permitindo que determinda operação seja executada em tempos especificos de execução ou em cilcos especificos.\cite{IEEEPSL}.
+    \item \textbf{Camada verificação:} É usada para informar de que modo as propriedades na camada temporal devem ser utilizadas pelas ferramentas de verificação. Na \autoref{fig:psl_example3} apresenta o uso de \textbf{assert} que busca provar a proriedade e \textbf{assume} que a ferramenta deve assumir como verdadeiro a propriedade~\cite{IEEEPSL}.
+    \item \textbf{Camada de modelagem:} É usada para modelar comportamento de entradas, no caso de ferramentas que não utiizem casos de teste e para modelar circuitos adicionais para verificação, mas que não fazem parte do circuito principal\cite{IEEEPSL}.
+\end{itemize}
+}
+\begin{figure}[H]
+\caption{\label{fig:psl_example1} Exemplo de PSL em VHDL e Verilog.}
+	\begin{center}
+    \begin{minipage}{0.7\textwidth}
+    \begin{lstlisting}       
+    (a &   (a-1)) == 0         // Verilog
+    (a and (a-1)) =  0         -- VHDL
+    \end{lstlisting}
+    \end{minipage}
+	\end{center}
+    \legend{Fonte: \cite{duolos2018}}
+\end{figure}
 
-\todo[inline]{Apresentar exemplos de uso da PSL}
+\begin{figure}[H]
+\caption{\label{fig:psl_example2} Exemplo da camada temporal em PSL.}
+	\begin{center}
+    \begin{minipage}{0.7\textwidth}
+    \begin{lstlisting}       
+    (always req -> next (ack until grant)) @clk
+    \end{lstlisting}
+    \end{minipage}
+	\end{center}
+    \legend{Fonte: \cite{duolos2018}}
+\end{figure}
 
+\begin{figure}[H]
+\caption{\label{fig:psl_example3} Exemplo da camada de verificação em PSL.}
+	\begin{center}
+    \begin{minipage}{0.7\textwidth}
+    \begin{lstlisting}       
+    vunit my_properties(myVerilog.instance.name){
+    assert (always req -> ack) @ clk;
+    assume (never req && reset)@ clk;
+    }
+    \end{lstlisting}
+    \end{minipage}
+	\end{center}
+    \legend{Fonte: \cite{duolos2018}}
+\end{figure}
 
 %============================
 %Assertion-based verification - ABV
@@ -438,7 +500,7 @@ Propriedades de segurança é um meio de validação do comportamento de um dete
 \par
 Segundo \cite{clarke2003verification}, podemos definir uma propriedade de segurança como: \textit{dado um sistema de transições $ST = (S, S_0, E)$, seja um conjunto $B \subset S$ que especifica um conjunto de maus estados tais que $S_0 \cap B = \emptyset$, pode-se dizer que $ST$ é seguro com relação a $B$, denotado por $ST \models AG\neg B$ se não existe um caminho no sistema de transição do estado inicial $S_0$ até o estado $B$, de outro modo é dito que $ST$ não é seguro}.
 
-\todo[inline]{Adicionar exemplos de propriedades de segurança em hardware}
+\todo[inline]{\textcolor{yellow}{Adicionar exemplos de propriedades de segurança em hardware.}}
 
 
 %============================
@@ -449,8 +511,8 @@ Segundo \cite{clarke2003verification}, podemos definir uma propriedade de segura
 Compiladores são sistemas de software utilizados para tradução de uma linguagem de programação para outra, ou seja, o programa da linguagem fonte é lido e traduzido para um código equivalente na outra linguagem, ou linguagem alvo. Geralmente utilizada para transformar trechos de código em uma linguagem a ser executada pelo computador~\cite{aho2007compilers}. 
 
 \par
-Diversas técnicas podem ser utilizadas nas diversas etapas, até que o código seja traduzido, tais como LL(1) e LR na análise sintática; eliminação de código morto; propagação de constante e \textit{Peephole} na otimização de código\cite{aho2007compilers}. Neste projeto serão focados as áreas de transformações de código e otimização de código.
-
+Diversas técnicas podem ser utilizadas nas diversas etapas, até que o código seja traduzido, tais como LL(1) e LR na análise sintática; eliminação de código morto; propagação de constante e \textit{Peephole} na otimização de código~\cite{aho2007compilers}. Neste projeto serão focados as áreas de transformações de código e otimização de código.
+99346385
 %============================
 %TRANSFORMAÇÕES DE CÓDIGO
 %============================
@@ -459,7 +521,7 @@ Diversas técnicas podem ser utilizadas nas diversas etapas, até que o código 
 Transformações de código correspondem a uma complexa função que envolve analise de fluxo de dados e modificação completa do programa que são parte integral da alta performance e sistemas computacionais. Podem ser classificados em transformações escalares que reduzem o número de instruções a serem executadas no programa ou transformações paralelas que maximizam o paralelismo~\cite{srikant2002compiler}.
 
 \par
-A \autoref{fig:cod_vhdl} representa o trecho de código apresentado na \autoref{fig:assertiva}. O trecho representa o comportamento das entradas, neste caso de um código da porta \texttt{AND}. E a figura \autoref{fig:cod_c} representa a tradução deste trecho em código na linguagem C. Esta tradução foi realizada pela ferramenta V2C\todo{Adicionar referência}, utilizada neste projeto.
+A \autoref{fig:cod_vhdl} representa o trecho de código apresentado na \autoref{fig:assertiva}. O trecho representa o comportamento das entradas, neste caso de um código da porta \texttt{AND}. E a figura \autoref{fig:cod_c} representa a tradução deste trecho em código na linguagem C. Esta tradução foi realizada pela ferramenta V2C~\cite{albertoV2C}, utilizada neste projeto.
 
 \begin{figure}[thp]
 \caption{\label{fig:cod_vhdl} Trecho de código em VHDL representando porta \texttt{AND}.}
@@ -559,12 +621,28 @@ A \autoref{fig:basic_block} apresenta um bloco básico com algumas instruções,
 %============================
 \subsubsection{Grafo de Fluxo de Controle - GFC}
 
-
 Grafo de fluxo de controle corresponde a um grafo direcionado, no qual cada nó representa blocos básicos e cada aresta representa os caminhos de fluxo entre os blocos basicos~\cite{allen1970control}. É importante ressaltar que saltos determinam o final de um determinado bloco básico, ou seja, saltos indicam um caminho para uma nova região de código básico~\cite{aho2007compilers}.
 
-\todo[inline]{Apresentar um exemplo de como e utilizado em código}
+\par
+\textcolor{red}{Conforme apresentado, na \autoref{fig:cfg_example}(a) apresenta um código dividido em blocos, onde cada bloco apresenta estrutura de decisão \textit{if}. Cada bloco, seja para caso verdadeiro(\textit{True}, ou seja para caso (\textit{False}), é definido por um bloco, dessa forma o grafo de fluxo pode ser gerado. Na \autoref{fig:cfg_example}(b), apresenta um dos possivéis caminho de execução de código, baseando-se nos resultados gerado pelas estruturas de condição.}
 
+\begin{figure}[H]
+	\begin{center}
+    \caption{\label{fig:cfg_example}Exemplo da utilização de GFC}
+	\includegraphics[scale=1.2]{Figuras/cfg_example.png}
+	\end{center}
+    \legend{Fonte: Adaptado \cite{kim2006diverge}}
+\end{figure}
 
+%============================
+%Analise do fluxo de dados ok
+%============================
+\subsubsection{Análise do fluxo de dados}
+\par
+Análise de fluxo de dados refere-se ao conjunto de técnicas que derivam informações sobre o fluxo de dados ao longo dos caminhos de execução do programa. Para análise do programa, é necessário considerar todas as posiveis execuções através do grafo de fluxo de controle~\cite{aho2007compilers}.
+
+\par
+\textcolor{red}{Na \autoref{fig:cfg_example}(c), mostra todas as possivéis execuções do código gerdas a partir do grafo de fluxo de controle. Dsta forma, através dessa análise, é possivél determinar se um código ou trecho de código pode ser eliminado, assim melhorando a execução do código\cite{aho2007compilers}.}
 %============================
 %Eliminção de código morto 
 %============================
@@ -575,7 +653,7 @@ A eliminacação de código morto é uma técnica que busca a eficiência de um 
 \par
 A utilização de GAD corresponde na eliminação de qualquer nó raiz, ou seja, nó sem ancestrais, as quais não esteja ativa anexada a mesma. A execução repetida desta operação removerá todos os nós correspondentes a código morto~\cite{aho2007compilers}.
 
-\begin{figure}[htb]
+\begin{figure}[H]
 	\begin{center}
     \caption{\label{fig:elimicacao_codigo}GAD do bloco básico da \autoref{fig:basic_block}}
 	\includegraphics[scale=0.70]{Figuras/eliminacao_codigo.png}
@@ -584,17 +662,6 @@ A utilização de GAD corresponde na eliminação de qualquer nó raiz, ou seja,
 \end{figure}
 
 Na \autoref{fig:elimicacao_codigo}, supondo que os nós $a,b$ e $c$ estejam ativa, porém o nó é não esteja, o último pode ser eliminado imediatamente. Os nós restantes continuam no GDA, a menos que não tenho variáveis ativas atreladas aos nós~\cite{aho2007compilers}.
-
-
-%============================
-%Analise do fluxo de dados ok
-%============================
-\subsubsection{Análise do fluxo de dados}
-\par
-Análise de fluxo de dados refere-se ao conjunto de técnicas que derivam informações sobre o fluxo de dados ao longo dos caminhos de execução do programa. 
-Para análise do programa, é necessário considerar todas as posiveis execuções através do grafo de fluxo de controle~\cite{aho2007compilers}.
-
-\todo[inline]{Apresentar exemplos}
 
 %============================
 %Gerador de código ok
