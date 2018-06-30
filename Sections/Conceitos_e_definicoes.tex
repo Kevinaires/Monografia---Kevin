@@ -70,7 +70,6 @@ end dataflow.
 
 %Ambas as linguagens apresentam similaridades, sendo a linguagem VHDL escolhida para este trabalho devido a linguagem apresentar maior gama de recursos tanto para o desenvolvimento quanto para o auxílio nos testes\todo{Apresentar um exemplo com referência}.
 
-
 %============================
 %VHDL
 %============================
@@ -234,18 +233,16 @@ Segundo \citeonline{rocha2015verificaccao}, \textit{Bounded Model Checking} (BMC
 
 \par
 \textcolor{red}{O \textit{Extended SMT-Based Bounded Model Checker} (ESBMC) é um ferramenta que utiliza técnicas de \textit{Bounded Model Checking} e solucionadores SMT(\textit{Satisfiability Modulo Theories}) para verificação de programas em C/C$++$~\cite{rocha2015model}, permitindo a verificação aritmética de overflow e undeflow, segurança de ponteiros, limite de array e de gerar propriedades de segurança.\cite{cordeiro2012smt,rocha2015verificaccao}.} 
-%ESBMC utiliza uma versão modificada do CBMC no \textit{front-end} para analisar o código ANSI-C e para gerar as condições de verificação através de execução simbólica 
 
 \par
 No ESBMC, o programa analisado é modelado em um sistema de transição de estados, conforme a trupla: $M=(S,R,S_{0})$, o qual é gerado um grafo de controle de fluxo (GFC), onde $S$ representa o conjunto de estados, $R$ $\subseteq$ $SxS$ representa as transições e $S \subseteq S$ representa o conjuto de estados iniciais. Um estado $s \in S$ consiste no valor do contador de programa (PC) e os valores de todas as variáveis dos programas. O estado inicial $S_{0}$ atribui o inicio do programa GFC ao PC, desta forma o ESBMC identifica as transições, conforme a formula lógica, $\gamma$=($S_{i}$,$S_{i+1}$) que captura as retrições sobre os valores correspondntes do PC e das variáveis do programa~\cite{cordeiro2012smt}.
 
+%\par
+%\textcolor{red}{Segundo o site do ESBMC\cite{esbmc},} a ferramenta permite ao usuário indicar propriedades adicionais\todo{Descrever quais propriedades o esbmc suporta} usando assertivas que também são verificadas. O ESBMC converte as condições usando diferentes técnicas de background\todo{apresentar exemplo} para posteriormente passar para verificador SMT. Outra vantagem é a ferramenta permitir verificação de software single-thread e multi-thread.
+
+\todo[inline]{Unifiquei os dois paragrafos!! Nao senti a necessidade de citar outras propriedas do ESBMC, pois já tinha sido citadas no primeiro paragrafo, além que que este ultimo deixei para mostrar o que será realmente usado da ferramenta. Não sei se o entendimento ficou correto.}
 \par
-\textcolor{red}{Segundo o site do ESBMC\cite{esbmc},} a ferramenta permite ao usuário indicar propriedades adicionais\todo{Descrever quais propriedades o esbmc suporta} usando assertivas que também são verificadas. O ESBMC converte as condições usando diferentes técnicas de background\todo{apresentar exemplo} para posteriormente passar para verificador SMT. Outra vantagem é a ferramenta permitir verificação de software single-thread e multi-thread.
-
-
-\par
-\textcolor{red}{O motivo da escolha desta ferramenta, deve-se a mesma ter as funções necessárias para o desenvolvimento do método, como solucionadores SMT, além de premiação em competições, como o SV-COMP, sendo premiado com 2 medalhas de ouro e duas de bronze em 2015 e uma medalha de ouro e uma de prata em 2016~\cite{esbmc}.}
-
+\textcolor{red}{O motivo da escolha desta ferramenta, deve-se a mesma ter as funções necessárias para o desenvolvimento do método, como solucionadores SMT para verificação de assertiva e verificação em single-thread e multi-thread. Além de premiação em competições, como o SV-COMP, sendo premiado com 2 medalhas de ouro e duas de bronze em 2015 e uma medalha de ouro e uma de prata em 2016~\cite{esbmc}.}
 %============================
 %REDES DE PETRI
 %============================
@@ -256,7 +253,7 @@ No ESBMC, o programa analisado é modelado em um sistema de transição de estad
 
 \textcolor{red}{Redes de petri são redes baseadas em abstração que pode ser usado como método de modelagem, seja gráfica ou matemática~\cite{halder2006}.}Como ferramenta gráfica são utilizadas como comunicação visual, como fluxogramas, por exemplo, e como ferramenta matemática podem configurar modelos matemáticos que regem o comportamento dos sistemas\cite{murata1989petri}. 
 
-\begin{figure}[htb]
+\begin{figure}[H]
 	\begin{center}
     \caption{\label{fig:rede_petri}Rede de petri}
 	\includegraphics[scale=0.60]{Figuras/rede_petri.png}
@@ -265,17 +262,27 @@ No ESBMC, o programa analisado é modelado em um sistema de transição de estad
 \end{figure}
 
 \par
-A \autoref{fig:rede_petri} ilustra a reação quimica: $2H_20 + 0_2 \rightarrow 2H_2O$, onde existe dois token em cada estado inicial, representando que existem duas particulas de $H_2$ e $O_2$ em cada estado. O arco que liga o estado com $H_2$  transição $t$ tem peso 2, isso indica que é necessário dois token deste estado para transição, ocorrendo o mesmo da transição $t$ para o estado $H_2O$, e o estado com $0_2$ é necessário apena um tokem para transição.\cite{murata1989petri}.
+\textcolor{red}{A \autoref{fig:rede_petri} ilustra a reação quimica: $2H_20 + 0_2 \rightarrow 2H_2O$, onde existe dois token em cada estado inicial, representando que existem duas particulas de $H_2$ e $O_2$ em cada estado. O arco que liga o estado com $H_2$  transição $t$ tem peso 2, isso indica que é necessário dois token deste estado para transição, ocorrendo o mesmo da transição $t$ para o estado $H_2O$, e o estado com $0_2$ é necessário apena um tokem para transição.\cite{murata1989petri}.}
 
 \par
-Na \autoref{fig:rede_petri}(a) apresenta os tokens todos no estado inicial e a operação pode ser realizada, pois os requisitos para a mesma estão disponivéis, desse caso dois token de $H_2$ e um token de $O_2$. Na \autoref{fig:rede_petri}(b), os tokens são passados a transição $t$ e formando $2H_2O$, seguindo o apresentado na formula. O peso da aresta de saída da transição para o estado seguinte tem peso 2, o que também pode ser realizado e passando dois tokens da transição para o estado $H_2O$\cite{murata1989petri}. 
+\textcolor{red}{Na \autoref{fig:rede_petri}(a) apresenta os tokens todos no estado inicial e a operação pode ser realizada, pois os requisitos para a mesma estão disponivéis, desse caso dois token de $H_2$ e um token de $O_2$. Na \autoref{fig:rede_petri}(b), os tokens são passados a transição $t$ e formando $2H_2O$, seguindo o apresentado na formula. O peso da aresta de saída da transição para o estado seguinte tem peso 2, o que também pode ser realizado e passando dois tokens da transição para o estado $H_2O$\cite{murata1989petri}.} 
 
 \par
-Após isso, nenhuma operação mais pode ser realizada, devido não conter tokens necessários para a realização da operação representada\cite{murata1989petri}. Esta operação realizada com os tokens é chamado de "\textit{Token game}" que consiste no comportamento da rede de petri, em outras palavras, representa o funcionamento do sistema representado pela rede\cite{halder2006}.
+\textcolor{red}{Após isso, nenhuma operação mais pode ser realizada, devido não conter tokens necessários para a realização da operação representada\cite{murata1989petri}. Esta operação realizada com os tokens é chamado de "\textit{Token game}" que consiste no comportamento da rede de petri, em outras palavras, representa o funcionamento do sistema representado pela rede\cite{halder2006}.}
 
-\todo[inline]{\textcolor{blue}{Descrever quais propriedades podem ser verificadas com RP e onde será utilizado no seu trabalho.}}
 \par
+\textcolor{red}{Segundo \citeonline{jain2010petri}, umas das vantagens do uso de redes e petri é que um mesmo modelo pode ser usado pra análise de propriedades comportamentais e avaliação de desempenho, bem como para construção sistemática de simuladores e controladores de eventos discretos. Na \autoref{fig:petri_AND} é apresentado um exemplo de representação da porta AND em rede de petri.}
 
+\begin{figure}[H]
+	\begin{center}
+    \caption{\label{fig:petri_AND}Rede de petri da porta AND}
+	\includegraphics[scale=0.60]{Figuras/and_petri.png}
+	\end{center}
+    \legend{Fonte: \cite{jain2010petri}}
+\end{figure}
+
+\par
+\textcolor{red}{A porta AND apresenta, pelo menos, duas entradas e uma saída. Sendo que, esta apenas será verdade, se ambas as entradas forem verdadeiras. Dessa forma, a transição \texttt{t} apenas será executada, se ambas as entradas \texttt{a} e \texttt{b} tiverem um \textit{token} cada, simbolizando, assim, verdade e, a saída terá um \textit{token} após a transição, mostrando-a como verdadeira.}
 %============================
 %VERIFICAÇÃO DE HARDWARE
 %============================
@@ -320,8 +327,8 @@ END behaviour ;
 \par
 A utilização de \textit{Model Checking} também se faz presente nos modelos formais de verificação de hardware, onde apenas é utilizado o comportamento dos circuitos na verificação, de modo a verificar a se as propriedades  presentes são satisfeitas. Para isso, são utilizados os conceitos da lógica proposicional, que por meio da utilização de fórmulas que representem as propriedades dos estados, é possível realizar as verificações necessárias~\cite{seger1992introduction}.
 
-\todo[inline]{Apresentar um exemplo com um circuito e como este pode ser verificando com model checking}
- 
+\par
+\textcolor{red}{O \textit{Model Checking} \textbf{BMC}\cite{biere1999symbolic} apresenta uma abordagem de verificação de hardware, além de testes comprovando a melhoria na utilização de solucionadores SAT para testes de satisfabilidade e mostrando uma performance significativamente melhor que o uso de DDB\cite{biere1999symbolic}. Baseado nisso, este trabalho fará uso de solucionadores SAT, sendo mostrado como melhor alternativa para análise.}
 %============================
 %VERIFICAÇÃO DE SOFTWARE
 %============================
@@ -331,10 +338,11 @@ A utilização de \textit{Model Checking} também se faz presente nos modelos fo
 Observa-se que o uso de verificacão de software tem sido feito aplicado em muitas áreas, tais como, infraestruturas industriais de missão critica e de segurança.  Logo, existe a necessidade de garantir a corretude destes sistemas. Devido a isso, a verificação formal tem sido utilizada em três principais abordagens, sendo elas~\cite{cousot2010gentle,d2008survey}:
 
 \todo[inline]{Apresentar exemplos para os métodos apresentados abaixo}
+\todo[inline]{Não achei exemplo, pode ser um ponto a ser corrigido para o tcc2, caso possa, é claro.}
 
 \begin{itemize}
  \item \textbf{Métodos dedutivos:} Produzem provas matemáticas formais de corretude usando provadores de teoremas ou assistentes de prova para execução da prova e necessitam da interação humana para prover os argumentos~\cite{cousot2010gentle};
-  \item \textbf{Verificação de modelos:} Exploram exaustivamente modelos de execuções de programa, que podem ser sujeitos a explosão combinatória, necessário a intervenção humana para geração dos modelos~\cite{rocha2015verificaccao};
+  \item \textbf{Verificação de modelos:} Exploram exaustivamente modelos de execuções de programa, que podem ser sujeitos a explosão combinatória, necessário a intervenção humana para geração dos modelos, \textcolor{red}{}~\cite{rocha2015verificaccao};
   \item \textbf{Analise estática:} Engloba diversas técnicas para calcular automaticamente informações sobre o comportamento de um programa sem executá-lo, sendo utilizado em otimização de código e verificação em compiladres~\cite{d2008survey}.
 \end{itemize}
 
@@ -500,8 +508,7 @@ Propriedades de segurança é um meio de validação do comportamento de um dete
 \par
 Segundo \cite{clarke2003verification}, podemos definir uma propriedade de segurança como: \textit{dado um sistema de transições $ST = (S, S_0, E)$, seja um conjunto $B \subset S$ que especifica um conjunto de maus estados tais que $S_0 \cap B = \emptyset$, pode-se dizer que $ST$ é seguro com relação a $B$, denotado por $ST \models AG\neg B$ se não existe um caminho no sistema de transição do estado inicial $S_0$ até o estado $B$, de outro modo é dito que $ST$ não é seguro}.
 
-\todo[inline]{\textcolor{yellow}{Adicionar exemplos de propriedades de segurança em hardware.}}
-
+\todo[inline]{Não consegui encontrar coisas relacionadas a propriedades de segurança envolvendo hardware. Geralmente era coisas ligadas a cryptorafia em hardware.}
 
 %============================
 %TECNICAS DE COMPILADORES
@@ -565,10 +572,11 @@ A \autoref{fig:cod_vhdl} representa o trecho de código apresentado na \autoref{
     \legend{Fonte: Própria.}
 \end{figure}
 
-\todo[inline]{Expandir esta seção. Apresentar propriedades de transformação e técnicas para avaliar a transformação}
+\par
+\textcolor{red}{Segundo \citeonline{cousot2002systematic}, a metodologia de transformação de código fornece ferramentas para o desenvolvimento de programas a partir da especificação e para verificação do programa. As técnicas de transformação código fornecem ferramentas para otimização, como, por exemplo, a otimização de cache\cite{jin2001theoretical} e a propagação de constantes\cite{kildall1973unified}; para customização de software e, para isso, podem utilizar-se da engenharia reversa\cite{yang1997reverse} e da aplicação de políticas de segurança\cite{erlingsson2000sasi}; e para compilação.}
 
 %============================
-%OTIMIZAÇÃO ok
+%OTIMIZAÇÃO
 %============================
 \subsection{Otimização de código}
 \par
@@ -615,7 +623,6 @@ Grafo Aciclico Direcional é utilizado para diversos fins dentro da estrutura de
 
 A \autoref{fig:basic_block} apresenta um bloco básico com algumas instruções, no caso apresentando são $4$ operações entre somas e multiplicação e a partir deste bloco a \autoref{fig:gda} apresenta o GDA deste trecho de código. Nele apresenta cada nó como uma operação especifica e os terminais como as parcelas das operações.
 
-
 %============================
 %Grafo de Fluxo de Controle - GFC 
 %============================
@@ -629,7 +636,7 @@ Grafo de fluxo de controle corresponde a um grafo direcionado, no qual cada nó 
 \begin{figure}[H]
 	\begin{center}
     \caption{\label{fig:cfg_example}Exemplo da utilização de GFC}
-	\includegraphics[scale=1.2]{Figuras/cfg_example.png}
+	\includegraphics[scale=0.9]{Figuras/cfg_example(a)(b).png}
 	\end{center}
     \legend{Fonte: Adaptado \cite{kim2006diverge}}
 \end{figure}
@@ -642,7 +649,15 @@ Grafo de fluxo de controle corresponde a um grafo direcionado, no qual cada nó 
 Análise de fluxo de dados refere-se ao conjunto de técnicas que derivam informações sobre o fluxo de dados ao longo dos caminhos de execução do programa. Para análise do programa, é necessário considerar todas as posiveis execuções através do grafo de fluxo de controle~\cite{aho2007compilers}.
 
 \par
-\textcolor{red}{Na \autoref{fig:cfg_example}(c), mostra todas as possivéis execuções do código gerdas a partir do grafo de fluxo de controle. Dsta forma, através dessa análise, é possivél determinar se um código ou trecho de código pode ser eliminado, assim melhorando a execução do código\cite{aho2007compilers}.}
+\textcolor{red}{Na \autoref{fig:cfg_example(c)}, mostra todas as possivéis execuções do código gerdas a partir do grafo de fluxo de controle. Dsta forma, através dessa análise, é possivél determinar se um código ou trecho de código pode ser eliminado, assim melhorando a execução do código \cite{aho2007compilers}.}
+
+\begin{figure}[H]
+	\begin{center}
+    \caption{\label{fig:cfg_example(c)}Demosntração de análise de fluxo com base na \autoref{fig:cfg_example}}
+	\includegraphics[scale=0.85]{Figuras/cfg_example(c).png}
+	\end{center}
+    \legend{Fonte: Adaptado \cite{kim2006diverge}}
+\end{figure}
 %============================
 %Eliminção de código morto 
 %============================
@@ -671,6 +686,15 @@ Na \autoref{fig:elimicacao_codigo}, supondo que os nós $a,b$ e $c$ estejam ativ
 O gerador de código é responsavél pela tradução final do programa-fonte para o programa-alvo, o mesmo recebe como entrada um código intermediário juntamente com a tabela de símbolos. Faz-se necessário que o programa-fonte tenha sido analisado sintatica e lexicamente, assim evitando que erros possam ser passados para o programa-alvo, por outro lado a existência de uma nível de otimização, faz-se opicional neste caso~\cite{aho2007compilers}.
 
 \par
-O gerador de código possui três tarefas primarias, sendo as mesmas seleção de instrução, alocação de registros e atribuições. A seleção de instruções envolve a escolha das instruções apropriadas da máquina-alvo para implementar as declarações do código intermediario. A atribuição e atribuição de registros envolve a decisão sobre os valores a serem registrados nos registros\cite{aho2007compilers}.
+O gerador de código possui três tarefas primarias, sendo as mesmas seleção de instrução, alocação de registros e atribuições. A seleção de instruções envolve a escolha das instruções apropriadas da máquina-alvo para implementar as declarações do código intermediario. A atribuição e atribuição de registros envolve a decisão sobre os valores a serem registrados nos registros \cite{aho2007compilers}.
 
-\todo[inline]{Apresentar exemplo}
+\begin{figure}[H]
+	\begin{center}
+    \caption{\label{fig:fase_compilador}Fases de um compilador}
+	\includegraphics[scale=0.70]{Figuras/fase_compilador.png}
+	\end{center}
+    \legend{Fonte: \cite{aho2007compilers}}
+\end{figure}
+
+\par
+\textcolor{red}{Conforme apresentado na \autoref{fig:fase_compilador} e, segundo \citeonline{aho2007compilers}, a geração de código ocorre em dois momentos. Sendo que, inicialmente ocorre a geração de código intermédiario, que tem como propriedades: buscar uma fácil produção e a tradução para o programa alvo. Posteriormente, ocorre a geração de código, onde as localizações de mémoria são selecionadas para cada variável utilizada no programa e, as instruções intermediárias são traduzidas numa sequência de instruções de máquina, que realizam a mesma tarefa.}
