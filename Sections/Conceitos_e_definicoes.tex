@@ -240,7 +240,6 @@ No ESBMC, o programa analisado é modelado em um sistema de transição de estad
 %\par
 %\textcolor{red}{Segundo o site do ESBMC\cite{esbmc},} a ferramenta permite ao usuário indicar propriedades adicionais\todo{Descrever quais propriedades o esbmc suporta} usando assertivas que também são verificadas. O ESBMC converte as condições usando diferentes técnicas de background\todo{apresentar exemplo} para posteriormente passar para verificador SMT. Outra vantagem é a ferramenta permitir verificação de software single-thread e multi-thread.
 
-\todo[inline]{Unifiquei os dois paragrafos!! Nao senti a necessidade de citar outras propriedas do ESBMC, pois já tinha sido citadas no primeiro paragrafo, além que que este ultimo deixei para mostrar o que será realmente usado da ferramenta. Não sei se o entendimento ficou correto.}
 \par
 \textcolor{red}{O motivo da escolha desta ferramenta, deve-se a mesma ter as funções necessárias para o desenvolvimento do método, como solucionadores SMT para verificação de assertiva e verificação em single-thread e multi-thread. Além de premiação em competições, como o SV-COMP, sendo premiado com 2 medalhas de ouro e duas de bronze em 2015 e uma medalha de ouro e uma de prata em 2016~\cite{esbmc}.}
 %============================
@@ -336,9 +335,6 @@ A utilização de \textit{Model Checking} também se faz presente nos modelos fo
 
 % Segundo \citeauthor{rocha2015verificaccao}, o
 Observa-se que o uso de verificacão de software tem sido feito aplicado em muitas áreas, tais como, infraestruturas industriais de missão critica e de segurança.  Logo, existe a necessidade de garantir a corretude destes sistemas. Devido a isso, a verificação formal tem sido utilizada em três principais abordagens, sendo elas~\cite{cousot2010gentle,d2008survey}:
-
-\todo[inline]{Apresentar exemplos para os métodos apresentados abaixo}
-\todo[inline]{Não achei exemplo, pode ser um ponto a ser corrigido para o tcc2, caso possa, é claro.}
 
 \begin{itemize}
  \item \textbf{Métodos dedutivos:} Produzem provas matemáticas formais de corretude usando provadores de teoremas ou assistentes de prova para execução da prova e necessitam da interação humana para prover os argumentos~\cite{cousot2010gentle};
@@ -507,8 +503,6 @@ Propriedades de segurança é um meio de validação do comportamento de um dete
 
 \par
 Segundo \cite{clarke2003verification}, podemos definir uma propriedade de segurança como: \textit{dado um sistema de transições $ST = (S, S_0, E)$, seja um conjunto $B \subset S$ que especifica um conjunto de maus estados tais que $S_0 \cap B = \emptyset$, pode-se dizer que $ST$ é seguro com relação a $B$, denotado por $ST \models AG\neg B$ se não existe um caminho no sistema de transição do estado inicial $S_0$ até o estado $B$, de outro modo é dito que $ST$ não é seguro}.
-
-\todo[inline]{Não consegui encontrar coisas relacionadas a propriedades de segurança envolvendo hardware. Geralmente era coisas ligadas a cryptorafia em hardware.}
 
 %============================
 %TECNICAS DE COMPILADORES

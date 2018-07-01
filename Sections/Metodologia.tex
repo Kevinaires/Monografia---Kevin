@@ -311,9 +311,7 @@ Segundo, \citeonline{rocha2015verificaccao}, a função \texttt{\_\_VERIFIER\_no
 #include<stdio.h>
 #define log_error(M, ...) fprintf(stderr,  M , __FILE__, __LINE__, ##__VA_ARGS__)//Update to print the trace
 #define __MY_assert(A, M, ...) if(!(A)) {log_error(M, ##__VA_ARGS__); assert(A); }
-
 ...
-
 do {
    _cont_=0;
    /* Start of Translation */
@@ -325,7 +323,6 @@ do {
     chg[Resultado] = __VERIFIER_nondet_int();
     chg[or_port] = __VERIFIER_nondet_int();
     chg[mux2x1] = __VERIFIER_nondet_int();
-
    /* p0: */
    if (chg[A] || chg[B] || chg[Binvertido] || chg[Op1]) {
             /*PORTA AND */
@@ -337,9 +334,7 @@ do {
       else {
          new[and_port]=0;
          }
-
       ...
-
       /*MUX4X1 */
       if ((old[Op1]==0 && old[Op2]==0)) {
          if (chg[and_port]) {
@@ -357,7 +352,6 @@ do {
             }
          }
       }
-
    /* End of Translation */
 ...
     \end{lstlisting}
