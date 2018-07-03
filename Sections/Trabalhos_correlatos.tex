@@ -1,5 +1,5 @@
 \label{chapter:correlatos}
-\textcolor{red}{O capítulo a seguir apresenta o método de pesquisa utilizado para o levantamento bibliográfico, os resultados e os artigos e suas contribuições para o desenvolvimento do projeto descrito no método proposto.}
+O capítulo a seguir apresenta o método de pesquisa utilizado para o levantamento bibliográfico, os resultados e os artigos e suas contribuições para o desenvolvimento do projeto descrito no método proposto.
 
 %==========================================================
 % REVISÃO SISTEMÁTICA
@@ -33,10 +33,10 @@ Devido ao tempo necessário para realização completa de todas as etapas, apena
 %===============================
 \section{V2c-A verilog to C translator}
 
-O artigo de \citeauthor{mukherjee2016v2c} apresenta uma ferramenta implementada em C++ chamada \texttt{v2c}, utilizada na transformação de código da linguagem de descrição Verilog para a linguagem de programação C. A ferramenta é executada a nível de palavra, visto que, esta abordagem garante uma aumento na escalabilidade, mas também proporcionando que técnicas, como a interpolação\cite{beyer2011cpachecker}, possam ser utilizadas para verificação, algo inviável, caso a tradução fosse executada a nível de bit. \textcolor{red}{O sistema recebe como entrada um código em Verilog, onde são aplicadas regras semânticas e mapeados os bit de operação, é gerado um código em linguagem C a nível de palavra chamado software \textit{netlist}.} 
+O artigo de \citeauthor{mukherjee2016v2c} apresenta uma ferramenta implementada em C++ chamada \texttt{v2c}, utilizada na transformação de código da linguagem de descrição Verilog para a linguagem de programação C. A ferramenta é executada a nível de palavra, visto que, esta abordagem garante uma aumento na escalabilidade, mas também proporcionando que técnicas, como a interpolação\cite{beyer2011cpachecker}, possam ser utilizadas para verificação, algo inviável, caso a tradução fosse executada a nível de bit. O sistema recebe como entrada um código em Verilog, onde são aplicadas regras semânticas e mapeados os bit de operação, é gerado um código em linguagem C a nível de palavra chamado software \textit{netlist}.
 
 \par
-A contribuição do trabalho de \cite{mukherjee2016v2c} consiste na utilização de transformações de código como base principal e, partindo deste pressuposto, torna-se vantajoso devido a utilização de outras ferramentas que não apresente suporte a certas linguagens. Tais como a ferramenta ESBMC, utilizada neste trabalho, que não apresenta suporte a VHDL, porém apresenta suporte as linguagens C/C++, em outras palavras, \textcolor{red}{a principal contribuição de tal artigo foi a utilização de traduções de códigos e utilização deste conceito como ponto de partida para a análise de circuitos desenvolvidos no método.}
+A contribuição do trabalho de \cite{mukherjee2016v2c} consiste na utilização de transformações de código como base principal e, partindo deste pressuposto, torna-se vantajoso devido a utilização de outras ferramentas que não apresente suporte a certas linguagens. Tais como a ferramenta ESBMC, utilizada neste trabalho, que não apresenta suporte a VHDL, porém apresenta suporte as linguagens C/C++, em outras palavras, a principal contribuição de tal artigo foi a utilização de traduções de códigos e utilização deste conceito como ponto de partida para a análise de circuitos desenvolvidos no método.
 
 % ====================================================
 %Unbounded safety verification for hardware using software analyzers
@@ -45,10 +45,10 @@ A contribuição do trabalho de \cite{mukherjee2016v2c} consiste na utilização
 No artigo de \citeauthor{mukherjee2016unbounded} foi apresentado uma metodologia que aborda a utilização de técnicas e analisadores de software, com o objetivo de abordar a análise de circuitos e, com isso, traçar um paralelo entre as abordagens. Para testes, foram utilizadas três metodologias de análise usando interpolação:\cite{beyer2011cpachecker} interpolação abstrata\cite{blanchet2003static}, \textit{k-induction}\cite{donaldson2011software} e tecnologias híbridas. 
 
 \par
-\textcolor{red}{Como resultado dos testes, foram observadas as principais causas de erros, como por exemplo, bits não precisos e, no caso das operações a \textit{bit-level}, ocorria a perda de informações.Também foi observado que apesar de não serem otimizados para análises de hardware, alguns analisadores de software podem, dependendo da técnica utilizada no analisador, serem utilizados para análise de hardware\cite{mukherjee2016unbounded}.}
+Como resultado dos testes, foram observadas as principais causas de erros, como por exemplo, bits não precisos e, no caso das operações a \textit{bit-level}, ocorria a perda de informações.Também foi observado que apesar de não serem otimizados para análises de hardware, alguns analisadores de software podem, dependendo da técnica utilizada no analisador, serem utilizados para análise de hardware\cite{mukherjee2016unbounded}.
 
 \par
-\textcolor{red}{O fato de analisadores de software possuírem a capacidade de utilizar hardware, deve-se ao uso de técnicas de análise a nível de bit. Contudo, estas análises são menos precisas e menos testadas em software, além de usarem abstrações numéricas, o que gera perda de informações e, por isso, a grande quantidade de resultados errados gerados.\cite{mukherjee2016unbounded}.}
+O fato de analisadores de software possuírem a capacidade de utilizar hardware, deve-se ao uso de técnicas de análise a nível de bit. Contudo, estas análises são menos precisas e menos testadas em software, além de usarem abstrações numéricas, o que gera perda de informações e, por isso, a grande quantidade de resultados errados gerados.\cite{mukherjee2016unbounded}.
 
 \par
 A utilização de técnicas de análise de software para o desenvolvimento de análise de \textit{hardware} é o foco a ser abordado neste trabalho de maneira prática, utilizando os princípios analisados por \cite{mukherjee2016unbounded}. Neste contexto, utilizando um \textit{Bounded model checking}, como o ESBMC, é possível utilizar técnicas como \textit{k-induction} para a análise conforme apresentado no artigo.
@@ -76,7 +76,7 @@ A contribuição deste projeto está relacionado a utilização de assertivas no
 % ====================================================
 \section{Incorporating efficient assertion checkers into hardware emulation}
 \par
-No trabalho de \citeauthor{boule2005incorporating} é apresentado uma ferramenta de geração de assertivas no contexto da emulação de circuitos, de modo que estas assertivas descrita em PSL possam transformadas para o modelo de linguagem de descrição de hardware. \textcolor{red}{As instruções são transformadas percorrendo a \textit{parse tree} na qual estão armazenadas. Cada sub-expressão é conectada recursivamente pelo uso de pré-condição e resultado, desta forma se determinado nó na \textit{parse tree} aceita um sinal de pré-condição de seu pai, se transforma recursivamente no circuito adequado e, em seguida, retorna o sinal de resultado para o pai.}
+No trabalho de \citeauthor{boule2005incorporating} é apresentado uma ferramenta de geração de assertivas no contexto da emulação de circuitos, de modo que estas assertivas descrita em PSL possam transformadas para o modelo de linguagem de descrição de hardware. As instruções são transformadas percorrendo a \textit{parse tree} na qual estão armazenadas. Cada sub-expressão é conectada recursivamente pelo uso de pré-condição e resultado, desta forma se determinado nó na \textit{parse tree} aceita um sinal de pré-condição de seu pai, se transforma recursivamente no circuito adequado e, em seguida, retorna o sinal de resultado para o pai.
 
 \par
 O trabalho de \citeauthor{boule2005incorporating} consolida e apresenta aspectos importantes, tais como a utilização de uma ferramenta para geração de assertivas, o que torna-se no contexto deste projeto, extremamente importante, visto que o modelo adotado atualmente consiste tanto na geração automática das assertivas, bem como a inserção manual por parte do usuário.

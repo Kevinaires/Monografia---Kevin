@@ -6,7 +6,7 @@ Este capítulo tem apresenta os principais conceitos e definições abordados ne
 %============================
 \section{Linguagens de descrição de hardware}
 
-As linguagens de descrição de hardware (HDL) foram desenvolvidas com o intuito de auxiliar a criação de circuitos lógicos com grande número de elementos e com uma gama de abstrações lógicas e eletrônicas~\cite{thomas2008verilog}. \textcolor{red}{Entre os exemplos, podemos citar: \textit{VDHL}~\cite{IEEEVHDLLanguage}, \textit{Verilog}~\cite{IEEEVerilogLanguage} e \textit{SystemC}~\cite{IEEESystemCLanguage}.}
+As linguagens de descrição de hardware (HDL) foram desenvolvidas com o intuito de auxiliar a criação de circuitos lógicos com grande número de elementos e com uma gama de abstrações lógicas e eletrônicas~\cite{thomas2008verilog}. Entre os exemplos, podemos citar: \textit{VDHL}~\cite{IEEEVHDLLanguage}, \textit{Verilog}~\cite{IEEEVerilogLanguage} e \textit{SystemC}~\cite{IEEESystemCLanguage}.
 
 \par
 Segundo~\citeonline{christen1999vhdl}, linguagens de descrição de hardware são linguagens de programação utilizadas com o intuito de descrever o comportamento de um determinado circuito, técnica conhecida como modelagem. Os modelos descritos em HDL são utilizados como entrada para um simulador, onde o mesmo pode ter seu comportamento analisado.
@@ -33,7 +33,7 @@ endprimitive
 \end{figure}
 
 \par
-\textcolor{red}{Na \autoref{fig:mux_verilog} apresenta um exemplo de multiplexador descrito em \textit{Verilog} utilizando a estrutura de modelagem, chamada \textit{UDP} que permite a criação de novos primitivas para serem utilizada. Apresenta uma saída apenas(mux) e três entradas sendo uma de controle(control) e duas de dados(dataA e dataB).}
+Na \autoref{fig:mux_verilog} apresenta um exemplo de multiplexador descrito em \textit{Verilog} utilizando a estrutura de modelagem, chamada \textit{UDP} que permite a criação de novos primitivas para serem utilizada. Apresenta uma saída apenas(mux) e três entradas sendo uma de controle(control) e duas de dados(dataA e dataB).
 
 \par
 A VHDL é uma linguagem de descrição de hardware amplamente utilizada, concebida na década de 80, devido uma necessidade do Departamento de Defesa dos Estados Unidos da América~\cite{cappelattipraticando}. Assim como a Verilog, esta linguagem também suporta o desenvolvimento, a verificação, a síntese, e os testes de \textit{hardware}~\cite{IEEEVHDLLanguage}.
@@ -62,10 +62,10 @@ end dataflow.
 \end{figure}
 
 \par
-\textcolor{red}{Na \autoref{fig:mux_vhdl} está descrito um multiplexador de duas entradas descrito em VHDL, apresentando na parte inicial as bibliotecas e na entidade(entity) a declaração das variáveis utilizadas. Na arquitetura(architecture) apresenta o funcionamento do multiplexador, relacionando entradas e saídas conforme tenham sido declarados. Este conceitos serão melhor apresentados na \autoref{sec:vhdl_seção}.}
+Na \autoref{fig:mux_vhdl} está descrito um multiplexador de duas entradas descrito em VHDL, apresentando na parte inicial as bibliotecas e na entidade(entity) a declaração das variáveis utilizadas. Na arquitetura(architecture) apresenta o funcionamento do multiplexador, relacionando entradas e saídas conforme tenham sido declarados. Este conceitos serão melhor apresentados na \autoref{sec:vhdl_seção}.
 
 \par
-\textcolor{red}{Conforme apresentado nas \autoref{fig:mux_verilog} e \autoref{fig:mux_vhdl}, ambas as linguagens apresentam diferenças no modelos de declaração e utilização para descrição de hardware. Para este trabalho foi escolhido a VHDL devido a linguagem apresentar um melhor escopo para análise, facilitando o trabalho de análise proposto para este projeto.}
+Conforme apresentado nas \autoref{fig:mux_verilog} e \autoref{fig:mux_vhdl}, ambas as linguagens apresentam diferenças no modelos de declaração e utilização para descrição de hardware. Para este trabalho foi escolhido a VHDL devido a linguagem apresentar um melhor escopo para análise, facilitando o trabalho de análise proposto para este projeto.
 
 
 %Ambas as linguagens apresentam similaridades, sendo a linguagem VHDL escolhida para este trabalho devido a linguagem apresentar maior gama de recursos tanto para o desenvolvimento quanto para o auxílio nos testes\todo{Apresentar um exemplo com referência}.
@@ -76,7 +76,7 @@ end dataflow.
 \subsection{\label{sec:vhdl_seção}VHSIC Hardware Description Language - VHDL}
 VHDL é uma linguagem de descrição de hardware destinada a ser utilizada em todas as etapas da criação de sistemas eletrônicos, sendo elas: desenvolvimento; verificação; síntese; e, teste de circuitos~\cite{IEEEVHDLLanguage}.
 % 
-Segundo~\citeonline{cappelattipraticando}, a VHDL apresenta três principais pilares: \textbf{abstração}, que consiste na descrição com diferentes níveis de detalhes; \textbf{modularidade}, que permite a divisão do projeto em vários blocos ou módulos para posterior interconexão; e \textbf{hierarquia}, \textcolor{red}{permite que módulos possam ser compostos por submódulos e, os mesmos tenham níveis de abstração diferentes, dependendo da necessidade do projeto.} Devido a esta versatilidade que a linguagem VHDL foi selecionada para o trabalho proposto.
+Segundo~\citeonline{cappelattipraticando}, a VHDL apresenta três principais pilares: \textbf{abstração}, que consiste na descrição com diferentes níveis de detalhes; \textbf{modularidade}, que permite a divisão do projeto em vários blocos ou módulos para posterior interconexão; e \textbf{hierarquia}, permite que módulos possam ser compostos por submódulos e, os mesmos tenham níveis de abstração diferentes, dependendo da necessidade do projeto. Devido a esta versatilidade que a linguagem VHDL foi selecionada para o trabalho proposto.
 
 \par
 Segundo \citeonline{IEEEVHDLLanguage}, é necessário um padrão para formatação da descrição em VHDL: \textit{Entity} (Pinos de entrada/saída) e \textit{Architecture} (Arquitetura). A \textit{Entity} ou entidade representa o bloco onde são declaradas as entradas e as saídas do circuito utilizadas em todo o sistema, conforme apresentado na \autoref{fig:biblioteca_entidade}. A \textit{Architecture} ou arquitetura, apresentado na \autoref{fig:arquitetura}, define a relação entre entradas e saídas declaradas na entidade, podendo tais especificações serem completas ou parciais. Assim como em outras linguagens, bibliotecas podem ser adicionadas, para que novas funções e atributos possam ser utilizados no projeto.
@@ -131,7 +131,7 @@ Segundo \citeonline{cappelattipraticando}, uma descrição em VHDL pode conter d
 %============================
 \subsection{Portas lógicas}
 
-\textcolor{red}{Segundo \citeonline{idoeta1982elementos},} o conceito de portas lógicas é baseado na conhecida álgebra de Boole ou álgebra booleana, desenvolvida pelo matemático inglês George Boole em 1854. A álgebra booleana é representada por apenas dois valores, sendo eles o $0$ e $1$ e, através disso, expressa a relação entre entrada e saída dentro de um circuito. As portas lógicas podem ser construídas a partir de diodos, \textcolor{red}{transistores} e resistores interconectados de modo que a saída seja o resultante de uma operação lógica básica realizada sobre as entradas \cite{tocci2003sistemas}. A \autoref{fig:algebra_booleana} apresenta um exemplo de álgebra booleana sem a utilização de diagramas.
+Segundo \citeonline{idoeta1982elementos}, o conceito de portas lógicas é baseado na conhecida álgebra de Boole ou álgebra booleana, desenvolvida pelo matemático inglês George Boole em 1854. A álgebra booleana é representada por apenas dois valores, sendo eles o $0$ e $1$ e, através disso, expressa a relação entre entrada e saída dentro de um circuito. As portas lógicas podem ser construídas a partir de diodos, transistores e resistores interconectados de modo que a saída seja o resultante de uma operação lógica básica realizada sobre as entradas \cite{tocci2003sistemas}. A \autoref{fig:algebra_booleana} apresenta um exemplo de álgebra booleana sem a utilização de diagramas.
 
 \begin{figure}[H]
 	\begin{center}
@@ -163,10 +163,10 @@ Ainda segundo \citeonline{tocci2003sistemas}, devido a esta característica, a �
 A \autoref{fig:exemplo_circuito} apresenta um circuito lógico formado pelas portas básicas da álgebra booleana. O circuito apresenta três entradas representadas pelas letras A, B e C, mas também formada por duas portas \textit{AND}, uma porta \textit{NOT} e uma porta \textit{OR}. Cada uma destas portas representando operações a serem realizadas, podendo receber como entrada um valor inicial ou resultante de outra porta, como no exemplo ocorre com a última porta \textit{AND}.
 
 \par
-\textcolor{red}{Entretanto, segundo \citeonline{kropf2013introduction}, a análise de circuitos é extremamente complexa, resultando em um problema \textbf{NP-Completo}, algoritmos possuem tempo de execução exponencial. Contudo, este tempo de execução exponencial é uma complexidade exponencial para o pior caso, resultando crescimento exponencial da execução a medida que o tamanho do problema aumenta.}
+Entretanto, segundo \citeonline{kropf2013introduction}, a análise de circuitos é extremamente complexa, resultando em um problema \textbf{NP-Completo}, algoritmos possuem tempo de execução exponencial. Contudo, este tempo de execução exponencial é uma complexidade exponencial para o pior caso, resultando crescimento exponencial da execução a medida que o tamanho do problema aumenta.
 
 \par
-\textcolor{red}{Ainda, segundo \citeonline{kropf2013introduction} a avaliação das funções booleanas podem ser verdadeiras(True) ou falso(False), com isso, para um função com \textit{n} variáveis, apresenta $2^{n}$ possibilidades de avaliação. Utilizando o exemplo da \autoref{fig:exemplo_circuito} que apresenta 3 entradas, logo apresenta 8 possibilidade de avaliação ao final e este número aumenta à medida que o número de variáveis tambeḿ aumenta}
+Ainda, segundo \citeonline{kropf2013introduction} a avaliação das funções booleanas podem ser verdadeiras(True) ou falso(False), com isso, para um função com \textit{n} variáveis, apresenta $2^{n}$ possibilidades de avaliação. Utilizando o exemplo da \autoref{fig:exemplo_circuito} que apresenta 3 entradas, logo apresenta 8 possibilidade de avaliação ao final e este número aumenta à medida que o número de variáveis tambeḿ aumenta.
 
 %============================
 %VERIFICAÇÃO DE SISTEMAS
@@ -193,34 +193,34 @@ Um diagrama de decisão binária(DDB) pode ser definido como um grafo acíclico 
 \end{figure}
 
 \par
-\textcolor{red}{O DDB permite o teste eficiente de satisfabilidade, validade e eficiência \cite{kropf2013introduction}. O uso e DDB em conjunto com \textit{Model Checking} e técnicas de abstração permitiu o aumento na capacidade de verificação, de modo que sistemas mais realistas pudessem ser verificados\cite{biere2003bounded}}
+O DDB permite o teste eficiente de satisfabilidade, validade e eficiência \cite{kropf2013introduction}. O uso e DDB em conjunto com \textit{Model Checking} e técnicas de abstração permitiu o aumento na capacidade de verificação, de modo que sistemas mais realistas pudessem ser verificados\cite{biere2003bounded}
 
 %============================
 %MODEL CHECKING
 %============================
 \subsection{Model Checking}
 \par
-\textcolor{red}{\textit{Model checking} é uma técnica de verificação formal que explora todos os possíveis estados do sistema, de modo a provar se um modelo satisfaz determinada propriedade. Pode ser aplicada em uma ampla gama de aplicações, tais como sistema embarcados, design de hardware e engenharia de software~\cite{baier2008principles}.}
+\textit{Model checking} é uma técnica de verificação formal que explora todos os possíveis estados do sistema, de modo a provar se um modelo satisfaz determinada propriedade. Pode ser aplicada em uma ampla gama de aplicações, tais como sistema embarcados, design de hardware e engenharia de software~\cite{baier2008principles}.
 
 \par
-\textcolor{red}{Entre as vantagens da utilização de \textit{Model Checking} estão:
+Entre as vantagens da utilização de \textit{Model Checking} estão:
 \begin{itemize}
     \item Possuem suporte a verificação parcial, em outras palavras, a verificação individual de propriedades, permitido foco primeiro as propriedades essenciais\cite{baier2008principles}.
     \item Não requer qualquer interação do usuário, nem um alto grau de especialização para o uso de \textit{model checking}\cite{baier2008principles}.
     \item Possui como base a teoria de grafos, estruturas de dados e lógica no desenvolvimento da solução\cite{baier2008principles}.
     \item Útil para fins de depuração, pois fornece informações em caso de uma propriedade seja invalidada\cite{baier2008principles}.
-\end{itemize}}
+\end{itemize}
 
 \par
-\textcolor{red}{Por outro lado, apresenta também algumas desvantagens:
+Por outro lado, apresenta também algumas desvantagens:
 \begin{itemize}
     \item Sofre do problema de explosão de espaço de estados, ou seja, a quantidade de estados necessários pode ser maior que a memória disponível pelo sistema\cite{baier2008principles}.
     \item Faz a verificação apenas dos requisitos declarados, logo, não a garantia de integridade. Baseado nisso, a validade de propriedades não verificadas não pode ser julgada\cite{baier2008principles}.
     \item A verificação de modelos geralmente não é computável,  isso deve-se a questões de decidibilidade utilizada \cite{baier2008principles}.
-\end{itemize}}
+\end{itemize}
 
 \par
-\textcolor{red}{Outras técnicas foram implementadas em conjuntos com \textit{Model checkings} com o intuito de aumentar a capacidade de verificação, como a técnica SAT na qual não sofre do problema de explosão de estados existente usando DDB. A técnica SAT em conjunto com \textit{Model Checking} é conhecida como \textit{Bounded Model Checking} \cite{biere2003bounded}.}
+Outras técnicas foram implementadas em conjuntos com \textit{Model checkings} com o intuito de aumentar a capacidade de verificação, como a técnica SAT na qual não sofre do problema de explosão de estados existente usando DDB. A técnica SAT em conjunto com \textit{Model Checking} é conhecida como \textit{Bounded Model Checking} \cite{biere2003bounded}.
 
 %============================
 %BOUNDED MODEL CHECKING
@@ -232,7 +232,7 @@ Segundo \citeonline{rocha2015verificaccao}, \textit{Bounded Model Checking} (BMC
 \textit{Bounded Model Checking} é uma técnica para a verificação de uma dada propriedade em uma determinada profundidade do sistema analisado. Logo, dado um sistema de transições M, uma propriedade $\phi$, e um limite (\textit{bound}) $k$, o BMC desenrola o sistema $k$ vezes e traduz o sistema em uma condição de verificação(CV) $\psi$ tal que $\psi$ é satisfeito se e somente se $\phi$ tem um contra-exemplo de profundidade menor ou igual a $k$ \cite{rocha2015verificaccao}.
 
 \par
-\textcolor{red}{O \textit{Extended SMT-Based Bounded Model Checker} (ESBMC) é um ferramenta que utiliza técnicas de \textit{Bounded Model Checking} e solucionadores SMT(\textit{Satisfiability Modulo Theories}) para verificação de programas em C/C$++$~\cite{rocha2015model}, permitindo a verificação aritmética de overflow e undeflow, segurança de ponteiros, limite de array e de gerar propriedades de segurança.\cite{cordeiro2012smt,rocha2015verificaccao}.} 
+O \textit{Extended SMT-Based Bounded Model Checker} (ESBMC) é um ferramenta que utiliza técnicas de \textit{Bounded Model Checking} e solucionadores SMT(\textit{Satisfiability Modulo Theories}) para verificação de programas em C/C$++$~\cite{rocha2015model}, permitindo a verificação aritmética de overflow e undeflow, segurança de ponteiros, limite de array e de gerar propriedades de segurança.\cite{cordeiro2012smt,rocha2015verificaccao}. 
 
 \par
 No ESBMC, o programa analisado é modelado em um sistema de transição de estados, conforme a trupla: $M=(S,R,S_{0})$, o qual é gerado um grafo de controle de fluxo (GFC), onde $S$ representa o conjunto de estados, $R$ $\subseteq$ $SxS$ representa as transições e $S \subseteq S$ representa o conjuto de estados iniciais. Um estado $s \in S$ consiste no valor do contador de programa (PC) e os valores de todas as variáveis dos programas. O estado inicial $S_{0}$ atribui o inicio do programa GFC ao PC, desta forma o ESBMC identifica as transições, conforme a formula lógica, $\gamma$=($S_{i}$,$S_{i+1}$) que captura as retrições sobre os valores correspondntes do PC e das variáveis do programa~\cite{cordeiro2012smt}.
@@ -241,16 +241,16 @@ No ESBMC, o programa analisado é modelado em um sistema de transição de estad
 %\textcolor{red}{Segundo o site do ESBMC\cite{esbmc},} a ferramenta permite ao usuário indicar propriedades adicionais\todo{Descrever quais propriedades o esbmc suporta} usando assertivas que também são verificadas. O ESBMC converte as condições usando diferentes técnicas de background\todo{apresentar exemplo} para posteriormente passar para verificador SMT. Outra vantagem é a ferramenta permitir verificação de software single-thread e multi-thread.
 
 \par
-\textcolor{red}{O motivo da escolha desta ferramenta, deve-se a mesma ter as funções necessárias para o desenvolvimento do método, como solucionadores SMT para verificação de assertiva e verificação em single-thread e multi-thread. Além de premiação em competições, como o SV-COMP, sendo premiado com 2 medalhas de ouro e duas de bronze em 2015 e uma medalha de ouro e uma de prata em 2016~\cite{esbmc}.}
+O motivo da escolha desta ferramenta, deve-se a mesma ter as funções necessárias para o desenvolvimento do método, como solucionadores SMT para verificação de assertiva e verificação em single-thread e multi-thread. Além de premiação em competições, como o SV-COMP, sendo premiado com 2 medalhas de ouro e duas de bronze em 2015 e uma medalha de ouro e uma de prata em 2016~\cite{esbmc}.
 %============================
 %REDES DE PETRI
 %============================
 \subsection{Redes de petri}
 \par
-\textcolor{red}{Um rede de petri, $N$ é um multigrafo direcionado, ponderado e bipartido, representado pela tupla $N=(P,T,I,O)$, onde $P$ representa um conjunto finito de estados; $T$ representa um conjunto finito de transições.; $I$ representa a função de entrada; e $O$ representa função de saída. Estas funções de entrada e saída determimam o fluxo dos token dentro da rede, sendo dos estados para as transições e das transisções para os estados~\cite{halder2006}.}
+Um rede de petri, $N$ é um multigrafo direcionado, ponderado e bipartido, representado pela tupla $N=(P,T,I,O)$, onde $P$ representa um conjunto finito de estados; $T$ representa um conjunto finito de transições.; $I$ representa a função de entrada; e $O$ representa função de saída. Estas funções de entrada e saída determimam o fluxo dos token dentro da rede, sendo dos estados para as transições e das transisções para os estados~\cite{halder2006}.
 
 
-\textcolor{red}{Redes de petri são redes baseadas em abstração que pode ser usado como método de modelagem, seja gráfica ou matemática~\cite{halder2006}.}Como ferramenta gráfica são utilizadas como comunicação visual, como fluxogramas, por exemplo, e como ferramenta matemática podem configurar modelos matemáticos que regem o comportamento dos sistemas\cite{murata1989petri}. 
+Redes de petri são redes baseadas em abstração que pode ser usado como método de modelagem, seja gráfica ou matemática~\cite{halder2006}.Como ferramenta gráfica são utilizadas como comunicação visual, como fluxogramas, por exemplo, e como ferramenta matemática podem configurar modelos matemáticos que regem o comportamento dos sistemas\cite{murata1989petri}. 
 
 \begin{figure}[H]
 	\begin{center}
@@ -261,16 +261,16 @@ No ESBMC, o programa analisado é modelado em um sistema de transição de estad
 \end{figure}
 
 \par
-\textcolor{red}{A \autoref{fig:rede_petri} ilustra a reação quimica: $2H_20 + 0_2 \rightarrow 2H_2O$, onde existe dois token em cada estado inicial, representando que existem duas particulas de $H_2$ e $O_2$ em cada estado. O arco que liga o estado com $H_2$  transição $t$ tem peso 2, isso indica que é necessário dois token deste estado para transição, ocorrendo o mesmo da transição $t$ para o estado $H_2O$, e o estado com $0_2$ é necessário apena um tokem para transição.\cite{murata1989petri}.}
+A \autoref{fig:rede_petri} ilustra a reação quimica: $2H_20 + 0_2 \rightarrow 2H_2O$, onde existe dois token em cada estado inicial, representando que existem duas particulas de $H_2$ e $O_2$ em cada estado. O arco que liga o estado com $H_2$  transição $t$ tem peso 2, isso indica que é necessário dois token deste estado para transição, ocorrendo o mesmo da transição $t$ para o estado $H_2O$, e o estado com $0_2$ é necessário apena um tokem para transição.\cite{murata1989petri}.
 
 \par
-\textcolor{red}{Na \autoref{fig:rede_petri}(a) apresenta os tokens todos no estado inicial e a operação pode ser realizada, pois os requisitos para a mesma estão disponivéis, desse caso dois token de $H_2$ e um token de $O_2$. Na \autoref{fig:rede_petri}(b), os tokens são passados a transição $t$ e formando $2H_2O$, seguindo o apresentado na formula. O peso da aresta de saída da transição para o estado seguinte tem peso 2, o que também pode ser realizado e passando dois tokens da transição para o estado $H_2O$\cite{murata1989petri}.} 
+Na \autoref{fig:rede_petri}(a) apresenta os tokens todos no estado inicial e a operação pode ser realizada, pois os requisitos para a mesma estão disponivéis, desse caso dois token de $H_2$ e um token de $O_2$. Na \autoref{fig:rede_petri}(b), os tokens são passados a transição $t$ e formando $2H_2O$, seguindo o apresentado na formula. O peso da aresta de saída da transição para o estado seguinte tem peso 2, o que também pode ser realizado e passando dois tokens da transição para o estado $H_2O$\cite{murata1989petri}.
 
 \par
-\textcolor{red}{Após isso, nenhuma operação mais pode ser realizada, devido não conter tokens necessários para a realização da operação representada\cite{murata1989petri}. Esta operação realizada com os tokens é chamado de "\textit{Token game}" que consiste no comportamento da rede de petri, em outras palavras, representa o funcionamento do sistema representado pela rede\cite{halder2006}.}
+Após isso, nenhuma operação mais pode ser realizada, devido não conter tokens necessários para a realização da operação representada\cite{murata1989petri}. Esta operação realizada com os tokens é chamado de "\textit{Token game}" que consiste no comportamento da rede de petri, em outras palavras, representa o funcionamento do sistema representado pela rede\cite{halder2006}.
 
 \par
-\textcolor{red}{Segundo \citeonline{jain2010petri}, umas das vantagens do uso de redes e petri é que um mesmo modelo pode ser usado pra análise de propriedades comportamentais e avaliação de desempenho, bem como para construção sistemática de simuladores e controladores de eventos discretos. Na \autoref{fig:petri_AND} é apresentado um exemplo de representação da porta AND em rede de petri.}
+Segundo \citeonline{jain2010petri}, umas das vantagens do uso de redes e petri é que um mesmo modelo pode ser usado pra análise de propriedades comportamentais e avaliação de desempenho, bem como para construção sistemática de simuladores e controladores de eventos discretos. Na \autoref{fig:petri_AND} é apresentado um exemplo de representação da porta AND em rede de petri.
 
 \begin{figure}[H]
 	\begin{center}
@@ -281,7 +281,7 @@ No ESBMC, o programa analisado é modelado em um sistema de transição de estad
 \end{figure}
 
 \par
-\textcolor{red}{A porta AND apresenta, pelo menos, duas entradas e uma saída. Sendo que, esta apenas será verdade, se ambas as entradas forem verdadeiras. Dessa forma, a transição \texttt{t} apenas será executada, se ambas as entradas \texttt{a} e \texttt{b} tiverem um \textit{token} cada, simbolizando, assim, verdade e, a saída terá um \textit{token} após a transição, mostrando-a como verdadeira.}
+A porta AND apresenta, pelo menos, duas entradas e uma saída. Sendo que, esta apenas será verdade, se ambas as entradas forem verdadeiras. Dessa forma, a transição \texttt{t} apenas será executada, se ambas as entradas \texttt{a} e \texttt{b} tiverem um \textit{token} cada, simbolizando, assim, verdade e, a saída terá um \textit{token} após a transição, mostrando-a como verdadeira.
 %============================
 %VERIFICAÇÃO DE HARDWARE
 %============================
@@ -327,7 +327,7 @@ END behaviour ;
 A utilização de \textit{Model Checking} também se faz presente nos modelos formais de verificação de hardware, onde apenas é utilizado o comportamento dos circuitos na verificação, de modo a verificar a se as propriedades  presentes são satisfeitas. Para isso, são utilizados os conceitos da lógica proposicional, que por meio da utilização de fórmulas que representem as propriedades dos estados, é possível realizar as verificações necessárias~\cite{seger1992introduction}.
 
 \par
-\textcolor{red}{O \textit{Model Checking} \textbf{BMC}\cite{biere1999symbolic} apresenta uma abordagem de verificação de hardware, além de testes comprovando a melhoria na utilização de solucionadores SAT para testes de satisfabilidade e mostrando uma performance significativamente melhor que o uso de DDB\cite{biere1999symbolic}. Baseado nisso, este trabalho fará uso de solucionadores SAT, sendo mostrado como melhor alternativa para análise.}
+O \textit{Model Checking} \textbf{BMC}\cite{biere1999symbolic} apresenta uma abordagem de verificação de hardware, além de testes comprovando a melhoria na utilização de solucionadores SAT para testes de satisfabilidade e mostrando uma performance significativamente melhor que o uso de DDB\cite{biere1999symbolic}. Baseado nisso, este trabalho fará uso de solucionadores SAT, sendo mostrado como melhor alternativa para análise.
 %============================
 %VERIFICAÇÃO DE SOFTWARE
 %============================
@@ -357,7 +357,8 @@ A lógica proposicional é uma linguagem formal onde é definida um alfabeto e c
 \item Alguém é bondoso.
 \end{enumerate}
 
-\textcolor{red}{Na lógica preposicional, não poderiam ser analisadas, pois não teria como decompor ambas em sentença e assim não teria como analisar as diferenças entre ambas. Contudo, no exemplo: "Existem cavalos com patas verdes.", sentença determina que existem cavalos com a caracteristica ou proriedade de terem as patas verde. A relação criada pela frase poderia a ser analisada pela lógica proposicional\cite{abe2002introducao}.}
+\par
+Na lógica preposicional, não poderiam ser analisadas, pois não teria como decompor ambas em sentença e assim não teria como analisar as diferenças entre ambas. Contudo, no exemplo: "Existem cavalos com patas verdes.", sentença determina que existem cavalos com a caracteristica ou proriedade de terem as patas verde. A relação criada pela frase poderia a ser analisada pela lógica proposicional\cite{abe2002introducao}.
 
 
 Segundo \citeauthor{souza2017logica}, alfabeto da lógica proposicional é formado por símbolo de pontuação, símbolos proposicionais e conectivos proposicionais, onde cada um apresenta uma função em específico, sendo:
@@ -396,14 +397,15 @@ Segundo \cite{IEEEPSL}, o PSL foi totalmente desenvolvida com o intuito fornecer
 
 O PSL pode ser utilizado para capturar requisitos relativos ao comportamento total do projeto, bem como, sobre o modo que o mesmo deverá operar no ambiente, ms também para capturar requisitos comportamentais e os pressupostos que surgem durante o processo de design. Ambas podem ser utilizadas para verificação de sistemas. 
 
-\textcolor{red}{O PSL possui 4 camadas, sendo:
+\par
+O PSL possui 4 camadas, sendo:
 \begin{itemize}
     \item \textbf{Camada booleana:} É utilizada para criar as expressões que são usadas pelas outras camadas. As expressões de camada booleana são avaliadas em um único ciclo de avaliação e obedecem as caracteristicas da linguagem na qual foi escrita. Na \autoref{fig:psl_example1} apresenta um expressão \textit{if} usando PSL nas linguagens VHDL e Verilog\cite{IEEEPSL}.
     \item \textbf{Camada temporal:} É usado para descrever as propriedades do circuito. Pode descrever propriedades envolvendo relações temporais e são avaliadas em uma serie de ciclos de avaliação. Na \autoref{fig:psl_example2} apresenta a estrutura \texttt{@clk}, permitindo que determinda operação seja executada em tempos especificos de execução ou em cilcos especificos.\cite{IEEEPSL}.
     \item \textbf{Camada verificação:} É usada para informar de que modo as propriedades na camada temporal devem ser utilizadas pelas ferramentas de verificação. Na \autoref{fig:psl_example3} apresenta o uso de \textbf{assert} que busca provar a proriedade e \textbf{assume} que a ferramenta deve assumir como verdadeiro a propriedade~\cite{IEEEPSL}.
     \item \textbf{Camada de modelagem:} É usada para modelar comportamento de entradas, no caso de ferramentas que não utiizem casos de teste e para modelar circuitos adicionais para verificação, mas que não fazem parte do circuito principal\cite{IEEEPSL}.
 \end{itemize}
-}
+
 \begin{figure}[H]
 \caption{\label{fig:psl_example1} Exemplo de PSL em VHDL e Verilog.}
 	\begin{center}
@@ -453,10 +455,10 @@ O PSL pode ser utilizado para capturar requisitos relativos ao comportamento tot
 Verificação baseada em assertivas, do inglês \textit{Assertion-Based Verification} - ABV, é um paradigma de verificação igualmente adequado para verificação formal e abordagens baseadas em simulação~\cite{boule2005incorporating} e em conjunto com a tecnica de PSL tem ganhado aceitação como um método essencial para verificação funcional do hardware~\cite{DahanCombining}.
 
 \par
-\textcolor{red}{Na ABV as assertivas são declaração adicionadas ao projeto com o intuito de especificar o comportamento do projeto~\cite{boule2005incorporating}, podendo escritos em PSL ou em SVA (\textit{System Verilog Assertions}). No caso deste projeto será utilizado a PSL, devido a mesma ser utilizada juntamente com a linguagem VHDL. Com a utilização de ABV o circuito pode ser verificado usando técnicas de simulação e/ou verificação, por exemplo, \textit{model checking}, para garantir que o mesmo esteja de acordo com o pretendido projeto~\cite{DahanCombining}.}
+Na ABV as assertivas são declaração adicionadas ao projeto com o intuito de especificar o comportamento do projeto~\cite{boule2005incorporating}, podendo escritos em PSL ou em SVA (\textit{System Verilog Assertions}). No caso deste projeto será utilizado a PSL, devido a mesma ser utilizada juntamente com a linguagem VHDL. Com a utilização de ABV o circuito pode ser verificado usando técnicas de simulação e/ou verificação, por exemplo, \textit{model checking}, para garantir que o mesmo esteja de acordo com o pretendido projeto~\cite{DahanCombining}.
 
 \par
-\textcolor{red}{Na \autoref{fig:assertiva} apresenta o modelo de assertiva utilizada no projeto, utilizando de um modelo próprio para assertivas, unindo as funcionalidades já existentes nas assertivas do VHDL, mas também novas (serão apresentadas nas próximas seções), fornecendo assim mais propriedades a serem analisadas. A assertiva apresentada na \textbf{linha 13} da \autoref{fig:assertiva_abv} faz a verificação se a porta AND, ao ter entradas de dois valores 1, a saída também será 1, caso não seja será relatado erro de verificação.}
+Na \autoref{fig:assertiva} apresenta o modelo de assertiva utilizada no projeto, utilizando de um modelo próprio para assertivas, unindo as funcionalidades já existentes nas assertivas do VHDL, mas também novas (serão apresentadas nas próximas seções), fornecendo assim mais propriedades a serem analisadas. A assertiva apresentada na \textbf{linha 13} da \autoref{fig:assertiva_abv} faz a verificação se a porta AND, ao ter entradas de dois valores 1, a saída também será 1, caso não seja será relatado erro de verificação.
 
 \begin{figure}[H]
 \caption{\label{fig:assertiva_abv} Exemplo de declaração de assertiva no VHDL.}
@@ -567,7 +569,7 @@ A \autoref{fig:cod_vhdl} representa o trecho de código apresentado na \autoref{
 \end{figure}
 
 \par
-\textcolor{red}{Segundo \citeonline{cousot2002systematic}, a metodologia de transformação de código fornece ferramentas para o desenvolvimento de programas a partir da especificação e para verificação do programa. As técnicas de transformação código fornecem ferramentas para otimização, como, por exemplo, a otimização de cache\cite{jin2001theoretical} e a propagação de constantes\cite{kildall1973unified}; para customização de software e, para isso, podem utilizar-se da engenharia reversa\cite{yang1997reverse} e da aplicação de políticas de segurança\cite{erlingsson2000sasi}; e para compilação.}
+Segundo \citeonline{cousot2002systematic}, a metodologia de transformação de código fornece ferramentas para o desenvolvimento de programas a partir da especificação e para verificação do programa. As técnicas de transformação código fornecem ferramentas para otimização, como, por exemplo, a otimização de cache\cite{jin2001theoretical} e a propagação de constantes\cite{kildall1973unified}; para customização de software e, para isso, podem utilizar-se da engenharia reversa\cite{yang1997reverse} e da aplicação de políticas de segurança\cite{erlingsson2000sasi}; e para compilação.
 
 %============================
 %OTIMIZAÇÃO
@@ -625,7 +627,7 @@ A \autoref{fig:basic_block} apresenta um bloco básico com algumas instruções,
 Grafo de fluxo de controle corresponde a um grafo direcionado, no qual cada nó representa blocos básicos e cada aresta representa os caminhos de fluxo entre os blocos basicos~\cite{allen1970control}. É importante ressaltar que saltos determinam o final de um determinado bloco básico, ou seja, saltos indicam um caminho para uma nova região de código básico~\cite{aho2007compilers}.
 
 \par
-\textcolor{red}{Conforme apresentado, na \autoref{fig:cfg_example}(a) apresenta um código dividido em blocos, onde cada bloco apresenta estrutura de decisão \textit{if}. Cada bloco, seja para caso verdadeiro(\textit{True}, ou seja para caso (\textit{False}), é definido por um bloco, dessa forma o grafo de fluxo pode ser gerado. Na \autoref{fig:cfg_example}(b), apresenta um dos possivéis caminho de execução de código, baseando-se nos resultados gerado pelas estruturas de condição.}
+Conforme apresentado, na \autoref{fig:cfg_example}(a) apresenta um código dividido em blocos, onde cada bloco apresenta estrutura de decisão \textit{if}. Cada bloco, seja para caso verdadeiro(\textit{True}, ou seja para caso (\textit{False}), é definido por um bloco, dessa forma o grafo de fluxo pode ser gerado. Na \autoref{fig:cfg_example}(b), apresenta um dos possivéis caminho de execução de código, baseando-se nos resultados gerado pelas estruturas de condição.
 
 \begin{figure}[H]
 	\begin{center}
@@ -643,7 +645,7 @@ Grafo de fluxo de controle corresponde a um grafo direcionado, no qual cada nó 
 Análise de fluxo de dados refere-se ao conjunto de técnicas que derivam informações sobre o fluxo de dados ao longo dos caminhos de execução do programa. Para análise do programa, é necessário considerar todas as posiveis execuções através do grafo de fluxo de controle~\cite{aho2007compilers}.
 
 \par
-\textcolor{red}{Na \autoref{fig:cfg_example(c)}, mostra todas as possivéis execuções do código gerdas a partir do grafo de fluxo de controle. Dsta forma, através dessa análise, é possivél determinar se um código ou trecho de código pode ser eliminado, assim melhorando a execução do código \cite{aho2007compilers}.}
+Na \autoref{fig:cfg_example(c)}, mostra todas as possivéis execuções do código geradas a partir do grafo de fluxo de controle. Dsta forma, através dessa análise, é possivél determinar se um código ou trecho de código pode ser eliminado, assim melhorando a execução do código \cite{aho2007compilers}.
 
 \begin{figure}[H]
 	\begin{center}
@@ -691,4 +693,4 @@ O gerador de código possui três tarefas primarias, sendo as mesmas seleção d
 \end{figure}
 
 \par
-\textcolor{red}{Conforme apresentado na \autoref{fig:fase_compilador} e, segundo \citeonline{aho2007compilers}, a geração de código ocorre em dois momentos. Sendo que, inicialmente ocorre a geração de código intermédiario, que tem como propriedades: buscar uma fácil produção e a tradução para o programa alvo. Posteriormente, ocorre a geração de código, onde as localizações de mémoria são selecionadas para cada variável utilizada no programa e, as instruções intermediárias são traduzidas numa sequência de instruções de máquina, que realizam a mesma tarefa.}
+Conforme apresentado na \autoref{fig:fase_compilador} e, segundo \citeonline{aho2007compilers}, a geração de código ocorre em dois momentos. Sendo que, inicialmente ocorre a geração de código intermédiario, que tem como propriedades: buscar uma fácil produção e a tradução para o programa alvo. Posteriormente, ocorre a geração de código, onde as localizações de mémoria são selecionadas para cada variável utilizada no programa e, as instruções intermediárias são traduzidas numa sequência de instruções de máquina, que realizam a mesma tarefa.
