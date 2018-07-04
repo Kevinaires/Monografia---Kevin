@@ -142,11 +142,11 @@ Segundo \citeonline{idoeta1982elementos}, o conceito de portas lógicas é basea
 \end{figure}
 
 \par
-Ainda segundo \citeonline{tocci2003sistemas}, devido a esta característica, a álgebra booleana possui três operações básicas, \textit{OR} (ou), \textit{AND} (e) e \textit{NOT} (não). Tal conjunto de operações também é denominado de operações booleanas e, por meio da utilização de tabelas verdade é possível descrever as saídas baseando-se nas entradas e na operação aplicada. Cada operação booleana possui sua tabela verdade (~\autoref{fig:exemplo_diagrama}), bem como sua representação em forma de diagrama.
+Ainda segundo \citeonline{tocci2003sistemas}, devido a esta característica, a álgebra booleana possui três operações básicas, \texttt{OR} (ou), \texttt{AND} (e) e \texttt{NOT} (não). Tal conjunto de operações também é denominado de operações booleanas e, por meio da utilização de tabelas verdade é possível descrever as saídas baseando-se nas entradas e na operação aplicada. Cada operação booleana possui sua tabela verdade (~\autoref{fig:exemplo_diagrama}), bem como sua representação em forma de diagrama.
 
 \begin{figure}[H]
 	\begin{center}
-    \caption{\label{fig:exemplo_diagrama}Símbolo e tabela verdade para uma porta OR de três entradas.}
+    \caption{\label{fig:exemplo_diagrama}Símbolo e tabela verdade para uma porta \texttt{OR} de três entradas.}
 	\includegraphics[scale=0.60]{Figuras/exemplo_diagrama.png}
 	\end{center}
     \legend{Fonte: \cite{tocci2003sistemas}}
@@ -160,13 +160,13 @@ Ainda segundo \citeonline{tocci2003sistemas}, devido a esta característica, a �
     \legend{Fonte: \cite{tocci2003sistemas}}
 \end{figure}
 
-A \autoref{fig:exemplo_circuito} apresenta um circuito lógico formado pelas portas básicas da álgebra booleana. O circuito apresenta três entradas representadas pelas letras A, B e C, mas também formada por duas portas \textit{AND}, uma porta \textit{NOT} e uma porta \textit{OR}. Cada uma destas portas representando operações a serem realizadas, podendo receber como entrada um valor inicial ou resultante de outra porta, como no exemplo ocorre com a última porta \textit{AND}.
+A \autoref{fig:exemplo_circuito} apresenta um circuito lógico formado pelas portas básicas da álgebra booleana. O circuito apresenta três entradas representadas pelas letras A, B e C, mas também formada por duas portas \texttt{AND}, uma porta \texttt{NOT} e uma porta \texttt{OR}. Cada uma destas portas representando operações a serem realizadas, podendo receber como entrada um valor inicial ou resultante de outra porta, como no exemplo ocorre com a última porta \texttt{AND}.
 
 \par
 Entretanto, segundo \citeonline{kropf2013introduction}, a análise de circuitos é extremamente complexa, resultando em um problema \textbf{NP-Completo}, algoritmos possuem tempo de execução exponencial. Contudo, este tempo de execução exponencial é uma complexidade exponencial para o pior caso, resultando crescimento exponencial da execução a medida que o tamanho do problema aumenta.
 
 \par
-Ainda, segundo \citeonline{kropf2013introduction} a avaliação das funções booleanas podem ser verdadeiras(True) ou falso(False), com isso, para um função com \textit{n} variáveis, apresenta $2^{n}$ possibilidades de avaliação. Utilizando o exemplo da \autoref{fig:exemplo_circuito} que apresenta 3 entradas, logo apresenta 8 possibilidade de avaliação ao final e este número aumenta à medida que o número de variáveis tambeḿ aumenta.
+Ainda, segundo \citeonline{kropf2013introduction} a avaliação das funções booleanas podem ser verdadeiras (True) ou falso (False), com isso, para um função com \texttt{n} variáveis, apresenta $2^{n}$ possibilidades de avaliação. Utilizando o exemplo da \autoref{fig:exemplo_circuito} que apresenta $3$ entradas, logo apresenta 8 possibilidade de avaliação ao final e este número aumenta à medida que o número de variáveis tambeḿ aumenta.
 
 %============================
 %VERIFICAÇÃO DE SISTEMAS
@@ -181,7 +181,7 @@ Segundo~\citeonline{sargent2005verification}, verificação é o processo de det
 A verificação consiste identificação de erros e prováveis problemas que um componente pronto possa apresentar, enquanto a validação busca analisar se tal componente está seguindo os requisitos pré-definidos para sua construção~\cite{koscianski2007qualidade}. O teste de programa, na qual o software  é executado com dados de teste é a principal forma de validação, porém, técnicas de verificação, tais como, inspeção e revisões também podem integrar a etapa de validação~\cite{sommerville2011engenharia}.
 
 \subsection{Diagrama de decisão binária}
-Um diagrama de decisão binária(DDB) pode ser definido como um grafo acíclico para representação de funções booleanas. Existe uma ordem rigorosa na ocorrência de variáveis à medida que se percorre o grafo da raiz para a folha. Dado como exemplo a fórmula \textit{f=(a$\lor$b)$\land$(c$\lor$d)} e utilizando a ordenação de variavél $a < b < c < d$, na \autoref{fig:bdd_fig}. Dada a atribuição de valores booleanos as variáveis $a, b, c$ e $d$, pode-se decidir se a atribuição torna a fórmula verdadeira atravessando o início do gráfico na raiz e ramificação em cada nó. Definindo $a,c$ e $d = 1$ e $c = 0$ leva a folha de rótulo 1, portanto, a fórmula é verdadeira para essa tarefa~\cite{clarke1994model}.
+Um diagrama de decisão binária (DDB) pode ser definido como um grafo acíclico para representação de funções booleanas. Existe uma ordem rigorosa na ocorrência de variáveis à medida que se percorre o grafo da raiz para a folha. Dado como exemplo a fórmula \textit{f=(a$\lor$b)$\land$(c$\lor$d)} e utilizando a ordenação de variavél $a < b < c < d$, na \autoref{fig:bdd_fig}. Dada a atribuição de valores booleanos as variáveis $a, b, c$ e $d$, pode-se decidir se a atribuição torna a fórmula verdadeira atravessando o início do gráfico na raiz e ramificação em cada nó. Definindo $a,c$ e $d = 1$ e $c = 0$ leva a folha de rótulo 1, portanto, a fórmula é verdadeira para essa tarefa~\cite{clarke1994model}.
 
 
 \begin{figure}[H]
@@ -205,22 +205,22 @@ O DDB permite o teste eficiente de satisfabilidade, validade e eficiência \cite
 \par
 Entre as vantagens da utilização de \textit{Model Checking} estão:
 \begin{itemize}
-    \item Possuem suporte a verificação parcial, em outras palavras, a verificação individual de propriedades, permitido foco primeiro as propriedades essenciais\cite{baier2008principles}.
-    \item Não requer qualquer interação do usuário, nem um alto grau de especialização para o uso de \textit{model checking}\cite{baier2008principles}.
-    \item Possui como base a teoria de grafos, estruturas de dados e lógica no desenvolvimento da solução\cite{baier2008principles}.
-    \item Útil para fins de depuração, pois fornece informações em caso de uma propriedade seja invalidada\cite{baier2008principles}.
+    \item Possuem suporte a verificação parcial, em outras palavras, a verificação individual de propriedades, permitido foco primeiro as propriedades essenciais~\cite{baier2008principles}.
+    \item Não requer qualquer interação do usuário, nem um alto grau de especialização para o uso de \textit{model checking}~\cite{baier2008principles}.
+    \item Possui como base a teoria de grafos, estruturas de dados e lógica no desenvolvimento da solução~\cite{baier2008principles}.
+    \item Útil para fins de depuração, pois fornece informações em caso de uma propriedade seja invalidada~\cite{baier2008principles}.
 \end{itemize}
 
 \par
 Por outro lado, apresenta também algumas desvantagens:
 \begin{itemize}
-    \item Sofre do problema de explosão de espaço de estados, ou seja, a quantidade de estados necessários pode ser maior que a memória disponível pelo sistema\cite{baier2008principles}.
-    \item Faz a verificação apenas dos requisitos declarados, logo, não a garantia de integridade. Baseado nisso, a validade de propriedades não verificadas não pode ser julgada\cite{baier2008principles}.
-    \item A verificação de modelos geralmente não é computável,  isso deve-se a questões de decidibilidade utilizada \cite{baier2008principles}.
+    \item Sofre do problema de explosão de espaço de estados, ou seja, a quantidade de estados necessários pode ser maior que a memória disponível pelo sistema~\cite{baier2008principles}.
+    \item Faz a verificação apenas dos requisitos declarados, logo, não a garantia de integridade. Baseado nisso, a validade de propriedades não verificadas não pode ser julgada~\cite{baier2008principles}.
+    \item A verificação de modelos geralmente não é computável,  isso deve-se a questões de decidibilidade utilizada~\cite{baier2008principles}.
 \end{itemize}
 
 \par
-Outras técnicas foram implementadas em conjuntos com \textit{Model checkings} com o intuito de aumentar a capacidade de verificação, como a técnica SAT na qual não sofre do problema de explosão de estados existente usando DDB. A técnica SAT em conjunto com \textit{Model Checking} é conhecida como \textit{Bounded Model Checking} \cite{biere2003bounded}.
+Outras técnicas foram implementadas em conjuntos com \textit{Model checkings} com o intuito de aumentar a capacidade de verificação, como a técnica SAT na qual não sofre do problema de explosão de estados existente usando DDB. A técnica SAT em conjunto com \textit{Model Checking} é conhecida como \textit{Bounded Model Checking}~\cite{biere2003bounded}.
 
 %============================
 %BOUNDED MODEL CHECKING
@@ -232,7 +232,7 @@ Segundo \citeonline{rocha2015verificaccao}, \textit{Bounded Model Checking} (BMC
 \textit{Bounded Model Checking} é uma técnica para a verificação de uma dada propriedade em uma determinada profundidade do sistema analisado. Logo, dado um sistema de transições M, uma propriedade $\phi$, e um limite (\textit{bound}) $k$, o BMC desenrola o sistema $k$ vezes e traduz o sistema em uma condição de verificação(CV) $\psi$ tal que $\psi$ é satisfeito se e somente se $\phi$ tem um contra-exemplo de profundidade menor ou igual a $k$ \cite{rocha2015verificaccao}.
 
 \par
-O \textit{Extended SMT-Based Bounded Model Checker} (ESBMC) é um ferramenta que utiliza técnicas de \textit{Bounded Model Checking} e solucionadores SMT(\textit{Satisfiability Modulo Theories}) para verificação de programas em C/C$++$~\cite{rocha2015model}, permitindo a verificação aritmética de overflow e undeflow, segurança de ponteiros, limite de array e de gerar propriedades de segurança.\cite{cordeiro2012smt,rocha2015verificaccao}. 
+O \textit{Extended SMT-Based Bounded Model Checker} (ESBMC) é um ferramenta que utiliza técnicas de \textit{Bounded Model Checking} e solucionadores SMT(\textit{Satisfiability Modulo Theories}) para verificação de programas em C/C$++$~\cite{rocha2015model}, permitindo a verificação aritmética de overflow e undeflow, segurança de ponteiros, limite de array e de gerar propriedades de segurança~\cite{cordeiro2012smt,rocha2015verificaccao}. 
 
 \par
 No ESBMC, o programa analisado é modelado em um sistema de transição de estados, conforme a trupla: $M=(S,R,S_{0})$, o qual é gerado um grafo de controle de fluxo (GFC), onde $S$ representa o conjunto de estados, $R$ $\subseteq$ $SxS$ representa as transições e $S \subseteq S$ representa o conjuto de estados iniciais. Um estado $s \in S$ consiste no valor do contador de programa (PC) e os valores de todas as variáveis dos programas. O estado inicial $S_{0}$ atribui o inicio do programa GFC ao PC, desta forma o ESBMC identifica as transições, conforme a formula lógica, $\gamma$=($S_{i}$,$S_{i+1}$) que captura as retrições sobre os valores correspondntes do PC e das variáveis do programa~\cite{cordeiro2012smt}.
@@ -250,7 +250,7 @@ O motivo da escolha desta ferramenta, deve-se a mesma ter as funções necessár
 Um rede de petri, $N$ é um multigrafo direcionado, ponderado e bipartido, representado pela tupla $N=(P,T,I,O)$, onde $P$ representa um conjunto finito de estados; $T$ representa um conjunto finito de transições.; $I$ representa a função de entrada; e $O$ representa função de saída. Estas funções de entrada e saída determimam o fluxo dos token dentro da rede, sendo dos estados para as transições e das transisções para os estados~\cite{halder2006}.
 
 
-Redes de petri são redes baseadas em abstração que pode ser usado como método de modelagem, seja gráfica ou matemática~\cite{halder2006}.Como ferramenta gráfica são utilizadas como comunicação visual, como fluxogramas, por exemplo, e como ferramenta matemática podem configurar modelos matemáticos que regem o comportamento dos sistemas\cite{murata1989petri}. 
+Redes de petri são redes baseadas em abstração que pode ser usado como método de modelagem, seja gráfica ou matemática~\cite{halder2006}.Como ferramenta gráfica são utilizadas como comunicação visual, como fluxogramas, por exemplo, e como ferramenta matemática podem configurar modelos matemáticos que regem o comportamento dos sistemas~\cite{murata1989petri}. 
 
 \begin{figure}[H]
 	\begin{center}
@@ -261,16 +261,16 @@ Redes de petri são redes baseadas em abstração que pode ser usado como métod
 \end{figure}
 
 \par
-A \autoref{fig:rede_petri} ilustra a reação quimica: $2H_20 + 0_2 \rightarrow 2H_2O$, onde existe dois token em cada estado inicial, representando que existem duas particulas de $H_2$ e $O_2$ em cada estado. O arco que liga o estado com $H_2$  transição $t$ tem peso 2, isso indica que é necessário dois token deste estado para transição, ocorrendo o mesmo da transição $t$ para o estado $H_2O$, e o estado com $0_2$ é necessário apena um tokem para transição.\cite{murata1989petri}.
+A \autoref{fig:rede_petri} ilustra a reação quimica: $2H_20 + 0_2 \rightarrow 2H_2O$, onde existe dois token em cada estado inicial, representando que existem duas particulas de $H_2$ e $O_2$ em cada estado. O arco que liga o estado com $H_2$  transição $t$ tem peso 2, isso indica que é necessário dois token deste estado para transição, ocorrendo o mesmo da transição $t$ para o estado $H_2O$, e o estado com $0_2$ é necessário apena um tokem para transição~\cite{murata1989petri}.
 
 \par
-Na \autoref{fig:rede_petri}(a) apresenta os tokens todos no estado inicial e a operação pode ser realizada, pois os requisitos para a mesma estão disponivéis, desse caso dois token de $H_2$ e um token de $O_2$. Na \autoref{fig:rede_petri}(b), os tokens são passados a transição $t$ e formando $2H_2O$, seguindo o apresentado na formula. O peso da aresta de saída da transição para o estado seguinte tem peso 2, o que também pode ser realizado e passando dois tokens da transição para o estado $H_2O$\cite{murata1989petri}.
+Na \autoref{fig:rede_petri}(a) apresenta os tokens todos no estado inicial e a operação pode ser realizada, pois os requisitos para a mesma estão disponivéis, desse caso dois token de $H_2$ e um token de $O_2$. Na \autoref{fig:rede_petri}(b), os tokens são passados a transição $t$ e formando $2H_2O$, seguindo o apresentado na formula. O peso da aresta de saída da transição para o estado seguinte tem peso 2, o que também pode ser realizado e passando dois tokens da transição para o estado $H_2O$~\cite{murata1989petri}.
 
 \par
-Após isso, nenhuma operação mais pode ser realizada, devido não conter tokens necessários para a realização da operação representada\cite{murata1989petri}. Esta operação realizada com os tokens é chamado de "\textit{Token game}" que consiste no comportamento da rede de petri, em outras palavras, representa o funcionamento do sistema representado pela rede\cite{halder2006}.
+Após isso, nenhuma operação mais pode ser realizada, devido não conter tokens necessários para a realização da operação representada~\cite{murata1989petri}. Esta operação realizada com os tokens é chamado de "\textit{Token game}" que consiste no comportamento da rede de petri, em outras palavras, representa o funcionamento do sistema representado pela rede\cite{halder2006}.
 
 \par
-Segundo \citeonline{jain2010petri}, umas das vantagens do uso de redes e petri é que um mesmo modelo pode ser usado pra análise de propriedades comportamentais e avaliação de desempenho, bem como para construção sistemática de simuladores e controladores de eventos discretos. Na \autoref{fig:petri_AND} é apresentado um exemplo de representação da porta AND em rede de petri.
+Segundo \citeonline{jain2010petri}, umas das vantagens do uso de redes e petri é que um mesmo modelo pode ser usado pra análise de propriedades comportamentais e avaliação de desempenho, bem como para construção sistemática de simuladores e controladores de eventos discretos. Na \autoref{fig:petri_AND} é apresentado um exemplo de representação da porta \texttt{AND} em rede de petri.
 
 \begin{figure}[H]
 	\begin{center}
@@ -281,7 +281,7 @@ Segundo \citeonline{jain2010petri}, umas das vantagens do uso de redes e petri �
 \end{figure}
 
 \par
-A porta AND apresenta, pelo menos, duas entradas e uma saída. Sendo que, esta apenas será verdade, se ambas as entradas forem verdadeiras. Dessa forma, a transição \texttt{t} apenas será executada, se ambas as entradas \texttt{a} e \texttt{b} tiverem um \textit{token} cada, simbolizando, assim, verdade e, a saída terá um \textit{token} após a transição, mostrando-a como verdadeira.
+A porta \texttt{AND} apresenta, pelo menos, duas entradas e uma saída. Sendo que, esta apenas será verdade, se ambas as entradas forem verdadeiras. Dessa forma, a transição \texttt{t} apenas será executada, se ambas as entradas \texttt{a} e \texttt{b} tiverem um \textit{token} cada, simbolizando, assim, verdade e, a saída terá um \textit{token} após a transição, mostrando-a como verdadeira.
 %============================
 %VERIFICAÇÃO DE HARDWARE
 %============================
@@ -323,11 +323,12 @@ END behaviour ;
 	\end{center}
     \legend{Fonte: Própria.}
 \end{figure}
+
 \par
 A utilização de \textit{Model Checking} também se faz presente nos modelos formais de verificação de hardware, onde apenas é utilizado o comportamento dos circuitos na verificação, de modo a verificar a se as propriedades  presentes são satisfeitas. Para isso, são utilizados os conceitos da lógica proposicional, que por meio da utilização de fórmulas que representem as propriedades dos estados, é possível realizar as verificações necessárias~\cite{seger1992introduction}.
 
 \par
-O \textit{Model Checking} \textbf{BMC}\cite{biere1999symbolic} apresenta uma abordagem de verificação de hardware, além de testes comprovando a melhoria na utilização de solucionadores SAT para testes de satisfabilidade e mostrando uma performance significativamente melhor que o uso de DDB\cite{biere1999symbolic}. Baseado nisso, este trabalho fará uso de solucionadores SAT, sendo mostrado como melhor alternativa para análise.
+O BMC~\cite{biere1999symbolic} apresenta uma abordagem de verificação de hardware, além de testes comprovando a melhoria na utilização de solucionadores SAT para testes de satisfabilidade e mostrando uma performance significativamente melhor que o uso de DDB\cite{biere1999symbolic}. Baseado nisso, este trabalho fará uso de solucionadores SAT, sendo mostrado como melhor alternativa para análise.
 %============================
 %VERIFICAÇÃO DE SOFTWARE
 %============================
@@ -342,7 +343,7 @@ Observa-se que o uso de verificacão de software tem sido feito aplicado em muit
   \item \textbf{Analise estática:} Engloba diversas técnicas para calcular automaticamente informações sobre o comportamento de um programa sem executá-lo, sendo utilizado em otimização de código e verificação em compiladres~\cite{d2008survey}.
 \end{itemize}
 
-Segundo \citeauthor{rocha2015verificaccao}, na verificação formal de software apresentam-se dificuldades, tais como: quais as propriedades são de interesse na verificação em tempo de execução; e impossibilidade matemática de provar a corretude de propriedades não triviais no comportamento de programas 
+Segundo \citeonline{rocha2015verificaccao}, na verificação formal de software apresentam-se dificuldades, tais como: quais as propriedades são de interesse na verificação em tempo de execução; e impossibilidade matemática de provar a corretude de propriedades não triviais no comportamento de programas 
 % , devido ao computador ser um dispositivo finito
 ~\cite{cousot2010gentle}. 
 
@@ -361,7 +362,7 @@ A lógica proposicional é uma linguagem formal onde é definida um alfabeto e c
 Na lógica preposicional, não poderiam ser analisadas, pois não teria como decompor ambas em sentença e assim não teria como analisar as diferenças entre ambas. Contudo, no exemplo: "Existem cavalos com patas verdes.", sentença determina que existem cavalos com a caracteristica ou proriedade de terem as patas verde. A relação criada pela frase poderia a ser analisada pela lógica proposicional\cite{abe2002introducao}.
 
 
-Segundo \citeauthor{souza2017logica}, alfabeto da lógica proposicional é formado por símbolo de pontuação, símbolos proposicionais e conectivos proposicionais, onde cada um apresenta uma função em específico, sendo:
+Segundo \citeonline{souza2017logica}, alfabeto da lógica proposicional é formado por símbolo de pontuação, símbolos proposicionais e conectivos proposicionais, onde cada um apresenta uma função em específico, sendo:
 \begin{itemize}
   \item \textbf{Símbolos de pontuação: }Apenas dois símbolos de pontuação são utilizados o "(" e o ")".
   \item \textbf{Símbolos proposicionais:} São utilizados para representar as proposições, onde um símbolo \textit{P} pode ser utilizado para representar uma proposição qualquer, por exemplo: \textit{P}="Está chovendo". O conjunto de símbolos proposicionais é infinito e enumerável, sendo possível representar infinitos e enumerável conjunto de proposições.
@@ -375,7 +376,7 @@ Segundo \citeauthor{souza2017logica}, alfabeto da lógica proposicional é forma
 \end{enumerate} 
 \end{itemize}
 
-Ainda segundo \citeauthor{souza2017logica}, existem as fórmulas que são constituídas de forma indutiva, a partir de símbolos do alfabeto conforme as regras apresentadas abaixo:
+Ainda segundo \citeonline{souza2017logica}, existem as fórmulas que são constituídas de forma indutiva, a partir de símbolos do alfabeto conforme as regras apresentadas abaixo:
 \begin{itemize}
 \item Todo o símbolo preposicional é uma fórmula
 \item Se \textit{H} é uma fórmula, então ($\neg$\textit{H}), a negação de \textit{H}, é uma fórmula.
