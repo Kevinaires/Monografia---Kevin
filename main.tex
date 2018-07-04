@@ -2,14 +2,14 @@
 
 \documentclass[
 	% -- opções da classe memoir --
-	12pt,				% tamanho da fonte
-    oneside,			% Tipo de impressão, frente-verso(twoside) ou apenas frente(oneside)
-	a4paper,			% tamanho do papel. 
+	12pt, % tamanho da fonte
+    oneside, % Tipo de impressão, frente-verso(twoside) ou apenas frente(oneside)
+	a4paper, % tamanho do papel. 
 	% -- opções da classe abntex2 --
-	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	chapter=TITLE, % títulos de capítulos convertidos em letras maiúsculas
 	% -- opções do pacote babel --    
-	english,			% idioma adicional para hifenização
-	brazil				% o último idioma é o principal do documento    
+	english, % idioma adicional para hifenização
+	brazil % o último idioma é o principal do documento    
 	]{abntex2}
     
     %\renewcommand{\ABNTEXpartfontsize}{\normalsize}
@@ -20,18 +20,17 @@
 % ---
 % Pacotes básicos 
 % ---
-\usepackage{lmodern}			% Usa a fonte Latin Modern			
-\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
-\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
-\usepackage{lastpage}			% Usado pela Ficha catalográfica
-\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
-\usepackage{color}				% Controle das cores
-\usepackage{graphicx}			% Inclusão de gráficos
-\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{lmodern} % Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc} % Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc} % Codificacao do documento (conversão automática dos acentos)
+\usepackage{lastpage} % Usado pela Ficha catalográfica
+\usepackage{indentfirst} % Indenta o primeiro parágrafo de cada seção.
+\usepackage{color} % Controle das cores
+\usepackage{graphicx} % Inclusão de gráficos
+\usepackage{microtype} % para melhorias de justificação
 \usepackage{todonotes}
 \usepackage{tabularx}
 \renewcommand{\tabularxcolumn}[1]{m{#1}}
-
 
 \definecolor{algColor}{RGB}{255,206,206} % rgb(255, 206, 206)
 
@@ -83,22 +82,22 @@
 % ---
 % Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
 % ---
-\usepackage{lipsum}				% para geração de dummy text
+\usepackage{lipsum} % para geração de dummy text
 % ---
-
-
 % ---
 % Pacotes de citações
 % ---
-%\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
-\usepackage[alf, abnt-etal-cite=2]{abntex2cite}	% Citações padrão ABNT
+\usepackage[alf,       % Citações Autor-Data
+    abnt-etal-cite=2,  % ``et. al'' a partir de 3 autores nas citações
+    abnt-etal-list=0,  % tirar ``et. al'' a partir de 4 autores nas referências
+    abnt-emphasize=bf  % Enfatizar o título da publicação com negrito
+]{abntex2cite}
 
 % --- 
 % CONFIGURAÇÕES DE PACOTES
 % --- 
 
 \usepackage{abntex_ufrr_dcc}
-
 
 % PACOTES DE ALGORITMO
 
@@ -170,10 +169,8 @@
 
 \preambulo{Monografia de Graduação apresentada ao Departamento de Ciência da Computação da Universidade Federal de Roraima como requisito parcial para a obtenção do grau de Bacharel em Ciência da Computação.}
 
-%Trabalho de conclusão de curso  na área de Verificação de Software desenvolvido na UFRR com o %objetivo \textcolor{red}{VERIFICAR O PADRÃO DOS OUTROS TCC} de gerar casos de teste para %sistemas embarcados críticos	
-
+%Trabalho de conclusão de curso  na área de Verificação de Software desenvolvido na UFRR com o %objetivo \textcolor{red}{VERIFICAR O PADRÃO DOS OUTROS TCC} de gerar casos de teste para %sistemas embarcados críticos
 % ---
-
 %-- Informações de dado para a FOLHA DE APROVAÇÃO
 \renewcommand{\dataDefesa}{01 de Fevereiro de 2018}
 \renewcommand{\orientadorBanca}{Prof. Dr. Herbert Oliveira Rocha}
@@ -195,58 +192,48 @@
     	pdfsubject={\imprimirpreambulo},
 	    pdfcreator={LaTeX with abnTeX2},
 		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
-		colorlinks=true,       		% false: boxed links; true: colored links
-    	linkcolor=blue,          	% color of internal links
-    	citecolor=blue,        		% color of links to bibliography
-    	filecolor=magenta,      	% color of file links
+		colorlinks=true, % false: boxed links; true: colored links
+    	linkcolor=blue, % color of internal links
+    	citecolor=blue, % color of links to bibliography
+    	filecolor=magenta, % color of file links
 		urlcolor=blue,
 		bookmarksdepth=4
 }
 \makeatother
 % --- 
-
 % --- 
 % Espaçamentos entre linhas e parágrafos 
 % --- 
-
 % O tamanho do parágrafo é dado por:
 \setlength{\parindent}{1.3cm}
-
 % Controle do espaçamento entre um parágrafo e outro:
 \setlength{\parskip}{0.2cm}  % tente também \onelineskip
-
 % ---
 % compila o indice
 % ---
 \makeindex
-% ---
-
+% ----
 % ----
 % Início do documento
 % ----
 \begin{document}
-
 % Retira espaço extra obsoleto entre as frases.
 \frenchspacing 
-
 % ----------------------------------------------------------
 % ELEMENTOS PRÉ-TEXTUAIS
 % ----------------------------------------------------------
 % \pretextual
-
 % ---
 % Capa
 % ---
 \imprimircapa
 % ---
-
 % ---
 % Folha de rosto
 % (o * indica que haverá a ficha bibliográfica)
 % ---
 \imprimirfolhaderosto
 % ---
-
 % ---
 % Inserir folha de aprovação
 % ---
@@ -261,7 +248,6 @@
    \textit{Dedico este trabalho a minha familia e amigos e a todos aqueles que acreditaram no meu esforço. } \vspace*{\fill}
 \end{dedicatoria}
 % ---
-
 % ---
 % Agradecimentos
 % ---
@@ -274,10 +260,8 @@ Agradeço ao meu orientador, professor Herbert Oliveira, por todo apoio desde a 
 Agradeço também aos amigos que sempre ajudaram, seja lendo uma lauda por cada encontro, discutindo sobre seções no laboratório ou na sala, fazendo companhia em algum posto, incentivando e corrigindo os erros de português. 
 \par
 Agradeço aos professores do DCC que durantes estes anos de curso foram fonte de aprendizado e incentivos durante aulas e que cada uma pode contribuir de alguma forma no meu desenvolvimento como aluno e futuro profissional.
-
 \end{agradecimentos}
 % ---
-
 % ---
 % Epígrafe
 % ---
@@ -288,17 +272,14 @@ Agradeço aos professores do DCC que durantes estes anos de curso foram fonte de
 	\end{flushright}
 \end{epigrafe}
 % ---
-
 % ---
 % RESUMOS
 % ---
-
 % resumo em português
 \setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
 \begin{resumo}[Resumo]
 \input{Sections/Resumo.tex}
 \end{resumo}
-
 % \begin{resumo}[Abstract]
 % \input{Sections/Abstract.tex}
 % \end{resumo}
@@ -310,7 +291,6 @@ Agradeço aos professores do DCC que durantes estes anos de curso foram fonte de
 \listoffigures*
 \cleardoublepage
 % ---
-
 % ---
 % inserir lista de tabelas
 % ---
@@ -319,7 +299,6 @@ Agradeço aos professores do DCC que durantes estes anos de curso foram fonte de
 \listoftables*
 \cleardoublepage
 % ---
-
 % ---
 % inserir lista de abreviaturas e siglas
 % ---
@@ -332,7 +311,6 @@ Agradeço aos professores do DCC que durantes estes anos de curso foram fonte de
 %   \item[VHDL] VHISIC Hardware Description Language
 % \end{siglas}
 % ---
-
 % ---
 % inserir lista de símbolos
 % ---
@@ -343,7 +321,6 @@ Agradeço aos professores do DCC que durantes estes anos de curso foram fonte de
 %   \item[$ \in $] Pertence
 % \end{simbolos}
 % % ---
-
 % ---
 % inserir o sumario
 % ---
@@ -352,7 +329,6 @@ Agradeço aos professores do DCC que durantes estes anos de curso foram fonte de
 \tableofcontents*
 \cleardoublepage
 % ---
-
 %--------------------------------------------------------
 % ELEMENTOS TEXTUAIS
 %--------------------------------------------------------
@@ -362,53 +338,52 @@ Agradeço aos professores do DCC que durantes estes anos de curso foram fonte de
 %--------------------------------------------------------
 \chapter{INTRODUÇÃO}
 \input{Sections/Introducao.tex}
-%--------------------------------------------------------
+%------------------------------------------------------------
 % Conceitos e Definições
-%--------------------------------------------------------
+%------------------------------------------------------------
 \chapter{CONCEITOS E DEFINIÇÕES}
 \input{Sections/Conceitos_e_definicoes.tex}
-%--------------------------------------------------------
+%------------------------------------------------------------
 % Revisão de Literatura
-%--------------------------------------------------------
+%------------------------------------------------------------
 \chapter{TRABALHOS CORRELATOS}
 \input{Sections/Trabalhos_correlatos.tex}
-%--------------------------------------------------------
+%------------------------------------------------------------
 % Detalhes de Desenvolvimento do Projeto
-%--------------------------------------------------------
+%------------------------------------------------------------
 \chapter{MÉTODO PROPOSTO}
 \input{Sections/Metodologia.tex}
-%--------------------------------------------------------
+%------------------------------------------------------------
 % Cronograma
-%--------------------------------------------------------
+%------------------------------------------------------------
 \chapter{CRONOGRAMA}
 \input{Sections/Cronograma.tex}
-% --------------------------------------------------------
+% -----------------------------------------------------------
 % Resultados -- Pode vir junto com discussão
-% --------------------------------------------------------
+% -----------------------------------------------------------
 %\chapter{RESULTADOS EXPERIMENTAIS}
 %\input{Sections/Resultados.tex}
 %\chapter{DISCUSSÃO}
-% --------------------------------------------------------
+% -----------------------------------------------------------
 % Conclusão
-% --------------------------------------------------------
+% -----------------------------------------------------------
 \chapter{CONSIDERAÇÕES PARCIAIS E TRABALHOS FUTUROS}
 \input{Sections/Consideracoes_parciais.tex}
-%---------
+%------------------------------------------------------------
 %Apendice A
-%---------
+%------------------------------------------------------------
 \chapter{Apêndice A}
 \input{Sections/ApendiceA.tex}
-% --------------------------------------------------------
+% -----------------------------------------------------------
 % Referências bibliográficas
-% --------------------------------------------------------
+% -----------------------------------------------------------
 \bibliography{main}
-\bibliographystyle{plainnat}
-%---------------------------------------------------------------------
+%\bibliographystyle{plainnat}
+%------------------------------------------------------------
 % INDICE REMISSIVO
-%---------------------------------------------------------------------
+%------------------------------------------------------------
 %\phantompart
 %\printindex
-%---------------------------------------------------------------------
-
+%------------------------------------------------------------
 \end{document}
 
