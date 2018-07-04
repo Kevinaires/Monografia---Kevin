@@ -83,7 +83,7 @@ END Ula_tcc_behavl;
     \legend{Fonte: Própria.}
 \end{figure}
 
-O código apresenta um erro na \textbf{linha 18} e este é o ponto principal para análise do código e estudo do método. Na tabela verdade da porta AND, para que o valor resultado seja 1 é necessário que ambas as entradas seja 1, no código é apresentado entradas 1 e 0 para o resultado 1, assim tendo um erro de código.
+O código apresenta um erro na \textbf{linha 16} e este é o ponto principal para análise do código e estudo do método. Na tabela verdade da porta AND, para que o valor resultado seja $1$ é necessário que ambas as entradas seja $1$, no código é apresentado entradas $1$ (\texttt{A = '1'}) e $0$ (\texttt{mux2x1 = '0'}) para o resultado $1$, assim tendo um erro no código de atribuição que resultará em um erro lógico na execução do circuito descrito.
 
 %========================
 %Preprocessamento do VHDL e inserção de assertivas
@@ -369,7 +369,9 @@ Em outras palavras, na instrumentação de código é realizado a tradução das
 \section{Verificação de assertivas usando \textit{Model Checker}}
 
 \par
-O \textit{model checker} adotado no desenvolvimento de método é o ESBMC~\cite{cordeiro2012smt} na versão $3.0.0$ e conforme explicado na \autoref{cap:bounded}, esta ferramenta recebe como entrada um código C ou C$++$ \textcolor{red}{e também utiliza solucionadores SMT para análise} e devido a isso foi escolhida neste projeto. Nesta seção será apresentado a \textbf{etapa D} do método proposto na \autoref{fig:Fluxo_ferramenta}.
+O \textit{model checker} adotado no desenvolvimento de método é o ESBMC~\cite{cordeiro2012smt} na versão $3.0.0$ e conforme explicado na Seção~\ref{cap:bounded}, esta ferramenta recebe como entrada um código C ou C$++$ e também utiliza solucionadores SMT para análise do programa. 
+% e devido a isso foi escolhida neste projeto. 
+Nesta seção será apresentado a \textbf{etapa D} do método proposto na \autoref{fig:Fluxo_ferramenta}.
 
 \par
 Para a verificação, a primeira etapa é a identificação das assertivas no código C analisado, para isso é utilizado uma opção do ESBMC (\texttt{$--$show-claims}), mais especificamente as assertivas instrumentadas no código C analisado. Cada assertiva é identificada através de uma numeração de acordo com a ordem de busca do código analisado. Cada assertiva encontrada é armazenada para que seja realizada uma análise individual de cada \textit{claim}, ou seja,  assertiva.
