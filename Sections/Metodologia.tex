@@ -1,6 +1,6 @@
 \label{chapter:metodo}
 \par
-Este Capítulo descreve o método proposto neste trabalho, baseado transformações de código para análise de circuitos lógicos descritos em VHDL utilizando 
+Este capítulo descreve o método proposto neste trabalho, baseado transformações de código para análise de circuitos lógicos descritos em VHDL utilizando 
 \textit{Bounded Model Checking}, neste caso o \textit{model checker} ESBMC.
 
 %======================
@@ -117,7 +117,7 @@ A fase inicial do método consiste no pré-processamento do código VHDL com as 
 A condição, \textbf{linha $2$} da \autoref{fig:assertiva}, representa a assertiva propriamente dita e que será analisado pela aplicação. A condição será precedida de \texttt{$--$assert} e seguido ou não da palavra \texttt{not}, com isso a assertiva pode assumir valor negativo, conforme necessidade do usuário. Na \autoref{fig:assertiva} a assertiva busca verificar se a variável \texttt{Resultado} terá valor igual a $1$, com isso ao comparar o valor buscado pela assertiva e o gerado não final do código, ambos serão iguais, gerando a falha na verificação.
 
 \par
-A mensagem, \textbf{linha $3$} da \autoref{fig:assertiva}, é definida pelo usuário e será exibida caso a assertiva apresente falha, assim a mensagem pode ser utilizada como um meio de depuração das propriedades validadas. A severidade, \textbf{linha $2$} da \autoref{fig:assertiva}, pode ser definida como \texttt{error}, que representa um erro fatal e parada da verificação. A severidade do tipo \texttt{warning} que representa um erro não fatal, contabiliza as falhas das assertivas, porém não causa a parada da verificação. As mensagens futuramente pode ser integradas um framework para teste de unidade, contudo está é uma etapa ainda em planejamento neste trabalho.
+A mensagem, \textbf{linha $3$} da \autoref{fig:assertiva}, é definida pelo usuário e será exibida caso a assertiva apresente falha, assim a mensagem pode ser utilizada como um meio de depuração das propriedades validadas. A severidade, \textbf{linha $4$} da \autoref{fig:assertiva}, pode ser definida como \texttt{error}, que representa um erro fatal e parada da verificação. A severidade do tipo \texttt{warning} que representa um erro não fatal, contabiliza as falhas das assertivas, porém não causa a parada da verificação. As mensagens futuramente pode ser integradas um framework para teste de unidade, contudo está é uma etapa ainda em planejamento neste trabalho.
 
 \par
 Juntamente com as assertivas outra função que pode ser utilizada é a função \texttt{\_\_ESBMC\allowbreak{}\_assume()} suportada pelo model checker ESBMC. Esta função utilizada em conjuto com a ferramenta ESBMC permite que durante a verificação uma variavél possa ter uma valor setado durante o tempo de execução da verificação. A importância desta função é fazer verificações onde se conhece os valores de entrada juntamente com o valor resultante, por exemplo, na verificação de portas lógicas.
@@ -139,7 +139,7 @@ Juntamente com as assertivas outra função que pode ser utilizada é a função
 A assertivas que serão verificadas são automáticas traduzidas a partir das entradas do código VHDL. Seja no modelo manual (assertivas escritas pelo usuário) ou automático (inferidas pelo método proposto por meio de análise estática), as entradas são mapeadas para serem utilizados na etapa de instrumentação. Desta forma, tais entradas podem ser utilizadas para gerar essas assertivas e então serem adicionadas diretamente ao código em linguagem C durante a fase de instrumentação.
 
 \par
-A \autoref{fig:code_exemplo_assertiva} apresenta o código juntamente com as assertivas conforme o padrão salientado na \autoref{sec:assertiva_descricao}. Neste exemplo foi implementado utilizado a inserção manual das assertivas e também da função \texttt{\_\_ESBMC\_assume()}, entretanto o objetivo é automatizar estas funções durante a execução da ferramenta.
+A \autoref{fig:code_exemplo_assertiva} apresenta o código juntamente com as assertivas conforme o padrão salientado na Seção~\ref{sec:assertiva_descricao}. Neste exemplo foi implementado utilizado a inserção manual das assertivas e também da função \texttt{\_\_ESBMC\_assume()}, entretanto o objetivo é automatizar estas funções durante a execução da ferramenta.
 
 \begin{figure}[H]
 \caption{\label{fig:code_exemplo_assertiva} Código da \autoref{fig:code_exemplo} com a assertiva da \autoref{fig:assertiva}.}
@@ -432,7 +432,7 @@ Após a listagem das claims com assertivas ser gerada, outra função, indicada 
 Contudo, dependendo da complexidade da assertiva, faz-se necessário aumentar o número de desdobramentos que, por padrão são dez, conforme análise experimentais. A função é chamada na Linha $11$ da \autoref{fig:analise_claims} e após a análise da claim é realizado a busca do resultado e exibição caso seja uma propriedade violada.
 
 \par
-Desta forma o ESBMC realiza apenas a checagem necessária dentro da assertiva, evitando que outros parâmetros sejam verificados, sem a devida necessidade do mesmo. Ao final de todos os desdobramentos é apresentado o resultado, apresentado na \autoref{fig:resultado}, sendo positiva (sem erros) ou negativa (com violação de propriedades), dependendo da assertiva e do código analisado. Este processo se repete até a lista de assertivas ser finalizada.
+Desta forma o ESBMC realiza apenas a checagem necessária dentro da assertiva, evitando que outros parâmetros sejam verificados, sem a devida necessidade do mesmo. Ao final de todos os desdobramentos é apresentado o resultado, sendo positiva (sem erros) ou negativa (com violação de propriedades), dependendo da assertiva e do código analisado. Este processo se repete até a lista de assertivas ser finalizada. Para o exemplo apresentado na \autoref{fig:code_exemplo} é exibido a violação da propriedade na \autoref{fig:resultado}, confirmando assim um erro na definição da porta lógica analisada.
 
 \begin{figure}[H]
 \caption{\label{fig:analise_claims}Pseudocódigo da função de análise das claims.}
