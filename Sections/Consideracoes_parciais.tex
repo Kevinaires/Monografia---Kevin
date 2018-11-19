@@ -2,12 +2,16 @@
 O trabalho aborda o desenvolvimento de um método para análise de circuitos lógicos descrito em VHDL através da aplicação de técnica de transformação de código e a técnica \textit{Bounded Model Cheking}. Este método tem como objetivo de explorar os estados alcançáveis no circuito, e dessa forma identificar erros que possam resultar em mal funcionamento do sistema.
 
 \par
-Entre as dificuldade encontradas, a principal está ligada a etapa de tradução de código. Devido a ferramenta utilizada inicialmente conter diversas limitações e  a mesma diminui a eficácia da ferramenta, pois a quantidade de estruturas que podem ser utilizadas é limitada e com isso limitando também o processo de criação de circuitos lógicos.
+O método apresentou um novo meio de realizar as transformações de código de VHDL para e também um novo modelo de utilização das assertivas. Ambos mostraram ser métodos positivos, principalmente o método de tradução que apresentou significativa melhoria, mesmo que duas ferramentas tenham sido utilziadas para realização do processo.
 
 \par
-Para trabalhos futuros é necessário buscar uma nova ferramenta ou método de tradução que tenha uma gama maior de tradução, seja em estruturas ou palavras reservadas, deste forma o método desenvolvido torna-se mais eficiente e gerando uma menor intervenção do usuário no código VHDL. A melhoria na tradução de código também beneficia a geração das assertivas automaticamente, pois com uma gama maior de estruturas suportadas, mais assertivas podem ser geradas.
+O processo de inserção das assertivas atráves do método de pré-condições e pós-condições aumentou a capacidade de analise por parte do desenvolvedor, promovendo mais capacidades a ferramenta de tradução. A utilização de mais um método, o indução k também possibilitou que o aumento da capacidade de analise, visto que a o alcanse do SMT em alguns caso, não possibilitava o resultado da analise.
 
 \par
-Além disso a geração automática das assertivas é outro ponto abordado, visto que na etapa atual ainda não foi implementado. Este recurso visa da liberdade ao desenvolvedor promovendo de maneira automática os teste sobre o código, não necessitando que uma intervenção, tornando a inserção manual apenas em casos específicos de testes.
+Para trabalhos futuros, é necessário refinar a ferramenta e buscar melhorar a interação entre as ferramentas utilizadas e o método apresentado. Desta forma, mas também explorando cada vez mais as ferramentas auxiliares, é possível traçar os reais limites do método.
+%Para trabalhos futuros é necessário buscar uma nova ferramenta ou método de tradução que tenha uma gama maior de tradução, seja em estruturas ou palavras reservadas, deste forma o método desenvolvido torna-se mais eficiente e gerando uma menor intervenção do usuário no código VHDL. A melhoria na tradução de código também beneficia a geração das assertivas automaticamente, pois com uma gama maior de estruturas suportadas, mais assertivas podem ser geradas.
+
+\par
+%Além disso a geração automática das assertivas é outro ponto abordado, visto que na etapa atual ainda não foi implementado. Este recurso visa da liberdade ao desenvolvedor promovendo de maneira automática os teste sobre o código, não necessitando que uma intervenção, tornando a inserção manual apenas em casos específicos de testes.
 
  
