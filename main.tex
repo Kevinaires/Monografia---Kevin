@@ -31,6 +31,7 @@
 \usepackage{todonotes}
 \usepackage{tabularx}
 \renewcommand{\tabularxcolumn}[1]{m{#1}}
+\usepackage{pdflscape}
 
 \definecolor{algColor}{RGB}{255,206,206} % rgb(255, 206, 206)
 
@@ -87,7 +88,7 @@
 % ---
 % Pacotes de citações
 % ---
-\usepackage[alf,       % Citações Autor-Data
+\usepackage[alf, % Citações Autor-Data
     abnt-etal-cite=2,  % ``et. al'' a partir de 3 autores nas citações
     abnt-etal-list=0,  % tirar ``et. al'' a partir de 4 autores nas referências
     abnt-emphasize=bf  % Enfatizar o título da publicação com negrito
@@ -356,18 +357,19 @@ Agradeço aos professores do DCC que durantes estes anos de curso foram fonte de
 %------------------------------------------------------------
 % Cronograma
 %------------------------------------------------------------
-\chapter{CRONOGRAMA}
-\input{Sections/Cronograma.tex}
+%\chapter{CRONOGRAMA}
+%\input{Sections/Cronograma.tex}
 % -----------------------------------------------------------
 % Resultados -- Pode vir junto com discussão
 % -----------------------------------------------------------
 \chapter{RESULTADOS EXPERIMENTAIS}
 \input{Sections/Resultados.tex}
 %\chapter{DISCUSSÃO}
+
 % -----------------------------------------------------------
 % Conclusão
 % -----------------------------------------------------------
-\chapter{CONSIDERAÇÕES PARCIAIS E TRABALHOS FUTUROS}
+\chapter{CONSIDERAÇÕES FINAIS E TRABALHOS FUTUROS}
 \input{Sections/Consideracoes_parciais.tex}
 %------------------------------------------------------------
 %Apendice A
