@@ -3,81 +3,44 @@
 Neste capitulo será apresentado os resultados iniciais da ferramenta, bem como o benchmark e o método de análise utilizado.
 
 \section{Método de análise utilizado.}
-O teste apresentado neste capitulo, tem o objetivo de apresentar o potencial ferramenta de tradução, V2C, bem como, suas limitações e o impacto desta ferramenta no método. Baseado nestes objetivo foram desenvolvidas as seguintes questões de pesquisa:
+O teste apresentado neste capitulo, tem o objetivo de apresentar o potencial das ferramentas de tradução, vhdl2vl e v2c, bem como, suas limitações e o impacto destas ferramenta no método. Os teste também buscam avaliar a ação do método como um todo, analisando pontos positivos e negativos. Baseado nestes objetivos foram desenvolvidas as seguintes questões de pesquisa:
 \begin{enumerate}
-    \item A ferramenta V2C é capaz de traduzir todos códigos do benchmark?
+    \item As ferramentas de tradução são capazes de traduzir todos códigos do benchmark?
     \item Caso não traduza, é possivél alterar o código de modo que possa ser traduzido?
     \item Quais são os impactos de usar esta ferramenta no desenvolvimento do método?
+    \item Quais os limites apresentados pela ferramenta de analise ESBMC?
+    \item Quais os limites apresentado pelo método?
 \end{enumerate}
 \par
-Para o teste da ferramenta V2C foram utilizados dois benchmark, sendo um dele desenvolvido pelo próprio autor e outro benchmark de fonte externa, desta forma totalizando 27 códigos. Os benchmark do do autor foi desenvolvido utilizado os conceitos básicos de VHDL apresentando códigos mais simples e o benchmark externo apresenta códigos mais complexos, disponivel no link: \textbf{http://www.pld.ttu.ee/~maksim/benchmarks/iscas99/vhdl/}.
-
-\par
-O motivo de utilizar um benchmark externo é testar o real desempenho da ferramenta, testando na apenas com códigos simples, como porta lógicas ou multiplexadores, mas também códigos que apresentem outras estruturas do VHDL, além das utilizadas no benchmark do autor, em outras palavras, em códigos mais complexo, as chance são maior de a ferramenta não conseguir realizar a tradução do código.
-
-\todo[inline]{Demonstrar de que modo deve ser realizado o teste}
-\par
-Para o teste foi utilizado a execução direta da ferramenta para que o teste envolvesse apenas a ferramenta V2C e o benchmark. Para cada código foi realizado uma única execução do programa e gerado o resultado, caso a tradução ocorresse corretamente, um arquivo em linguaguem C é gerado e em caso de falha é apontado erro e a linha ao qual apresentou o problema. 
-
-\par
-A ferramenta não apresenta em exato qual a causa do erro, apenas a linha onde o mesmo ocorreu, logo foi necessário analisar cada caso de erro e expecular de acordo com a linha do erro e as informações existentes na documentação da ferramenta.
-
-\section{Apresentação do resultado das traduções realizadas pela ferramenta de tradução.}
-\par
-Após a execução do benchmark, os resultado da obtidos são apresentados na \autoref{tabela_resultado}, formada pelas colunas \textbf{Id} que é uma identificação para cada código; \textbf{Nome do código}; \textbf{Status da tradução} que indica se a tradução ocorreu corretamente ou não e \textbf{Identificação do erro} que determina qual o erro apresentado na execução falha da tradução.
-
-\begin{table}[H]
-\centering
-\caption{Tabela de apresentação dos resultados do benchmark}
-\label{tabela_resultado}
-\begin{tabular}{|l|l|l|l|}
-\hline
-Id & Nome do código     & Status da tradução & Identificação do erro \\ \hline
-1  & B01.vhd            & Erro               & A01                   \\ \hline
-2  & B02.vhd            & Erro               &                       \\ \hline
-3  & B03.vhd            & Erro               & A02                   \\ \hline
-4  & B04.vhd            & Erro               & A03                   \\ \hline
-5  & B05.vhd            & Erro               & A02                   \\ \hline
-6  & B06.vhd            & Erro               & A02                   \\ \hline
-7  & B07.vhd            & Erro               & A01                   \\ \hline
-8  & B08.vhd            & Erro               & A02                   \\ \hline
-9  & B09.vhd            & Erro               & A01                   \\ \hline
-10 & B10.vhd            & Erro               & A02                   \\ \hline
-11 & B11.vhd            & Erro               & A03                   \\ \hline
-12 & B12.vhd            & Erro               & A02                   \\ \hline
-13 & B13.vhd            & Erro               & A03                   \\ \hline
-14 & B14.vhd            & Erro               & A03                   \\ \hline
-15 & B14\_1.vhd         & Erro               & A03                   \\ \hline
-16 & B15.vhd            & Erro               & A02                   \\ \hline
-17 & B15\_1.vhd         & Erro               & A02                   \\ \hline
-18 & AND\_ent,vhd       & Traduzido          & -                     \\ \hline
-19 & OR\_end.vhd        & Traduzido          & -                     \\ \hline
-20 & NAND\_ent.vhd      & Traduzido          & -                     \\ \hline
-21 & NOR\_ent.vhd       & Traduzido          & -                     \\ \hline
-22 & XOR\_ent.vhd       & Traduzido          & -                     \\ \hline
-23 & Comb1.vhd          & Traduzido          & -                     \\ \hline
-24 & Dff.vhd            & Traduzido          & -                     \\ \hline
-25 & Flipflop\_D.vhd    & Traduzido          & -                     \\ \hline
-26 & Mux\_4to1\_top.vhd & Traduzido          & -                     \\ \hline
-27 & Seq1.vhd           & Traduzido          &                       \\ \hline
-\end{tabular}
-\end{table}
-
-\par
-Os códigos com Id entre 1 e 17 foram os códigos do benchmark externo e os códigos entre 18 e 27 representam os códigos do benchmark do autor. Os erros apresentado na \autoref{tabela_resultado} foram classificados de modo a facilitar o entendimento da tabela e nos erros apresentados nos testes, sendo definidos como:
+Para o teste das ferramentas de tradução e de analise, mas também do método foi utilizado um benchmark composto por 30 códigos. Estes códigos são oriundos das seguintes fontes:
 \begin{itemize}
-    \item \textbf{A01:} Corresponde aos erros relacionados a alguma paravra reservada, no qual a ferramenta não foi capaz de identificar.
-    \item \textbf{A02:} Corresponde a erros relacionados a estruturas do VHDL não reconhecidas pela ferramenta.
-    \item \textbf{A03:} Corresponde a erros relacionados a intervalos negativos ou de ordem decrescente.
+    \item \textbf{Fonte própria do autor:} 10 códigos foram desenvolvidos pelo autor para utilização em testes das ferramenta. Estes códigos correspondem a portas lógicas, multiplexadores, entre outros códigos. 
+    \item \textbf{ICAS99:} 10 códigos foram extraidos do benchmark externo ISCAS99. Apresentam um grau de complexidade maior que os códigos do autor, e desta forma buscar os limites das ferramentas. O benchmark esta disponivel no link: \textbf{http://www.pld.ttu.ee/~maksim/benchmarks/iscas99/vhdl/}. 
+    \item \textbf{Benchmark Vhd2vl:} 10 códigos foram extraídos do exemplos existente junto com a ferramenta Vhd2vl. Este códigos apresentam diversos graus de conos xidade, buscando analisar não somente as limitações desta ferramenta, mas se é possível que estes código sejam analisados ao final.
+\end{itemize}
+Logo, 30 códigos de diversas fontes foram utilizados no teste do método. O motivo da utilização de outras fontes de benchmark é testar o real desempenho da ferramenta, testando não apenas com códigos simples, como porta lógicas ou multiplexadores, mas também códigos que apresentem outras estruturas do VHDL, além das utilizadas no benchmark do autor, em outras palavras, em códigos mais complexo, as chance são maior de a ferramenta não conseguir realizar a tradução do código.
+
+\par
+Os testes foram realizados da seguinte forma, era passado o código juntamente com o arquivo externo para ferramenta, cada código possuia um arquivo diferente, devido a cada código possuir suas entrada e saídas diferentes e também condições diferentes apra cada código. Todos os códigos são passado para ferramenta e verificado se todas as etapas foram concluídas, caso contrário é analisado em qual etapa o erro foi gerado e a possível causa do erro. Na parte de analise, caso o tempo de analise por SMT ultrapasse os 5 min, a analise é realizada atráves de indução K.
+%======================================
+%Apresentação dos resultados dos testes
+%======================================
+\section{Apresentação dos resultados dos testes}
+Após a execução do benchmark, os testes resultado da obtidos são apresentados na \autoref{tab:tabela_resultado}, formada pelas colunas \textbf{Id} que é uma identificação para cada código; \textbf{Nome do código}; \textbf{vhd2vl} que apresenta o status para tradução da ferramenta vhd2vl e também para instrumentação que ocorre nesta etapa; \textbf{v2c} para o status da ferramenta de tradução e a adição das assertivas que ocorre nesta etapa; \textbf{SMT} para analise pelo ESBMC pelo SMT; e \textbf{Indução K} para analise do ESBMC para indução k.
+
+\par
+Faz-se necessário relatar o significado de alguns elementos dentro da tabela, no caso, \textbf{inb()} e \textbf{ini()}. O elemento \textbf{Inb()} representa a função \_\_VERIFIER\_NONDET\_INT() e o elemento \textbf{inb()} representa a função \_\_VERIFIER\_NONDET\_BOOL().
+
+\par
+Entre os códigos utilizado no benchmark, os seguintes resultados foram recolhidos:
+\begin{itemize}
+    \item 15 códigos passaram por todas as etapas, sende estes compostos pelo 10 códigos do autor e 5 códigos do ICAS99.
+    \item 5 códigos foram traduzidos para Verilog, instrumentados e traduzidos para C, entretanto, devido a erros na tradução gerada, estes não puderam ser instrumentados para a analise pelo ESBMC.
+    \item 5 códigos foram traduzido para Verilog e instrumentados, contudo não foram traduzidos para C. Em grande parte devido a não reconhecimento de estruturas por parte da ferramenta V2C.
+    \item 5 códigos não puderam ser traduzido para Verilog. Principalemte devido a estruturas ignoradas ou não aceitas pela ferramenta Vhd2vl, por exemplo \textit{integer range}.
 \end{itemize}
 
 \par
-Conforme demonstrado na \autoref{tabela_resultado}, os códigos do benchmark do autor foram todos traduzidos com sucesso e isso se deve pelo fato dos códigos terem sidos desenvolvidos conforme as limitações da ferramenta, demonstrando uma boa execução da ferramenta na função a qual foi desenvolvida.
+Com base nestes resultados apresentados é possível apresentar uma melhora no método de tradução, mesmo que uma ferramenta tenha em adicional tenha sido colocada para este processo. Porém, assim como observado no métodos anterior, as ferramentas não possuem a abrangência de toda a linguagem de origem, com isso erros de tradução ocorreram ou mesmo a não tradução.
 
-\par
-Em contra partida, todos os códigos do benchmark externo apresentaram erros. A principal ocorrência de erros deve-se a estruturas do VHDL não suportadas, que neste caso foi a estrutura \textit{bit\_vector}. No caso das palavras reservadas a principal foi a palavra \textbf{\textit{Constant}} que apareceu em alguns dos códigos e não sendo reconhecido pela ferramenta ocasionando o erro. E também erros nos intervalos da declaração de inteiros, onde intervalos decrescentes não eram interpretados pela ferramenta, ocasionando o erro.
-
-\todo[inline]{Possivel solução para o caso negativo de solução}
-\todo[inline]{Apresentar um nova tabela com os códigos consertados }
-\todo[inline]{Mostrar o que já esta automatizado}
 \par
