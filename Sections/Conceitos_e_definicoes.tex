@@ -9,7 +9,7 @@ Este capítulo tem apresenta os principais conceitos e definições abordados ne
 As linguagens de descrição de hardware (HDL) foram desenvolvidas com o intuito de auxiliar a criação de circuitos lógicos com grande número de elementos e com uma gama de abstrações lógicas e eletrônicas~\cite{thomas2008verilog}. Entre os exemplos, podemos citar: \textit{VDHL}~\cite{IEEEVHDLLanguage}, \textit{Verilog}~\cite{IEEEVerilogLanguage} e \textit{SystemC}~\cite{IEEESystemCLanguage}.
 
 \par
-Segundo~\citeonline{christen1999vhdl}, linguagens de descrição de hardware são linguagens de programação utilizadas com o intuito de descrever o comportamento de um determinado circuito, técnica conhecida como modelagem. Os modelos descritos em HDL são utilizados como entrada para um simulador, onde o mesmo pode ter seu comportamento analisado.
+Segundo~\cite{christen1999vhdl}, linguagens de descrição de hardware são linguagens de programação utilizadas com o intuito de descrever o comportamento de um determinado circuito, técnica conhecida como modelagem. Os modelos descritos em HDL são utilizados como entrada para um simulador, onde o mesmo pode ter seu comportamento analisado.
 
 \par
 As HDL's trazem consigo diversas vantagens, entre elas códigos independentes de tecnologia e fabricante, podendo ser portáteis e reutilizáveis \cite{cappelattipraticando}. As linguagens mais modernas, tais como VHDL e \textit{Verilog}, possuem suporte tanto a descrição do circuito propriamente dito, quanto ao comportamento que o mesmo deve exercer \cite{christen1999vhdl}.
@@ -163,10 +163,10 @@ Ainda segundo \citeonline{tocci2003sistemas}, devido a esta característica, a �
 A \autoref{fig:exemplo_circuito} apresenta um circuito lógico formado pelas portas básicas da álgebra booleana. O circuito apresenta três entradas representadas pelas letras A, B e C, mas também formada por duas portas \texttt{AND}, uma porta \texttt{NOT} e uma porta \texttt{OR}. Cada uma destas portas representando operações a serem realizadas, podendo receber como entrada um valor inicial ou resultante de outra porta, como no exemplo ocorre com a última porta \texttt{AND}.
 
 \par
-Entretanto, segundo \citeonline{kropf2013introduction}, a análise de circuitos é extremamente complexa, resultando em um problema \textbf{NP-Completo}, algoritmos possuem tempo de execução exponencial. Contudo, este tempo de execução exponencial é uma complexidade exponencial para o pior caso, resultando crescimento exponencial da execução a medida que o tamanho do problema aumenta.
+Entretanto, segundo \citeonline{kropf2013introduction}, a análise de circuitos é extremamente complexa, resultando em um problema \textbf{NP-Completo}, algoritmos possuem tempo de execução exponencial. Contudo, este tempo de execução exponencial é uma complexidade exponencial para o pior caso, resultando crescimento exponencial da execução á medida que o tamanho do problema aumenta.
 
 \par
-Ainda, segundo \citeonline{kropf2013introduction} a avaliação das funções booleanas podem ser verdadeiras (True) ou falso (False), com isso, para um função com \texttt{n} variáveis, apresenta $2^{n}$ possibilidades de avaliação. Utilizando o exemplo da \autoref{fig:exemplo_circuito} que apresenta $3$ entradas, logo apresenta 8 possibilidade de avaliação ao final e este número aumenta à medida que o número de variáveis tambeḿ aumenta.
+Ainda, segundo \citeonline{kropf2013introduction} a avaliação das funções booleanas podem ser verdadeiras (True) ou falso (False), com isso, para um função com \texttt{n} variáveis, apresenta $2^{n}$ possibilidades de avaliação. Utilizando o exemplo da \autoref{fig:exemplo_circuito} que apresenta $3$ entradas, logo apresenta 8 possibilidade de avaliação ao final e este número aumenta à medida que o número de variáveis também aumenta.
 
 %============================
 %VERIFICAÇÃO DE SISTEMAS
@@ -175,7 +175,7 @@ Ainda, segundo \citeonline{kropf2013introduction} a avaliação das funções bo
  No contexto de verificação de sistemas, faz-se necessário a diferenciação entre verificação e validação. Verificação e validação possuem o intuito de mostrar que determinado sistema funcione conforme o especificado, além de satisfazer as especificações do cliente~\cite{sommerville2011engenharia}. 
 
 \par
-Segundo~\citeonline{sargent2005verification}, verificação é o processo de determinar se um modelo computacional obtido por discretização de um modelo matemático de um evento físico e o código que implementa o modelo computacional pode ser usado para representar o modelo matemático do evento com precisão suficiente e validação é o processo de determinar se um modelo matemático de um evento físico representa o evento físico real com precisão suficiente.
+Segundo~\citeonline{sargent2005verification}, verificação é o processo de determinar se um modelo computacional obtido por discretização de um modelo matemático de um evento físico e o código que implementa o modelo computacional pode ser usado para representar o modelo matemático do evento com precisão suficiente. A validação é o processo de determinar se um modelo matemático de um evento físico representa o evento físico real com precisão suficiente.
 
 \par
 A verificação consiste identificação de erros e prováveis problemas que um componente pronto possa apresentar, enquanto a validação busca analisar se tal componente está seguindo os requisitos pré-definidos para sua construção~\cite{koscianski2007qualidade}. O teste de programa, na qual o software  é executado com dados de teste é a principal forma de validação, porém, técnicas de verificação, tais como, inspeção e revisões também podem integrar a etapa de validação~\cite{sommerville2011engenharia}.
@@ -193,7 +193,7 @@ Um diagrama de decisão binária (DDB) pode ser definido como um grafo acíclico
 \end{figure}
 
 \par
-O DDB permite o teste eficiente de satisfabilidade, validade e eficiência \cite{kropf2013introduction}. O uso e DDB em conjunto com \textit{Model Checking} e técnicas de abstração permitiu o aumento na capacidade de verificação, de modo que sistemas mais realistas pudessem ser verificados\cite{biere2003bounded}
+O DDB permite o teste eficiente de satisfabilidade, validade e eficiência \cite{kropf2013introduction}. O uso de DDB em conjunto com \textit{Model Checking} e técnicas de abstração permitiu o aumento na capacidade de verificação, de modo que sistemas mais realistas pudessem ser verificados\cite{biere2003bounded}
 
 %============================
 %MODEL CHECKING
@@ -226,7 +226,7 @@ Outras técnicas foram implementadas em conjuntos com \textit{Model checkings} c
 %BOUNDED MODEL CHECKING
 %============================
 \subsection{\label{cap:bounded}\textit{Bounded Model Checking}}
-Segundo \citeonline{rocha2015verificaccao}, \textit{Bounded Model Checking} (BMC) é um tipo especial de \textit{Model Checking} que usualmente adota o método de satisfabilidade booleana, o qual tem sido introduzido como uma técnica complementar para diagrama de decisão binaria para aliviar o problema da explosão de estados, visto que a técnica de \textit{Model Checking} busca todos os estados possíveis para verificação.
+Segundo \citeonline{rocha2015verificaccao}, \textit{Bounded Model Checking} (BMC) é um tipo especial de \textit{Model Checking} que usualmente adota o método de satisfabilidade booleana, o qual tem sido introduzido como uma técnica complementar para diagrama de decisão binária para aliviar o problema da explosão de estados, visto que a técnica de \textit{Model Checking} busca todos os estados possíveis para verificação.
 
 \par
 \textit{Bounded Model Checking} é uma técnica para a verificação de uma dada propriedade em uma determinada profundidade do sistema analisado. Logo, dado um sistema de transições M, uma propriedade $\phi$, e um limite (\textit{bound}) $k$, o BMC desenrola o sistema $k$ vezes e traduz o sistema em uma condição de verificação(CV) $\psi$ tal que $\psi$ é satisfeito se e somente se $\phi$ tem um contra-exemplo de profundidade menor ou igual a $k$ \cite{rocha2015verificaccao}.
@@ -254,23 +254,36 @@ Redes de petri são redes baseadas em abstração que pode ser usado como métod
 
 \begin{figure}[H]
 	\begin{center}
-    \caption{\label{fig:rede_petri}Rede de petri}
-	\includegraphics[scale=0.60]{Figuras/rede_petri.png}
+    \caption{\label{fig:circuito_petri}Rede de petri}
+	\includegraphics[scale=0.50]{Figuras/Circuito_rede_petri.png}
 	\end{center}
-    \legend{Fonte: \cite{halder2006}}
+    \legend{Fonte: \cite{yakovlev1996petri}}
 \end{figure}
 
 \par
-A \autoref{fig:rede_petri} ilustra a reação quimica: $2H_20 + 0_2 \rightarrow 2H_2O$, onde existe dois token em cada estado inicial, representando que existem duas particulas de $H_2$ e $O_2$ em cada estado. O arco que liga o estado com $H_2$  transição $t$ tem peso 2, isso indica que é necessário dois token deste estado para transição, ocorrendo o mesmo da transição $t$ para o estado $H_2O$, e o estado com $0_2$ é necessário apena um tokem para transição~\cite{murata1989petri}.
+A \autoref{fig:circuito_petri} é a representação de um circuito que realiza a operação $out=(x+y)*(a+b)$, onde o \textit{dathpath}, representação do elementos do circito e interligações, é formado por dois somadores que recebem as entradas a, b, x e y e um multiplicador que recebe o resultado destas somatórias. Também possuem requisições e confirmações representados por req e ack, respectivamente, onde as operações somente são realizadas após a requisição das mesma e a porta AND C representa a confirmação das somatórias e requisição da multiplicação\cite{yakovlev1996petri}.
 
 \par
-Na \autoref{fig:rede_petri}(a) apresenta os tokens todos no estado inicial e a operação pode ser realizada, pois os requisitos para a mesma estão disponivéis, desse caso dois token de $H_2$ e um token de $O_2$. Na \autoref{fig:rede_petri}(b), os tokens são passados a transição $t$ e formando $2H_2O$, seguindo o apresentado na formula. O peso da aresta de saída da transição para o estado seguinte tem peso 2, o que também pode ser realizado e passando dois tokens da transição para o estado $H_2O$~\cite{murata1989petri}.
+O funcionamento do circuito é realizado de modo a realiza as operação somente se houver a requisição das operações. Após a realização as soma, um sinal de confirmação é enviado para a porta and C e somente com ambas as confirmação é realizado a requisição da multiplicação. Para a multiplicação tem as entradas da requisição como o resultado das multiplicações e gera a confirmação e a resposta \textit{out} \cite{yakovlev1996petri}.
+
+\begin{figure}[H]
+	\begin{center}
+    \caption{\label{fig:rede_petri}Rede de petri}
+	\includegraphics[scale=0.50]{Figuras/Rede_petri.png}
+	\end{center}
+    \legend{Fonte: \cite{yakovlev1996petri}}
+\end{figure}
+
+A \autoref{fig:rede_petri}(a) é uma rede de petri que representa as operações das operações que são realizadas, deste a soma até a saida e a \autoref{fig:rede_petri}(b) representa o fluxo de controle as operações formado pelas confirmações dos somatórios e da requisição da multiplicação \cite{yakovlev1996petri}. Segundo \citeonline{jain2010petri}, umas das vantagens do uso de redes de petri é que um mesmo modelo pode ser usado pra análise de propriedades comportamentais e avaliação de desempenho, bem como para construção sistemática de simuladores e controladores de eventos discretos.
 
 \par
-Após isso, nenhuma operação mais pode ser realizada, devido não conter tokens necessários para a realização da operação representada~\cite{murata1989petri}. Esta operação realizada com os tokens é chamado de "\textit{Token game}" que consiste no comportamento da rede de petri, em outras palavras, representa o funcionamento do sistema representado pela rede\cite{halder2006}.
+%A \autoref{fig:rede_petri} ilustra a reação quimica: $2H_20 + 0_2 \rightarrow 2H_2O$, onde existe dois token em cada estado inicial, representando que existem duas particulas de $H_2$ e $O_2$ em cada estado. O arco que liga o estado com $H_2$  transição $t$ tem peso 2, isso indica que é necessário dois token deste estado para transição, ocorrendo o mesmo da transição $t$ para o estado $H_2O$, e o estado com $0_2$ é necessário apena um tokem para transição~\cite{murata1989petri}.
 
 \par
-Segundo \citeonline{jain2010petri}, umas das vantagens do uso de redes e petri é que um mesmo modelo pode ser usado pra análise de propriedades comportamentais e avaliação de desempenho, bem como para construção sistemática de simuladores e controladores de eventos discretos. Na \autoref{fig:petri_AND} é apresentado um exemplo de representação da porta \texttt{AND} em rede de petri.
+%Na \autoref{fig:rede_petri}(a) apresenta os tokens todos no estado inicial e a operação pode ser realizada, pois os requisitos para a mesma estão disponivéis, desse caso dois token de $H_2$ e um token de $O_2$. Na \autoref{fig:rede_petri}(b), os tokens são passados a transição $t$ e formando $2H_2O$, seguindo o apresentado na formula. O peso da aresta de saída da transição para o estado seguinte tem peso 2, o que também pode ser realizado e passando dois tokens da transição para o estado $H_2O$~\cite{murata1989petri}.
+
+\par
+%Após isso, nenhuma operação mais pode ser realizada, devido não conter tokens necessários para a realização da operação representada~\cite{murata1989petri}. Esta operação realizada com os tokens é chamado de "\textit{Token game}" que consiste no comportamento da rede de petri, em outras palavras, representa o funcionamento do sistema representado pela rede\cite{halder2006}.
 
 \begin{figure}[H]
 	\begin{center}
@@ -281,7 +294,7 @@ Segundo \citeonline{jain2010petri}, umas das vantagens do uso de redes e petri �
 \end{figure}
 
 \par
-A porta \texttt{AND} apresenta, pelo menos, duas entradas e uma saída. Sendo que, esta apenas será verdade, se ambas as entradas forem verdadeiras. Dessa forma, a transição \texttt{t} apenas será executada, se ambas as entradas \texttt{a} e \texttt{b} tiverem um \textit{token} cada, simbolizando, assim, verdade e, a saída terá um \textit{token} após a transição, mostrando-a como verdadeira.
+Na \autoref{fig:petri_AND} é apresentado um exemplo de representação da porta \texttt{AND} em rede de petri. A porta \texttt{AND} apresenta, pelo menos, duas entradas e uma saída. Sendo que, esta apenas será verdade, se ambas as entradas forem verdadeiras. Dessa forma, a transição \texttt{t} apenas será executada, se ambas as entradas \texttt{a} e \texttt{b} tiverem um \textit{token} cada, simbolizando, assim, verdade e, a saída terá um \textit{token} após a transição, mostrando-a como verdadeira.
 %============================
 %VERIFICAÇÃO DE HARDWARE
 %============================
@@ -343,9 +356,7 @@ Observa-se que o uso de verificacão de software tem sido feito aplicado em muit
   \item \textbf{Analise estática:} Engloba diversas técnicas para calcular automaticamente informações sobre o comportamento de um programa sem executá-lo, sendo utilizado em otimização de código e verificação em compiladres~\cite{d2008survey}.
 \end{itemize}
 
-Segundo \citeonline{rocha2015verificaccao}, na verificação formal de software apresentam-se dificuldades, tais como: quais as propriedades são de interesse na verificação em tempo de execução; e impossibilidade matemática de provar a corretude de propriedades não triviais no comportamento de programas 
-% , devido ao computador ser um dispositivo finito
-~\cite{cousot2010gentle}. 
+Segundo \citeonline{rocha2015verificaccao}, na verificação formal de software apresentam-se dificuldades, tais como: quais as propriedades são de interesse na verificação em tempo de execução; e impossibilidade matemática de provar a corretude de propriedades não triviais no comportamento de programas  \cite{cousot2010gentle}. 
 
 %============================
 %LÓGICA PROPOSICIONAL
@@ -385,7 +396,6 @@ Ainda segundo \citeonline{souza2017logica}, existem as fórmulas que são consti
 \item Se \textit{H} e \textit{G} são fórmulas, então a implicação de \textit{H} e \textit{G}, dada por (\textit{H} $\rightarrow$ \textit{G}), é uma fórmula. Neste caso, \textit{H} é o antecedente e \textit{G} consequente da fórmula.
 \item Se \textit{H} e \textit{G} são fórmulas, então a bi-implicação de \textit{H} e \textit{G}, dada por (\textit{H} $\leftrightarrow$ \textit{G}), é uma fórmula. Neste caso, \textit{H} é o lado esquerdo e \textit{G} o lado direito da fórmula.
 \end{itemize}
-
 
 %============================
 %Property Specification Language - PSL
@@ -517,7 +527,6 @@ Compiladores são sistemas de software utilizados para tradução de uma linguag
 \par
 Diversas técnicas podem ser utilizadas nas diversas etapas, até que o código seja traduzido, tais como LL(1) e LR na análise sintática; eliminação de código morto; propagação de constante e \textit{Peephole} na otimização de código~\cite{aho2007compilers}. Neste projeto serão focados as áreas de transformações de código e otimização de código.
 
-% 99346385
 %============================
 %TRANSFORMAÇÕES DE CÓDIGO
 %============================
@@ -696,3 +705,10 @@ O gerador de código possui três tarefas primarias, sendo as mesmas seleção d
 
 \par
 Conforme apresentado na \autoref{fig:fase_compilador} e, segundo \citeonline{aho2007compilers}, a geração de código ocorre em dois momentos. Sendo que, inicialmente ocorre a geração de código intermédiario, que tem como propriedades: buscar uma fácil produção e a tradução para o programa alvo. Posteriormente, ocorre a geração de código, onde as localizações de mémoria são selecionadas para cada variável utilizada no programa e, as instruções intermediárias são traduzidas numa sequência de instruções de máquina, que realizam a mesma tarefa.
+
+%========================
+%===Resumo do capitulo===
+%========================
+\section{Resumo do capitulo}
+\par
+Neste capítulo foi apresentado as principais conceitos utilizados e necessários para o desenvolvimento do método. Entre esse conceitos foi apresentado as linguagens de descrição de hardware que foram desenvolvidas para projetar circuitos lógicos e entre elas, a linguagem VHDL que foi a linguagem escolhida para este projeto. Também foi apresentado a verificação de sistemas, sendo estes sistemas de hardware e software. Entre as técnicas apresentadas como \textit{bounded model checking} que gera a exploração de possíveis estados aliado a técnica de satisfabilidade booleana e diagrama de decisão binária. E por fim, foi apresentado técnicas de compiladores e otimização de códigos, extremamente necessárias para transformação de código, uma das principais técnicas utilizadas para o desenvolvimento do método. 
