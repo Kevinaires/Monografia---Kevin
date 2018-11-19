@@ -469,7 +469,7 @@ Verificação baseada em assertivas, do inglês \textit{Assertion-Based Verifica
 Na ABV as assertivas são declaração adicionadas ao projeto com o intuito de especificar o comportamento do projeto~\cite{boule2005incorporating}, podendo escritos em PSL ou em SVA (\textit{System Verilog Assertions}). No caso deste projeto será utilizado a PSL, devido a mesma ser utilizada juntamente com a linguagem VHDL. Com a utilização de ABV o circuito pode ser verificado usando técnicas de simulação e/ou verificação, por exemplo, \textit{model checking}, para garantir que o mesmo esteja de acordo com o pretendido projeto~\cite{DahanCombining}.
 
 \par
-Na \autoref{fig:assertiva} apresenta o modelo de assertiva utilizada no projeto, utilizando de um modelo próprio para assertivas, unindo as funcionalidades já existentes nas assertivas do VHDL, mas também novas (serão apresentadas nas próximas seções), fornecendo assim mais propriedades a serem analisadas. A assertiva apresentada na \textbf{linha 13} da \autoref{fig:assertiva_abv} faz a verificação se a porta AND, ao ter entradas de dois valores 1, a saída também será 1, caso não seja será relatado erro de verificação.
+Na \autoref{fig:assertiva} apresenta o modelo de assertiva utilizada no projeto, utilizando de um modelo próprio para assertivas, unindo as funcionalidades já existentes nas assertivas do VHDL, mas também novas (serão apresentadas nas próximas seções), fornecendo assim mais propriedades a serem analisadas. A assertiva apresentada na \textbf{linha 12} da \autoref{fig:assertiva_abv} faz a verificação se a porta AND, ao ter entradas de dois valores 1, a saída também será 1, caso não seja será relatado erro de verificação.
 
 \begin{figure}[H]
 \caption{\label{fig:assertiva_abv} Exemplo de declaração de assertiva no VHDL.}
@@ -526,6 +526,7 @@ Compiladores são sistemas de software utilizados para tradução de uma linguag
 
 \par
 Diversas técnicas podem ser utilizadas nas diversas etapas, até que o código seja traduzido, tais como LL(1) e LR na análise sintática; eliminação de código morto; propagação de constante e \textit{Peephole} na otimização de código~\cite{aho2007compilers}. Neste projeto serão focados as áreas de transformações de código e otimização de código.
+
 %============================
 %TRANSFORMAÇÕES DE CÓDIGO
 %============================
@@ -589,7 +590,7 @@ Segundo \citeonline{cousot2002systematic}, a metodologia de transformação de c
 A otimização de código consiste na melhoria do código intermediário gerado pelos algoritmos de compilação com o objetivo de obter um menor tempo de execução do programa, porém outros fatores podem ser introduzidos, como algoritmos menores. Este fato não implica em afirmar que o melhor código é gerado, visto que dada a complexidade, raramente pode ser obtido que o código gerado pode ser o melhor possível~\cite{aho2007compilers}.
 
 \par
-Segundo \citeauthor{aho2007compilers}, otimização local de código consiste na otimização de um bloco básico de código, ou seja, a otimização ocorre em um trecho especifico de código. Os blocos básicos são trecho onde não ocorrem saltos ou \textit{loops}, para nenhuma outra parte do código. A otimização global de código é baseado na analise do fluxo de dados, de modo que ocorra as elminação de instruções não necessárias ou substituição mais facil. A otimização global consite na analise completa do código. Neste sentido, nas próximas seções serão apresentadas algumas importantes técnicas de otimizações.
+Segundo \citeonline{aho2007compilers}, otimização local de código consiste na otimização de um bloco básico de código, ou seja, a otimização ocorre em um trecho especifico de código. Os blocos básicos são trecho onde não ocorrem saltos ou \textit{loops}, para nenhuma outra parte do código. A otimização global de código é baseado na analise do fluxo de dados, de modo que ocorra as elminação de instruções não necessárias ou substituição mais facil. A otimização global consite na analise completa do código. Neste sentido, nas próximas seções serão apresentadas algumas importantes técnicas de otimizações.
 
 %============================
 %Grafo Acliclico Direcional - GAD ok

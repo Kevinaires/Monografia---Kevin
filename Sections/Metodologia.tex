@@ -1,6 +1,6 @@
 \label{chapter:metodo}
 \par
-Este Capítulo descreve o método proposto neste trabalho, baseado transformações de código para análise de circuitos lógicos descritos em VHDL utilizando 
+Este capítulo descreve o método proposto neste trabalho, baseado transformações de código para análise de circuitos lógicos descritos em VHDL utilizando 
 \textit{Bounded Model Checking}, neste caso o \textit{model checker} ESBMC.
 
 %======================
@@ -99,6 +99,7 @@ Em comparação ao método anterior, as diferenças consistem principalmente em 
 \section{\label{cap:traducao}Tradução de VHDL para C e instrumentações de código}
 
 \par
+
 A primeira etapa é a tradução de código entre VHDL para C, contudo, diferente do demonstrado no primeiro método, onde apenas uma única ferramenta realizava a tradução, nesta nova reformulação do método faz a utilização de duas ferramentas de tradução, inicialmente para Verilog e uma segunda ferramenta faz a tradução para C. Isso possibilita uma um aumento no potencial da tradução, contudo, devido ao uso de duas ferramentas, alguns erros ainda podem ser verificados na tradução.
 
 \par
@@ -113,7 +114,9 @@ Devido ao uso das ferramentas, também é necessário mais uma etapa de instrume
 A primeira ferramenta de tradução utilizada, chamada VHD2Vl\cite{vhd2vl}, realiza a tradução do código VHDL para o código Verilog. O principal motivo de utilizar esta ferramenta deve-se a apresentar melhores resultados na tradução dos códigos, contudo, também apresenta alguma questões a serem observadas nas traduções. 
 
 \par
+
 Entre estas observações esta encontra-se a utilização das estrutura de std\_logic, std\_logic\_vector, integer e boolean. Também permite a utilização clock events das estruturas de controle, como if, elsif, else, case. A ferramenta também permite a instância de módulos no código VHDL, contudo o mesmo é ignorado na tradução o que causa erros de análise. Também é ignorado qualquer assertiva existente no código, tornando assim, mais necessário um arquivo externo com assertivas e condições a serem adicionadas ao texto\cite{vhd2vl}.
+
 
 \begin{figure}[H]
 \caption{\label{fig:codigo_verilog} Código da \autoref{fig:code_exemplo} traduzido pela ferramenta Vhd2vl.}
@@ -389,4 +392,5 @@ Para verificação pode ser utilizado dois métodos de analise, sendo eles o SMT
 \par
 A analise através da indução-k só será realizado caso o tempo de analise atrávez do SMT não chegue a alguma resposta num tempo especifico. No caso desta ferramenta o tempo utilizado foi de 5 min.
 
-
+\par
+Desta forma o ESBMC realiza apenas a checagem necessária dentro da assertiva, evitando que outros parâmetros sejam verificados, sem a devida necessidade do mesmo. Ao final de todos os desdobramentos é apresentado o resultado, sendo positiva (sem erros) ou negativa (com violação de propriedades), dependendo da assertiva e do código analisado. Este processo se repete até a lista de assertivas ser finalizada. Para o exemplo apresentado na \autoref{fig:code_exemplo} é exibido a violação da propriedade na \autoref{fig:resultado}, confirmando assim um erro na definição da porta lógica analisada.
