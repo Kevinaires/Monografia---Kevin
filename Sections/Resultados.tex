@@ -1,46 +1,144 @@
 \label{chapter:resultados}
 \par
-Neste capitulo será apresentado os resultados iniciais da ferramenta, bem como o benchmark e o método de análise utilizado.
+Neste capitulo será apresentado o planejamento, execução, e os resultados do método proposto neste trabalho.
+% bem como o benchmark e o método de análise utilizado.
+\todo[inline]{Adicionar um breve descrição do planejamento e objetivo do experimento }
+\todo[inline]{Sugiro também uma revisão do português do texto, em relação a acentos.}
 
-\section{Método de análise utilizado.}
-O teste apresentado neste capitulo, tem o objetivo de apresentar o potencial das ferramentas de tradução, vhdl2vl e v2c, bem como, suas limitações e o impacto destas ferramenta no método. Os teste também buscam avaliar a ação do método como um todo, analisando pontos positivos e negativos. Baseado nestes objetivos foram desenvolvidas as seguintes questões de pesquisa:
-\begin{enumerate}
-    \item As ferramentas de tradução são capazes de traduzir todos códigos do benchmark?
-    \item Caso não traduza, é possivél alterar o código de modo que possa ser traduzido?
-    \item Quais são os impactos de usar esta ferramenta no desenvolvimento do método?
-    \item Quais os limites apresentados pela ferramenta de analise ESBMC?
-    \item Quais os limites apresentado pelo método?
-\end{enumerate}
-\par
-Para o teste das ferramentas de tradução e de analise, mas também do método foi utilizado um benchmark composto por 30 códigos. Estes códigos são oriundos das seguintes fontes:
-\begin{itemize}
-    \item \textbf{Fonte própria do autor:} 10 códigos foram desenvolvidos pelo autor para utilização em testes das ferramenta. Estes códigos correspondem a portas lógicas, multiplexadores, entre outros códigos. 
-    \item \textbf{ICAS99:} 10 códigos foram extraidos do benchmark externo ISCAS99. Apresentam um grau de complexidade maior que os códigos do autor, e desta forma buscar os limites das ferramentas. O benchmark esta disponivel no link: \textbf{http://www.pld.ttu.ee/~maksim/benchmarks/iscas99/vhdl/}. 
-    \item \textbf{Benchmark Vhd2vl:} 10 códigos foram extraídos do exemplos existente junto com a ferramenta Vhd2vl. Este códigos apresentam diversos graus de conos xidade, buscando analisar não somente as limitações desta ferramenta, mas se é possível que estes código sejam analisados ao final.
-\end{itemize}
-Logo, 30 códigos de diversas fontes foram utilizados no teste do método. O motivo da utilização de outras fontes de benchmark é testar o real desempenho da ferramenta, testando não apenas com códigos simples, como porta lógicas ou multiplexadores, mas também códigos que apresentem outras estruturas do VHDL, além das utilizadas no benchmark do autor, em outras palavras, em códigos mais complexo, as chance são maior de a ferramenta não conseguir realizar a tradução do código.
+\section{Planejamento da avaliação experimental}
 
-\par
-Os testes foram realizados da seguinte forma, era passado o código juntamente com o arquivo externo para ferramenta, cada código possuia um arquivo diferente, devido a cada código possuir suas entrada e saídas diferentes e também condições diferentes apra cada código. Todos os códigos são passado para ferramenta e verificado se todas as etapas foram concluídas, caso contrário é analisado em qual etapa o erro foi gerado e a possível causa do erro. Na parte de analise, caso o tempo de analise por SMT ultrapasse os 5 min, a analise é realizada atráves de indução K.
+\par 
+Os testes apresentados neste capitulo, tem o objetivo de apresentar o potencial das abordagens do método proposto em relação a tradução de código VHDL para C, apresentado \autoref{chapter:metodo}, bem como, as ferramentas utilizadas e os pontos negativos e positivos de cada abordagem. Também será analisada o potencial de análise utilizada neste método, demonstrando a performance da mesma com a abordagem que apresentou o melhor resultado de tradução. 
+
+\todo[inline]{Está confuso o texto acima, parece que você só vai testar a tradução e não o seu método completo}
+
+\todo[inline]{Falta descrever o ambiente dos testes, bem como, a versão das ferramentas usadas e onde estão disponíveis. Lembre que os testes devem ser reproduziveis.}
+
+\par 
+Baseado nestes objetivos\todo{Quais?} foram desenvolvidas as seguintes questões de pesquisa para os testes nas abordagens de tradução e nas ferramentas utilizadas: 
+\begin{enumerate} 
+    \item As ferramentas de tradução de código são capazes de manipular as diferentes estruturas de código VHDL? 
+    \item Existem melhorias a serem efetuadas na tradução de código?
+%     Caso não traduza, é possível alterar o código de modo que possa ser traduzido? 
+    \item Quais são os impactos de uso das ferramentas auxiliares na aplicação do método proposto? 
+\end{enumerate} 
+
+\par 
+Para os testes a serem realizados na ferramenta de análise\todo{Que análise?} foram desenvolvidas as seguintes questões de pesquisa: 
+\todo[inline]{Qual o objetivo destes testes?}
+\begin{enumerate} 
+    \item A ferramenta ESBMC foi capaz de analisar todos os códigos traduzidos de VHDL para C? 
+    \item Quais as limitações apresentadas pela ferramenta de análise ESBMC? 
+\end{enumerate} 
+
+\par 
+Para os testes do método proposto foi utilizado um benchmark composto por 20 códigos escritos em VHDL. Estes códigos são oriundos das seguintes fontes: 
+
+\begin{itemize} 
+    \item \textbf{Fonte própria do autor:} $10$ códigos foram desenvolvidos pelo autor para utilização em testes das ferramenta. Estes códigos correspondem a portas lógicas, multiplexadores, entre outros códigos;  
+    \item \textbf{ICAS99:} $6$ códigos foram extraídos do benchmark externo ISCAS99. Apresentam um grau de complexidade maior que os códigos do autor, e desta forma buscar os limites das ferramentas. O benchmark está disponível em:
+    
+    \texttt{http://www.pld.ttu.ee/$\sim$maksim/benchmarks/iscas99/vhdl/}.  
+    
+    \item \textbf{Benchmark Vhd2vl:} $4$ códigos foram extraídos dos exemplos existente junto com a ferramenta Vhd2vl. Estes códigos apresentam diversos graus de complexidade, buscando analisar não somente as limitações desta ferramenta, mas se é possível que estes códigos sejam analisados ao final. 
+\end{itemize} 
+
+\todo[inline]{Descrever para o ICAS99 e Vhd2vl, sobre o que são os códigos.}
+
+\par 
+Para os testes da ferramenta ESBMC foram utilizados os códigos traduzido pelas abordagens, contudo apenas os códigos da abordagem que teve o melhor desempenho durante o teste, pelo fato que se esperasse que a melhor abordagem tenha uma quantidade maior de códigos traduzidos\todo{Este texto está muito confuso, não entendi :(}. 
+
+\par 
+% Logo, 20 códigos de diversas fontes foram utilizados no teste do método. O
+O motivo da utilização de outras fontes de benchmark é testar o real desempenho do método proposto, testando não apenas com códigos simples, como porta lógicas ou multiplexadores, mas também códigos que apresentem outras estruturas do VHDL, além das utilizadas no benchmark do autor, em outras palavras, em códigos mais complexo, as chance são maiores da ferramenta não conseguir realizar a tradução do código\todo{Está meio retudante, sugiro melhorar}. 
+
+\par 
+Os testes foram realizados da seguinte maneira, era passado para ambas as abordagens os mesmos códigos, de acordo com o modo funcionamento de cada operação de tradução, também foi verificado se o código traduzido era reconhecido pela ferramenta ESBMC. Logo,  verificado se todas as etapas foram concluídas, caso contrário é analisado em qual etapa o erro foi gerado e a possível causa do erro. Nesta etapa não foi introduzida assertiva, visando apenas testar a capacidade de tradução ser realizada pelas ferramentas.  
+
+\par 
+% Para os testes na ferramenta de análise, 
+Visando analisar a capacidade da verificação do código traduzido, somente a melhor abordagem foi selecionada e a ela inserida as assertivas aos códigos que foram traduzidos a linguagem C por esta abordagem. Também foi apresentada um cálculo de tempo tanto para tradução quanto para o tempo que foi necessário para análise de código. 
+
+\todo[inline]{Melhorar texto acima.}
+
 %======================================
 %Apresentação dos resultados dos testes
 %======================================
-\section{Apresentação dos resultados dos testes}
-Após a execução do benchmark, os testes resultado da obtidos são apresentados na \autoref{tab:tabela_resultado}, formada pelas colunas \textbf{Id} que é uma identificação para cada código; \textbf{Nome do código}; \textbf{vhd2vl} que apresenta o status para tradução da ferramenta vhd2vl e também para instrumentação que ocorre nesta etapa; \textbf{v2c} para o status da ferramenta de tradução e a adição das assertivas que ocorre nesta etapa; \textbf{SMT} para analise pelo ESBMC pelo SMT; e \textbf{Indução K} para analise do ESBMC para indução k.
+\section{Execução e análise dos resultados}
+
+\todo[inline]{Adicionar um texto de introdução a seção}
+
+\subsection{Testes realizados nas abordagens de tradução}
+
+Após a execução dos benchmarks, os testes\todo{quais de tradução ou verificação?} resultado da obtidos são apresentados na \autoref{tab:tabela_resultado}, formada pelas colunas: \textbf{Id} que é uma identificação para cada código; \textbf{Nome do código}; \textbf{Abordagem 01} que representa a abordagem de multiplas traduções; \textbf{vhd2vl} que apresenta o status para tradução da ferramenta vhd2vl; \textbf{v2c} para o status da ferramenta de tradução; \textbf{Abordagem 02} que representa a abordagem de transformação direta; \textbf{v2c} que representa o status de tradução da ferramenta v2c.
 
 \par
-Faz-se necessário relatar o significado de alguns elementos dentro da tabela, no caso, \textbf{inb()} e \textbf{ini()}. O elemento \textbf{Inb()} representa a função \_\_VERIFIER\_NONDET\_INT() e o elemento \textbf{inb()} representa a função \_\_VERIFIER\_NONDET\_BOOL().
+A ferramenta ESBMC também foi adicionada como forma de parâmetro para testar as traduções realizadas, de modo a saber se algum estrutura em C gerada pelas traduções não seria reconhecida, visto que o ESBMC será utilizado no método proposto como o verificador de pós-condições. Vale lembrar que a ferramenta V2C utilizada na \textbf{Abordagem 01} é diferente da ferramenta utilizada na \textbf{Abordagem 02}. A primeira realiza traduções de Verilog para C\todo{Como ocorre a tradução de VHDL para Verilog}, enquanto a segunda realiza de VHDL para C. 
+
+\begin{table}[H]
+\centering
+\caption{Resultados das abordagens de tradução}
+\label{tab:tabela_resultado}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\multicolumn{7}{|c|}{\textbf{Benchmark Oficial}} \\ \hline
+\multirow{2}{*}{\textbf{ID}} & \multirow{2}{*}{\textbf{Nome arquivo}} & \multicolumn{3}{c|}{\textbf{Abordagem 01}} & \multicolumn{2}{c|}{\textbf{Abordagem 02}} \\ \cline{3-7} 
+ &  & \textbf{VHD2VL} & \textbf{V2C} & \multicolumn{1}{l|}{\textbf{ESBMC}} & \textbf{V2C} & \multicolumn{1}{l|}{\textbf{ESBMC}} \\ \hline
+1 & AND\_ent.vhd & SIM & SIM & SIM & SIM & SIM \\ \hline
+2 & XOR\_ent.vhd & SIM & SIM & SIM & SIM & SIM \\ \hline
+3 & ifchain.vhd & SIM & SIM & SIM & NÃO & - \\ \hline
+4 & B01.vhd & SIM & SIM & SIM & SIM & NÃO \\ \hline
+5 & B06.vhd & SIM & SIM & SIM & SIM & NÃO \\ \hline
+6 & B10.vhd & SIM & SIM & SIM & SIM & NÃO \\ \hline
+7 & Comb1.vhd & SIM & SIM & SIM & SIM & SIM \\ \hline
+8 & FlipFlop\_D.vhd & SIM & SIM & SIM & SIM & SIM \\ \hline
+9 & seq1.vhd & SIM & SIM & SIM & SIM & SIM \\ \hline
+10 & Ula\_tcc.vhd & SIM & SIM & SIM & SIM & SIM \\ \hline
+11 & dff.vhd & SIM & SIM & SIM & SIM & SIM \\ \hline
+12 & mux\_2to1\_top.vhd & SIM & SIM & SIM & SIM & SIM \\ \hline
+13 & b02.vhd & SIM & SIM & SIM & SIM & NÃO \\ \hline
+14 & b03.vhd & SIM & SIM & SIM & SIM & NÃO \\ \hline
+15 & b09.vhd & SIM & SIM & SIM & SIM & NÃO \\ \hline
+16 & counters.vhd & SIM & NÃO & - & NÃO & - \\ \hline
+17 & ifchain2.vhd & SIM & SIM & NÃO & NÃO & - \\ \hline
+18 & mem.vhd & SIM & NÃO & - & NÃO & - \\ \hline
+19 & Nand\_ent.vhd & SIM & SIM & SIM & SIM & SIM \\ \hline
+20 & Nor\_ent.vhd & SIM & SIM & SIM & SIM & SIM \\ \hline
+\end{tabular}
+\end{table}
 
 \par
-Entre os códigos utilizado no benchmark, os seguintes resultados foram recolhidos:
+Entre os códigos utilizado no benchmark, os seguintes resultados da \textbf{Abordagem 01} foram obtidos:
 \begin{itemize}
-    \item 15 códigos passaram por todas as etapas, sende estes compostos pelo 10 códigos do autor e 5 códigos do ICAS99.
-    \item 5 códigos foram traduzidos para Verilog, instrumentados e traduzidos para C, entretanto, devido a erros na tradução gerada, estes não puderam ser instrumentados para a analise pelo ESBMC.
-    \item 5 códigos foram traduzido para Verilog e instrumentados, contudo não foram traduzidos para C. Em grande parte devido a não reconhecimento de estruturas por parte da ferramenta V2C.
-    \item 5 códigos não puderam ser traduzido para Verilog. Principalemte devido a estruturas ignoradas ou não aceitas pela ferramenta Vhd2vl, por exemplo \textit{integer range}.
+    \item $20$ códigos passaram pela ferramenta Vhd2vl. Contudo, os códigos com ID $16$ e $18$ não foram inteiramente traduzidos devido a ferramenta não ser capaz de fazer a link entre as variáveis declaradas; 
+    \item Dos $20$ códigos foram traduzidos para Verilog e instrumentados $18$ que foram traduzidos para linguagem C. Os códigos não, citado anteriormente, temos que o código com ID $17$ apresentou uma especie de "lixo", como se o tradutor não reconhecesse a estrutura no verilog durante a tradução para C.
+    \item Dos $18$ códigos, $17$ códigos foram reconhecidos pelo ESBMC. O código com ID $17$ apresentou erros, como citado acima o que ocasionou operação abortada pelo analisador ESBMC.
 \end{itemize}
 
+%====================================================
 \par
-Com base nestes resultados apresentados é possível apresentar uma melhora no método de tradução, mesmo que uma ferramenta tenha em adicional tenha sido colocada para este processo. Porém, assim como observado no métodos anterior, as ferramentas não possuem a abrangência de toda a linguagem de origem, com isso erros de tradução ocorreram ou mesmo a não tradução.
+Entre os códigos utilizado no benchmark, os seguintes resultados da \textbf{Abordagem 02} foram obtidos:
+\begin{itemize}
+    \item Dos $20$ códigos, apenas $16$ passaram\todo{O que significa?} pela ferramenta. Isso deve-se a alguma declaração de variável inteira nos códigos e/ou devido a estrutura \texttt{downto} no VHDL apresentar erro na tradução; e
+    \item Dos $16$ códigos traduzidos e instrumentados, apenas $10$ foram aceitos pela ferramenta de analise do ESBMC.
+\end{itemize}
+
+Com base nestes resultados apresentados é possível destacar que o método de múltiplas traduções (Abordagem 01) apresentou um desempenho melhor na tradução dos códigos. Vale ressaltar que é uma melhoria na tradução, visto que o método de tradução simples foi utilizado no desenvolvimento do TCC 1. Contudo, uma maior quantidade de ferramentas pode aumentar a complexidade da tradução e gerar mais erros de sintaxe.
+
+\subsection{Análise da verificação de código}
+
+Como citado no inicio do capítulo, a apresentação dos resultados da ferramenta ESBMC seria realizado com a abordagem que tivesse a melhor desempenho no teste de tradução, sendo o caso, o método de múltiplas transformações. Foram utilizados $17$ códigos para o teste da ferramenta de verificação ESBMC, todos os códigos apresentam as pré (usando a função \texttt{\_\_VERIFIER\_assume} do ESBMC) e pós condições  em \texttt{asserts}. 
+% adicionadas e o resultado a ser alcançado, 
+Os resultados esperados na verificação com o ESBMC são \texttt{TRUE}, a ssertiva não foi violada, ou \textit{FALSE} caso contrário. A tabela x\todo{Corrigir} apresenta os resultados dos teste e também o tempo de cada operação.
+
+\todo[inline]{Colocar tabela com assertivas}
 
 \par
+Conforme apresentados a ferramenta ESBMC foi capaz de localizar as assertivas e encontrar o resultado conforme o esperado. A mesma também apresentou tempos baixos tanto de tradução quanto na análise, mesmo nos códigos mais simples. O que configura uma boa atuação da ferramenta no contexto ao qual a mesma foi aplicada.
+
+\todo[inline]{Descrever as opção usada no ESBMC, bem como a qual técnica de verificação foi adotada}
+
+\todo[inline]{Descrever o que pode ser feito para melhorar a verificação.}
+
+\todo[inline]{Escrever resumo do capitulo}
+\section{Resumo do capitulo}

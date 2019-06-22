@@ -1,0 +1,17 @@
+\section{Tutorial}
+\subsection{Introdução}
+Neste tutorial será apresentado o modo de execução da ferramenta \textcolor{red}{x} em cada etapa, demonstrando como as ferramentas serão utilizadas e também as instruções de cada uma. Também será mostrado de que modo e quais arquivos são necessários para a execução correta da ferramenta.
+
+\begin{itemize}
+    \item \textbf{Passo 1: Código VHDL e arquivo externo:} Inicialmente para verificação, é necessário o código em VHDL o qual será analisado. Juntamente com código é preciso um arquivo em .txt contendo as seguintes informações: variáveis de entrada(INPUT), variações de saida(OUTPUT), pre-condições(PRECONDITION) e pós- condições(POSCONDITION).
+    \item \textbf{Passo 2: Ferramenta Vhd2vl:} Nesta etapa será exeutado a tradução de VHDL para Verilog utilizando a ferramenta VHD2VL. Para execução da ferramenta é executado o comando \textit{\textcolor{red}{Comando para execução da ferramenta}} Ao final da execução um novo arquivo é criado com a extensão .v que é o formato de arquivos verilog.
+    \item \textbf{Passo 3: Instrumentação do código verilog:} Para que a tradução para C seja realizada, é necessário a instrumentação do código, pois o modo como é feita a declaraçao das variáveis não é aceita pela segunda ferramenta. Outras modificação são feitas, tais como a alteração de \textit{parameter} para \textit{`define}.
+    \item \textbf{Passo 4: Ferramenta V2C}
+    Nesta etapa será realizado a tradução do código Verilog para o 
+    \item \textbf{Passo 5: Inserção assertivas}
+    \item \textbf{Passo 6: Verificação e resultado.}
+\end{itemize}
+
+\subsection{Tradução para Verilog}
+\subsection{Tradução para C}
+\subsection{Verificação e resultado}
