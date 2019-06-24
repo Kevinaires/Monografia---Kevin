@@ -801,7 +801,7 @@ Ula_tcc(A, B, Binvertido, Op1, &Resultado);
 %=============================================
 %Verificação de assertvas usando model checker
 %=============================================
-\subsection{Verificação de assertivas usando \textit{Model Checker}}
+\subsection{\label{sec:verificacao}Verificação de assertivas usando \textit{Model Checker}}
 
 \par
 O \textit{model checker} adotado no desenvolvimento de método é o ESBMC~\cite{cordeiro2012smt} na versão $6.0.0$ e conforme explicado na Seção~\ref{cap:bounded}, esta ferramenta recebe como entrada um código C ou C$++$ e também utiliza solucionadores SMT para análise do programa. 
@@ -815,7 +815,7 @@ Para verificação pode ser utilizado o métodos de análise, chamado indução-
 \end{itemize} 
 
 \par
-Desta forma o ESBMC realiza apenas a checagem necessária dentro da assertiva, evitando que outros parâmetros sejam verificados, sem a devida necessidade do mesmo. Ao final de todos os desdobramentos é apresentado o resultado, sendo positiva (sem erros) ou negativa (com violação de propriedades), dependendo da assertiva e do código analisado. Este processo se repete até a lista de assertivas ser finalizada. Para o exemplo apresentado na \autoref{fig:code_exemplo} é exibido a violação da propriedade na \autoref{fig:resultado}, confirmando assim um erro na definição da porta lógica analisada.
+\textcolor{red}{Desta forma o ESBMC realiza apenas a checagem necessária dentro da assertiva, evitando que outros parâmetros sejam verificados, sem a devida necessidade do mesmo. O ESBMC utilizando a técnica de indução-k realiza a análise das assertivas em cada código, considerando as pré condições e também os valores determinados para as variáveis dentro o código através do ESBMC\_assume(). Ao final de todos os desdobramentos é apresentado o resultado, sendo positiva (sem erros) ou negativa (com violação de propriedades), dependendo da assertiva e do código analisado.}
 
-\todo[inline]{Adicionar o resumo do capitulo}
 \section{Resumo do capitulo}
+\textcolor{red}{Neste capitulo foi apresentado os dois métodos de tradução composto pelo método de múltiplas traduções, na qual é utilizado duas ferramentas de tradução, e pelo método de tradução direta que utiliza apenas uma ferramenta e faz a conversão direta de VHDL para linguagem C. Também foi mostrado a ferramenta de análise chamada ESBMC e de que forma ela é utilizada para verificação dos códigos.} 

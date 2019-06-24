@@ -357,8 +357,20 @@ Segundo \citeonline{rocha2015verificaccao}, na verificação formal de software 
 %============================
 \subsubsection{Indução K}
 \par
-\todo[inline]{Artigo ESBMC}
+\textcolor{red}{Segundo \citeonline{gadelha2017handling}, o algoritmo de indução-k é uma técnica de verificação efetiva implementada em vários verificadores de modelos de software com o objetivo de comprovar a correção parcial de um grande número de programas e propriedades. O método de indução de k tem sido aplicado com sucesso em verificar projetos de hardware (representados como máquinas de estados finitos) usando um solucionador SAT\cite{gadelhaesbmc}.}
 
+\par
+\textcolor{red}{Segundo, \citeonline{gadelha2017handling}, a forma básica de indução-k consiste em duas etapas, sendo elas o caso base e o passo de indução. Para critério de explicação, dado um sistema de transição finito $M$, onde $I(s)$ sendo um conjunto de estado iniciais e $T(s,s_0)$ sendo a relação de transição entre os estados. Seja $\phi$(s) denotar estados que satisfaçam uma propriedade de segurança $\phi$, este sistema pode ser definido pela seguintes equações:}
+
+\begin{equation}
+    Base_k_=I(s_1)\wedge T(s_1,s_2)\wedge...\wedge T(s_k_-_1,s_k)\wedge(\neg\phi (s_0)\vee...\vee\neg\phi(s_k))
+\end{equation}
+\begin{equation}
+    Step_k=\phi(s_1)\wedge T(s_1,s_2)\wedge...\wedge\phi(s_k)\wedge T(s_k,s_k_+_1)\wedge\neg\phi(s_k_+_1)
+\end{equation}
+
+\par
+\textcolor{red}{A interpretação intuitiva das fórmulas apresentadas acima é a seguinte: no caso base, será verificado se $\phi$ detém em todos os estados alcançáveis a partir de um estado inicial dentro de k passos, levando em consideração que k $\geq$ 0 e na etapa de indução, o objetivo é verificar que sempre φ detém em k estados consecutivos s$_1_$,...,s$_k_$, φ também mantém no próximo estado s$_k_+_1_$ do sistema. Um algoritmo pode então ser criado a partir dessas duas fórmulas, que desenrola o sistema de forma incremental e verifica se o Base k é satisfatório ou se o Step k é insatisfatório para determinar a terminação. Em particular, se o Base k se tornar satisfatório no passo k, então encontramos uma violação da propriedade. Se Step k é insatisfatório no passo k, então a propriedade é válida.\cite{gadelha2017handling}}
 %============================
 %LÓGICA PROPOSICIONAL
 %============================

@@ -1,21 +1,21 @@
 \label{chapter:resultados}
 \par
-Neste capitulo será apresentado o planejamento, execução, e os resultados do método proposto neste trabalho.
-% bem como o benchmark e o método de análise utilizado.
-\todo[inline]{Adicionar um breve descrição do planejamento e objetivo do experimento }
-\todo[inline]{Sugiro também uma revisão do português do texto, em relação a acentos.}
+Neste capitulo será apresentado o planejamento, execução e os resultados do método proposto neste trabalho. \textcolor{red}{Serão apresentados dois experimentos neste capitulo, sendo inicialmente um para os métodos de tradução e outro para o método de análise. Desta forma abrangendo todo o método do trabalho. O objetivo destes experimentos é testar as ferramentas utilizadas, assim como descobrir os limites de utilização da mesma.}
+%\todo[inline]{Adicionar um breve descrição do planejamento e objetivo do experimento }
+%\todo[inline]{Sugiro também uma revisão do português do texto, em relação a acentos.}
 
 \section{Planejamento da avaliação experimental}
 
 \par 
-Os testes apresentados neste capitulo, tem o objetivo de apresentar o potencial das abordagens do método proposto em relação a tradução de código VHDL para C, apresentado \autoref{chapter:metodo}, bem como, as ferramentas utilizadas e os pontos negativos e positivos de cada abordagem. Também será analisada o potencial de análise utilizada neste método, demonstrando a performance da mesma com a abordagem que apresentou o melhor resultado de tradução. 
+Os testes apresentados neste capitulo tem o objetivo de apresentar o potencial da \textcolor{red}{abordagem do método proposto em relação a tradução de código VHDL para C e análise de código apresentado \autoref{chapter:metodo}. O teste será dividido em duas metade etapas, inicialmente será testado os métodos de tradução, sendo os métodos de transformação direta e de múltiplas sucessões.} Também será analisada o potencial de análise utilizada neste método, demonstrando a performance da mesma com a abordagem que apresentou o melhor resultado de tradução. 
 
-\todo[inline]{Está confuso o texto acima, parece que você só vai testar a tradução e não o seu método completo}
+\textcolor{red}{Os teste serão executados em ambiente linux, precisamente o Ubuntu 16.04, utilizando a ferramenta WSL(Windows Subsystem fo Linux). A maquina utilizada para os teste corresponde a um Dell, processador I7 5500U 2,40Ghz, 8GB de memória ram, contendo o sistema operacional Windows 10 64 bit, na versão 1803.}
+%\todo[inline]{Está confuso o texto acima, parece que você só vai testar a tradução e não o seu método completo}
 
-\todo[inline]{Falta descrever o ambiente dos testes, bem como, a versão das ferramentas usadas e onde estão disponíveis. Lembre que os testes devem ser reproduziveis.}
+%\todo[inline]{Falta descrever o ambiente dos testes, bem como, a versão das ferramentas usadas e onde estão disponíveis. Lembre que os testes devem ser reproduzíveis.}
 
 \par 
-Baseado nestes objetivos\todo{Quais?} foram desenvolvidas as seguintes questões de pesquisa para os testes nas abordagens de tradução e nas ferramentas utilizadas: 
+Baseado \textcolor{red}{no objetivo de testar o potencial das abordagens de tradução} foram desenvolvidas as seguintes questões de pesquisa para os testes nas abordagens de tradução e nas ferramentas utilizadas: 
 \begin{enumerate} 
     \item As ferramentas de tradução de código são capazes de manipular as diferentes estruturas de código VHDL? 
     \item Existem melhorias a serem efetuadas na tradução de código?
@@ -24,8 +24,8 @@ Baseado nestes objetivos\todo{Quais?} foram desenvolvidas as seguintes questões
 \end{enumerate} 
 
 \par 
-Para os testes a serem realizados na ferramenta de análise\todo{Que análise?} foram desenvolvidas as seguintes questões de pesquisa: 
-\todo[inline]{Qual o objetivo destes testes?}
+Para o teste a serem realizados na ferramenta de análise ESBMC foram desenvolvidas as seguintes questões de pesquisa: 
+%\todo[inline]{Qual o objetivo destes testes?}
 \begin{enumerate} 
     \item A ferramenta ESBMC foi capaz de analisar todos os códigos traduzidos de VHDL para C? 
     \item Quais as limitações apresentadas pela ferramenta de análise ESBMC? 
@@ -45,35 +45,49 @@ Para os testes do método proposto foi utilizado um benchmark composto por 20 c�
 
 \todo[inline]{Descrever para o ICAS99 e Vhd2vl, sobre o que são os códigos.}
 
+\par
+\textcolor{red}{Conforme citado anteriormente, os teste serão divididos em duas etapas, inicialmente o teste será realizado apenas com os métodos de tradução. Será passado para os métodos o benchmark de 20 códigos citados acima e é observado qual das abordagens demonstrou o melhor desempenho, ou seja, qual método foi capaz de traduzir mais códigos de VHDL para C. Cada método de tradução será executado conforme apresentado no \autoref{chapter:metodo}.}
+
+\par
+\textcolor{red}{Para as traduções serão testadas 3 ferramentas, sendo duas ferramentas para o método de múltiplas transformações, sendo elas a ferramenta Vhd2vl, na versão X disponível no site, que realiza a tradução de VHDL para Verilog. E a ferramenta V2c, na versão e disponível no site, que realiza a tradução de Verilog para C. No método de tradução direta apenas a ferramenta V2c que realiza a tradução de VHDL para C. É importante ressaltar que apesar do mesmo nome, V2c, os métodos apresentam ferramentas diferentes, com usos diferentes.}
+
+\par
+\textcolor{red}{A segunda etapa de testes será o teste da ferramenta de análise ESBMC. Os testes serão realizados em conjunto com o método de tradução que obteve o melhor resultado, ou seja, o método que apresentou o maior conjunto de códigos traduzidos será utilizado em conjunto com a ferramenta ESBMC para o teste da ferramenta. A ferramenta ESBMC está disponível no site \textit{www.esbmc.com} e será utilizado esta na versão 6.0.0 desta ferramenta.}
+
+\par
+\textcolor{red}{O motivo desta abordagem de teste ter sido utilizada deve-se ao fato de uma quantidade maior de códigos ser utilizada para os testes, além de que os melhores resultados, tecnicamente deve apresentar os melhores códigos. Para os testes os códigos traduzidos para linguagem C terão assertivas inseridas aos códigos e a ferramenta deve ser capaz de encontrar estas assertivas, mas também verificar se alguma propriedade destas assertivas foi violada ou não.}
 \par 
-Para os testes da ferramenta ESBMC foram utilizados os códigos traduzido pelas abordagens, contudo apenas os códigos da abordagem que teve o melhor desempenho durante o teste, pelo fato que se esperasse que a melhor abordagem tenha uma quantidade maior de códigos traduzidos\todo{Este texto está muito confuso, não entendi :(}. 
+%Para os testes da ferramenta ESBMC foram utilizados os códigos traduzido pelas abordagens, contudo apenas os códigos da abordagem que teve o melhor desempenho durante o teste, pelo fato que se esperasse que a melhor abordagem tenha uma quantidade maior de códigos traduzidos\todo{Este texto está muito confuso, não entendi :(}. 
 
 \par 
-% Logo, 20 códigos de diversas fontes foram utilizados no teste do método. O
-O motivo da utilização de outras fontes de benchmark é testar o real desempenho do método proposto, testando não apenas com códigos simples, como porta lógicas ou multiplexadores, mas também códigos que apresentem outras estruturas do VHDL, além das utilizadas no benchmark do autor, em outras palavras, em códigos mais complexo, as chance são maiores da ferramenta não conseguir realizar a tradução do código\todo{Está meio retudante, sugiro melhorar}. 
+%O motivo da utilização de outras fontes de benchmark é testar o real desempenho do método proposto, testando não apenas com códigos simples, como porta lógicas ou multiplexadores, mas também códigos que apresentem outras estruturas do VHDL, além das utilizadas no benchmark do autor, em outras palavras, em códigos mais complexo, as chance são maiores da ferramenta não conseguir realizar a tradução do código\todo{Está meio retudante, sugiro melhorar}. 
 
 \par 
-Os testes foram realizados da seguinte maneira, era passado para ambas as abordagens os mesmos códigos, de acordo com o modo funcionamento de cada operação de tradução, também foi verificado se o código traduzido era reconhecido pela ferramenta ESBMC. Logo,  verificado se todas as etapas foram concluídas, caso contrário é analisado em qual etapa o erro foi gerado e a possível causa do erro. Nesta etapa não foi introduzida assertiva, visando apenas testar a capacidade de tradução ser realizada pelas ferramentas.  
+%Os testes foram realizados da seguinte maneira, era passado para ambas as abordagens os mesmos códigos, de acordo com o modo funcionamento de cada operação de tradução, também foi verificado se o código traduzido era reconhecido pela ferramenta ESBMC. Logo,  verificado se todas as etapas foram concluídas, caso contrário é analisado em qual etapa o erro foi gerado e a possível causa do erro. Nesta etapa não foi introduzida assertiva, visando apenas testar a capacidade de tradução ser realizada pelas ferramentas.  
 
 \par 
-% Para os testes na ferramenta de análise, 
-Visando analisar a capacidade da verificação do código traduzido, somente a melhor abordagem foi selecionada e a ela inserida as assertivas aos códigos que foram traduzidos a linguagem C por esta abordagem. Também foi apresentada um cálculo de tempo tanto para tradução quanto para o tempo que foi necessário para análise de código. 
+%Visando analisar a capacidade da verificação do código traduzido, somente a melhor abordagem foi selecionada e a ela inserida as assertivas aos códigos que foram traduzidos a linguagem C por esta abordagem. Também foi apresentada um cálculo de tempo tanto para tradução quanto para o tempo que foi necessário para análise de código. 
 
-\todo[inline]{Melhorar texto acima.}
+%\todo[inline]{Melhorar texto acima.}
 
 %======================================
 %Apresentação dos resultados dos testes
 %======================================
 \section{Execução e análise dos resultados}
 
-\todo[inline]{Adicionar um texto de introdução a seção}
+\textcolor{red}{Nesta sessão será apresentado os resultados proveniente dos testes explanados na sessão anterior. Primeiramente será apresentado os resultados dos métodos de tradução e posteriormente será apresentado os resultados relacionados a ferramenta de análise ESBMC.}
+%\todo[inline]{Adicionar um texto de introdução a seção}
 
 \subsection{Testes realizados nas abordagens de tradução}
 
-Após a execução dos benchmarks, os testes\todo{quais de tradução ou verificação?} resultado da obtidos são apresentados na \autoref{tab:tabela_resultado}, formada pelas colunas: \textbf{Id} que é uma identificação para cada código; \textbf{Nome do código}; \textbf{Abordagem 01} que representa a abordagem de multiplas traduções; \textbf{vhd2vl} que apresenta o status para tradução da ferramenta vhd2vl; \textbf{v2c} para o status da ferramenta de tradução; \textbf{Abordagem 02} que representa a abordagem de transformação direta; \textbf{v2c} que representa o status de tradução da ferramenta v2c.
+Após a execução dos benchmarks, no teste dos métodos de tradução, os
+%\todo{quais de tradução ou verificação?} 
+resultado da obtidos são apresentados na \autoref{tab:tabela_resultado}, formada pelas colunas: \textbf{Id} que é uma identificação para cada código; \textbf{Nome do código}; \textbf{Abordagem 01} que representa a abordagem de multiplas traduções; \textbf{vhd2vl} que apresenta o status para tradução da ferramenta vhd2vl; \textbf{v2c} para o status da ferramenta de tradução; \textbf{Abordagem 02} que representa a abordagem de transformação direta; \textbf{v2c} que representa o status de tradução da ferramenta v2c.
 
 \par
-A ferramenta ESBMC também foi adicionada como forma de parâmetro para testar as traduções realizadas, de modo a saber se algum estrutura em C gerada pelas traduções não seria reconhecida, visto que o ESBMC será utilizado no método proposto como o verificador de pós-condições. Vale lembrar que a ferramenta V2C utilizada na \textbf{Abordagem 01} é diferente da ferramenta utilizada na \textbf{Abordagem 02}. A primeira realiza traduções de Verilog para C\todo{Como ocorre a tradução de VHDL para Verilog}, enquanto a segunda realiza de VHDL para C. 
+A ferramenta ESBMC também foi adicionada como forma de parâmetro para testar as traduções realizadas, de modo a saber se algum estrutura em C gerada pelas traduções não seria reconhecida, visto que o ESBMC será utilizado no método proposto como o verificador de pós-condições. Vale lembrar que a ferramenta V2C utilizada na \textbf{Abordagem 01} é diferente da ferramenta utilizada na \textbf{Abordagem 02}. A primeira realiza traduções de Verilog para C
+%\todo{Como ocorre a tradução de VHDL para Verilog}
+, enquanto a segunda realiza de VHDL para C. 
 
 \begin{table}[H]
 \centering
@@ -119,26 +133,83 @@ Entre os códigos utilizado no benchmark, os seguintes resultados da \textbf{Abo
 \par
 Entre os códigos utilizado no benchmark, os seguintes resultados da \textbf{Abordagem 02} foram obtidos:
 \begin{itemize}
-    \item Dos $20$ códigos, apenas $16$ passaram\todo{O que significa?} pela ferramenta. Isso deve-se a alguma declaração de variável inteira nos códigos e/ou devido a estrutura \texttt{downto} no VHDL apresentar erro na tradução; e
+    \item Dos $20$ códigos, apenas $16$ foram traduzidos pela ferramenta v2c
+    %\todo{O que significa?} 
+    pela ferramenta. Isso deve-se a alguma declaração de variável inteira nos códigos e/ou devido a estrutura \texttt{downto} no VHDL apresentar erro na tradução; e
     \item Dos $16$ códigos traduzidos e instrumentados, apenas $10$ foram aceitos pela ferramenta de analise do ESBMC.
 \end{itemize}
 
 Com base nestes resultados apresentados é possível destacar que o método de múltiplas traduções (Abordagem 01) apresentou um desempenho melhor na tradução dos códigos. Vale ressaltar que é uma melhoria na tradução, visto que o método de tradução simples foi utilizado no desenvolvimento do TCC 1. Contudo, uma maior quantidade de ferramentas pode aumentar a complexidade da tradução e gerar mais erros de sintaxe.
 
 \subsection{Análise da verificação de código}
-
 Como citado no inicio do capítulo, a apresentação dos resultados da ferramenta ESBMC seria realizado com a abordagem que tivesse a melhor desempenho no teste de tradução, sendo o caso, o método de múltiplas transformações. Foram utilizados $17$ códigos para o teste da ferramenta de verificação ESBMC, todos os códigos apresentam as pré (usando a função \texttt{\_\_VERIFIER\_assume} do ESBMC) e pós condições  em \texttt{asserts}. 
 % adicionadas e o resultado a ser alcançado, 
-Os resultados esperados na verificação com o ESBMC são \texttt{TRUE}, a ssertiva não foi violada, ou \textit{FALSE} caso contrário. A tabela x\todo{Corrigir} apresenta os resultados dos teste e também o tempo de cada operação.
+Os resultados esperados na verificação com o ESBMC são \texttt{TRUE}, a assertiva não foi violada, ou \textit{FALSE} caso contrário. \textcolor{red}{Nas tabelas \autoref{tab:tabela_verificacao_1} e \autoref{tab:tabela_verificacao_2} apresentam os resultados dos teste e também o tempo de cada operação.}
 
-\todo[inline]{Colocar tabela com assertivas}
+\par
+\textcolor{red}{A \autoref{tab:tabela_verificacao_1} apresenta \textbf{ID}, \textbf{Nome do código}, \textbf{Tradução verilog}, se o código foi capaz de ser traduzido, \textbf{Tempo de tradução} desde o VHDL até a linguagem C, \textbf{Pre-condição} e \textbf{Assume}. A tabela ainda apresenta dois termos, sendo VNB e EAE. O primeiro é a sigla para \_\_VERIFIER\_NONDET\_BOOL() que gerar valores não deterministicos para ser utilizado durante o experimento. O segundo é a sigla para \_\_ESBMC\_assume() que é uma função da ferramenta de análise utilizada para aplicar valores a determinadas variáveis.} 
+
+\par
+\textcolor{red}{A \autoref{tab:tabela_verificacao_2} apresenta \textbf{ID}, \textbf{Pós-condição}, \textbf{Resultado esperado} que é o resultado a ser esperado pela ferramenta de análise, de acordo com as pre e pós condições, e \textbf{Tempo de execução}. Assim como a tabela anterior, aqui é apresentado a sigla EAT para \_\_ESBMC\_assert(), a qual é utilizada para adicionar as assertivas ao código VHDL.}
+
+\begin{table}[H]
+\centering
+\caption{Resultado da ferramenta de análise}
+\label{tab:tabela_verificacao_1}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+\multicolumn{6}{|c|}{BENCHMARK OFICIAL} \\ \hline
+ID & \multicolumn{1}{c|}{Nome do Código} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Tradução \\ verilog\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Tempo \\ de \\ tradução\end{tabular}} & \multicolumn{1}{c|}{Pre-condição} & \multicolumn{1}{c|}{Assume} \\ \hline
+1 & AND\_ent.vhd & SIM & 0m0.231s & \begin{tabular}[c]{@{}l@{}}X=VNB; \\ Y=VNB\end{tabular} & \begin{tabular}[c]{@{}l@{}}EAE(x==TRUE);\\ EAE(y==TRUE);\end{tabular} \\ \hline
+2 & XOR\_ent.vhd & SIM & 0m0.161s & \begin{tabular}[c]{@{}l@{}}X=VNB; \\ Y=VNB\end{tabular} & \begin{tabular}[c]{@{}l@{}}EAE(x==FALSE); \\ EAE(y==TRUE);\end{tabular} \\ \hline
+3 & B01.vhd & SIM & 0m7.008s & \begin{tabular}[c]{@{}l@{}}line1=VNB; \\ line2=VNB; \\ reset=VNB; \\ clock=VNB;\end{tabular} & \begin{tabular}[c]{@{}l@{}}EAE(reset == 0); \\ EAE(line1 == 0); \\ EAE(line2 == 0); \\ EAE(stato\_old == 1);\end{tabular} \\ \hline
+4 & B06.vhd & SIM & 0m3.431s & \begin{tabular}[c]{@{}l@{}}eql=VNB;\\ clock=VNB; \\ reset=VNB; \\ cont\_eql=VNB;\end{tabular} & \begin{tabular}[c]{@{}l@{}}EAE(reset == 0); \\ EAE(cont\_eql == 1); \\ EAE(eql == 1);  \\ EAE(state\_old == 0);\end{tabular} \\ \hline
+5 & Comb1.vhd & SIM & 0m1.292s & \begin{tabular}[c]{@{}l@{}}a=VNB; \\ b=VNB; \\ c=VNB; \\ d=VNB; \\ e=VNB;\end{tabular} & - \\ \hline
+6 & FlipFlop\_D.vhd & SIM & 0m0.677s & \begin{tabular}[c]{@{}l@{}}D=VNB; \\ CLK=VNB; \\ RST=VNB;\end{tabular} & EAE(RST==1); \\ \hline
+7 & seq1.vhd & SIM & 0m0.958s & \begin{tabular}[c]{@{}l@{}}in1=VNB; \\ in2=VNB; \\ reset=VNB;\end{tabular} & \begin{tabular}[c]{@{}l@{}}EAE(reset == 1); \\ EAE(in1 == 0); \\ EAE(in2 == 0);\end{tabular} \\ \hline
+8 & Ula\_tcc.vhd & SIM & 0m0.905s & \begin{tabular}[c]{@{}l@{}}A=VNB; \\ B=VNB; \\ Binvertido=VNB; \\ Op1=VNB;\end{tabular} & \begin{tabular}[c]{@{}l@{}}EAE(A==0); \\ EAE(B==1); \\ EAE(Binvertido==0); \\ EAE(Op1==0);\end{tabular} \\ \hline
+9 & dff.vhd & SIM & 0m0.479s & data\_in=VNB; & EAE(data\_in==FALSE); \\ \hline
+10 & mux\_2to1\_top.vhd & SIM & 0m0.585s & \begin{tabular}[c]{@{}l@{}}w0=VNB; \\ w1=VNB; \\ s=VNB;\end{tabular} & \begin{tabular}[c]{@{}l@{}}EAE(w0 == TRUE); \\ EAE(w1 == FALSE); \\ EAE(s == FALSE);\end{tabular} \\ \hline
+11 & b02.vhd & SIM & 0m3.007s & \begin{tabular}[c]{@{}l@{}}reset=VNB \\ clock=VNB \\ linea=VNB;\end{tabular} & \begin{tabular}[c]{@{}l@{}}EAE(reset == 0); \\ EAE(linea == 0); \\ EAE(stato\_old == 1);\end{tabular} \\ \hline
+12 & Nand\_ent.vhd & SIM & 0m0.365s & \begin{tabular}[c]{@{}l@{}}X=VNB; \\ Y=VNB;\end{tabular} & \begin{tabular}[c]{@{}l@{}}EAE(x==TRUE); \\ EAE(y==TRUE);\end{tabular} \\ \hline
+13 & Nor\_ent.vhd & SIM & 0m0.386s & \begin{tabular}[c]{@{}l@{}}X=VNB; \\ Y=VNB;\end{tabular} & \begin{tabular}[c]{@{}l@{}}EAE(x==TRUE); \\ EAE(y==TRUE);\end{tabular} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Resultado da ferramenta de análise}
+\label{tab:tabela_verificacao_2}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\multicolumn{4}{|c|}{BENCHMARK OFICIAL} \\ \hline
+ID & \multicolumn{1}{c|}{Pós-condição} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Resultado \\ esperado\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Tempo \\ de \\ execução\end{tabular}} \\ \hline
+1 & EAT(sAND\_ent.f==TRUE); & TRUE & 0m1.571s \\ \hline
+2 & EAT(sAND\_ent.f==TRUE); & TRUE & 0m0.996s \\ \hline
+3 & EAT(sb01.outp==0\&\&sb01.overflw==FALSE); & TRUE & 0m2.127s \\ \hline
+4 & EAT(sb06.ackout==FALSE\&\&sb06.enable\_count==FALSE); & TRUE & 0m2.017s \\ \hline
+5 & EAT(h==a\textasciicircum{}!(b \&\& c)); & FALSE & 0m1.367s \\ \hline
+6 & EAT(sFlipFlop\_D.Q==D); & FALSE & 0m1.050s \\ \hline
+7 & EAT(sseq1.out==TRUE); & FALSE &  \\ \hline
+8 & EAT(sUla\_tcc.Resultado==0); & TRUE & 0m3.284s \\ \hline
+9 & EAT(sdff.data\_out==FALSE); & TRUE & 0m2.417s \\ \hline
+10 & EAT(smux\_2to1\_top.f==TRUE); & TRUE & 0m2.334s \\ \hline
+11 & EAT(sb02.u==TRUE); & FALSE & 0m2.086s \\ \hline
+12 & EAT(sNAND\_ent.f==TRUE); & FALSE & 0m1.106s \\ \hline
+13 & EAT(sAND\_ent.f==TRUE); & FALSE & 0m0.774s \\ \hline
+\end{tabular}
+\end{table}
 
 \par
 Conforme apresentados a ferramenta ESBMC foi capaz de localizar as assertivas e encontrar o resultado conforme o esperado. A mesma também apresentou tempos baixos tanto de tradução quanto na análise, mesmo nos códigos mais simples. O que configura uma boa atuação da ferramenta no contexto ao qual a mesma foi aplicada.
 
-\todo[inline]{Descrever as opção usada no ESBMC, bem como a qual técnica de verificação foi adotada}
+%\todo[inline]{Descrever as opção usada no ESBMC, bem como a qual técnica de verificação foi adotada}
+\textcolor{red}{Foi utilizado no teste as seguintes a técnica de indução-k e as opções --no-pointer-check na qual não realiza a checagem de ponteiros, --no-div-by-zero-check na qual não realiza a checagem de divisão por zero e no-bounds-check na qual não realiza a checagem de array bounds, conforme apresentado na \autoref{sec:verificacao}.} 
 
-\todo[inline]{Descrever o que pode ser feito para melhorar a verificação.}
+%\todo[inline]{Descrever o que pode ser feito para melhorar a verificação.}
+\par
+\textcolor{red}{Quanto melhor a tradução realizada, melhor será a verificação do código. Novas técnicas podem ser implementadas ao métodos visando a melhorias da verificação, por exemplo, inicialmente foi utilizado a técnica de \textit{Bounded Model Checking} no método, contudo a utilização da indução-k, que apresenta a técnica de BMC juntamente com técnica de desdobramento de loop\cite{gadelhaesbmc}, aumentou a qualidade na verificação dos códigos.}
 
-\todo[inline]{Escrever resumo do capitulo}
 \section{Resumo do capitulo}
+\par
+\textcolor{red}{Neste capitulo foi apresentado os resultados das duas abordagens de tradução mostrando que o método de múltiplas traduções teve um desempenho melhor que o método de tradução direta, apresentando uma quantidade maior de códigos traduzidos e reconhecidos pela ferramenta de análise. Também foi mostrado o resultado da ferramenta de análise com alguns códigos resultando da transformação de múltiplas transformações para demonstrar o desempenho da ferramenta.}
